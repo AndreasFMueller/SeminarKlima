@@ -3,7 +3,10 @@
 #
 # (c) 2018 Jonas Gründler, Hochschule Rapperswil
 #
-all:
+all: 	main.pdf
 
 images:
 
+
+PAPERFILES =
+main.tex  \

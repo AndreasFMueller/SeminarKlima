@@ -1,0 +1,101 @@
+\section{Simulation}
+\rhead{Simulation}
+
+Nun zur Simulation. Der Golfstrom lässt sich leicht in 3 Zonen aufteilen, jeweils eine für Nord- und Südpol und eine für den Äquator.
+Als jeweils eine Box für jede Zone.
+Der Erste Schritt ist es nun, ein Modell zu erstellen. 
+Im laufe der Arbeit wurden zwei Modelle gebaut, welche hier präsentiert werden.
+
+\subsection{"Zwei Fluss" Modell}
+
+In diesem Modell sind je zwei Boxen durch einen separaten Fluss verbunden. Der Fluss ist dann jeweils wie bersits bekannt von den jeweiligen Dichteunterschieden abhängig. Hier ein Darstellung des Modelles:
+
+%Platzhalter Tikz 3Box2Fluss  
+
+So lassen sich, wie bereits beim 2-Box Modell, jeweils für jede Box zwei Gleichungen aufstellen:
+
+\begin{equation}
+\begin{aligned}
+\frac{dT_1}{dt} &= c(T_1^*-T_1)&+|q_1|(T_2-T_1)\phantom{+|q_2|(T_3-T_2)}
+\\
+\frac{dT_2}{dt} &= c(T_2^*-T_2)&+|q_1|(T_1-T_2)+|q_2|(T_3-T_2)
+\\
+\frac{dT_3}{dt} &= c(T_3^*-T_3)&+ \phantom{+|q_1|(T_1-T_2)}|q_2|(T_2-T_3)
+\end{aligned}
+\end{equation}
+\begin{equation}
+\begin{aligned}
+\frac{dS_1}{dt} &= -H/2 &+ d(S_1^*-S_1)&+|q_1|(S_2-S_1)\phantom{+|q_2|(S_3-S_2)}
+\\
+\frac{dS_2}{dt} &= \phantom{-}H &+ d(S_2^*-S_2)&+|q_1|(S_1-S_2)+|q_2|(S_3-S_2)	
+\\
+\frac{dS_3}{dt} &= -H/2 &+d(S_3^*-S_3)&+ \phantom{+|q_1|(S_1-S_2)}|q_2|(S_2-S_3)
+\end{aligned}
+\end{equation}	
+
+Und den dazugehörenden Gleichungen für die zwei Flüsse:
+
+\begin{equation}
+\begin{aligned}
+ q1 &= k[\alpha(T_2-T_1)-\beta(S_2-S_1)] 
+ \\
+ q2 &= k[\alpha(T_3-T_2)-\beta(S_3-S_2)]
+\end{aligned}
+\end{equation}
+
+\subsubsection{Matlab-Code}
+
+Erklärung des codes, Codeausschnitte
+
+\subsubsection{Resultate}
+
+
+Die Gleichungen sehen vielversprechend aus. Nur stimmen die Resulatate nicht mit der Realität überein.
+Durch die entkoppelung der zwei Flüsse, war es möglich das der eine Seine Richtung ändert, der andere jedoch bleibt. Das resultiert in zwei gegenläufige Ströme welche in keiner Weise mit dem Golfstrom übereinstimmen.
+Nachträglich ist dieser Fehler offensichtlich. Durch das Erlauben von zwei Flüssen Wird ermöglicht, dass in der Mitte euch eine auf- und Absteigzone entsteht.
+diese Tatsache macht dieses Modell zu einem Fehlschlag.
+
+%%input Matlab Graphen zur Darstellung der trennung und umkehrung der Zwei flüsse!!
+
+\subsection{Ein Fluss Modell} 
+
+Dieses Modell ist der Nachfolger vom letzten. 
+Um zu verhindern, dass in der mittleren Box eine zusätzliche Auf- und Absteigzone entsteht, muss dieser Weg verhindert werden. Das lässt sich erreichen, in dem die Äquatorzone nur für den Oberflächenfluss zugänglich ist. Der Tiefenfluss fliesst somit direkt von Pol zu Pol. 
+Das lässt sich auch in der Realität nachweisen, Der Rückfluss tritt erst ausserhalb des Atlantik wieder an die Oberfläche.
+
+%Platzhalter Tikz 3Box1Fluss
+
+Aus diesem Modell lassen sich nun neue Gleichungen für die Boxen aufstellen:
+
+\begin{equation}
+\begin{aligned}
+\frac{dT_1}{dt} &= c(T_p-T_1)&+ \begin{cases} q(T_3-T_1) & \quad q>0 \\ |q|(T_2-T_1) & \quad q<0 \end{cases}
+\\
+\frac{dT_2}{dt} &= c(T_p-T_2)&+\begin{cases} q(T_1-T_2) & \quad q>0 \\ |q|(T_3-T_2) & \quad q<0 \end{cases}
+\\
+\frac{dT_3}{dt} &= c(T_e-T_3)&+\begin{cases} q(T_2-T_3) & \quad q>0 \\ |q|(T_1-T_3) & \quad q<0 \end{cases}
+\end{aligned}
+\end{equation}
+\begin{equation}
+\begin{aligned}
+\frac{dS_1}{dt} &= -H/2 &+ d(S_p-S_1)&+\begin{cases} q(S_3-S_1) & \quad q>0 \\ |q|(S_2-S_1) & \quad q<0 \end{cases}
+\\
+\frac{dS_2}{dt} &= \phantom{-}H &+ d(S_p-S_2)&+\begin{cases} q(S_1-S_2) & \quad q>0 \\ |q|(S_3-S_2) & \quad q<0 \end{cases}	
+\\
+\frac{dS_3}{dt} &= -H/2 &+d(S_e-S_3)&+\begin{cases} q(S_2-S_3) & \quad q>0 \\ |q|(S_1-S_3) & \quad q<0 \end{cases}
+\end{aligned}
+\end{equation}	
+\subsubsection{Matlab-code}
+
+Erklärung der Änderung, (Codeausschnitte)
+
+
+\subsubsection{Resultate} 
+
+1. Resultat normale Simulation mit aktuellen Werten
+
+2. Simulation der werte nach klimaerwärmung
+
+3. Vergleich Paper Liu Wei
+
+
