@@ -11,7 +11,7 @@
 
 \section{Einleitung}
 \rhead{Einleitung}
-
+%TODO inlude mercury
 \begin{figure}
 	% https://www.astrobio.net/news-exclusive/comparing-climates-from-earth-to-exoplanets/
 	\centering
@@ -139,13 +139,13 @@ Die Strahlungsbillanz wird in Kapitel \hl{reference needed} ausführlich beschri
 Damit die Durchschnittstemperatur eines Planeten stabil ist, muss die Leistungsbilanz Null sein.
 
 \begin{equation}
-\dot{T} = \xi_1(P_{in} - P_{out})
+\dot{T} = \xi_1(P_{\text{in}} - P_{\text{out}})
 \end{equation}
 
 Die Eintreffende Leistung $P_{in}$ besteht primär aus der absorbierten Sonnenstrahlung. Andere Energiequellen wie ein Aktives Planet-Inneres und die Energie aus Gezeiten wird vernachlässigt. Es gilt:
 
 \begin{equation}
-P_{in} = \sigma T_{\astrosun}^4 \left( \frac{R_{\astrosun}}{a_{planet}} \right) ^2 \cdot (1-\alpha)
+P_{in} = \sigma T_{\astrosun}^4 \left( \frac{R_{\astrosun}}{a_{\text{planet}}} \right) ^2 \cdot (1-\alpha)
 \end{equation}
 
 Dabei ist $\alpha$ das Albedo des Planeten.
@@ -170,7 +170,7 @@ Das Albedo wird als Funktion der prozentualen Wolkenabdeckung $C$ modelliert. Es
 Unter der Annahme, dass bei allen Planeten das Oberflächenalbedo $\alpha_{surface}$ gleich ist, wird ein minimales $\alpha_{min}$ und maximales Albedo $\alpha_{max}$ definiert. Bei 100\% Wolkendeckung soll der Maximalwert erreicht werden und bei 0\% das Oberflächenalbedo.
 
 \begin{equation}
-\alpha = \alpha_{surface} + C(\alpha_{max} - \alpha_{surface})
+\alpha = \alpha_{\text{surface}} + C(\alpha_{\text{max}} - \alpha_{\text{surface}})
 \end{equation}
 
 \subsection{Treibhauseffekt}
@@ -195,7 +195,7 @@ Modellierung von atmosphärischem Wasserdampf $H$ als relative Luftfeuchtigkeit 
 Linearer Zusammenhang zur Auftreffenden Leistung
 
 \begin{equation}
-\xi_4 (P_{in})
+\xi_4 (P_{\text{in}})
 \end{equation}
 
 \subsubsection{Wolkenbildung}
@@ -222,8 +222,8 @@ linear zur Wolkenabdeckung
 
 \begin{equation}
 	\begin{matrix}			
-		\dot{H} = & \xi_4 P_{in}(C) & - \xi_5 H \Delta T & \\
-		\dot{C} = &                 &   \xi_5 H \Delta T & - \xi_6 C
+		\dot{H} = & \xi_4 P_{\text{in}}(C) & - \xi_5 H \Delta T & \\
+		\dot{C} = &                       &   \xi_5 H \Delta T & - \xi_6 C
 	\end{matrix}	
 \end{equation}
 
@@ -263,13 +263,11 @@ linear zur Wolkenabdeckung
 \subsection{Differentialgleichung}
 
 \begin{equation}
-\left|
 \begin{matrix}
-\dot{T} = &  & \xi_1 \left(P_{in}(C) - P_{out}(T, H) \right) &\\
-\dot{H} = & \xi_4 P_{in}(C) & - \xi_5 H \Delta T & \\
+\dot{T} = &  & \xi_1 \left(P_{\text{in}}(C) - P_{\text{out}}(T, H) \right) &\\
+\dot{H} = & \xi_4 P_{\text{in}}(C) & - \xi_5 H \Delta T & \\
 \dot{C} = &                 &   \xi_5 H \Delta T & - \xi_6 C
 \end{matrix}
-\right|
 \end{equation}
 
 Um zu verhindern, dass eine Luftfeuchtigkeit oder Wolkenabdeckung von über 100\% auftritt, werden zu gewissen linearen Termen noch den gleichen Term mit grosser Potenz dazu addiert. Somit wird der Effekt verstärkt wenn die Grösse nahe an $1$ also $100\%$ kommt.  
@@ -277,13 +275,11 @@ Um zu verhindern, dass eine Luftfeuchtigkeit oder Wolkenabdeckung von über 100\
 Mit Anpassungen für gesättigten Wasserdampf und Wolkenabdeckung:
 
 \begin{equation}
-\left|
 \begin{matrix}
-\dot{T} = & & \xi_1 \left(P_{in}(C) - P_{out}(T, H) \right) &\\
-\dot{H} = & \xi_4 P_{in}(C) & - \xi_5 (H + H^9) \Delta T & \\
-\dot{C} = &                 &   \xi_5 (H + H^9) \Delta T & - \xi_6 (C + C^5)
+\dot{T} = & & \xi_1 \left(P_{\text{in}}(C) - P_{\text{out}}(T, H) \right) &\\
+\dot{H} = & \xi_4 P_{\text{in}}(C) & - \xi_5 (H + H^9) \Delta T & \\
+\dot{C} = &                       &   \xi_5 (H + H^9) \Delta T & - \xi_6 (C + C^5)
 \end{matrix}
-\right|
 \end{equation}
 
 
