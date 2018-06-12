@@ -1,0 +1,4 @@
+vectorIndex(alpha1, alpha2, basicOffset) :=
+block ( [],
+  basicOffset + abs(alpha1 + alpha2) * (abs(alpha1 + alpha2) + 1) / 2 + alpha1
+)$

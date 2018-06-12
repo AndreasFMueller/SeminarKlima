@@ -1,0 +1,1128 @@
+\section{H"oherdimensionales Lorenzsystem\label{section:lorenz2:ho-model}}
+\rhead{Lorenz-Modell h"oherer Ordnung}
+Nun nehmen wir als/ die Grundgleichungen aus 
+\cref{skript:lorenzausgangsgleichung} und unsere neuen Basisfunktionen aus 
+\cref{equation:lorenz2:basic-functions} und bauen daraus ein 
+h"oherdimensionales Lorenzsystem.
+
+Als ersten Schritt erweitern wir unsere in \cref{skript:psiansatz} und 
+\cref{skript:thetaansatz} gefundenen L"osungen und erhalten
+\begin{equation}
+\psi(x,y,t) =
+\sum_{k = 1}^{\infty}
+a_{\alpha}(t)
+\sin(\alpha_1 ax) \sin(\alpha_2 y)
+\qquad |\alpha| = k,
+\label{equation:lorenz2:extendedpsi}
+\end{equation}
+sowie
+\begin{equation}
+\vartheta(x,y,t) =
+\sum_{k = 1}^{\infty}
+b_{\alpha}(t)
+\cos(\alpha_1 ax) \sin(\alpha_2 y)
+\qquad |\alpha| = k.
+\label{equation:lorenz2:extendedtheta}
+\end{equation}
+
+Als n"achstes betrachten wir die \cref{skript:lorenzausgangsgleichung}
+\begin{align*}
+\frac{\partial\Delta\psi}{\partial t}
+&=
+\nu\Delta^2\psi 
++c\frac{\partial\vartheta}{\partial x}
+-\frac{\partial(\psi,\Delta\psi)}{\partial(x,y)},
+\\
+\frac{\partial\vartheta}{\partial t}
+&=
+\kappa\Delta\vartheta
++ \frac{T_0}{\pi}\frac{\partial\psi}{\partial x}
+- \frac{\partial(\psi,\vartheta)}{\partial(x,y)}.
+\end{align*}
+Statt einfach Terme zu ersetzen, macht es Sinn, systematisch vorzugehen. Es ist 
+leicht zu erkennen, dass wir sowohl partielle Ableitungen nach $x$ als auch $y$ 
+brauchen werden. Daher fangen wir an, uns Bausteine zurechtzulegen indem wir 
+die \cref{equation:lorenz2:extendedpsi,equation:lorenz2:extendedtheta} 
+zwei Mal je nach $x$ und $y$ ableiten.
+
+F"ur $\psi(x,y,t)$ erhalten wir
+\begin{align*}
+\frac{\partial\psi}{\partial x}
+&=
+a
+\sum_{k = 1}^{\infty}
+\alpha_1
+a_{\alpha}(t)
+\cos(\alpha_1 ax) \sin(\alpha_2 y)
+&&|\alpha| = k
+\\
+\frac{\partial\psi}{\partial y}
+&=
+\sum_{k = 1}^{\infty}
+\alpha_2
+a_{\alpha}(t)
+\sin(\alpha_1 ax) \cos(\alpha_2 y)
+&&|\alpha| = k
+\\
+\frac{\partial^2\psi}{\partial x^2}
+&=
+-
+a^2
+\sum_{k = 1}^{\infty}
+\alpha_1^2
+a_{\alpha}(t)
+\sin(\alpha_1 ax) \sin(\alpha_2 y)
+&&|\alpha| = k
+\\
+\frac{\partial^2\psi}{\partial y^2}
+&=
+-
+\sum_{k = 1}^{\infty}
+\alpha_2^2
+a_{\alpha}(t)
+\sin(\alpha_1 ax) \sin(\alpha_2 y)
+&&|\alpha| = k
+\end{align*}
+und f"ur $\vartheta(x,y,t)$
+\begin{align*}
+\frac{\partial\vartheta}{\partial x}
+&=
+-
+a
+\sum_{k = 1}^{\infty}
+\alpha_1
+b_{\alpha}(t)
+\sin(\alpha_1 ax) \sin(\alpha_2 y)
+&&|\alpha| = k
+\\
+\frac{\partial\vartheta}{\partial y}
+&=
+\sum_{k = 1}^{\infty}
+\alpha_2
+b_{\alpha}(t)
+\cos(\alpha_1 ax) \cos(\alpha_2 y)
+&&|\alpha| = k
+\\
+\frac{\partial^2\vartheta}{\partial x^2}
+&=
+-
+a^2
+\sum_{k = 1}^{\infty}
+\alpha_1^2
+b_{\alpha}(t)
+\cos(\alpha_1 ax) \sin(\alpha_2 y)
+&&|\alpha| = k
+\\
+\frac{\partial^2\vartheta}{\partial y^2}
+&=
+-
+\sum_{k = 1}^{\infty}
+\alpha_2^2
+b_{\alpha}(t)
+\cos(\alpha_1 ax) \sin(\alpha_2 y)
+&&|\alpha| = k.
+\end{align*}
+
+Damit haben wir alles zusammen um den einfachen Laplace Operator $\laplace$ 
+f"ur $\psi(x,y,t)$
+\begin{align*}
+\laplace\psi
+&= 
+\frac{\partial^2\psi}{\partial x^2}
++
+\frac{\partial^2\psi}{\partial y^2}
+\\
+&=
+-
+a^2
+\sum_{i = 1}^{\infty}
+\gamma_1^2
+a_{\gamma}(t)
+\sin(\gamma_1 ax) \sin(\gamma_2 y)
+-
+\sum_{j = 1}^{\infty}
+\delta_2^2
+a_{\delta}(t) 
+\sin(\delta_1 ax) \sin(\delta_2 y)
+&&|\gamma| = i, |\delta| = j
+\\
+&=
+-
+\sum_{k = 1}^{\infty}
+\left(\alpha_1^2 a^2 + \alpha_2^2 \right)
+a_{\alpha}(t)
+\sin(\alpha_1 ax) \sin(\alpha_2 y)
+&&|\alpha| = k
+\end{align*}
+und $\vartheta(x,y,t)$
+\begin{align*}
+\laplace\vartheta &= 
+\frac{\partial^2\vartheta}{\partial x^2}
++
+\frac{\partial^2\vartheta}{\partial y^2} \\
+&=
+-
+a^2
+\sum_{i = 1}^{\infty}
+\alpha_1^2
+b_{\gamma}(t)
+\cos(\gamma_1 ax) \sin(\gamma_2 y)
+-
+\sum_{j = 1}^{\infty}
+\delta_2^2
+b_{\delta}(t)
+\cos(\delta_1 ax) \sin(\delta_2 y)
+&&|\gamma| = i, |\delta| = j
+\\
+&=
+-
+\sum_{k = 1}^{\infty}
+\left(\alpha_1^2 a^2 + \alpha_2^2\right)
+b_{\alpha}(t)
+\cos(\alpha_1 ax) \sin(\alpha_2 y)
+&&|\alpha| = k
+\end{align*}
+aufzul"osen. In \cref{equation:lorenz2:extendedpsi} brauchen wir zudem 
+$\laplace^2\psi(x,y,t)$. Daf"ur ben"otigen wir die zweifachen Ableitungen von 
+$\laplace\psi(x,y,t)$ nach $x$ und $y$
+\begin{align*}
+\frac{\partial\laplace\psi}{\partial x} &=
+-
+a
+\sum_{k = 1}^{\infty}
+\alpha_1
+\left(\alpha_1^2 a^2 + \alpha_2^2 \right)
+a_{\alpha}(t)
+\cos(\alpha_1 ax) \sin(\alpha_2 y)
+&&|\alpha| = k
+\\
+\frac{\partial^2\laplace\psi}{\partial x^2}
+&=
+a^2
+\sum_{k = 1}^{\infty}
+\alpha_1^2
+\left(\alpha_1^2 a^2+\alpha_2^2\right)
+a_{\alpha}(t)
+\sin(\alpha_1 ax) \sin(\alpha_2 y)
+&&|\alpha| = k
+\\
+\frac{\partial\laplace\psi}{\partial y}
+&=
+-
+\sum_{k = 1}^{\infty}
+\alpha_2
+\left(\alpha_1^2 a^2 + \alpha_2^2 \right)
+a_{\alpha}(t)
+\sin(\alpha_1 ax) \cos(\alpha_2 y)
+&&|\alpha| = k
+\\
+\frac{\partial^2\laplace\psi}{\partial y^2}
+&=
+\sum_{k = 1}^{\infty}
+\alpha_2^2
+\left(\alpha_1^2 a^2+\alpha_2^2\right)
+a_{\alpha}(t)
+\sin(\alpha_1 ax) \sin(\alpha_2 y)
+&&|\alpha| = k
+\end{align*}
+und k"onnen dann
+\begin{align*}
+\laplace^2\psi
+&= 
+\frac{\partial^2\laplace\psi}{\partial x^2} + 
+\frac{\partial^2\laplace\psi}{\partial y^2} \\
+&=
+a^2
+\sum_{i = 1}^{\infty}
+\gamma_1^2
+\left(\gamma_1^2 a^2+\gamma_2^2\right)
+a_{\gamma}(t)
+\sin(\gamma_1 ax) \sin(\gamma_2 y)
+\\
+&\phantom{={}}
++
+\sum_{j = 1}^{\infty}
+\delta_2^2
+\left(\delta_1^2 a^2+\delta_2^2\right)
+a_{\delta}(t)
+\sin(\delta_1 ax) \sin(\delta_2 y)
+&&|\gamma| = i, |\delta| = j
+\\
+&=
+\sum_{k = 1}^{\infty}
+\left(\alpha_1^2 a^2+\alpha_2^2\right)^2
+a_{\alpha}(t)
+\sin(\alpha_1 ax) \sin(\alpha_2 y)
+&&|\alpha| = k
+\end{align*}
+zusammenbauen.
+
+Bei einigen werden sich bei den Gleichungen f"ur die Laplace Operatoren beim 
+Addieren zweier unendlicher Summen wahrscheinlich die Nackenhaare hochgestellt 
+haben. Diese Umformung sei uns aber erlaubt, da wir davon ausgehen m"ussen, 
+dass die einzelnen Serien konvergent sind. Zudem h"alt uns nichts davon ab, die 
+Indexe der beiden unabh"angigen Summen so umzubenennen, dass diese 
+"Ubereinstimmen. Damit ist klar, dass die gleichen Basisfunktionen generiert 
+werden und die Summen somit vereinfacht werden k"onnen.
+
+Mit unseren bisherigen Bausteinen haben wir jetzt fast alles zusammen, um 
+\cref{skript:lorenzausgangsgleichung} aufzul"osen. Einzig die 
+Funktionsdeterminanten fehlen noch, was auch dem haarigen Teil der Gleichung 
+entspricht, was uns erst die Kopplung der beiden Terme beschert.
+
+Beginnen wir also damit die erste Funktionsdeterminante
+\begin{align*}
+\frac{\partial(\psi, \laplace\psi)}{\partial(x,y)}
+&=
+\frac{\partial\psi}{\partial x}
+\frac{\partial\laplace\psi}{\partial y}
+-
+\frac{\partial\psi}{\partial y}
+\frac{\partial\laplace\psi}{\partial x}
+\\
+&=
+\left(
+a
+\sum_{i = 1}^{\infty}
+\gamma_1
+a_{\gamma}(t)
+\cos(\gamma_1 ax) \sin(\gamma_2 y)
+\right)
+\left(
+-
+\sum_{j = 1}^{\infty}
+\delta_2
+\left(\delta_1^2 a^2 + \delta_2^2 \right)
+a_{\delta}(t)
+\sin(\delta_1 ax) \cos(\delta_2 y)
+\right)
+\\
+&\phantom{={}}
+-
+\left(
+\sum_{q = 1}^{\infty}
+\xi_2
+a_{\xi}(t)
+\sin(\xi_1 ax) \cos(\xi_2 y)
+\right)
+\left(
+-
+a
+\sum_{r = 1}^{\infty}
+\eta_1
+\left(\eta_1^2 a^2 + \eta_2^2 \right)
+a_{\eta}(t)
+\cos(\eta_1 ax) \sin(\eta_2 y)
+\right)
+\\
+&|\gamma| = i, |\delta| = j, |\xi| = q, |\eta| = r
+\\
+&=
+-
+a
+\sum_{i = 1}^{\infty}
+\gamma_1
+a_{\gamma}(t)
+\sum_{j = 1}^{\infty}
+\delta_2
+\left(\delta_1^2 a^2 + \delta_2^2 \right)
+a_{\delta}(t)
+\cos(\gamma_1 ax) \sin(\gamma_2 y)
+\sin(\delta_1 ax) \cos(\delta_2 y)
+\\
+&\phantom{={}}
++
+a
+\sum_{q = 1}^{\infty}
+\xi_2
+a_{\xi}(t)
+\sum_{r = 1}^{\infty}
+\eta_1
+\left(\eta_1^2 a^2 + \eta_2^2 \right)
+a_{\eta}(t)
+\sin(\xi_1 ax) \cos(\xi_2 y)
+\cos(\eta_1 ax) \sin(\eta_2 y)
+\\
+&=
+-
+a
+\sum_{i = 1}^{\infty}
+\gamma_1
+a_{\gamma}(t)
+\sum_{j = 1}^{\infty}
+\delta_2
+\left(\delta_1^2 a^2 + \delta_2^2 \right)
+a_{\delta}(t) 
+\cos(\gamma_1 ax) \sin(\gamma_2 y)
+\sin(\delta_1 ax) \cos(\delta_2 y)
+\\
+&\phantom{={}}
++
+a
+\sum_{j = 1}^{\infty}
+\delta_2
+a_{\delta}(t)
+\sum_{i = 1}^{\infty}
+\gamma_1
+\left(\gamma_1^2 a^2 + \gamma_2^2 \right)
+a_{\gamma}(t)
+\sin(\delta_1 ax) \cos(\delta_2 y)
+\cos(\gamma_1 ax) \sin(\gamma_2 y)
+\\
+&=
+a
+\sum_{i = 1}^{\infty}
+\gamma_1
+a_{\gamma}(t)
+\sum_{j = 1}^{\infty}
+\delta_2
+\left(
+a^2 \left(\gamma_1^2 - \delta_1^2 \right)
++ \left(\gamma_2^2 - \delta_2^2 \right)
+\right)
+a_{\delta}(t)
+\\[-2.5ex]
+&\phantom{=abbbbb\sum\sum.....{}}
+\cdot
+\cos(\gamma_1 ax) \sin(\gamma_2 y)
+\sin(\delta_1 ax) \cos(\delta_2 y)
+\\
+&=
+\frac{a}{4}
+\sum_{i = 1}^{\infty}
+\gamma_1
+a_{\gamma}(t)
+\sum_{j = 1}^{\infty}
+\delta_2
+\left(
+a^2 \left(\gamma_1 - \delta_1 \right)\left( \gamma_1 + \delta_1 \right)
++ \left(\gamma_2 - \delta_2 \right)\left( \gamma_2 + \delta_2 \right)
+\right)
+a_{\delta}(t)
+\\[-2.5ex]
+&\phantom{=abbbbb\sum\sum.....{}}
+\cdot
+\Big(
+\sin((\gamma_1 + \delta_1) ax)\sin((\gamma_2 + \delta_2) y)
+\\[-1.0ex]
+&\phantom{=abbbbb\sum\sum.....{}}
++
+\sin((\gamma_1 + \delta_1) ax)\sin((\gamma_2 - \delta_2) y)
+\\[-1.0ex]
+&\phantom{=abbbbb\sum\sum.....{}}
+-
+\sin((\gamma_1 - \delta_1) ax)\sin((\gamma_2 + \delta_2) y)
+\\[-1.0ex]
+&\phantom{=abbbbb\sum\sum.....{}}
+-
+\sin((\gamma_1 - \delta_1) ax)\sin((\gamma_2 - \delta_2) y)
+\Big)
+\\
+&=
+\frac{a}{4}
+\sum_{i = 1}^{\infty}
+\gamma_1
+a_{\gamma}(t)
+\sum_{j = 1}^{\infty}
+\delta_2
+\left(
+a^2 \left(\gamma_1 - \delta_1 \right)\left( \gamma_1 + \delta_1 \right)
++ \left(\gamma_2 - \delta_2 \right)\left( \gamma_2 + \delta_2 \right)
+\right)
+a_{\delta}(t)
+\\[-2.5ex]
+&\phantom{=abbbbb\sum\sum.....{}}
+\cdot
+\Big(
+\sgn(\gamma_1 + \delta_1)\sgn(\gamma_2 + \delta_2)
+\sin(|\gamma_1 + \delta_1|ax)\sin(|\gamma_2 + \delta_2|y)
+\\[-1.0ex]
+&\phantom{=abbbbb\sum\sum.....{}}
++
+\sgn(\gamma_1 + \delta_1)\sgn(\gamma_2 - \delta_2)
+\sin(|\gamma_1 + \delta_1|ax)\sin(|\gamma_2 - \delta_2|y)
+\\[-1.0ex]
+&\phantom{=abbbbb\sum\sum.....{}}
+-
+\sgn(\gamma_1 - \delta_1)\sgn(\gamma_2 + \delta_2)
+\sin(|\gamma_1 - \delta_1|ax)\sin(|\gamma_2 + \delta_2|y)
+\\[-1.0ex]
+&\phantom{=abbbbb\sum\sum.....{}}
+-
+\sgn(\gamma_1 - \delta_1)\sgn(\gamma_2 - \delta_2)
+\sin(|\gamma_1 - \delta_1|ax)\sin(|\gamma_2 - \delta_2|y)
+\Big)
+\\
+&|\gamma| = i, |\delta| = j
+\end{align*}
+und analog dazu kann auch die zweite
+\begin{align*}
+\frac{\partial(\psi, \vartheta)}{\partial(x,y)}
+&=
+\frac{\partial\psi}{\partial x}
+\frac{\partial\vartheta}{\partial y}
+-
+\frac{\partial\psi}{\partial y}
+\frac{\partial\vartheta}{\partial x}
+\\
+&=
+\left(
+a
+\sum_{i = 1}^{\infty}
+\gamma_1
+a_{\gamma}(t)
+\cos(\gamma_1 ax) \sin(\gamma_2 y)
+\right)
+\left(
+\sum_{j = 1}^{\infty}
+\delta_2
+b_{\delta}(t)
+\cos(\delta_1 ax) \cos(\delta_2 y)
+\right)
+\\
+&\phantom{={}}
+-
+\left(
+\sum_{q = 1}^{\infty}
+\xi_2
+a_{\xi}(t)
+\sin(\xi_1 ax) \cos(\xi_2 y)
+\right)
+\left(
+-
+a
+\sum_{r = 1}^{\infty}
+\eta_1
+b_{\eta}(t)
+\sin(\eta_1 ax) \sin(\eta_2 y)
+\right)
+\\
+&|\gamma| = i, |\delta| = j, |\xi| = q, |\eta| = r
+\\
+&=\phantom{+}
+a
+\sum_{i = 1}^{\infty}
+\gamma_1
+a_{\gamma}(t)
+\sum_{j = 1}^{\infty}
+\delta_2
+b_{\delta}(t)
+\cos(\gamma_1 ax) \sin(\gamma_2 y)
+\cos(\delta_1 ax) \cos(\delta_2 y)
+\\
+&\phantom{={}}
++
+a
+\sum_{q = 1}^{\infty}
+\xi_2
+a_{\xi}(t)
+\sum_{r = 1}^{\infty}
+\eta_1
+b_{\eta}(t)
+\sin(\xi_1 ax) \cos(\xi_2 y)
+\sin(\eta_1 ax) \sin(\eta_2 y)
+\\
+&=\phantom{+}
+a
+\sum_{i = 1}^{\infty}
+\gamma_1
+a_{\gamma}(t)
+\sum_{j = 1}^{\infty}
+\delta_2
+b_{\delta}(t)
+\cos(\gamma_1 ax) \sin(\gamma_2 y)
+\cos(\delta_1 ax) \cos(\delta_2 y)
+\\
+&\phantom{={}}
++
+a
+\sum_{i = 1}^{\infty}
+\gamma_2
+a_{\gamma}(t)
+\sum_{j = 1}^{\infty}
+\delta_1
+b_{\delta}(t)
+\sin(\gamma_1 ax) \cos(\gamma_2 y)
+\sin(\delta_1 ax) \sin(\delta_2 y)
+\\
+&=
+a
+\sum_{i = 1}^{\infty}
+a_{\gamma}(t)
+\sum_{j = 1}^{\infty}
+b_{\delta}(t)
+\left(
+\gamma_1 \delta_2
+\cos(\gamma_1 ax) \sin(\gamma_2 y)
+\cos(\delta_1 ax) \cos(\delta_2 y)
+\right.
+\\[-2.5ex]
+&\phantom{=abbb\sum\sum.....{}}
+\left.
++
+\gamma_2 \delta_1
+\sin(\gamma_1 ax) \cos(\gamma_2 y)
+\sin(\delta_1 ax) \sin(\delta_2 y)
+\right)	
+\\
+&=
+\frac{a}{4}
+\sum_{i = 1}^{\infty}
+a_{\gamma}(t)
+\sum_{j = 1}^{\infty}
+b_{\delta}(t)
+\left(
+\gamma_1 \delta_2
+\left(
+\cos((\gamma_1 - \delta_1)ax)\sin((\gamma_2 + \delta_2)y)
+\right.
+\right.
+\\[-2.5ex]
+&\phantom{=abbb\sum\sum.....{}}
++\cos((\gamma_1 - \delta_1)ax)\sin((\gamma_2 - \delta_2)y)
+\\[-1.0ex]
+&\phantom{=abbb\sum\sum.....{}}
++\cos((\gamma_1 + \delta_1)ax)\sin((\gamma_2 + \delta_2)y)
+\\[-1.0ex]
+&\phantom{=abbb\sum\sum.....{}}
+\left.
++\cos((\gamma_1 + \delta_1)ax)\sin((\gamma_2 - \delta_2)y)
+\right)
+\\[-1.0ex]
+&\phantom{=abbb\sum\sum.....{}}
++
+\gamma_2 \delta_1
+\left(
+\cos((\gamma_1 - \delta_1)ax)\sin((\gamma_2 + \delta_2)y)
+\right.
+\\[-1.0ex]
+&\phantom{=abbb\sum\sum.....{}}
+-\cos((\gamma_1 - \delta_1)ax)\sin((\gamma_2 - \delta_2)y)
+\\[-1.0ex]
+&\phantom{=abbb\sum\sum.....{}}
+-\cos((\gamma_1 + \delta_1)ax)\sin((\gamma_2 + \delta_2)y)
+\\[-1.0ex]
+&\phantom{=abbb\sum\sum.....{}}
+\left.
+\left.
++\cos((\gamma_1 + \delta_1)ax)\sin((\gamma_2 - \delta_2)y)
+\right)
+\right)
+\\
+&=
+\frac{a}{4}
+\sum_{i = 1}^{\infty}
+a_{\gamma}(t)
+\sum_{j = 1}^{\infty}
+b_{\delta}(t)
+\bigg(
+\left(\gamma_1 \delta_2 + \gamma_2 \delta_1 \right)
+\Big(
+\cos((\gamma_1 - \delta_1)ax)\sin((\gamma_2 + \delta_2)y)
+\\[-2.5ex]
+&\phantom{=abbb\sum\sum.....{}}
++
+\cos((\gamma_1 + \delta_1)ax)\sin((\gamma_2 - \delta_2)y)
+\Big)
+\\[-1.0ex]
+&\phantom{=abbb\sum\sum.....{}}
++
+\left(\gamma_1 \delta_2 - \gamma_2 \delta_1 \right)
+\Big(
+\cos((\gamma_1 - \delta_1)ax)\sin((\gamma_2 - \delta_2)y)
+\\[-1.0ex]
+&\phantom{=abbb\sum\sum.....{}}
++
+\cos((\gamma_1 + \delta_1)ax)\sin((\gamma_2 + \delta_2)y)
+\Big)
+\bigg)
+\\
+&=
+\frac{a}{4}
+\sum_{i = 1}^{\infty}
+a_{\gamma}(t)
+\sum_{j = 1}^{\infty}
+b_{\delta}(t)
+\bigg(
+\left(\gamma_1 \delta_2 + \gamma_2 \delta_1 \right)
+\Big(
+\sgn(\gamma_2 + \delta_2)
+\cos(|\gamma_1 - \delta_1|ax)\sin(|\gamma_2 + \delta_2|y)
+\\[-2.5ex]
+&\phantom{=abbb\sum\sum.....{}}
++
+\sgn(\gamma_2 - \delta_2)
+\cos(|\gamma_1 + \delta_1|ax)\sin(|\gamma_2 - \delta_2|y)
+\Big)
+\\[-1.0ex]
+&\phantom{=abbb\sum\sum.....{}}
++
+\left(\gamma_1 \delta_2 - \gamma_2 \delta_1 \right)
+\Big(
+\sgn(\gamma_2 - \delta_2)
+\cos(|\gamma_1 - \delta_1|ax)\sin(|\gamma_2 - \delta_2|y)
+\\[-1.0ex]
+&\phantom{=abbb\sum\sum.....{}}
++
+\sgn(\gamma_2 + \delta_2)
+\cos(|\gamma_1 + \delta_1|ax)\sin(|\gamma_2 + \delta_2|y)
+\Big)
+\bigg)
+\\
+&|\gamma| = i, |\delta| = j
+\end{align*}
+aufzul"osen. Jetzt haben wir alle Bausteine zusammen und k"onnen diese in die 
+einzelnen Gleichungen einsetzen. Damit erhalten wir einerseits
+\begin{align*}
+&\frac{\partial\Delta\psi}{\partial t}
+=
+\nu\Delta^2\psi 
++c\frac{\partial\vartheta}{\partial x}
+-\frac{\partial(\psi,\Delta\psi)}{\partial(x,y)}
+\\
+&\qquad \qquad \qquad \Leftrightarrow
+\\
+&-
+\sum_{k = 1}^{\infty}
+\dot{a}_{\gamma}(t)
+\left(\gamma_1^2 a^2 + \gamma_2^2 \right)
+\sin(\gamma_1 ax) \sin(\gamma_2 y)
+\\
+&=
+\nu
+\sum_{q = 1}^{\infty}
+a_{\xi}(t)
+\left(\xi_1^2 a^2+\xi_2^2\right)^2
+\sin(\xi_1 ax) \sin(\xi_2 y)
+\\
+&\phantom{={}}
+-
+ca
+\sum_{s = 1}^{\infty}
+b_{\eta}(t)
+\eta_1
+\sin(\eta_1 ax) \sin(\eta_2 y)
+\\
+&\phantom{={}}
+-
+\frac{a}{4}
+\sum_{i = 1}^{\infty}
+\zeta_1
+a_{\zeta}(t)
+\sum_{j = 1}^{\infty}
+\delta_2
+\left(
+a^2 \left(\zeta_1 - \delta_1 \right)\left( \zeta_1 + \delta_1 \right)
++ \left(\zeta_2 - \delta_2 \right)\left( \zeta_2 + \delta_2 \right)
+\right)
+a_{\delta}(t)
+\\[-2.5ex]
+&\phantom{=-abbbbb\sum\sum.....{}}
+\cdot
+\Big(
+\sgn(\zeta_1 + \delta_1)\sgn(\zeta_2 + \delta_2)
+\sin(|\zeta_1 + \delta_1|ax)\sin(|\zeta_2 + \delta_2|y)
+\\[-1.0ex]
+&\phantom{=-abbbbb\sum\sum.....{}}
++
+\sgn(\zeta_1 + \delta_1)\sgn(\zeta_2 - \delta_2)
+\sin(|\zeta_1 + \delta_1|ax)\sin(|\zeta_2 - \delta_2|y)
+\\[-1.0ex]
+&\phantom{=-abbbbb\sum\sum.....{}}
+-
+\sgn(\zeta_1 - \delta_1)\sgn(\zeta_2 + \delta_2)
+\sin(|\zeta_1 - \delta_1|ax)\sin(|\zeta_2 + \delta_2|y)
+\\[-1.0ex]
+&\phantom{=-abbbbb\sum\sum.....{}}
+-
+\sgn(\zeta_1 - \delta_1)\sgn(\zeta_2 - \delta_2)
+\sin(|\zeta_1 - \delta_1|ax)\sin(|\zeta_2 - \delta_2|y)
+\Big)
+\\
+&|\gamma| = k, |\xi| = q, |\eta| = s, |\zeta| = i, |\delta| = j
+\\
+&\qquad \qquad \qquad \Leftrightarrow
+\\
+&
+\sum_{k = 1}^{\infty}
+\dot{a}_{\gamma}(t)
+\left(\gamma_1^2 a^2 + \gamma_2^2\right)
+\sin(\gamma_1 ax) \sin(\gamma_2 y)
+\\
+&=
+\sum_{i = 1}^{\infty}
+\Bigg(
+\left(
+-\nu
+\left(\alpha_1^2 a^2+\alpha_2^2\right)^2
+a_{\alpha}(t)
++
+\alpha_1 c a
+b_{\alpha}(t)
+\right)
+\sin(\alpha_1 ax) \sin(\alpha_2 y)
+\\[-2ex]
+&\phantom{=bbbb}
++
+\frac{\alpha_1 a}{4}
+a_{\alpha}(t)
+\sum_{j = 1}^{\infty}
+\beta_2
+\left(
+a^2 \left(\alpha_1 - \beta_1 \right)\left(\alpha_1 + \beta_1 \right)
++ \left(\alpha_2 - \beta_2 \right)\left(\alpha_2 + \beta_2 \right)
+\right)
+a_{\beta}(t)
+\\[-2.5ex]
+&\phantom{=bb-4paatabb\sum\sum.{}}
+\cdot
+\Big(
+\sgn(\alpha_1 + \beta_1)\sgn(\alpha_2 + \beta_2)
+\sin(|\alpha_1 + \beta_1|ax)\sin(|\alpha_2 + \beta_2|y)
+\\[-1.0ex]
+&\phantom{=bb-4paatabb\sum\sum.{}}
++
+\sgn(\alpha_1 + \beta_1)\sgn(\alpha_2 - \beta_2)
+\sin(|\alpha_1 + \beta_1|ax)\sin(|\alpha_2 - \beta_2|y)
+\\[-1.0ex]
+&\phantom{=bb-4paatabb\sum\sum.{}}
+-
+\sgn(\alpha_1 - \beta_1)\sgn(\alpha_2 + \beta_2)
+\sin(|\alpha_1 - \beta_1|ax)\sin(|\alpha_2 + \beta_2|y)
+\\[-1.0ex]
+&\phantom{=bb-4paatabb\sum\sum.{}}
+-
+\sgn(\alpha_1 - \beta_1)\sgn(\alpha_2 - \beta_2)
+\sin(|\alpha_1 - \beta_1|ax)\sin(|\alpha_2 - \beta_2|y)
+\Big)
+\Bigg)
+\\
+&|\gamma| = k, |\alpha| = i, |\beta| = j
+\end{align*}
+und andererseits
+\begin{align*}
+&\frac{\partial\vartheta}{\partial t}
+=
+\kappa\Delta\vartheta
++ \frac{T_0}{\pi}\frac{\partial\psi}{\partial x}
+- \frac{\partial(\psi,\vartheta)}{\partial(x,y)}
+\\
+&\qquad \qquad \qquad \Leftrightarrow
+\\
+&
+\sum_{k = 1}^{\infty}
+\dot{b}_{\gamma}(t)
+\cos(\gamma_1 ax) \sin(\gamma_2 y)
+\\
+&=
+-
+\kappa
+\sum_{q = 1}^{\infty}
+b_{\xi}(t)
+\left(\xi_1^2 a^2 + \xi_2^2\right)
+\cos(\xi_1 ax) \sin(\xi_2 y)
+\\
+&\phantom{={}}
++
+\frac{a T_0}{\pi}
+\sum_{s = 1}^{\infty}
+\eta_1
+a_{\eta}(t)
+\cos(\eta_1 ax) \sin(\eta_2 y)
+\\
+&\phantom{={}}
+-
+\frac{a}{4}
+\sum_{i = 1}^{\infty}
+a_{\zeta}(t)
+\sum_{j = 1}^{\infty}
+b_{\delta}(t)
+\bigg(
+\left(\zeta_1 \delta_2 + \zeta_2 \delta_1 \right)
+\Big(
+\sgn(\zeta_2 + \delta_2)
+\cos(|\zeta_1 - \delta_1|ax)\sin(|\zeta_2 + \delta_2|y)
+\\[-2.5ex]
+&\phantom{=-abbb\sum\sum.....{}}
++
+\sgn(\zeta_2 - \delta_2)
+\cos(|\zeta_1 + \delta_1|ax)\sin(|\zeta_2 - \zeta_2|y)
+\Big)
+\\[-1.0ex]
+&\phantom{=-abbb\sum\sum.....{}}
++
+\left(\zeta_1 \delta_2 - \zeta_2 \delta_1 \right)
+\Big(
+\sgn(\zeta_2 - \delta_2)
+\cos(|\zeta_1 - \delta_1|ax)\sin(|\zeta_2 - \delta_2|y)
+\\[-1.0ex]
+&\phantom{=-abbb\sum\sum.....{}}
++
+\sgn(\zeta_2 + \delta_2)
+\cos(|\zeta_1 + \delta_1|ax)\sin(|\zeta_2 + \delta_2|y)
+\Big)
+\bigg)
+\\
+&|\gamma| = k, |\xi| = q, |\eta| = s, |\zeta| = i, |\delta| = j
+\\
+&\qquad \qquad \qquad \Leftrightarrow
+\\
+&\sum_{k = 1}^{\infty}
+\dot{b}_{\gamma}(t)
+\cos(\gamma_1 ax) \sin(\gamma_2 y)
+\\
+&=
+\sum_{i = 1}^{\infty}
+\Bigg(
+\left(
+-
+\kappa
+\left(\alpha_1^2 a^2 + \alpha_2^2\right)
+b_{\alpha}(t)
++
+\frac{\alpha_1 a T_0}{\pi}
+a_{\alpha}(t)
+\right)
+\cos(\alpha_1 ax) \sin(\alpha_2 y)
+\\
+&\phantom{={}}
+-
+\frac{a}{4}
+a_{\alpha}(t)
+\sum_{j = 1}^{\infty}
+b_{\beta}(t)
+\bigg(
+\left(\alpha_1 \beta_2 + \alpha_2 \beta_1 \right)
+\Big(
+\sgn(\alpha_2 + \beta_2)
+\cos(|\alpha_1 - \beta_1|ax)\sin(|\alpha_2 + \beta_2|y)
+\\[-2.5ex]
+&\phantom{=-aat\sum\sum...{}}
++
+\sgn(\alpha_2 - \beta_2)
+\cos(|\alpha_1 + \beta_1|ax)\sin(|\alpha_2 - \beta_2|y)
+\Big)
+\\[-1.0ex]
+&\phantom{=-aat\sum\sum...{}}
++
+\left(\alpha_1 \beta_2 - \alpha_2 \beta_1 \right)
+\Big(
+\sgn(\alpha_2 - \beta_2)
+\cos(|\alpha_1 - \beta_1|ax)\sin(|\alpha_2 - \beta_2|y)
+\\[-1.0ex]
+&\phantom{=-aat\sum\sum...{}}
++
+\sgn(\alpha_2 + \beta_2)
+\cos(|\alpha_1 + \beta_1|ax)\sin(|\alpha_2 + \beta_2|y)
+\Big)
+\bigg)
+\Bigg)
+\\
+&|\gamma| = k, |\alpha| = i, |\beta| = j
+\end{align*}
+als Gleichungen die es nun zu l"osen gilt.
+
+Da wir die $x$ und $y$ Komponenten loswerden wollen, damit nur noch $t$ "ubrig 
+bleibt, brauchen wir Gleichungen f"ur einzelne $\dot{a}_\gamma(t)$
+\begin{align}
+\left(\gamma_1^2 a^2 + \gamma_2^2\right)
+\dot{a}_\gamma(t)
+&=
+\sum_{i = 1}^{\infty}
+\Bigg(
+\left(
+-\nu
+\left(\alpha_1^2 a^2+\alpha_2^2\right)^2
+a_{\alpha}(t)
++
+\alpha_1 c a
+b_{\alpha}(t)
+\right)
+f_\gamma(\alpha_1, \alpha_2) \nonumber
+\\[-2ex]
+&\phantom{=aaaa{}}
++
+\frac{\alpha_1 a}{4}
+a_{\alpha}(t)
+\sum_{j = 1}^{\infty}
+\beta_2
+\left(
+a^2 \left(\alpha_1 - \beta_1 \right)\left(\alpha_1 + \beta_1 \right)
++ \left(\alpha_2 - \beta_2 \right)\left(\alpha_2 + \beta_2 \right)
+\right)
+a_{\beta}(t) \nonumber
+\\[-2ex]
+&\phantom{=-4aapaata..\sum\sum.....{}}
+\cdot
+\left(
+f_\gamma(\alpha_1 + \beta_1, \alpha_2 + \beta_2)
++
+f_\gamma(\alpha_1 + \beta_1, \alpha_2 - \beta_2)
+\right. \nonumber
+\\[-1.5ex]
+&\phantom{=-4aapaata..\sum\sum.....{}}
+\left.
+-
+f_\gamma(\alpha_1 - \beta_1, \alpha_2 + \beta_2)
+-
+f_\gamma(\alpha_1 - \beta_1, \alpha_2 - \beta_2)
+\right)
+\Bigg) \nonumber
+\\
+\Leftrightarrow \qquad
+\dot{a}_\gamma(t)
+&=
+\left(
+-\nu
+\left(\gamma_1^2 a^2+\gamma_2^2\right)
+a_{\gamma}(t)
++
+\frac{\gamma_1 ca}{\gamma_1^2 a^2 + \gamma_2^2}
+b_{\gamma}(t)
+\right)
+\sgn(\gamma_1)\sgn(\gamma_2) \nonumber
+\\
+&\phantom{={}}
++
+\frac{a}{4 \left(\gamma_1^2 a^2 + \gamma_2^2\right)}
+\sum_{i = 1}^{\infty}
+\alpha_1
+a_{\alpha}(t) \nonumber
+\\[-3ex]
+&\phantom{=a.-4aapaata...a\sum{}}
+\cdot
+\sum_{j = 1}^{\infty}
+\beta_2
+\left(
+a^2 \left(\alpha_1 - \beta_1 \right)\left(\alpha_1 + \beta_1 \right)
++ \left(\alpha_2 - \beta_2 \right)\left(\alpha_2 + \beta_2 \right)
+\right)
+a_{\beta}(t) \nonumber
+\\[-2ex]
+&\phantom{=a.-4aapaata...a\sum....\sum{}}
+\cdot
+\left(
+f_\gamma(\alpha_1 + \beta_1, \alpha_2 + \beta_2)
++
+f_\gamma(\alpha_1 + \beta_1, \alpha_2 - \beta_2)
+\right. \nonumber
+\\[-.5ex]
+&\phantom{=a.-4aapaata...a\sum....\sum{}}
+\left.
+-
+f_\gamma(\alpha_1 - \beta_1, \alpha_2 + \beta_2)
+-
+f_\gamma(\alpha_1 - \beta_1, \alpha_2 - \beta_2)
+\right)
+\label{equation:lorenz2:dota}
+\\
+&|\gamma| > 0, |\alpha| = i, |\beta| = j \nonumber
+\end{align}
+und wieder analog f"ur
+\begin{align}
+\dot{b}_\gamma(t)
+&=
+\sum_{i = 1}^{\infty}
+\Bigg(
+\left(
+-
+\kappa
+\left(\alpha_1^2 a^2 + \alpha_2^2\right)
+b_{\alpha}(t)
++
+\frac{\alpha_1 a T_0}{\pi}
+a_{\alpha}(t)
+\right)
+g_\gamma(\alpha_1, \alpha_2) 
+\nonumber
+\\
+&\phantom{={}}
+-
+\frac{a}{4}
+a_{\alpha}(t)
+\sum_{j = 1}^{\infty}
+b_{\beta}(t)
+\left(
+\left(\alpha_1 \beta_2 + \alpha_2 \beta_1 \right)
+\left(
+g_\gamma(\gamma_1 - \beta_1, \alpha_2 + \beta_2)
++
+g_\gamma(\gamma_1 + \beta_1, \alpha_2 - \beta_2)
+\right)
+\right. \nonumber
+\\[-3ex]
+&\phantom{=-aat\sum\sum...{}}
+\left.
++
+\left(\alpha_1 \beta_2 - \alpha_2 \beta_1 \right)
+\left(
+g_\gamma(\gamma_1 - \beta_1, \alpha_2 - \beta_2)
++
+g_\gamma(\gamma_1 + \beta_1, \alpha_2 + \beta_2)
+\right)
+\right)
+\Bigg) \nonumber
+\\
+\Leftrightarrow \qquad
+\dot{b}_\gamma(t)
+&=
+\left(
+-
+\kappa
+\left(\gamma_1^2 a^2 + \gamma_2^2\right)
+b_{\gamma}(t)
++
+\frac{\gamma_1 a T_0}{\pi}
+a_{\gamma}(t)
+\right)
+\sgn(\gamma_2) \nonumber
+\\
+&\phantom{={}}
+-
+\frac{a}{4}
+\sum_{i = 1}^{\infty}
+a_{\alpha}(t)
+\sum_{j = 1}^{\infty}
+b_{\beta}(t)
+\left(
+\left(\alpha_1 \beta_2 + \alpha_2 \beta_1 \right)
+\left(
+g_\gamma(\alpha_1 - \beta_1, \alpha_2 + \beta_2)
++
+g_\gamma(\alpha_1 + \beta_1, \alpha_2 - \beta_2)
+\right)
+\right.\nonumber
+\\[-2ex]
+&\phantom{=-aat\sum..a..\sum...{}}
+\left.
++
+\left(\alpha_1 \beta_2 - \alpha_2 \beta_1 \right)
+\left(
+g_\gamma(\alpha_1 - \beta_1, \alpha_2 - \beta_2)
++
+g_\gamma(\alpha_1 + \beta_1, \alpha_2 + \beta_2)
+\right)
+\right)
+\label{equation:lorenz2:dotb}
+\\
+&|\gamma| > 0, |\alpha| = i, |\beta| = j.\nonumber
+\end{align}
+
+Die Definition der beiden Hilfsfunktionen lautet
+\begin{equation*}
+f_\gamma(q, s)
+=
+\begin{cases}
+\sgn(q)\sgn(s) & |q| = \gamma_1, |s| = \gamma_2 \\
+0 & \text{sonst}
+\end{cases}
+\end{equation*}
+und
+\begin{equation*}
+g_\gamma(q, s)
+=
+\begin{cases}
+\sgn(s) & |q| = \gamma_1, |s| = \gamma_2 \\
+0 & \text{sonst}.
+\end{cases}
+\end{equation*}

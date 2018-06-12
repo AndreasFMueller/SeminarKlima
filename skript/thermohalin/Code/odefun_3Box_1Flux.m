@@ -1,6 +1,5 @@
 function dydt = odefun_3Box_1Flux(t, y, const)
 
-%dydt = zeros(6,1);
 
 dt1 = 0;
 dt2 = 0;

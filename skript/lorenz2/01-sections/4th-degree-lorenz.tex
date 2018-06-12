@@ -1,0 +1,564 @@
+\section{Lorenzsystem vierten Grades}
+\rhead{Lorenzsystem vierten Grades}
+Anhand des Lorenzsystems vierten Grades wollen wir nun zeigen, welche 
+Information verloren geht, wenn wir uns alleinig auf ein Systme zweiten Grades 
+konzentrieren.
+
+Zuerst brauchen wir allerdings alle Gleichungen von $k = 1$
+\begin{align*}
+|\gamma| = 1
+\qquad &
+\dot{a}_{10}(t) = 0
+\\
+&
+\dot{a}_{01}(t) = 0
+\\
+\\
+&
+\dot{b}_{10}(t) = 0
+\\
+&
+\dot{b}_{01}(t)
+=
+-
+\kappa
+b_{01}(t)
+\\
+&\phantom{aaaaaaaaaa}
+\color{blue}
++
+\frac{a}{4} a_{11}(t) b_{12}(t)
++
+\frac{a}{4} a_{12}(t) b_{11}(t)
+\\
+&\phantom{aaaaaaaaaa}
+\color{red}
++
+\frac{a}{4} a_{12}(t) b_{13}(t)
++
+\frac{a}{4} a_{13}(t) b_{12}(t)
++
+\frac{a}{2} a_{21}(t) b_{22}(t)
++
+\frac{a}{2} a_{22}(t) b_{21}(t)
+\end{align*}
+"uber $k = 2$
+\begin{align*}
+|\gamma| = 2
+\qquad &
+\dot{a}_{20}(t) = 0
+\\
+&
+\dot{a}_{11}(t)
+=
+-
+(a^2+1)
+\nu
+a_{11}(t)
++
+\frac{a c}{a^2+1} b_{11}(t)
+\\
+&\phantom{aaaaaaaaaa}
+\color{blue}
++
+\frac{9 a (a^2 - 1)}{4 (a^2+1)} a_{12}(t) a_{21}(t)
+\\
+&\phantom{aaaaaaaaaa}
+\color{red}
++
+\frac{a (3 a^2 - 5)}{a^2+1} a_{13}(t) a_{22}(t)
++
+\frac{a (5 a^2 - 3)}{a^2+1} a_{22}(t) a_{31}(t)
+\\
+&
+\dot{a}_{02}(t) = 0
+\\
+\\
+&
+\dot{b}_{20}(t) = 0
+\\
+&
+\dot{b}_{11}(t)
+=
+-
+(a^2+1)
+\kappa
+b_{11}(t)
++
+\frac{a T_{0}}{\pi} a_{11}(t)
+\\
+&\phantom{aaaaaaaaaa}
++
+a
+a_{11}(t) b_{02}(t)
+\\
+&\phantom{aaaaaaaaaa}
+\color{blue}
+-
+\frac{a}{2} a_{12}(t) b_{01}(t)
++
+\frac{3 a}{2} a_{12}(t) b_{03}(t)
++
+\frac{3 a}{4} a_{12}(t) b_{21}(t)
++
+\frac{3 a}{4} a_{21}(t) b_{12}(t)
+\\
+&\phantom{aaaaaaaaaa}
+\color{red}
+-
+a
+a_{13}(t) b_{02}(t)
++
+a
+a_{13}(t) b_{22}(t)
++
+2 a
+a_{13}(t) b_{04}(t)
+\\
+&\phantom{aaaaaaaaaa}
+\color{red}
++
+a
+a_{22}(t) b_{13}(t)
++
+a
+a_{22}(t) b_{31}(t)
++
+a
+a_{31}(t) b_{22}(t)
+\\
+&
+\dot{b}_{02}(t)
+=
+-
+4
+\kappa
+b_{02}(t)
+\\
+&\phantom{aaaaaaaaaa}
+-
+\frac{a}{2} a_{11}(t) b_{11}(t)
+\\
+&\phantom{aaaaaaaaaa}
+\color{blue}
+-
+a
+a_{21}(t) b_{21}(t)
+\\
+&\phantom{aaaaaaaaaa}
+\color{red}
++
+\frac{a}{2} a_{11}(t) b_{13}(t)
++
+\frac{a}{2} a_{13}(t) b_{11}(t)
+-
+\frac{3 a}{2} a_{31}(t) b_{31}(t)
+\end{align*}
+mit $k = 3$
+\begin{align*}
+|\gamma| = 3
+\qquad &
+\dot{a}_{30}(t) = 0
+\\
+&
+\dot{a}_{21}(t)
+=
+-
+(4 a^2+1)
+\nu
+a_{21}(t)
++
+\frac{2 a c}{4 a^2+1} b_{21}(t)
+\\
+&\phantom{aaaaaaaaaa}
++
+\frac{9 a}{4 (4 a^2+1)} a_{11}(t) a_{12}(t)
+\\
+&\phantom{aaaaaaaaaa}
+\color{red}
++
+\frac{5 a (8 a^2 - 3)}{4 (4 a^2+1)} a_{12}(t) a_{31}(t)
++
+\frac{25 a}{4 (4 a^2+1)} a_{12}(t) a_{13}(t)
+\\
+&
+\dot{a}_{12}(t)
+=
+-
+(a^2+4)
+\nu
+a_{12}(t)
++
+\frac{a c}{a^2+4} b_{12}(t)
+\\
+&\phantom{aaaaaaaaaa}
+-
+\frac{9 a^3}{4 (a^2+4)} a_{11}(t) a_{21}(t)
+\\
+&\phantom{aaaaaaaaaa}
+\color{red}
++
+\frac{5 a (3 a^2 - 8)}{4 (a^2+4)} a_{13}(t) a_{21}(t)
+-
+\frac{25 a^3}{4 (a^2+4)} a_{21}(t) a_{31}(t)
+\\
+&
+\dot{a}_{03}(t) = 0
+\\
+\\
+&
+\dot{b}_{30}(t) = 0
+\\
+&
+\dot{b}_{21}(t)
+=
+-
+(4 a^2+1)
+\kappa
+b_{21}(t)
++
+\frac{2 a T_{0}}{\pi} a_{21}(t)
+\\
+&\phantom{aaaaaaaaaa}
++
+\frac{3 a}{4} a_{11}(t) b_{12}(t)
+-
+\frac{3 a}{4} a_{12}(t) b_{11}(t)
++
+2 a
+a_{21}(t) b_{02}(t)
+\\
+&\phantom{aaaaaaaaaa}
+\color{red}
++
+\frac{5 a}{4} a_{12}(t) b_{13}(t)
+-
+\frac{5 a}{4} a_{13}(t) b_{12}(t)
+-
+a
+a_{22}(t) b_{01}(t)
+\\
+&\phantom{aaaaaaaaaa}
+\color{red}
++
+\frac{5 a}{4} a_{12}(t) b_{31}(t)
++
+\frac{5 a}{4} a_{31}(t) b_{12}(t)
++
+3 a
+a_{22}(t) b_{03}(t)
+\\
+&
+\dot{b}_{12}(t)
+=
+-
+(a^2+4)
+\kappa
+b_{12}(t)
++
+\frac{a T_{0}}{\pi} a_{12}(t)
+\\
+&\phantom{aaaaaaaaaa}
+-
+\frac{a}{2} a_{11}(t) b_{01}(t)
+\\
+&\phantom{aaaaaaaaaa}
++
+\frac{3 a}{2} a_{11}(t) b_{03}(t)
+-
+\frac{3 a}{4} a_{11}(t) b_{21}(t)
+-
+\frac{3 a}{4} a_{21}(t) b_{11}(t)
+\\
+&\phantom{aaaaaaaaaa}
+\color{red}
+-
+\frac{5 a}{4} a_{21}(t) b_{31}(t)
+-
+\frac{5 a}{4} a_{31}(t) b_{21}(t)
++
+\frac{5 a}{4} a_{13}(t) b_{21}(t)
+\\
+&\phantom{aaaaaaaaaa}
+\color{red}
++
+\frac{5 a}{4} a_{21}(t) b_{13}(t)
+-
+\frac{a}{2} a_{13}(t) b_{01}(t)
++
+2 a
+a_{12}(t) b_{04}(t)
+\\
+&
+\dot{b}_{03}(t)
+=
+-
+9
+\kappa
+b_{03}(t)
+\\
+&\phantom{aaaaaaaaaa}
+-
+\frac{3 a}{4} a_{11}(t) b_{12}(t)
+-
+\frac{3 a}{4} a_{12}(t) b_{11}(t)
+\\
+&\phantom{aaaaaaaaaa}
+\color{red}
+-
+\frac{3 a}{2} a_{21}(t) b_{22}(t)
+-
+\frac{3 a}{2} a_{22}(t) b_{21}(t)
+\end{align*}
+und $k = 4$
+\begin{align*}
+|\gamma| = 4
+\qquad &
+\dot{a}_{40}(t) = 0
+\\
+&
+\dot{a}_{31}(t)
+=
+-
+(9 a^2+1)
+\nu
+a_{31}(t)
++
+\frac{3 a c}{9 a^2+1} b_{31}(t)
+\\
+&\phantom{aaaaaaaaaa}
++
+\frac{15 a (1 - a^2)}{4 (9 a^2+1)} a_{12}(t) a_{21}(t)
+\\
+&\phantom{aaaaaaaaaa}
++
+\frac{12 a (1 + a^2)}{4 (9 a^2+1)} a_{11}(t) a_{22}(t)
++
+\frac{8 a (5 - 3 a^2)}{4 (9 a^2+1)} a_{13}(t) a_{22}(t)
+\\
+&
+\dot{a}_{22}(t)
+=
+-
+4
+(a^2+1)
+\nu
+a_{22}(t)
++
+\frac{a c}{2 (a^2+1)} b_{22}(t)
+\\
+&\phantom{aaaaaaaaaa}
++
+\frac{2 a}{a^2+1} a_{11}(t) a_{13}(t)
+-
+\frac{2 a^3}{a^2+1} a_{11}(t) a_{31}(t)
+\\
+&\phantom{aaaaaaaaaa}
++
+\frac{4 a^3}{a^2+1} a_{13}(t) a_{31}(t)
+-
+\frac{4 a}{a^2+1} a_{13}(t) a_{31}(t)
+\\
+&
+\dot{a}_{13}(t)
+=
+-
+(a^2+9)
+\nu
+a_{13}(t)
++
+\frac{a c}{a^2+9} b_{13}(t)
+\\
+&\phantom{aaaaaaaaaa}
++
+\frac{15 a (1 - a^2)}{4 (a^2+9)} a_{12}(t) a_{21}(t)
+\\
+&\phantom{aaaaaaaaaa}
+-
+\frac{12 a (1 + a^2)}{4 (a^2+9)} a_{11}(t) a_{22}(t)
++
+\frac{8 a (3 - 5 a^2)}{4 (a^2+9)} a_{22}(t) a_{31}(t)
+\\
+&
+\dot{a}_{04}(t) = 0
+\\
+\\
+&
+\dot{b}_{40}(t) = 0
+\\
+&
+\dot{b}_{31}(t)
+=
+-
+(9 a^2+1)
+\kappa
+b_{31}(t)
++
+\frac{3 a T_{0}}{\pi} a_{31}(t)
+\\
+&\phantom{aaaaaaaaaa}
++
+\frac{5 a}{4} a_{21}(t) b_{12}(t)
+-
+\frac{5 a}{4} a_{12}(t) b_{21}(t)
+\\
+&\phantom{aaaaaaaaaa}
++
+3 a
+a_{31}(t) b_{02}(t)
++
+a
+a_{11}(t) b_{22}(t)
+-
+a
+a_{22}(t) b_{11}(t)
+\\
+&\phantom{aaaaaaaaaa}
+-
+2 a
+a_{13}(t) b_{22}(t)
++
+2 a
+a_{22}(t) b_{13}(t)
+\\
+&
+\dot{b}_{22}(t)
+=
+-
+(4 a^2+4)
+\kappa
+b_{22}(t)
++
+\frac{2 a T_{0}}{\pi} a_{22}(t)
+\\
+&\phantom{aaaaaaaaaa}
+-
+a
+a_{21}(t) b_{01}(t)
++
+3 a
+a_{21}(t) b_{03}(t)
+\\
+&\phantom{aaaaaaaaaa}
++
+a
+a_{11}(t) b_{13}(t)
+-
+a
+a_{13}(t) b_{11}(t)
+-
+a
+a_{11}(t) b_{31}(t)
+-
+a
+a_{31}(t) b_{11}(t)
+\\
+&\phantom{aaaaaaaaaa}
++
+2 a
+a_{13}(t) b_{31}(t)
++
+2 a
+a_{31}(t) b_{13}(t)
++
+4 a
+a_{22}(t) b_{04}(t)
+\\
+&
+\dot{b}_{13}(t)
+=
+-
+(a^2+9)
+\kappa
+b_{13}(t)
++
+\frac{a T_{0}}{\pi} a_{13}(t)
+\\
+&\phantom{aaaaaaaaaa}
+-
+a
+a_{11}(t) b_{02}(t)
+\\
+&\phantom{aaaaaaaaaa}
+-
+\frac{a}{2} a_{12}(t) b_{01}(t)
+-
+\frac{5 a}{4} a_{12}(t) b_{21}(t)
+-
+\frac{5 a}{4} a_{21}(t) b_{12}(t)
+\\
+&\phantom{aaaaaaaaaa}
+-
+a
+a_{11}(t) b_{22}(t)
+-
+a
+a_{22}(t) b_{11}(t)
+-
+2 a
+a_{22}(t) b_{31}(t)
+-
+2 a
+a_{31}(t) b_{22}(t)
+\\
+&\phantom{aaaaaaaaaa}
++
+2 a
+a_{11}(t) b_{04}(t)
+\\
+&
+\dot{b}_{04}(t)
+=
+-
+16
+\kappa
+b_{04}(t)
+\\
+&\phantom{aaaaaaaaaa}
+-
+a
+a_{12}(t) b_{12}(t)
+\\
+&\phantom{aaaaaaaaaa}
+-
+a
+a_{11}(t) b_{13}(t)
+-
+a
+a_{13}(t) b_{11}(t)
+-
+2a
+a_{22}(t) b_{22}(t).
+\end{align*}
+Terme die verloren gehen, wenn man beim jeweiligen $k$ stoppen w"urde, sind 
+$\color{blue}{blau}$ (dritter Grad), beziehungsweise $\color{red}{rot}$ 
+(vierten Grades) hervorgehoben.
+
+Vergleicht man die Resultate f"ur $k = 2$ mit denjenigen aus 
+\cref{skript:lorenz:dim} stellt man fest, dass diese "ubereinstimmen, womit 
+auch wieder gezeigt ist, dass unsere neuen Basisfunktionen eine echte 
+Erweiterung sind. Bereits jetzt ist aber ersichtlich, dass die Anzahl 
+Gleichungen, die es zu l"osen gilt stark mit dem gew"ahlten Grad $k$ w"achst 
+(\cref{table:lorenz2:degree}). Beispielsweise muss f"ur $k = 10$ ein 
+Gleichungssystem mit
+\begin{equation*}
+	2\left(\frac{(10 + 1)(10 + 2)}{2} - 1\right) = 11 \cdot 12 - 2 = 130
+\end{equation*}
+Gleichungen gel"ost werden, das zudem noch aus Gleichungen besteht, die "uber 
+etliche Kopplungen miteinander verbunden sind.
+
+\begin{table}
+	\centering
+	\begin{tabular}{c | l}
+		Grad $k$ & Anzahl Gleichungen \\
+		1 & $2$ \\
+		2 & $2 + 3$ \\
+		3 & $2 + 3 + 4$\\
+		4 & $2 + 3 + 4 + 5$\\
+		\dots & \dots \\
+		$n$ & $\dfrac{(n + 1)((n + 1) + 1)}{2} - 1
+		= \dfrac{(n + 1)(n + 2)}{2} - 1$
+	\end{tabular}
+	\caption{Wachstun der Anzahl Gleichung mit dem Grad $k$}
+	\label{table:lorenz2:degree}
+\end{table}

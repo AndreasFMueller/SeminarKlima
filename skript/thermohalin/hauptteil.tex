@@ -1,18 +1,26 @@
 \section{Simulation}
 \rhead{Simulation}
 
-Nun zur Simulation. Der Golfstrom lässt sich leicht in 3 Zonen aufteilen, jeweils eine für Nord- und Südpol und eine für den Äquator.
-Als jeweils eine Box für jede Zone.
-Der Erste Schritt ist es nun, ein Modell zu erstellen. 
-Im laufe der Arbeit wurden zwei Modelle gebaut, welche hier präsentiert werden.
+Der erste Schritt ist ein Modell zu erstellen.
+Dazu wird der Golfstrom in drei Zonen aufgeteilt. Die jeweiligen Polarregionen und der Äquator werden je zu eine Zone. Diese Zonen erhalten dann je eine Box.
+Im laufe des Seminars wurden zwei Modelle erstellt. Der erste Ansatz war sehr lehrreich hatte aber  schlussendlich nichts mit dem realen Golfstrom gemeinsam. Der zweite Ansatz war erfolgreicher und der Golfstrom kann mit diesem Modell qualitativ simuliert werden.
+In den folgenden zwei Kapiteln werden diese zwei Modelle vorgestellt und die jeweiligen Resultate diskutiert.
 
-\subsection{"Zwei Fluss" Modell}
+\subsection{Zwei-Fluss Modell(1.Ansatz)}
 
-In diesem Modell sind je zwei Boxen durch einen separaten Fluss verbunden. Der Fluss ist dann jeweils wie bersits bekannt von den jeweiligen Dichteunterschieden abhängig. Hier ein Darstellung des Modelles:
+In diesem Modell werden die Boxen jeweils durch Rohre verbunden wie im 2-Box Modell. Nun werden jedoch zwei flüsse simuliert, die von den jeweiligen Dichtegradienten der Unterschiedlichen Boxen abhängen. $q_1$ ist also nur vom Dichteunterschied zwischen Box $1$ und Box $2$ abhängig. Dementsprechend hängt auch $q_2$ nur vom Dichteunterschied der Boxen $2$ und $3$ ab.
+Der Vorteil der Aufteilung der Flüsse ist, dass wir sie entkoppeln können und sie nicht von der jeweiligen dritten Box abhängig sind.
+Eine Darstellung des Modelles ist in Abbildung 9.4 zu finden.
 
-%Platzhalter Tikz 3Box2Fluss  
+\begin{figure}
+	\centering
+	\includegraphics[width=14cm]{thermohalin/tikz/3b2f.pdf}
+	\caption{Zwei-Fluss Modell des THC}
+		\label{thermohalin:3b2f}
+\end{figure}
 
-So lassen sich, wie bereits beim 2-Box Modell, jeweils für jede Box zwei Gleichungen aufstellen:
+So lassen sich nun für jede Box die zugehörigen Salinitäts- und Temperaturgleichungen aufstellen. So ist auch ersichtlich, dass Box $1$ und $3$ jeweils einen Fluss in der Gleichung haben. Im Gegensatz dazu hat Box $2$ jedoch zwei Flüsse in der Gleichung. Das liegt daran, dass wie aus der Abbildung ersichtlich, die mittlere Box von beiden Strömen durchflossen wird.
+
 
 \begin{equation}
 \begin{aligned}
@@ -33,7 +41,7 @@ So lassen sich, wie bereits beim 2-Box Modell, jeweils für jede Box zwei Gleich
 \end{aligned}
 \end{equation}	
 
-Und den dazugehörenden Gleichungen für die zwei Flüsse:
+Dazu die Flussgleichungen die jeweils nur von den Dichteunterschied der jeweiligen Boxen abhängig sind:
 
 \begin{equation}
 \begin{aligned}
@@ -43,27 +51,66 @@ Und den dazugehörenden Gleichungen für die zwei Flüsse:
 \end{aligned}
 \end{equation}
 
-\subsubsection{Matlab-Code}
+\subsubsection{Matlab-Code der Simulation}
 
-Erklärung des codes, Codeausschnitte
+Als Ziel ist es, die oben aufgestellten Differentialgleichungen mittels Matlab zu lösen. Dies wird mit dem Differentialgleichungslöser ode45 aus der Matlab Funktionenbibliothek erreicht.
+Dazu müssen wir der Funktion nur einen Zustandsvektor, einen Zeitvektor und die Konstanten der jeweiligen Umgebungstemperaturen und Salinitäten übergeben.
+\lstinputlisting[style=Matlab]{thermohalin/listings/input.m} 
+Diese werden wie folgt dem Differentialgleichungslöser übergeben:
+\lstinputlisting[style=Matlab]{thermohalin/listings/listing-ode45.m} 
+
+Daraufhin wird im File \texttt{odefun-3Box.m} Das Gleichungssystem schrittweise gelöst und die Resultate zurückgegeben. Gleichzeitig wird der Zustandsvektor mit $0$ initialisiert und die Naturkonstanten zur Flussberechnung definiert.
+
+\lstinputlisting[style=Matlab]{thermohalin/listings/listing-solve.m}
+
+Die Rückgabewerte werden in einem Array gespeichert und dann geplottet. Um den Text nicht in die Länge zu ziehen wird hier nur das der code zur erstellung des Temperaturplots dargestellt. Die Salinität folgt dem gleichen Schema.
+Da die Flüsse innerhalb der ode45-Funktion berechnet wurden, muss dies nachträglich noch einmal gemacht werden, da die Werte ja geplottet werden. Dazu müssen die jeweiligen Werte aus dem Lösungsvektor extrahiert und die Flüsse wiederholt berechnet werden.
+\lstinputlisting[style=Matlab]{thermohalin/listings/listing-plot.m}
+
+Die So entstehenden Figuren werden im Folgenden Kapitel ausgewertet und Diskutiert. 
 
 \subsubsection{Resultate}
 
 
-Die Gleichungen sehen vielversprechend aus. Nur stimmen die Resulatate nicht mit der Realität überein.
-Durch die entkoppelung der zwei Flüsse, war es möglich das der eine Seine Richtung ändert, der andere jedoch bleibt. Das resultiert in zwei gegenläufige Ströme welche in keiner Weise mit dem Golfstrom übereinstimmen.
-Nachträglich ist dieser Fehler offensichtlich. Durch das Erlauben von zwei Flüssen Wird ermöglicht, dass in der Mitte euch eine auf- und Absteigzone entsteht.
-diese Tatsache macht dieses Modell zu einem Fehlschlag.
+Soweit sieht alles vielversprechend aus und die ersten Durchläufe ergaben auch brauchbare Resultate. Wenn nun jedoch mit den Umgebungsvariablen gespielt wird treten plötzlich unmögliche Phänomene auf.
+Einer der beiden Flüsse ist negativ und ändert seine Richtung. Das resultiert in zwei gegenläufigen Strömen welche in keiner Weise mit dem Golfstrom übereinstimmen. Das führt dazu, dass am Äquator eine Absinkstelle entsteht. Sonst kann dieses Ereignis gar nicht eintreten. In der Realität ist klar zu erkennen, dass Absink- und Aufsteigstellen jeweils nur an den Polen vorhanden sind. 
+Ein Plot der Simulationsresultate findet sich in Abbildung \ref{thermohalin:simulationsresultate}.
 
-%%input Matlab Graphen zur Darstellung der trennung und umkehrung der Zwei flüsse!!
+\begin{figure}
+	\includegraphics[width=14cm]{thermohalin/Code/graphs/result-3b2f-script.jpg}
+	\centering
+	\caption{Simulationsresultate}
+	\label{thermohalin:simulationsresultate}
+\end{figure}
 
-\subsection{Ein Fluss Modell} 
+Durch die Entkoppelung der zwei Flüsse, war es möglich, dass ein Fluss seine Richtung ändert.
+Simulationstechnisch gesehen, hat das Modell funktioniert. Nur ist das Modell Fehlerhaft. Das Modell muss also angepasst werden. Das Resultat Der Anpassung ist in Abbildung \ref{thermohalin:3b2f-inverted} zu sehen.
 
-Dieses Modell ist der Nachfolger vom letzten. 
-Um zu verhindern, dass in der mittleren Box eine zusätzliche Auf- und Absteigzone entsteht, muss dieser Weg verhindert werden. Das lässt sich erreichen, in dem die Äquatorzone nur für den Oberflächenfluss zugänglich ist. Der Tiefenfluss fliesst somit direkt von Pol zu Pol. 
-Das lässt sich auch in der Realität nachweisen, Der Rückfluss tritt erst ausserhalb des Atlantik wieder an die Oberfläche.
+\begin{figure}
+	\centering
+	\includegraphics[width=14cm]{thermohalin/tikz/3b2f-inverted.pdf}
+	\caption{Angepasstes Zwei-Fluss Modell}
+	\label{thermohalin:3b2f-inverted}
+\end{figure}
 
-%Platzhalter Tikz 3Box1Fluss
+Nun lässt sich die neu entstandene Absinkstelle auch sofort erkennen. 
+Mit diesem Modell lässt sich der Golfstrom also nicht erfolgreich simulieren. 
+Der nächste, erfolgreichere, Ansatz wird im nächsten Unterkapitel vorgestellt.
+
+\subsection{Ein-Fluss Modell} 
+
+Dieses Modell ist der verbesserte Nachfolger des Zwei-Fluss Modelles.
+Es stammt aus einer Aufgabe des Seminarbuches \texttt{Mathematics and Climate} \cite{skript:kaperengler}.
+
+Um zu verhindern, dass in der mittleren Box eine zusätzliche Absinkzone entsteht, muss dieser Weg versperrt werden. Das erreicht man am einfachsten, wenn der Tiefenstrom von der Äquatorbox getrennt wird. Die Äquatorzone ist so nur via Oberflächenströmungen mit den anderen Boxen verbunden und die Tiefenströmung verbindet nur die Polzonen.
+
+
+\begin{figure}
+	\centering
+	\includegraphics[width=14cm]{thermohalin/tikz/3b1f.pdf}
+	\caption{Ein-Fluss Modell des THC}
+	\label{thermohalin:3b1f}
+\end{figure}
 
 Aus diesem Modell lassen sich nun neue Gleichungen für die Boxen aufstellen:
 

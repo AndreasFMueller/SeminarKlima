@@ -1,0 +1,46 @@
+g(gamma1, gamma2, x, y) :=
+block ( [],
+  if (abs(x) = gamma1) and (abs(y) = gamma2)
+    then signum(y)
+    else 0
+)$
+
+batchload("vectorIndex.maxima")$
+
+funDetB2(gamma1, gamma2, alpha1, alpha2, beta1, beta2, offsetB) :=
+block ( [],
+  X(vectorIndex(beta1, beta2, offsetB)) * ( /* B(beta1, beta2) */
+    (alpha1 * beta2 + alpha2 * beta1) * (
+      g(gamma1, gamma2, alpha1 - beta1, alpha2 + beta2)
+      + g(gamma1, gamma2, alpha1 + beta1, alpha2 - beta2)
+    ) + (alpha1 * beta2 - alpha2 * beta1) * (
+      g(gamma1, gamma2, alpha1 - beta1, alpha2 - beta2)
+      + g(gamma1, gamma2, alpha1 + beta1, alpha2 + beta2)
+    )
+  )
+)$
+
+funDetB1(gamma1, gamma2, alpha1, alpha2, order, offsetA, offsetB) :=
+block ( [],
+  X(vectorIndex(alpha1, alpha2, offsetA)) * sum( /* A(alpha1, alpha2) */
+    sum(
+      funDetB2(gamma1, gamma2, alpha1, alpha2, n, l - n, offsetB)
+    , n, 0, l)
+  , l, 1, order)
+)$
+
+dotB(gamma1, gamma2, order, offsetA, offsetB) :=
+block ( [],
+  if gamma1 < 1 and gamma2 < 1
+    then 0
+    else
+      (
+        -kappa * (gamma1^2 * a^2 + gamma2^2) * X(vectorIndex(gamma1, gamma2, offsetB)) /* B(gamma1, gamma2) */
+        + (gamma1 * a * T0) / (pi) * X(vectorIndex(gamma1, gamma2, offsetA)) /* A(gamma1, gamma2) */
+      ) * signum(gamma2)
+      - a / 4 * sum(
+        sum(
+          funDetB1(gamma1, gamma2, m, k - m, order, offsetA, offsetB)
+        , m, 0, k)
+      , k, 1, order)
+)$

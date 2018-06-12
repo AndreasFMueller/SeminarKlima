@@ -202,14 +202,14 @@
 \makeatother
 \addbibresource{references.bib}
 % Bibresources für jeden einzelnen Artikel
-%\addbibresource{eis/references.bib}
+\addbibresource{eis/references.bib}
 %\addbibresource{extrem/references.bib}
 \addbibresource{kalman/references.bib}
 %\addbibresource{learning/references.bib}
-%\addbibresource{lorenz/references.bib}
+\addbibresource{lorenz/references.bib}
 %\addbibresource{lorenz2/references.bib}
 %\addbibresource{planeten/references.bib}
-%\addbibresource{thermohalin/references.bib}
+\addbibresource{thermohalin/references.bib}
 %\addbibresource{vegetation/references.bib}
 \addbibresource{verzoegert/references.bib}
 \AtEndDocument{\clearpage\ifodd\value{page}\else\null\clearpage\fi}
@@ -378,17 +378,20 @@ Hochschule für Technik, Rapperswil, 2018
 \input{uebersicht.tex}
 \def\chapterauthor#1{{\large #1}\bigskip\bigskip}
 % Artikeverzoegert
-\input{eis/main.tex}
-\input{extrem/main.tex}
-\input{kalman/main.tex}
-\input{learning/main.tex}
 \input{lorenz/main.tex}
 \input{lorenz2/main.tex}
-\input{neigung/main.tex}
-\input{planeten/main.tex}
+\input{learning/main.tex}
+
 \input{thermohalin/main.tex}
-\input{vegetation/main.tex}
+\input{eis/main.tex}
 \input{verzoegert/main.tex}
+\input{planeten/main.tex}
+\input{neigung/main.tex}
+\input{vegetation/main.tex}
+
+\input{kalman/main.tex}
+\input{extrem/main.tex}
+
 \vfill
 \pagebreak
 \ifodd\value{page}\else\null\clearpage\fi

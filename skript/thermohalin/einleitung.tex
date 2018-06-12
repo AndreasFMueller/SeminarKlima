@@ -1,55 +1,56 @@
 \section{Einleitung}
 \rhead{Einleitung}
 
-Diese Arbeit hier befasst sich damit, das zuvor vorgestellte 2-Box Modell zu einem 3-Box Modell zu erweitern. Mit diesem Modell soll dann versucht werden, reale Strömungen zu simulieren. Weiter wird dann der Einfluss der Klimaerwärmung auf diese Strömungen untersucht und mit anderen, weiter Entwickelten, Modellen verglichen.
+Diese Arbeit befasst sich damit, das in Kapitel \ref{chapter:thc} entwickelte 2-Box Modell zur Simulation der Thermohalinen Zirkulation zu einem 3-Box Modell zu erweitern. Mit diesem erweiterten Modell soll dann versucht werden, reale Strömungen zu simulieren. Weiter wird dann der Einfluss der Klimaerwärmung auf diese Strömungen untersucht und mit anderen, weiter Entwickelten, Modellen verglichen.
 
 %more coming soon
 
-\section{THC, Was ist das?}
-\rhead{THC, Was ist das?}
+\section{Thermohaline Zirkulation, was ist das?}
+\rhead{Thermohaline Zirkulation, was ist das?}
 
-Die "THC", abgekürzte thermohaline Zirkulation, ist eine Weltumspannende Meeresströmung.
+Die hier als THC abgekürzte thermohaline Zirkulation, ist eine Weltumspannende Meeresströmung.
 Diese Strömungen sorgen für eine Durchmischung der verschiedenen Ozeane und den damit einhergehenden Energie und Nährstoffaustausch. 
 Die Auswirkung dieses Energieaustausches sind spürbar, so heizt zum Beispiel der Golfstrom, welcher auch zu diesen Strömungen gehört, Nordeuropa um mehrere Grad auf.
 Doch wie entsteht diese Strömung? 
 
-Diese Frage wurde schon im Kapitel 4 "Thermohaline Zirkulation" behandelt, hier jedoch noch einmal eine kurze Zusammenfassung.
+Diese Frage wurde schon im Kapitel \ref{chapter:thc} behandelt, darum hier nur eine kurze Zusammenfassung. 
 
 
 
-\subsection{Verschiedene Einflüsse}
-Es gibt viele Einflüsse die zur Entstehung und veränderung dieser Strömungen beitragen. Die Verteilung der Kontinente, die Corioliskraft, die Wasserdichte und auch Wetter und Winde. Hier wird jedoch nur auf den Einfluss der Wasserdichte eingegangen.
-Die Verteilung der Kontinente und auch die Corioliskraft ändern sich kaum und können daher als Konstanten betrachtet werden. Wind und Wetter werden hier weggelassen, da ihr Einfluss nur schwer vorherzusagen ist und sich schnell ändern kann. Mit dem im Rahmen dieser Arbeit verwendeten Modell lassen sich diese Komponenten auch gar nicht Simulieren.
+\subsection{Einflussfaktoren}
+Es gibt viele Faktoren die zur Entstehung und Veränderung dieser Strömungen beitragen. Dazu gehören die Verteilung der Kontinente, die Corioliskraft, die Wasserdichte und auch Wetter und Winde. Hier wird jedoch nur auf den Einfluss der Wasserdichte eingegangen.
+Die Verteilung der Kontinente und auch die Corioliskraft ändern sich kaum und können daher als konstant betrachtet werden. Wind und Wetter lassen wir weg, da ihr Einfluss nur schwer vorherzusagen ist und sich schnell ändern kann. Mit dem im Rahmen dieser Arbeit verwendeten Modell lassen sich diese Komponenten auch gar nicht Simulieren.
 
 \subsection{Dichte}
 Wie oben bereits erwähnt, fokussieren wir hier auf die Dichte.
-Die Thermohaline Zirkulaton wird hauptsächlich durch Dichteunterschiede im Wasser hervorgerufen.
-Dichtes Wasser sinkt, und weniger dichtes Wasser steigt bekanntlich auf. Die Hauptsächlichen Einflussfaktoren auf die Wasserdichte sind:
+Die THC wird hauptsächlich durch Dichteunterschiede im Wasser hervorgerufen.
+Wie allgemein bekannt ist, sinken dichtes (relativ zur Umgebung) Wasser ab, und weniger dichtes Wasser steigt auf. Die Wasserdichte wird hauptsächlich durch folgende Faktoren beeinflusst:
 
 \begin{itemize}
 	\item Der Salzgehalt
 	\item Die Temperatur
 \end{itemize}
 
-Durch einen hohen Salzgehalt wird das Wasser dichter und beginnt zu sinken. Die Temperatur hat den inversen Einfluss, ist jedoch weniger linear. Je wärmer das Wasser wird, desto weniger dicht ist es. Dieser Effekt sorgt auch dafür, dass gefrorenes Wasser auf flüssigem Wasser schwimmt.
+Durch einen hohen Salzgehalt wird das Wasser dichter und beginnt zu sinken. Die Temperatur hat den inversen Einfluss, ist jedoch weniger linear. Je wärmer das Wasser wird, desto mehr verringert sich die Dichte. Dieser Effekt sorgt auch dafür, dass gefrorenes Wasser auf flüssigem Wasser schwimmt.
 
-Wenn nun dichtes Wasser irgendwo absinkt muss dort an der Oberfläche Wasser nachfliessen, was eine starke Oberflächenströmung erzeugt. Wenn dann an einem anderen Ort(am Meeresgrund), die Dichte des Tiefenwassers reduziert wurde, beginnt es aufzusteigen. So muss dort Tiefenwasser nachfliessen. Wenn wir nun diese beiden Ereignisse kombinieren entsteht so ein Kreislauf. Skalieren man dies nun auf Weltmeergrösse ist die Thermohaline Zirkulation recht einfach beschrieben. Die Einflüsse, welche das Wasser an bestimmten Stellen aufsteigen und absinken lassen, werden später an einem konkreten Beispiel aufgezeigt.
+Wenn nun dichtes Wasser irgendwo absinkt muss dort an der Oberfläche Wasser nachfliessen: Dies erzeugt eine starke Oberflächenströmung. Wenn dann an einem anderen Ort(am Meeresgrund), die Dichte des Tiefenwassers reduziert wird, beginnt es aufzusteigen. So muss dort Tiefenwasser nachfliessen. Wenn wir nun diese beiden Ereignisse kombinieren entsteht so ein Kreislauf. Skaliert man dies nun auf Weltmeergrösse, ist die Thermohaline Zirkulation recht einfach beschrieben. Die Einflüsse, welche das Wasser an bestimmten Stellen aufsteigen und absinken lassen, werden später an einem konkreten Beispiel aufgezeigt.
 
-Hier zwei Grafiken zur Veranschaulichung:
+In Abbildung 17.1 ist der Zusammenhang zwischen Dichte und Salinität dargestellt, in Abbildung 17.2 die Abhängigkeit der Dichte von der Temperatur.
 
-\begin{figure}[H]
+
+\begin{figure}
 	\centering
 \includegraphics[width=12cm]{thermohalin/Code/graphs/graph_salinity.jpg}
 \caption{Dichteänderung abhängig vom Salzgehalt}
 \end{figure}
 
-\begin{figure}[H]
+\begin{figure}
 	\centering
 	\includegraphics[width=12cm]{thermohalin/Code/graphs/graph_temp.jpg}
 	\caption{Dichteänderung abhängig von der Temperatur}
 \end{figure}
 
- Diese Einflüsse Lassen sich in einer Gleichung zusammenfassen, mit welcher sich die dichte des Wassers berechnen lässt. Damit lässt sich über eine Dichtedifferenz, ein Wasserfluss bestimmen.
+ Diese Einflüsse Lassen sich in einer Gleichung zusammenfassen, mit welcher sich die Dichte des Wassers berechnen lässt. Damit lässt sich dann später über eine Dichtedifferenz, ein Wasserfluss bestimmen.
  
 
 \begin{equation}
@@ -59,19 +60,18 @@ Hier zwei Grafiken zur Veranschaulichung:
 \label{skript:salinity-linear}
 \end{equation} 
 
-Weitere Details zur grundlegenden Funktion der Simulation finden sich im Kapitel "4 THC".
+Weitere Details zur grundlegenden Funktion der Simulation finden sich wie bereits erwähnt in Kapitel \ref{chapter:thc:box}.
 
 
 \section{Golfstrom}
 \rhead{Golfstrom}
 
-Wie oben erwähnt wird nun versucht eine solche Strömung mittels eines 3-Box Modells zu simulieren.
-Die ganze weltumspannende Zirkulation zu simulieren würde viel mehr als drei Boxen benötigen und wäre viel komplizierter und Rechenaufwändiger. Deshalb beschränke ich mich hier auf den Golfstrom.
+Da die Simulation des ganzen weltumspannenden THC viel zu umfangreich und kompliziert ist, beschränken wir uns hier auf einen bestimmten Strom, den Golfstrom.
 Der Golfstrom eignet sich bestens zur Simulation da er sich grob in 3 Regionen aufteilen lässt und so gut in das Modell passt. Zusätzlich ist es der Strom, welcher Nordeuropa warm hält, was auch für die Schweiz eine grosse Bedeutung hat.
 
-Die Frage ist auch, was passiert mit dem Golfstrom, wenn Klimaerwärmung und Umweltverschmutzung weiter ansteigen? 
+eine weitere Frage ist auch, was passiert mit dem Golfstrom, wenn Klimaerwärmung und Umweltverschmutzung weiter ansteigen.
 
-\begin{figure}[H]
+\begin{figure}
 	\includegraphics[width=12cm]{thermohalin/Bilder/Deep-Ocean-Currents.jpg}
 	\centering
 	\caption{Golfstrom}
@@ -82,19 +82,16 @@ Die Frage ist auch, was passiert mit dem Golfstrom, wenn Klimaerwärmung und Umw
 \subsection{Funktionsweise}
 
 Doch zuerst dazu, wie der Golfstrom genau funktioniert.
-Der Golfstrom entspringt im Golf von Mexiko. Von dort aus wird das Warme Wasser von Winden und der Erdrotation nach Norden getrieben.
-Auf diesem Weg kühlt das Wasser langsam ab, und wird durch die fortlaufende Verdunstung von Wasser immer salziger. Da der Einfluss der Salinität grösser ist als der der Temperatur, beginnt das Wasser im Norden, durch die nun Hohe Dichte abzusinken. Wenn das Wasser dann abgesunken ist, treibt es dem Grund des Meeres entlang bis nach Südafrika, was den Kreislauf schliesst.
+Da der Golfstrom ein Kreislauf ist und keinen Ursprung hat, können wir an einem beliebigen Startpunkt mit der Beschreibung beginnen. Im Golf von Mexiko wird warmes Wasser von Winden und der Erdrotation nach Norden getrieben, wobei es an Nordeuropa vorbeiströmt.
+Auf diesem Weg kühlt das Wasser langsam ab, und wird durch die fortlaufende Verdunstung des Wasser immer salziger. Da der relative Einfluss der Salinität grösser ist als der der Temperatur, beginnt das Wasser im Norden, durch die nun hohe Dichte abzusinken. Wenn das Wasser dann abgesunken ist, treibt es dem Grund des Meeres und Südafrika entlang bis zum Südpol. Dort steigt es wieder  auf und fliesst in Richtung Atlantik und Mexiko, was den Kreislauf schliesst.
 
 \subsection{Einfluss des Klimawandels} 
-Wo hat der Klimawandel nun seinen Einfluss?
-Um diese Frage zu beantworten, müssen wir weiter zurückschauen, genauer gesagt zum Kap der guten Hoffnungen. Denn eigentlich beginnt die Strömung schon dort. 
-Dort Stellt sich die Frage, in welcher Richtung der Indische Ozean und der Atlantik ihr Salz austauschen. 
-Denn eine Veränderung der Salzbilanz könnte im Norden, vor der Küste Grönlands, für eine Störung des Absinkens sorgen, und so den Strom zum erliegen bringen. 
-Eine Störung der Salzzufuhr könnte also den ganzen Golfstrom zum stillstand bringen.
-Hier gehen die Meinungen der Forscher jedoch auseinander. Salzmessungen im offenen Meer sind sehr schwierig. 
-Im Moment zeigen diese jedoch, dass der Golfstrom weiter Salz in den Atlantik importiert und sich so selber am leben erhält.
+Um den Einfluss des Klimawandels auf den Golfstrom zu verstehen, müssen wir unterschiedliche Stellen betrachten.
+Der erste Punkt ist das Kap der guten Hoffnungen an der südlichen Spitze Afrikas.
+Dort Stellt sich die Frage, in welcher Richtung der Indische Ozean und der Atlantik ihr Salz austauschen, und ob überhaupt. Denn wenn der Golfstrom nicht kontinuierlich mit Salz versorgt wird, ist es dem Wasser am Nordpol nicht mehr möglich zu sinken. Eine leichte Veränderung der Salzbilanz, durch die Störung der Salzzufuhr,  könnte den Golfstrom zum erliegen bringen. Hier gehen die Meinungen von Forschern jedoch auseinander. Salzmessungen im offenen Meer sind sehr schwierig und die Resultate mit Vorsicht zu geniessen.
+Im Moment zeigen diese jedoch, dass der Golfstrom weiter Salz in den Atlantik importiert und sich so selber am leben erhält. Dies könnte sich jedoch durch den Klimawandel schnell ändern. Die Mechanismen dieser Salzverteilung sind noch nicht komplett verstanden, doch sie lassen sich mit dem aktuellen Klima in Verbindung bringen. Die weltweiten Strömungen sind ein kompliziertes und fragiles System das leicht aus dem Gleichgewicht gebracht werden kann. 
 
-Weiter kommt da noch die Erhöhung des CO2-Gehaltes in der Luft und die somit einhergehende Klimaerwärmung. Sie hat zwei direkte Auswirkungen auf den Golfstrom:
+Zusätzlich spielt noch die Erhöhung des CO2-Gehaltes in der Luft und die somit einhergehende Klimaerwärmung eine wichtige Rolle. Sie hat zwei direkte Auswirkungen auf den Golfstrom:
 
 \begin{itemize}
 	\item Durch die Erhöhung der Lufttemperatur kann das Wasser auf dem Weg in den Norden nicht mehr genug abkühlen, um danach abzusinken.
@@ -103,12 +100,14 @@ Weiter kommt da noch die Erhöhung des CO2-Gehaltes in der Luft und die somit ei
 
 Diese Beiden Prozesse, wären alleine in der Lage den Golfstrom zu stören, doch zusammen ist die Wirkung noch viel schlimmer.
 
-Laut einer Studie des Forschers Liu Wei von der Universität Yale vom 04 Jan 2017 könnte dieses Szenario in den nächsten 300 Jahren tatsächlich eintreten. Sie zeigen auf, dass falls sich die $CO^2$-Rate vom Niveau von 1990 verdoppelt, der Golfstrom in den nächsten 300 Jahren versiegen könnte.
+Laut einer Studie des Forschers Liu Wei von der Universität Yale vom 04 Jan 2017 \cite{thermohalin:liuwei} könnte dieses Szenario in den nächsten 300 Jahren tatsächlich eintreten. Sie haben den Golfstrom mit der doppelten $CO^2$ Konzentration wie vor Industrialisierungsbeginn simuliert. Also mit einer Konzentration vom $560ppm$. Die Resultate waren dramatisch. Innert 100 Jahren würde der Strom um eine drittel abnehmen, und innert 300 Jahren ganz anhalten. momentan ist die Lage noch nicht so schlimm da die aktuelle $CO^2$ Konzentration ca. $403ppm$ beträgt. Wenn die Konzentration aber weiter steigt wie jetzt, wären wir bereits in 31 Jahren so weit. \cite{thermohalin:c02}
 
-\subsubsection{Folgen}
+\subsection{Folgen}
 
 Was passiert, falls der Golfstrom zum erliegen kommt, oder sogar seine Richtung ändert.
 Ich denke der Film "The day after tomorrow" von Roman Emmerich ist bekannt. Er zeigt was passieren könnte, falls der Golfstrom zum erliegen kommt. 
 Im Film versinkt innert weniger Tage die ganze Welt in einer neuen Eiszeit un alles endet im Chaos. 
 Das ist natürlich ein wenig übertrieben Dargestellt, doch die Richtung stimmt. Falls der Golfstrom stoppt, würde trotz Klimaerwärmung Nordeuropa um einige Grad kälter werden.
-%more text coming soon
+
+
+more text coming soon

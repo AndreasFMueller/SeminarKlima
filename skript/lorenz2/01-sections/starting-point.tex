@@ -1,0 +1,97 @@
+\section{Einf"uhrung}
+\rhead{Einf"uhrung}
+
+Bevor wir uns auf die Suche nach Basisfunktionen machen, folgen hier ein paar 
+Angaben zu den in diesem Kapitel verwendeten Notation und einigen grundlegenden 
+Funktionen und Umformungen, welche sp"ater verwendet werden, ein kleiner 
+``Teaser'' zu dem was uns noch erwartet sozusagen.
+
+\subsection{Notation}
+Die verwendete Notation entspricht grunds"atzlich derjenigen, welche man 
+bereits aus anderen mathematischen B"uchern kennt. Einzig die Verwendung der 
+sogenannten Multi-Index-Notationen k"onnte f"ur einige Leser zu Unklarheiten 
+f"uhren, daher hier eine kurze Einf"uhrung.
+
+Unter der Multi-Index-Notation versteht man einen Index, der einem 
+$n$-Tupel
+\begin{equation*}
+	\alpha = (\alpha_1, \alpha_2, \dotsc, \alpha_n) \qquad \alpha_k \in 
+	\mathbb{N}_{0}
+\end{equation*}
+entspricht. Zur klaren Unterscheidung zu normalen Indexen, wird meist ein 
+griechischer Buchstabe verwendet. Multi-Indexe haben zudem die Eigenschaft, 
+dass ihr absoluter Wert wie folgt definiert ist
+\begin{equation*}
+	|\alpha| = \alpha_1 + \alpha_2 + \dots + \alpha_n.
+\end{equation*}
+ 
+N"utzlich ist diese Notation insbesondere, wenn mit Summen gearbeitet wird. So 
+kann mittels einer Forderung wie beispielsweise $|\alpha| = k$, die Summe
+\begin{equation}
+	\sum_{k = 0}^{\infty}\sum_{l = 0}^{k}a_{l, k - l}
+	\label{equation:lorenz2:doublesum}
+\end{equation}
+vereinfacht werden zu
+\begin{equation}
+	\sum_{k = 0}^{\infty}a_{\alpha} \qquad |\alpha| = k.
+	\label{equation:lorenz2:mmsum}
+\end{equation}
+M"oglich ist dies, da $|\alpha| = k$ f"ur alle Kombinationen der verschiedenen 
+$|\alpha_m|$ gilt. Zum Beispiel ist $|\alpha| = k = 2$ f"ur $2$-Tupel 
+Multi-Indexe
+\begin{align*}
+	\alpha &= (0, 2), \\
+	\alpha &= (1, 1), \\
+	\alpha &= (2, 0)
+\end{align*}
+erf"ullt, was genau dem in \cref{equation:lorenz2:doublesum} f"ur $k = 2$ 
+geforderten Index-Tupel $(l, k - l)$ entspricht.
+
+\subsection{Formel Sammelserum}
+Einige Umformungen, die wir in den n"achsten Abschnitten vornehmen werden, 
+verwenden teilweise nicht ganz gel"aufige Funkionen. Damit nicht immer gleich 
+Wikipedia bem"uht werden muss, werden diese hier in einem kleinen 
+Formel Sammelserum zusammengestellt.
+
+Die Signum-Funktion (kurz $\sgn(x)$):
+\begin{equation}
+\sgn(x) =
+\begin{cases*}
+1 & f"ur x > 0 \\
+0 & f"ur x = 0 \\
+-1 & f"ur x < 0
+\end{cases*}
+\label{equation:lorenz2:signum}
+\end{equation}
+
+Betragsfunktion (kurz $|x|$)
+\begin{equation}
+|x| =
+\begin{cases*}
+x & f"ur x $\geq$ 0 \\
+-x & f"ur x < 0
+\end{cases*}
+\label{equation:lorenz2:absfunction}
+\end{equation}
+
+Sinus und Kosinus eines absoluten Wertes (\cref{equation:lorenz2:absfunction}):
+\begin{equation}
+\begin{split}
+\sin(|x|) &= \sgn(x)\sin(x) \qquad \Leftrightarrow \qquad \sin(x) = 
+\sgn(x)\sin(|x|)
+\\
+\cos(|x|) &= \cos(x)
+\end{split}
+\label{equation:lorenz2:sincosabs}
+\end{equation}
+
+Produkte von Sinus und Kosinus Kombinationen:
+\begin{align*}
+\cos(x)\sin(y) &= \frac{1}{2} \left(\sin(x + y) - \sin(x - y)\right)
+\\
+\sin(x)\cos(y) &= \frac{1}{2} \left(\sin(x - y) + \sin(x + y)\right)
+\\
+\sin(x)\sin(y) &= \frac{1}{2} \left(\cos(x - y) - \cos(x + y)\right)
+\\
+\cos(x)\cos(y) &= \frac{1}{2} \left(\cos(x - y) + \cos(x + y)\right)
+\end{align*}

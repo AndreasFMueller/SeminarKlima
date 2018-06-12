@@ -1,0 +1,4 @@
+vectorOffset(order) :=
+block ( [],
+  (order + 1) * (order + 2) / 2 - 1
+)$

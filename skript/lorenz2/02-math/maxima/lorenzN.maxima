@@ -1,0 +1,60 @@
+/* http://maxima-discuss.narkive.com/mp8bQVhd/command-line-arguments-for-the-maxima-script */
+load(operatingsystem)$
+env2mx(%x%) := eval_string(printf(false,"~a : ~a;",%x%,getenv(printf(false,"~a",%x%))))$
+
+load(f90)$
+:lisp (setq *f90-output-line-length-max* 1000000000)
+
+batchload("vectorIndex.maxima")$
+batchload("vectorOffset.maxima")$
+batchload("lorenzNA.maxima")$
+batchload("lorenzNB.maxima")$
+
+order : env2mx(order)$
+outfile : "lorenz_diff.m"$
+orderfile : "lorenz_order.m"$
+
+offsetA : 0$
+offsetB : vectorOffset(order)$
+
+file_output_append : false$
+
+with_stdout (orderfile,
+  print("# name: order"),
+  print("# type: scalar"),
+  print(order)
+)$
+
+file_output_append : true$
+
+with_stdout (outfile,
+  print("function dX = lorenz_diff(X, T, kappa, nu, a, c, T0, order)")
+)$
+
+with_stdout (outfile,
+  for k:1 thru order do (
+    for gamma1:0 thru k do (
+      gamma2 : k - gamma1,
+      da : dotA(gamma1, gamma2, order, offsetA, offsetB),
+      idx : vectorIndex(gamma1, gamma2, offsetA),
+      print("#dA(", gamma1, "," , gamma2, ") = dX(", idx, ")"),
+      f90(dX(idx)=da)
+    )
+  )
+)$
+
+with_stdout (outfile,
+  for k:1 thru order do (
+    for gamma1:0 thru k do (
+      gamma2 : k - gamma1,
+      db : dotB(gamma1, gamma2, order, offsetA, offsetB),
+      idx : vectorIndex(gamma1, gamma2, offsetB),
+      print("#dB(", gamma1, "," , gamma2, ") = dX(", idx, ")"),
+      f90(dX(idx)=db)
+    )
+  )
+)$
+
+with_stdout (outfile,
+  print("endfunction")
+)$
