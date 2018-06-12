@@ -23,23 +23,35 @@
 
 %Verschiedene Organisationen, wie unter anderem Elon Musk's SpaceX, haben sich zum Ziel gemacht, in absehbarer Zukunft den Mars für den Menschen bewohnbar zu machen. Insbesondere sollte der Mars eine erdählnliche Atmosphere erhalte, also terraformed werden. Was auf Computer-generierten bildern ziemlich simpel aussieht, wird sich in realität wahrscheinlich ziemlich schwierig herausstellen. In diesem Kapitel wird die aktuelle lage des Klimas auf dem Mars analysiert und mögliche Wege den Mars zu teraformen auf die Machbarkeit untersucht.
 
+In der Gegenwart
 
+Betrachtet man die vier der Sonne am nächst Stehenden Planeten Merkur, Venus, Erde und Mars, gibt es einige Dinge festzustellen:
 
-venus co2 bindung
-wie ist venus co geworden
+%Leben, wasser
+Die Erde ist aus heutiger sicht der eizige Planet der leben aufweist. Das für Leben notwendige flüssige Wasser ist auch nur auf der Erde in grossen Mengen auffindbar. Glücklicherweise lässt das, im vergleich zu den anderen Planeten, milde Klima einen aktiven Wasserkreislauf zu.
+Alle anderen Planeten erfuhren offenbar ein anderes Schicksal.
 
+%Temperatur
+Man könnte meinen, dass primär die Distanz der Planeten zur Sonne für das  Klima ausschlaggebend ist. Jedoch nimmt die Temperatur über die Planeten mit der Entfernung zur Sonne nicht stetig ab. Das Klima muss somit auch von anderen Parametern abhängig sein, wie zum Beispiel Durchmesser, Rotation, Vulkanismus, Magnetfeld und viele andere.
 
-was führt zu wasserlosen athmosphere
-mars keine
-venus ohne wasser
-erde zwischendrin
+Auf Venus, Erde und Mars kann flüssiges Wasser auftreten (Godilooks-Zone).
 
-boxmodell anteile element
+Ein extremes Klima, kann auch dazu führen, dass ein Planet sich irreversibel verändert, indem er zum Beispiel seine Atmosphäre ins All verliert. Wie es vermutlich beim Mars der Fall war.
 
+Könnte es der Erde in Zukunft auch gleichermassen ergehen?
 
-%Grinspoon said, “It may be that conditions for life’s origin aren’t rare, but the hard part is the persistence of habitable conditions.”
+Sind Venus und Mars aufgrund ihrer orbitalen Eigenschaften inhabitabel?
 
-Auf allen Planeten kann flüssiges Wasser auftreten (Godilooks-Zone).
+Trotz allen Einwirkungen sind wir in der glücklichen Lage auf der Erde ein mildes Klima vorzufinden. 
+
+was führt zu wasserlosen Atmosphäre?
+
+\vspace{5pt}
+\textit{“It may be that conditions for life’s origin aren’t rare, but the hard part is the persistence of habitable conditions.”} \\
+\rightline{--- David Grinspoon, Astrobiologe}
+\vspace{5pt}
+%% https://www.space.com/21234-alien-planets-earth-climate-future.html
+
 
 \begin{center}
 \begin{table}
@@ -60,28 +72,24 @@ Auf allen Planeten kann flüssiges Wasser auftreten (Godilooks-Zone).
 
 Merkur ist in der Tabelle vertreten um zu verdeutlichen, dass nahe an der Sonne nicht direkt eine heisse Mitteltemperatur bedeutet.
 
+\subsection{Ziel}
+Dieses Kapitel zeigt ein Modell, wie das Klima eines Planeten mit deren orbitalen Eigenschaften verknüpft werden kann.
 
-\subsection{Temperatur}
+Dadurch kann der Werdegang der Planeten nachvollzieht werden.
 
-\subsection{Albedo}
-
-\subsection{Atmosphereische Eigenschaften}
-
-dünne Atmosphere
-
-Wann und wieso verlor der Mars seine Atmosphäre
+\subsection{Idee}
+Planeten mit gleichem Modell simulieren
+Orbitale Eigenschaften verwenden
 
 
-Rückgang der Atmosphäre durch Sonnenwind
-	https://www.nasa.gov/press-release/nasa-mission-reveals-speed-of-solar-wind-stripping-martian-atmosphere
-
-
-\subsection{Treibhausgase}
-
-wasser
-
-co2
-
+%\subsection{Atmosphereische Eigenschaften}
+%
+%dünne Atmosphere
+%
+%Wann und wieso verlor der Mars seine Atmosphäre
+%
+%Rückgang der Atmosphäre durch Sonnenwind
+%	https://www.nasa.gov/press-release/nasa-mission-reveals-speed-of-solar-wind-stripping-martian-atmosphere
 
 \section{Modell}
 \rhead{Modell}
@@ -112,18 +120,18 @@ Des Weiteren ist es für den Menschen interessant Planeten mit Erdähnlichen Zus
 
 
 
- Dazu müssen einige Annahmen getroffen werden.	
-	
-	Annahmen
-		Gleiche materielle Eigenschaften
-		Gleiches Vorkommen an Wasser
-		Wasser hat grösste Auswirkung auf Klima
+ Dazu müssen einige Annahmen getroffen werden:
+\begin{itemize}
+	\item Gleiche materielle Eigenschaften
+	\item Gleiches Vorkommen an Wasser
+	\item Wasser hat grösste Auswirkung auf Klima
+\end{itemize}			
 	
 	
 Möglichst auf einfachen Physikalischen Gesetzen basieren.	
 	
 	
-Am Schluss müssen freie Parameter abgeschätzt werden, um überhaubt plausible Lösungen zu erreichen.
+Am Schluss müssen freie Parameter abgeschätzt werden, um überhaupt plausible Lösungen zu erreichen.
 
 
 \begin{figure}
@@ -133,7 +141,7 @@ Am Schluss müssen freie Parameter abgeschätzt werden, um überhaubt plausible 
 \end{figure}
 
 \subsection{Strahlungsbilanz}
-
+%TODO reference
 Die Strahlungsbillanz wird in Kapitel \hl{reference needed} ausführlich beschrieben. Das hier verwendeten Modell baut direkt darauf auf.
 
 Damit die Durchschnittstemperatur eines Planeten stabil ist, muss die Leistungsbilanz Null sein.
@@ -148,7 +156,7 @@ Die Eintreffende Leistung $P_{in}$ besteht primär aus der absorbierten Sonnenst
 P_{in} = \sigma T_{\astrosun}^4 \left( \frac{R_{\astrosun}}{a_{\text{planet}}} \right) ^2 \cdot (1-\alpha)
 \end{equation}
 
-Dabei ist $\alpha$ das Albedo des Planeten.
+Dabei ist $\alpha$ die Albedo des Planeten.
 
 Die Abgestrahlte Leistung besteht praktisch ausschliesslich aus der Black-body strahlung, welche sich aus der Durchschnittstemperatur $T$ und dem Radius $R$ des Planeten bestimmen lässt. Diese Leistung bleibt jedoch teilweise durch Treibhausgase in der Atmosphäre gefangen. Es gilt: 
 
@@ -160,14 +168,14 @@ Dabei ist $\sigma$ die Stefan-Boltzmann-Konstante und $\epsilon$ der Anteil der 
 
 \subsection{Albedo}
 
-Das Albedo wird als Funktion der prozentualen Wolkenabdeckung $C$ modelliert. Es wird ein linearer Zusammenhang erwartet.
+Die Albedo wird als Funktion der prozentualen Wolkenabdeckung $C$ modelliert. Es wird ein linearer Zusammenhang erwartet.
 
 \begin{equation}
 \alpha(C) = (0.65 \cdot C) + 0.15;
 \end{equation}
 
 
-Unter der Annahme, dass bei allen Planeten das Oberflächenalbedo $\alpha_{surface}$ gleich ist, wird ein minimales $\alpha_{min}$ und maximales Albedo $\alpha_{max}$ definiert. Bei 100\% Wolkendeckung soll der Maximalwert erreicht werden und bei 0\% das Oberflächenalbedo.
+Unter der Annahme, dass bei allen Planeten die Oberflächenalbedo $\alpha_{surface}$ gleich ist, wird eine minimale $\alpha_{min}$ und maximale Albedo $\alpha_{max}$ definiert. Bei 100\% Wolkendeckung soll der Maximalwert erreicht werden und bei 0\% die Oberflächenalbedo.
 
 \begin{equation}
 \alpha = \alpha_{\text{surface}} + C(\alpha_{\text{max}} - \alpha_{\text{surface}})
