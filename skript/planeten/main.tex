@@ -28,7 +28,7 @@ In der Gegenwart
 Betrachtet man die vier der Sonne am nächst Stehenden Planeten Merkur, Venus, Erde und Mars, gibt es einige Dinge festzustellen:
 
 %Leben, wasser
-Die Erde ist aus heutiger sicht der eizige Planet der leben aufweist. Das für Leben notwendige flüssige Wasser ist auch nur auf der Erde in grossen Mengen auffindbar. Glücklicherweise lässt das, im vergleich zu den anderen Planeten, milde Klima einen aktiven Wasserkreislauf zu.
+Die Erde ist aus heutiger sicht der eizige Planet der leben aufweist. Das für Leben notwendige flüssige Wasser ist auch nur auf der Erde in grossen Mengen auffindbar. Glücklicherweise lässt das, im Vergleich zu den anderen Planeten, milde Klima einen aktiven Wasserkreislauf zu.
 Alle anderen Planeten erfuhren offenbar ein anderes Schicksal.
 
 %Temperatur
@@ -36,7 +36,7 @@ Man könnte meinen, dass primär die Distanz der Planeten zur Sonne für das  Kl
 
 Auf Venus, Erde und Mars kann flüssiges Wasser auftreten (Godilooks-Zone).
 
-Ein extremes Klima, kann auch dazu führen, dass ein Planet sich irreversibel verändert, indem er zum Beispiel seine Atmosphäre ins All verliert. Wie es vermutlich beim Mars der Fall war.
+Ein extremes Klima kann auch dazu führen, dass ein Planet sich irreversibel verändert, indem er zum Beispiel seine Atmosphäre ins All verliert. Wie es vermutlich beim Mars der Fall war.
 
 Könnte es der Erde in Zukunft auch gleichermassen ergehen?
 
@@ -44,14 +44,14 @@ Sind Venus und Mars aufgrund ihrer orbitalen Eigenschaften inhabitabel?
 
 Trotz allen Einwirkungen sind wir in der glücklichen Lage auf der Erde ein mildes Klima vorzufinden. 
 
-was führt zu wasserlosen Atmosphäre?
+Was führt zu wasserlosen Atmosphäre?
 
+%TODO quote syntax?
 \vspace{5pt}
 \textit{“It may be that conditions for life’s origin aren’t rare, but the hard part is the persistence of habitable conditions.”} \\
 \rightline{--- David Grinspoon, Astrobiologe}
 \vspace{5pt}
 %% https://www.space.com/21234-alien-planets-earth-climate-future.html
-
 
 \begin{center}
 \begin{table}
@@ -70,16 +70,20 @@ was führt zu wasserlosen Atmosphäre?
 
 \end{center}
 
-Merkur ist in der Tabelle vertreten um zu verdeutlichen, dass nahe an der Sonne nicht direkt eine heisse Mitteltemperatur bedeutet.
+%Merkur ist in der Tabelle vertreten um zu verdeutlichen, dass nahe an der Sonne nicht direkt eine heisse Mitteltemperatur bedeutet.
 
 \subsection{Ziel}
 Dieses Kapitel zeigt ein Modell, wie das Klima eines Planeten mit deren orbitalen Eigenschaften verknüpft werden kann.
+Betrachtet wird ein früher Zeitpunkt der Geschichte des Sonnensystems, als die Planeten ähnliche oder annähernd gleiche materielle und Atmosphärische Eigenschaften aufwiesen.
+Mit der Annahme, dass grosse Mengen an Wasser auf allen Planeten vorhanden war, besteht auf allen Planeten die gleichen Voraussetzungen für mögliches Leben.
+Das gleiche Modell wird mit unterschiedlichen orbitalen Parameter angewendet. Mann kann sich das vorstellen, als nehme man zum Beispiel die Erde, skaliert sie auf Mars-Grösse und setzt sie in den Mars-Orbit. 
+Durch eine Simulation des Modells im Zeitbereich sollte dann eine Aussage über den Werdegang der Planeten gemacht werden.
 
-Dadurch kann der Werdegang der Planeten nachvollzieht werden.
+%Dadurch kann der Werdegang der Planeten nachvollzieht werden.
 
-\subsection{Idee}
-Planeten mit gleichem Modell simulieren
-Orbitale Eigenschaften verwenden
+%\subsection{Idee}
+%Planeten mit gleichem Modell simulieren
+%Orbitale Eigenschaften verwenden
 
 
 %\subsection{Atmosphereische Eigenschaften}
@@ -95,30 +99,21 @@ Orbitale Eigenschaften verwenden
 \rhead{Modell}
 
 
-	Für alle Planeten geltendes Modell erstellen
-	
-	Das Modell sollte Erdähnliche Bedingungen bewusst erstreben, um zu sehen ob diese auf den Planeten Mars und Venus auch bestehen können.
-	
-	Betrachtet wird ein früher Zeitpunkt der Geschichte des Sonnensystems, als die betrachteten Planeten ähnliche oder annähernd gleiche materielle und Atmosphärische Eigenschaften aufwiesen.
-	
-	Es wird vor allem angenommen, dass grosse Mengen an Wasser auf allen Planeten vorhanden war.
-	
-%	Desshalb wird 
-	
-	Andere klimabestimmenden atmosphärischen Gase werden nicht simuliert, um das Modell im gegebenen Rahmen umzusetzen.
-	%Um das Modell im beschränkem Zeitrahmen zu realisieren, kann nur ein hoch vereinfachtes Modell erstellt werden.
+	Das Modell muss einige Sachen erfüllen, um eine Aussage machen zu können.
 
+	1. Für alle Planeten geltendes Modell erstellen
 	
-	Vereinfacht: Erde nehmen, auf Mars Grösse skallieren, in den Mars-Orbit setzten und schauen was passiert. 
+	2. Modell soll Erdähnliche Bedingungen bewusst erstreben, um zu sehen ob diese auf den Planeten Mars und Venus auch bestehen können.
 	
+	
+	Das hier erarbeitete Modell konzentriert sich nur auf die Strahlungsbillanz und den Wasserkreislauf. Es wird davon ausgegangen, dass das Wasser signifikant für das Klima ist, da atmosphärischer Wasserdampf auf der Erde den grössten Anteil zum Treibhauseffekt beisteuert.
+	
+Ausserdem befinden sich alle betrachteten Planeten in der Habitablen Zone, auch Bekannt als Goldilocks Zone. Diese beschreibt den Abstandsbereich um die Sonne, in dem flüssiges Wasser dauerhaft auftreten kann.
+	Andere klimabestimmenden atmosphärischen Gase wie $\text{CO}_\text{2}$ werden nicht simuliert, um das Modell im gegebenen Rahmen umzusetzen.
 
-Das hier erarbeitete Modell konzentriert sich nur auf die Strahlungsbillanz und den Wasserkreislauf.
+%Des Weiteren ist es für den Menschen interessant Planeten mit Erdähnlichen Zuständen anzutreffen.
 
-%Wasser wurde gewählt, da auf allen Planeten flüssiges Wasser auftreten kann (Godilooks-Zone).
-Wasser stellt auf der Erde den grössten Anteil zum Treibhauseffekt bei.
-Des Weiteren ist es für den Menschen interessant Planeten mit Erdähnlichen Zuständen anzutreffen.
-
-
+Zusammengefasst:
 
  Dazu müssen einige Annahmen getroffen werden:
 \begin{itemize}
@@ -134,10 +129,13 @@ Möglichst auf einfachen Physikalischen Gesetzen basieren.
 Am Schluss müssen freie Parameter abgeschätzt werden, um überhaupt plausible Lösungen zu erreichen.
 
 
+Abbildung \ref{planeten_model} zeigt eine Übersicht des Modells. Die einzelnen Bestandteile werden im Folgenden beschrieben.
+
 \begin{figure}
 	\centering
 	\includegraphics[width=\textwidth]{planeten/Pictures/Model.eps}
-	\caption{Modell}
+	\caption{Modell-Übersicht}
+	\label{planeten_model}
 \end{figure}
 
 \subsection{Strahlungsbilanz}
