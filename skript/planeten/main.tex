@@ -28,7 +28,7 @@ In der Gegenwart
 Betrachtet man die vier der Sonne am nächst Stehenden Planeten Merkur, Venus, Erde und Mars, gibt es einige Dinge festzustellen:
 
 %Leben, wasser
-Die Erde ist aus heutiger sicht der eizige Planet der leben aufweist. Das für Leben notwendige flüssige Wasser ist auch nur auf der Erde in grossen Mengen auffindbar. Glücklicherweise lässt das, im Vergleich zu den anderen Planeten, milde Klima einen aktiven Wasserkreislauf zu.
+Die Erde ist aus heutiger Sicht der einzige Planet der leben aufweist. Das für Leben notwendige flüssige Wasser ist auch nur auf der Erde in grossen Mengen auffindbar. Glücklicherweise lässt das, im Vergleich zu den anderen Planeten, milde Klima einen aktiven Wasserkreislauf zu.
 Alle anderen Planeten erfuhren offenbar ein anderes Schicksal.
 
 %Temperatur
@@ -142,27 +142,30 @@ Abbildung \ref{planeten_model} zeigt eine Übersicht des Modells. Die einzelnen 
 %TODO reference
 Die Strahlungsbillanz wird in Kapitel \hl{reference needed} ausführlich beschrieben. Das hier verwendeten Modell baut direkt darauf auf.
 
-Damit die Durchschnittstemperatur eines Planeten stabil ist, muss die Leistungsbilanz Null sein.
+Damit die Durchschnittstemperatur eines Planeten stabil ist, muss die Leistungsbilanz Null sein. Wie fest sich die Leistungsdifferenz auf die Temperatur auswirkt ist im Modell nicht definiert. Deshalb wird mit dem freien Parameter $\xi_1$ multipliziert. 
 
 \begin{equation}
 \dot{T} = \xi_1(P_{\text{in}} - P_{\text{out}})
 \end{equation}
 
+%TODO anderer begriff für Aktives Planet-Inneres .. geothermie? (nur für erde)
 Die Eintreffende Leistung $P_{in}$ besteht primär aus der absorbierten Sonnenstrahlung. Andere Energiequellen wie ein Aktives Planet-Inneres und die Energie aus Gezeiten wird vernachlässigt. Es gilt:
 
-\begin{equation}
-P_{in} = \sigma T_{\astrosun}^4 \left( \frac{R_{\astrosun}}{a_{\text{planet}}} \right) ^2 \cdot (1-\alpha)
-\end{equation}
-
-Dabei ist $\alpha$ die Albedo des Planeten.
-
-Die Abgestrahlte Leistung besteht praktisch ausschliesslich aus der Black-body strahlung, welche sich aus der Durchschnittstemperatur $T$ und dem Radius $R$ des Planeten bestimmen lässt. Diese Leistung bleibt jedoch teilweise durch Treibhausgase in der Atmosphäre gefangen. Es gilt: 
+%TODO P oder S für leistung pro fläche
 
 \begin{equation}
-P_{out} = (4 \pi R^2 \sigma T_{S}^4)\epsilon
+P_{in} = \sigma T_{\astrosun}^4 \left( \frac{R_{\astrosun}}{A_{\text{planet}}} \right) ^2 \cdot (1-\alpha)
 \end{equation}
 
-Dabei ist $\sigma$ die Stefan-Boltzmann-Konstante und $\epsilon$ der Anteil der durchdringenden Leistung.
+Dabei ist $\sigma$ die Stefan-Boltzmann-Konstante, $T_{\astrosun}$ \& $R_{\astrosun}$ die Oberflächentemperatur und Radius der Sonne, $ A_{\text{planet}}$ die mittlere Distanz des Planeten zur Sonne und $\alpha$ die Albedo des Planeten.
+
+Die Abgestrahlte Leistung besteht praktisch ausschliesslich aus der Black-body Strahlung, welche sich aus der Durchschnittstemperatur $T$ und dem Radius $R$ des Planeten bestimmen lässt. Diese Leistung bleibt jedoch teilweise durch den Treibhauseffekt in der Atmosphäre gefangen. Es gilt: 
+
+\begin{equation}
+P_{out} = (4 \pi R^2 \sigma T^4) \epsilon
+\end{equation}
+
+Dabei ist $\epsilon$ der Anteil der durchdringenden Leistung.
 
 \subsection{Albedo}
 
@@ -173,7 +176,7 @@ Die Albedo wird als Funktion der prozentualen Wolkenabdeckung $C$ modelliert. Es
 \end{equation}
 
 
-Unter der Annahme, dass bei allen Planeten die Oberflächenalbedo $\alpha_{surface}$ gleich ist, wird eine minimale $\alpha_{min}$ und maximale Albedo $\alpha_{max}$ definiert. Bei 100\% Wolkendeckung soll der Maximalwert erreicht werden und bei 0\% die Oberflächenalbedo.
+Unter der Annahme, dass bei allen Planeten die Oberflächenalbedo $\alpha_{text{surface}}$ gleich ist, wird eine minimale $\alpha_{text{min}}$ und maximale Albedo $\alpha_{\text{max}}$ definiert. Bei 100\% Wolkendeckung soll der Maximalwert erreicht werden und bei 0\% die Oberflächenalbedo.
 
 \begin{equation}
 \alpha = \alpha_{\text{surface}} + C(\alpha_{\text{max}} - \alpha_{\text{surface}})
@@ -181,11 +184,9 @@ Unter der Annahme, dass bei allen Planeten die Oberflächenalbedo $\alpha_{surfa
 
 \subsection{Treibhauseffekt}
 
-Wasserdampf ist ein sehr effektifes Treibhausgas. Es wird angenommen dass der atmosphärische Wasserdampf der Erde für 60\% des Treibhauseffekts sorgt.  
-
+Wasserdampf ist ein sehr effektives Treibhausgas. Es wird angenommen dass der atmosphärische Wasserdampf der Erde für 60\% des Treibhauseffekts sorgt.  
 % 60\%    % https://www.acs.org/content/acs/en/climatescience/climatesciencenarratives/its-water-vapor-not-the-co2.html 
-
-Im verwendeten Modell wird diese linear zum Teibhauseffekt $\beta$ modelliert.
+Im verwendeten Modell wirkt sich deren Konzentrazion $H$ linear auf den Teibhauseffekt $\beta$ aus. $H$ kann näherungsweise als Luftfeuchtigkeit interpretiert werden.
 
 \begin{equation}
 \epsilon  = (1 - \beta) = (1 - 0.5 \cdot H)
@@ -193,10 +194,15 @@ Im verwendeten Modell wird diese linear zum Teibhauseffekt $\beta$ modelliert.
 
 \subsection{Wasserkreislauf}
 
+Das Modell beinhaltet einen stark vereinfachten Wasserkreislauf.
+%Dieser Prozess ist auf der Erde sehr komplex.
+
 Modellierung von atmosphärischem Wasserdampf $H$ als relative Luftfeuchtigkeit und Wolken $C$ als prozentuale Flächendeckung.
 
 
-\subsubsection{Wasserdampfbildung}
+%Wasserdampfbildung
+
+%TODO linear zur Temperatur?
 
 Linearer Zusammenhang zur Auftreffenden Leistung
 
@@ -204,7 +210,11 @@ Linearer Zusammenhang zur Auftreffenden Leistung
 \xi_4 (P_{\text{in}})
 \end{equation}
 
-\subsubsection{Wolkenbildung}
+%Wolkenbildung
+
+Wolken entstehen wenn feuchte Luft beim aufsteigen sich abkühlt und kondensiert. Näherungswiese entstehen mehr Wolken je grösser die Luftfeuchtigkeit $H$ ist und je schneller die Temperatur mit der Höhe abnimmt
+
+Näherungswiese nimmt die Wolkenbildung mit grösserer Luftfeuchtigkeit $H$ und grösserem Temperaturgradient $\frac{dT}{dh}$ zu. Durch multiplizieren mit einem wählbaren Freiheitsgrad $\xi_5$ kann die Wirkung des Prozesses justiert werden. 
 
 \begin{equation}
 \xi_5 H \frac{dT}{dh}
@@ -216,15 +226,16 @@ Der Temperaturgradient wird linear Angenommen somit lässt sich $\frac{dT}{dh}$ 
 \xi_5 H \Delta T
 \end{equation}
 
-\subsubsection{Wolkenabbau}
-
-linear zur Wolkenabdeckung
+%Wolkenabbau
+Wolken regnen, wenn sich die mikoskpischen Wassertropfen oder Eiskristalle verbinden und nicht mehr getragen werden können. Im hier verwendeten Modell wird angenommen, dass sich Regenbildung somit proportional zur Wolkenabdeckung $C$ verhält.
 
 \begin{equation}
 \xi_6 C
 \end{equation}
 
-\subsection{Zusammengefasst}
+%Zusammengefasst
+
+Der ganze Wasserkreislauf lässt sich somit durch folgendes Gleichungssystem zusammenfassen.
 
 \begin{equation}
 	\begin{matrix}			
@@ -295,18 +306,33 @@ Mit Anpassungen für gesättigten Wasserdampf und Wolkenabdeckung:
 Das Modell wurde in MATLAB mittels Transientenanalyse simuliert. Dazu wurde ein ode45 Solver benutzt.
 
 
+%TODO Anfangswerte Matlab auf Erdbedingungne stellen 
 
+Die Anfangswerte wurden so gesetzt, dass sie Erd-Bedinugnen unterstützen
 
-Die Anfangswerte wurden so gesetzt, dass sie Erd-Bedinugnen unterstützen  
-	Erdbedingungen
-	
-	System anregen Erdähnliche Werte zu generieren.
+%System anregen Erdähnliche Werte zu generieren.
 
 \begin{equation}
 \begin{matrix}
-T_0 = & 283 \\
-H_0 = & 0.5 \\
-C_0 = & 0.5
+T_0 & = & 283 \\
+H_0 & = & 0.5 \\
+C_0 & = & 0.5
+\end{matrix}
+\end{equation}
+
+
+Die hinzugefügten Freiheitsgrade $\xi_1$ bis $\xi_6$ wurden empirisch gesetzt um auf der Erde stabile Resultate zu erhalten.
+
+%TODO xi werde eintragen und nach nummerierung überall sortieren
+
+\begin{equation}
+\begin{matrix}
+\xi_1 & = & 1 \\
+\xi_2 & = & 1 \\
+\xi_3 & = & 1 \\
+\xi_4 & = & 1 \\
+\xi_5 & = & 1 \\
+\xi_6 & = & 1 \\
 \end{matrix}
 \end{equation}
 
