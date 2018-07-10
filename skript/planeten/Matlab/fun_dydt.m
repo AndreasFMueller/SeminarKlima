@@ -15,7 +15,7 @@ function dydt = fun_dydt(t,y, p)
     T_grad = p(3) * 1./(clouds * T_s); 
     
     d_T_s    =    p(1)*(P_in - P_out); %- p(2)*h2o*T_s;
-    %d_T_t    =                          p(2)*h2o*T_s - p(3)*P_blackbody(T_t)*albedo(clouds) + p(4)*(T_grad * h2o);
+    %d_T_t   =                          p(2)*h2o*T_s - p(3)*P_blackbody(T_t)*albedo(clouds) + p(4)*(T_grad * h2o);
     d_h2o    =    p(5)*(P_in) - p(6)*((h2o^9 + h2o) * T_grad);    
     d_clouds =                  p(6)*((h2o^9 + h2o) * T_grad) - p(7)*(clouds^5 + clouds); % - clouds * convection;
    
