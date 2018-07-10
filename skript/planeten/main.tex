@@ -136,13 +136,13 @@ Die Strahlungsbillanz wird in Kapitel \ref{keineAhnungWo} ausführlich beschrieb
 
 Damit die Durchschnittstemperatur eines Planeten stabil ist, muss die Leistungsbilanz Null sein.
 \begin{equation}
-\dot{T} = \xi_1(P_{\text{in}} - P_{\text{out}})
+\dot{T_S} = \xi_1(P_{\text{in}} - P_{\text{out}})
 \end{equation}
 %TODO anderer begriff für Aktives Planet-Inneres .. geothermie? (nur für erde)
-Die Eintreffende Leistung $P_{in}$ besteht primär aus der absorbierten Sonnenstrahlung. Andere Energiequellen wie ein Aktives Planet-Inneres und die Energie aus Gezeiten wird vernachlässigt. Es gilt:
+Die Eintreffende Leistung $P_{\text{in}}$ besteht primär aus der absorbierten Sonnenstrahlung. Andere Energiequellen wie ein Aktives Planet-Inneres und die Energie aus Gezeiten wird vernachlässigt. Es gilt:
 %TODO P oder S für leistung pro fläche
 \begin{equation}
-P_{in} = \sigma T_{\astrosun}^4 \left( \frac{R_{\astrosun}}{a_{\text{planet}}} \right) ^2 \cdot (1-\alpha)
+P_{\text{in}} = \sigma T_{\astrosun}^4 \left( \frac{R_{\astrosun}}{a_{\text{planet}}} \right) ^2 \cdot (1-\alpha)
 \end{equation}
 Dabei ist $\alpha$ die Albedo des Planeten.
 
@@ -151,9 +151,11 @@ Dabei ist $\sigma$ die Stefan-Boltzmann-Konstante, $T_{\astrosun}$ \& $R_{\astro
 Die Abgestrahlte Leistung besteht praktisch ausschliesslich aus der Black-body Strahlung, welche sich aus der Durchschnittstemperatur $T$ und dem Radius $R$ des Planeten bestimmen lässt. Diese Leistung bleibt jedoch teilweise durch den Treibhauseffekt in der Atmosphäre gefangen. Es gilt: 
 
 \begin{equation}
-P_{out} = (4 \pi R^2 \sigma T_{S}^4)\epsilon
+P_{\text{out}} = 4 \pi R^2 \sigma T_{S}^4 \epsilon
 \end{equation}
 Dabei ist $\epsilon$ der Anteil der durchdringenden Leistung.
+
+
 
 \subsection{Albedo}
 
@@ -164,36 +166,40 @@ Die Albedo wird als Funktion der prozentualen Wolkenabdeckung $C$ modelliert. Es
 
 Die minimale Albedo entspricht etwa jeder des Mondes, der kleinsten in unserem Sonnensystem. Die maximale Albedo wird etwas grösser als diejenige der Venus gesetzt. Somit ergibt sich: 
 \begin{equation}
-\alpha(C) = (0.65 \cdot C) + 0.15;
+\alpha(C) = 0.65 \cdot C + 0.15;
 \end{equation}
 
 \subsection{Treibhauseffekt}
 
 Wasserdampf ist ein sehr effektives Treibhausgas. Es wird angenommen dass der atmosphärische Wasserdampf der Erde für 60\% des Treibhauseffekts sorgt.  
 % 60\%    % https://www.acs.org/content/acs/en/climatescience/climatesciencenarratives/its-water-vapor-not-the-co2.html 
-Im verwendeten Modell wirkt sich deren Konzentrazion $H$ linear auf den Teibhauseffekt $\beta$ aus.
+Im verwendeten Modell wirkt sich deren Konzentrazion $H$ linear auf den Teibhauseffekt $\beta$ aus. Die Wirkung wird mit $xi_8$ beschränkt und kann vor der Simulation justiert werden.
 
 \begin{equation}
-\epsilon  = (1 - \beta) = (1 - 0.6 \cdot H)
+\epsilon  = (1 - \beta) = (1 - \xi_8 \cdot H)
+\end{equation}
+
+\begin{equation}
+\dot{T_S} = \xi_1 \sigma T_{\astrosun}^4 \left( \frac{R_{\astrosun}}{a_{\text{planet}}} \right) ^2 \cdot (0.65 \cdot C + 0.15) - \xi_1 4 \pi R^2 \sigma T_{S}^4  (1 - \xi_8 \cdot H)
 \end{equation}
 
 \subsection{Wasserkreislauf}
 
-Das Modell beinhaltet einen stark vereinfachten Wasserkreislauf. Dieser besteht aus den zwei Boxen atmosphärischer Wasserdampf $H$ und Wolken $C$. Beides sind Prozentuale Grössen und können näherungsweise als relative Luftfeuchtigkeit beziehungsweise prozentuale Wolkenabdeckung interpretiert werden. Dazu kommt das auf der Planetenoberfläche flüssige Wasser, welches als Quelle und Senke dient und zugleich unerschöpflich ist. Das Modell beachtet nicht, dass der atmosphärische Wasserdampf ins All entweichen kann und dadurch die Ozeane austrocknen können.
+Das Modell beinhaltet einen stark vereinfachten Wasserkreislauf. Dieser besteht aus den zwei Boxen atmosphärischer Wasserdampf $H$ und Wolken $C$. Beides sind prozentuale Grössen und können näherungsweise als relative Luftfeuchtigkeit beziehungsweise prozentuale Wolkenabdeckung interpretiert werden. Dazu kommt das auf der Planetenoberfläche vorhandene flüssige Wasser, welches als Quelle und Senke dient und zugleich unerschöpflich ist. Das Modell beachtet nicht, dass der atmosphärische Wasserdampf ins All entweichen kann und dadurch die Ozeane austrocknen können.
 
 %Dieser Prozess ist auf der Erde sehr komplex.
 
 %\subsubsection{Wasserdampfbildung}
 Wasserdampf bildet sich durch Verdunsten von der Ozeane. Der Durchsatz wird linear zur Oberflächentemperatur $T_S$ angenommen.
 \begin{equation}
-\xi_2 (P_{\text{in}})
+\xi_2 T_S
 \end{equation}
 %TODO linear zur temperatur !! überall kontrollieren
 
 %\subsubsection{Wolkenbildung}
 
 Wolken entstehen wenn feuchte Luft beim aufsteigen sich abkühlt und kondensiert. Näherungswiese entstehen mehr Wolken je grösser die Luftfeuchtigkeit $H$ ist und je schneller die Temperatur mit der Höhe abnimmt.
-Näherungswiese nimmt die Wolkenbildung mit grösserer Luftfeuchtigkeit $H$ und grösserem Temperaturgradient $\frac{dT}{dh}$ zu. Durch multiplizieren mit einem wählbaren Freiheitsgrad $\xi_3$ kann die Wirkung des Prozesses justiert werden. 
+Dabei nimmt die Wolkenbildung mit grösserer Luftfeuchtigkeit $H$ und grösserem Temperaturgradienten $\frac{dT}{dh}$ zu. Durch Multiplizieren mit einem wählbaren Freiheitsgrad $\xi_3$ kann die Wirkung des Prozesses justiert werden. 
 %Wolken bilden sich durch kondensieren des Wasserdampfs. Dieser Vorgang
 %feuchte Luft abgekühlt wird
 %bei grossem Temperaturgradienten
@@ -202,19 +208,17 @@ Näherungswiese nimmt die Wolkenbildung mit grösserer Luftfeuchtigkeit $H$ und 
 \end{equation}
 
 Wenn der Temperaturgradient linear Angenommen wird, lässt sich $\frac{dT}{dh}$ durch den Skalar $\Delta T $ vereinfachen.
-%TODO sinkt bei mehr wolken oder luftfeuchtigkeit, feucht/trochenadiabatisch, was macht die temperatur
+Er existiert sowohl in vertikaler, sowie in horizontaler Ausrichtung. Einen grossen horizontalen Gradienten findet man bei einer Wetterfront vor. Im Modell wird nur der vertikale berücksichtigt. Dieser ist bei ungesättigter Luft annähernd konstant. Sobald Wasserdampf kondensiert wird der Prozess feuchtadiabatisch. Dabei wird der Gradient kleiner und sinkt mit zunehmender Temperatur noch weiter.
 %TODO xi_10 neuen index zuweisen und andere anpassen.
 Der Temperaturgradient sinkt bei 
 \begin{equation}
-\frac{dT}{dh} = \Delta T = \xi_10 \frac{1}{C T_S} 
+\frac{dT}{dh} = \Delta T = \frac{\xi_9}{C T_S} 
 \end{equation}
 
+Eingesetzt erhält man für die Wolkenbildung:
 \begin{equation}
-\xi_3 H \Delta T
+\xi_3 H \frac{\xi_9}{C T_S}
 \end{equation}
-
-
-
 
 %\subsubsection{Wolkenabbau}
 Wolken regnen, wenn sich die mikroskopischen Wassertropfen oder Eiskristalle verbinden und nicht mehr getragen werden können. Im hier verwendeten Modell wird angenommen, dass sich Regenbildung somit proportional zur Wolkenabdeckung $C$ verhält.
@@ -270,17 +274,17 @@ Wolken regnen, wenn sich die mikroskopischen Wassertropfen oder Eiskristalle ver
 Durch Zusammenfassen von Strahlungsbilanz und Wasserkreislauf erhält man folgendes Gleichungssystem:
 \begin{equation}
 \begin{matrix}
-\dot{T} = &  & \xi_1 \left(P_{\text{in}}(C) - P_{\text{out}}(T, H) \right) &\\
-\dot{H} = & \xi_2 P_{\text{in}}(C) & - \xi_3 H \Delta T & \\
-\dot{C} = &                        &   \xi_3 H \Delta T & - \xi_4 C
+\dot{T_S} = & \xi_1 \sigma T_{\astrosun}^4 \left( \frac{R_{\astrosun}}{a_{\text{planet}}} \right) ^2 \cdot (0.65 \cdot C + 0.15) && - \xi_1 4 \pi R^2 \sigma T_{S}^4  (1 - \xi_8 \cdot H)\\
+\dot{H}   = & \xi_2 T_S              & - \xi_3 H \frac{\xi_9}{C T_S}          & \\
+\dot{C}   = &                        &   \xi_3 H \frac{\xi_9}{C T_S}          & - \xi_4 C
 \end{matrix}
 \end{equation}
 Um zu verhindern, dass eine Luftfeuchtigkeit oder Wolkenabdeckung von über 100\% auftritt, werden zu gewissen linearen Termen noch den gleichen Term mit grosser Potenz dazu addiert. Somit wird der Effekt verstärkt wenn die Grösse nahe an $1$ also $100\%$ kommt. Das mit Anpassungen für gesättigten Wasserdampf und Wolkenabdeckung versehene Gleichungssystem lautet somit:
 \begin{equation}
 \begin{matrix}
-\dot{T} = & & \xi_1 \left(P_{\text{in}}(C) - P_{\text{out}}(T, H) \right) &\\
-\dot{H} = & \xi_2 P_{\text{in}}(C) & - \xi_3 (H + H^9) \Delta T   &                   \\
-\dot{C} = &                        &   \xi_3 (H + H^9) \Delta T   & - \xi_4 (C + C^5)
+\dot{T_S} = & \xi_1 \sigma T_{\astrosun}^4 \left( \frac{R_{\astrosun}}{a_{\text{planet}}} \right) ^2 \cdot (0.65 \cdot C + 0.15) && - \xi_1 4 \pi R^2 \sigma T_{S}^4  (1 - \xi_8 \cdot H)\\
+\dot{H}   = & \xi_2 P_{\text{in}}(C) & - \xi_3 (H + H^9) \frac{\xi_9}{C T_S}   &                   \\
+\dot{C}   = &                        &   \xi_3 (H + H^9) \frac{\xi_9}{C T_S}   & - \xi_4 (C + C^5)
 \end{matrix}
 \end{equation}
 
@@ -303,7 +307,8 @@ Die hinzugefügten Freiheitsgrade $\xi_1$ bis $\xi_6$ wurden empirisch gesetzt u
 \xi_1 = & 1                 \\
 \xi_2 = & 1.5 \cdot 10^{-3} \\
 \xi_3 = & 1.9 \cdot 10^{-2} \\
-\xi_4 = & 4   \cdot 10^{-1}  
+\xi_4 = & 4   \cdot 10^{-1} \\
+\xi_8 = & 0.6
 \end{matrix}
 \end{equation}
 
