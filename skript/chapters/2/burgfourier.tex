@@ -1,0 +1,76 @@
+%
+% burgfourier.tex
+%
+% (c) 2018 Prof Dr Andreas Mueller, Hochschule Rapperswil
+%
+\documentclass[tikz]{standalone}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage[utf8]{inputenc}
+\usepackage{graphics}
+\usepackage{ifthen}
+\usepackage{color}
+\usetikzlibrary{arrows,intersections}
+\usetikzlibrary{math}
+\begin{document}
+
+\def\achsen{
+\draw[->] (-3.3,0)--(3.3,0) coordinate[label=$x$];
+\draw[->] (0,-1.35)--(0,1.35) coordinate[label={right:$u$}];
+\draw (3.1415,-0.01)--(3.1415,0.01);
+\draw ({0.5*3.1415},-0.01)--({0.5*3.1415},0.01);
+\draw ({-0.5*3.1415},-0.01)--({-0.5*3.1415},0.01);
+\draw (-3.1415,-0.01)--(-3.1415,0.01);
+
+\node at (3.1415,0) [below right] {$\pi$};
+\node at ({0.5*3.1415},0) [below left] {$\frac{\pi}2$};
+\node at ({-0.5*3.1415},0) [below left] {$-\frac{\pi}2$};
+\node at (-3.1415,0) [below right] {$-\pi$};
+}
+\input{r.tex}
+
+\begin{tikzpicture}[>=latex,thick,scale=2]
+
+\begin{scope}[yshift=3cm]
+\draw[color=blue] plot[domain=-3.14159:3.14159,samples=201] ({\x},{sin(2*180*\x/3.14159)});
+%\pfada
+\pfadb
+\pfadc
+\pfadd
+\achsen
+\end{scope}
+
+\begin{scope}[yshift=0cm]
+%\pfade
+%\pfadf
+\pfadg
+\pfadh
+\pfadi
+\pfadj
+%\pfadk
+%\pfadl
+%\pfadm
+\achsen
+\end{scope}
+
+\begin{scope}[yshift=-3cm]
+\pfadn
+\pfado
+\pfadp
+\pfadq
+\pfadr
+\pfads
+\begin{scope}
+\clip (-3.14159,-1.3) rectangle (3.14159,1.3);
+\pfadt
+\end{scope}
+%\pfadu
+%\pfadv
+%\pfadw
+%\pfadx
+\achsen
+\end{scope}
+
+\end{tikzpicture}
+
+\end{document}
