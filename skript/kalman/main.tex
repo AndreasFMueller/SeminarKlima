@@ -16,13 +16,12 @@ Die meteorologische Datenassimilation hat zur Aufgabe, Anfangszust"ande f"ur die
 \rhead{Kalmanfilter}
 Ein Werkzeug der Datenassimilation ist der Kalmanfilter mit seinen diversen Abwandlungen. In diesem Kapitel wird der Kalmanfilter genauer erkl"art und auf die Parameter eingegangen. Am Lorenzmodell aus dem Jahre 1963 (LM63) kommt eine erweiterte Version zur Anwendung, der sogenannte Extended Kalmanfilter. Dieser ist f"ur nicht-lineare dynamische Systeme erweitert worden und wurde im Zuge der Apollo Mission von Stanley F. Schmidt entwickelt und zur Navigation im Weltraum angewendet\cite{skript:NASAKalman}.
 
-Der Kalmanfilter ist ein rekursives Verfahren zur Filterung von Datens"atzen, bei dem  der zuk"unftige Datenpunkt als Linearkombination der Beobachtung und einer Vorhersage durch ein mathematisches Systemmodell gesch"atzt wird. Voraussetzung f"ur die Beobachtung ist die Messung mindestens einer Systemvariablen mit zugeh"origer Varianz. Im linearen Fall ist f"ur das Modell eine Matrix n"otig, die aus dem alten Zustand auf den neuen schliessen l"asst, wie detaillierter in\cite{skript:WRStat} gezeigt wird.\\
+Der Kalmanfilter ist ein rekursives Verfahren zur Filterung von Datens"atzen, bei dem  der zuk"unftige Datenpunkt als Linearkombination der Beobachtung und einer Vorhersage durch ein mathematisches Systemmodell gesch"atzt wird. Voraussetzung f"ur die Beobachtung ist die Messung mindestens einer Systemvariablen mit zugeh"origer Varianz. Im linearen Fall ist f"ur das Modell eine Matrix n"otig, die aus dem alten Zustand auf den neuen schliessen l"asst, wie detaillierter in\cite{skript:WRStat} gezeigt wird. Die Struktur des Kalmanfilter-Algorithmus erlaubt eine Echtzeitfilterung und macht ihn so f"ur diverse Anwendungen interessant.
 
 \subsection{Allgemeine Funktionsweise}
 \rhead{Allgemeine Funktionsweise}
 
-Die Struktur des Kalmanfilter-Algorithmus erlaubt eine Echtzeitfilterung und macht ihn so f"ur diverse Anwendungen interessant.\\
-Folgend ist $\phi \in \mathbb{R}^{n\times n}$ die Transformationsmatrix, $H \in \mathbb{R}^{m\times n}$ die Messmatrix, welche Systemvariablen $x_{k}\in \mathbb{R}^{m}$ mit allf"alliger Verst"arkung misst und woraus $z_{k}\in \mathbb{R}^{m}$ als Messwert resultiert. $R_{k}$ und $Q_{k}$ sind die Kovarianzen der Messung und des Systems und Elemente des $\mathbb{R}^{m\times m}$. Das Systemmodell \eqref{kalman:Simulation} wie auch die Messung \eqref{kalman:Messung} sind mit einem normalverteilten Fehler, $u_{k}$ und $w_{k}$, "uberlagert\cite{skript:WRStat}.
+Folgend ist $\phi \in \mathbb{R}^{n\times n}$ die Transformationsmatrix, $H \in \mathbb{R}^{m\times n}$ die Messmatrix, welche Systemvariablen $x_{k}\in \mathbb{R}^{m}$ mit allf"alliger Verst"arkung misst und woraus $z_{k}\in \mathbb{R}^{m}$ als Messwert resultiert. $R_{k}$ und $Q_{k}$ sind die Kovarianzen der Messung und des Systems und Elemente im $\mathbb{R}^{m\times m}$. Das Systemmodell \eqref{kalman:Simulation} wie auch die Messung \eqref{kalman:Messung} sind mit einem normalverteilten Fehler, $u_{k}$ respektive $w_{k}$, "uberlagert\cite{skript:WRStat}.
 
 \begin{align}
 x_{k}&=\phi_{k-1}x_{k-1}+u_{k} \text{, } &\text{mit } u_{k}\sim N\langle0,\sigma^{2}\rangle &\text{ und } Q_{k}=E(u_{k}u^{t}_{k}) \label{kalman:Simulation}\\
@@ -35,7 +34,7 @@ Der Algorithmus besteht aus folgender Schrittfolge:
 \begin{enumerate}
 
 \item Vorhersage\\
-Die Vorhersage wird sowohl f"ur den folgenden Datenpunkt $\hat{x}_{k+1|k}$ sowie dessen Kovarianz $P \in \mathbb{R}^{m\times m}$ durchgef"uhrt, wobei das $\phi$ die Transformationsmatrix ausdr"uckt, wie vom jetzigen Zustand auf den n"achsten geschlossen wird. Die Notation $\hat{x}_{k+1|k}$ bedeutet die Sch"atzung von $x$ zum Zeitpunkt $k$ f"ur den n"achsten Zeitpunkt $k+1$ .
+Die Vorhersage wird sowohl f"ur den folgenden Datenpunkt $\hat{x}_{k+1|k}$ sowie dessen Kovarianz $P \in \mathbb{R}^{m\times m}$ durchgef"uhrt, wobei $\phi$ ausdr"uckt, wie vom jetzigen Zustand auf den n"achsten geschlossen wird. Die Notation $\hat{x}_{k+1|k}$ bedeutet die Sch"atzung von $x$ zum Zeitpunkt $k$ f"ur den n"achsten Zeitpunkt $k+1$ .
 
 \begin{align*}
 \hat{x}_{k+1|k} &= \phi\hat{x}_{k}\\
@@ -116,7 +115,7 @@ z_{0}\\
 \textbf{E}
 \end{pmatrix} 
 \]
-gel"ost und integriert, wobei $F$ die Jakobische Matrix des LM63 
+gel"ost und integriert, wobei $\textbf{F}$ die Jakobische Matrix des LM63 
 \[
 F(x,y,z) = \begin{pmatrix}
 -\sigma & \sigma & 0 \\ 
