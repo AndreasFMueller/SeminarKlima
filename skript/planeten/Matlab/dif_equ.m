@@ -17,9 +17,9 @@ VENUS.name = 'Venus';
 VENUS.v_escape = 10.36e3;
 VENUS.R = 6.0519e6; %m
 VENUS.A = 1.076e11; %m
-VENUS.T_surface = 465; %K;
-VENUS.T_blackbody = 312; %K
-VENUS.albedo = 0.689;
+VENUS.T_mean = 273+460; %K WolframAlpha   %465
+VENUS.T_blackbody = 312; %K claesjohnson
+VENUS.albedo = 0.65; % WolframAlpha
 VENUS.cloud_cover = 0.99; %?
 VENUS.mean_h2o = NaN;
 
@@ -28,23 +28,34 @@ EARTH.name = 'Earth';
 EARTH.v_escape = 11.186e3;
 EARTH.R = 6.371e6; %m
 EARTH.A = 1.499e11; %m
-EARTH.T0 = 273+10; %K
-EARTH.T_mean = 288; %K
-EARTH.T_blackbody = 275; %K
-EARTH.albedo = 0.367;
-EARTH.cloud_cover = 0.68;
-EARTH.mean_h2o = 0.44;    %http://www.climate4you.com/ClimateAndClouds.htm
+%EARTH.T0 = 273+10; %K
+EARTH.T_mean = 273+14;  %K WolframAlpha
+EARTH.T_blackbody = 275; %K claesjohnson
+EARTH.albedo = 0.367; % WolframAlpha
+EARTH.cloud_cover = 0.68; % ?
+EARTH.mean_h2o = 0.44;    % http://www.climate4you.com/ClimateAndClouds.htm
 
 MARS.name = 'Mars';
 MARS.v_escape = 5.03e3;
 MARS.R = 3.3895e6; %m
 MARS.A = 2.353e11; %meters
-MARS.T_mean = 232; %K
-MARS.T_blackbody = 229; %K
-MARS.albedo = 0.19;
-MARS.greenhouse = 0.75; %?
-MARS.cloud_cover = 0.05;
+MARS.T_mean = 273-47; %K WolframAlpha
+MARS.T_blackbody = 229; %K claesjohnson
+MARS.albedo = 0.15; % WolframAlpha
+MARS.greenhouse = 0.75; % ?
+MARS.cloud_cover = 0.05; % ?
 MARS.mean_h2o = NaN;
+
+MERCURY.name = 'Mercury';
+%MERCURY.v_escape = 5.03e3;
+MERCURY.R = 2.439e6; %m
+MERCURY.A = 5.9133e10; %meters
+MERCURY.T_mean = 273+179; %K WolframAlpha
+MERCURY.T_blackbody = 443; %K
+MERCURY.albedo = 0.106; % WolframAlpha
+MERCURY.greenhouse = 0.75; %?
+MERCURY.cloud_cover = 0;
+MERCURY.mean_h2o = NaN;
 
 %% Molecules
 % He, o2, co2, h2o,
@@ -53,26 +64,26 @@ MOLECULES.names = {'He', 'o2', 'co2', 'h2o'};
 MOLECULES.M_mol = [4e-3; 31.9988e-3; 44.01e-3; 18.01528e-3];
 
 %% Simulation Parameter
-SIM.T_s_0    = 273+10;%K
+SIM.T_s_0    = EARTH.T_mean; %K
 SIM.T_t_0    = SIM.T_s_0;
-SIM.H2O_0    = 0.5;
-SIM.clouds_0 = 0.5;
+SIM.H2O_0    = EARTH.mean_h2o;
+SIM.clouds_0 = EARTH.cloud_cover;
 
-param(1) = 1;
+param(1) = 1;       %xi_1
 param(2) = 1e-2;
-   param(3) = 0.7e4;
-param(4) = 0.3;
-param(5) = 1.5e-3;
-param(6) = 1.9e-2;
-param(7) = 4e-1;
+param(3) = 0.7e4;
+param(4) = 0.3;     
+param(5) = 1.5e-3;  %xi_2
+param(6) = 1.9e-2;  %xi_3
+param(7) = 4e-1;    %xi_4
 
 % PLANET = EARTH;
 
-planets = {EARTH, MARS, VENUS};
+planets = {EARTH, MARS, VENUS, MERCURY};
 
-colors = {[0,113,188]/255, [216,82,24]/255, [236,176,31]/255};
+colors = {[0,113,188]/255, [216,82,24]/255, [236,176,31]/255, [153,51,0]/255};
 
-for i = 1:3
+for i = 1:4
 	p = planets(i);
 	PLANET = p{1};
 
@@ -196,10 +207,10 @@ if (latexplots == 1)
 
 fig1 = figure(1);
 fig1.set('name', 'surfaceTemperature');
-for i = 1:3
+for i = 1:4
     plot(planets{i}.t, planets{i}.y.T_s, '-', 'color', colors{i}); hold on;
 end
-for i = 1:3
+for i = 1:4
     o = ones(1, length(planets{i}.t));
     plot(planets{i}.t, o*planets{i}.T_blackbody, '-.', 'color', colors{i});
 end
@@ -207,16 +218,16 @@ hold off;
 title('Surface temperature');
 ylabel('Temperature / K');
 xlabel('Time');
-legend({planets{1}.name, planets{2}.name, planets{3}.name});
+legend({planets{1}.name, planets{2}.name, planets{3}.name, planets{4}.name});
 grid
 
 
 fig2 = figure(2);
 fig2.set('name', 'cloudCover');
-for i = 1:3
+for i = 1:4
     plot(planets{i}.t, 100*planets{i}.y.clouds, '-', 'color', colors{i}); hold on;
 end
-for i = 1:3
+for i = 1:4
     o = ones(1, length(planets{i}.t));
     plot(planets{i}.t, 100*o*planets{i}.cloud_cover, '-.', 'color', colors{i});
 end
@@ -225,16 +236,16 @@ title('Cloud cover');
 ylabel('%');
 xlabel('Time');
 ylim([0 110])
-legend({planets{1}.name, planets{2}.name, planets{3}.name});
+legend({planets{1}.name, planets{2}.name, planets{3}.name, planets{4}.name});
 grid
 
 
 fig3 = figure(3);
 fig3.set('name', 'humidity');
-for i = 1:3
+for i = 1:4
     plot(planets{i}.t, 100*planets{i}.y.h2o, '-', 'color', colors{i}); hold on;
 end
-for i = 1:3
+for i = 1:4
     o = ones(1, length(planets{i}.t));
     plot(planets{i}.t, 100*o*planets{i}.mean_h2o, '-.', 'color', colors{i});
 end
@@ -242,16 +253,16 @@ hold off;
 title('Humidity');
 ylabel('%');
 xlabel('Time');
-legend({planets{1}.name, planets{2}.name, planets{3}.name});
+legend({planets{1}.name, planets{2}.name, planets{3}.name, planets{4}.name});
 grid
 
 
 fig4 = figure(4);
 fig4.set('name', 'albedo');
-for i = 1:3
+for i = 1:4
     plot(planets{i}.t, 100*planets{i}.y.albedo, '-', 'color', colors{i}); hold on;
 end
-for i = 1:3
+for i = 1:4
     o = ones(1, length(planets{i}.t));
     plot(planets{i}.t, 100*o*planets{i}.albedo, '-.', 'color', colors{i});
 end
@@ -260,7 +271,7 @@ title('Albedo');
 ylabel('%');
 xlabel('Time');
 ylim([10 80])
-legend({planets{1}.name, planets{2}.name, planets{3}.name});
+legend({planets{1}.name, planets{2}.name, planets{3}.name, planets{4}.name});
 grid
 
 saveas(fig1,['figures/' fig1.Name], 'epsc')
