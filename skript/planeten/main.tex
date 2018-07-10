@@ -55,7 +55,7 @@ Ein extremes Klima kann auch dazu führen, dass ein Planet sich irreversibel ver
 %TODO quote syntax?
 \vspace{5pt}
 \textit{“It may be that conditions for life’s origin aren’t rare, but the hard part is the persistence of habitable conditions.”} \\
-\rightline{--- David Grinspoon, Astrobiologe \cite{AstrobiologyMagazine}}
+\rightline{--- David Grinspoon, Astrobiologe \cite{planeten:AstrobiologyMagazine}}
 %% https://www.space.com/21234-alien-planets-earth-climate-future.html
 \vspace{5pt}
 
@@ -132,7 +132,7 @@ Auf Grund der zum Teil starken Vereinfachungen müssen einzelne Parameter abgesc
 
 \subsection{Strahlungsbilanz}
 %TODO reference
-Die Strahlungsbillanz wird in Kapitel \ref{keineAhnungWo} ausführlich beschrieben. Das hier verwendeten Modell baut direkt darauf auf.
+Die Strahlungsbillanz wird in Kapitel \ref{skript:grundlagen:strahlung} ausführlich beschrieben. Das hier verwendeten Modell baut direkt darauf auf.
 
 Damit die Durchschnittstemperatur eines Planeten stabil ist, muss die Leistungsbilanz Null sein.
 \begin{equation}
@@ -270,16 +270,20 @@ Wolken regnen, wenn sich die mikroskopischen Wassertropfen oder Eiskristalle ver
 Durch Zusammenfassen von Strahlungsbilanz und Wasserkreislauf erhält man folgendes Gleichungssystem:
 \begin{equation}
 \begin{matrix}
-\dot{T} = &  & \xi_1 \left(P_{\text{in}}(C) - P_{\text{out}}(T, H) \right) &\\
-\dot{H} = & \xi_2 P_{\text{in}}(C) & - \xi_3 H \Delta T & \\
+\dot{T} = &  & \xi_1 \left(P_{\text{in}}(C) - P_{\text{out}}(T, H) \right) &
+\\
+\dot{H} = & \xi_2 P_{\text{in}}(C) & - \xi_3 H \Delta T &
+\\
 \dot{C} = &                        &   \xi_3 H \Delta T & - \xi_4 C
 \end{matrix}
 \end{equation}
 Um zu verhindern, dass eine Luftfeuchtigkeit oder Wolkenabdeckung von über 100\% auftritt, werden zu gewissen linearen Termen noch den gleichen Term mit grosser Potenz dazu addiert. Somit wird der Effekt verstärkt wenn die Grösse nahe an $1$ also $100\%$ kommt. Das mit Anpassungen für gesättigten Wasserdampf und Wolkenabdeckung versehene Gleichungssystem lautet somit:
 \begin{equation}
 \begin{matrix}
-\dot{T} = & & \xi_1 \left(P_{\text{in}}(C) - P_{\text{out}}(T, H) \right) &\\
-\dot{H} = & \xi_2 P_{\text{in}}(C) & - \xi_3 (H + H^9) \Delta T   &                   \\
+\dot{T} = & & \xi_1 \left(P_{\text{in}}(C) - P_{\text{out}}(T, H) \right) &
+\\
+\dot{H} = & \xi_2 P_{\text{in}}(C) & - \xi_3 (H + H^9) \Delta T   &
+\\
 \dot{C} = &                        &   \xi_3 (H + H^9) \Delta T   & - \xi_4 (C + C^5)
 \end{matrix}
 \end{equation}
