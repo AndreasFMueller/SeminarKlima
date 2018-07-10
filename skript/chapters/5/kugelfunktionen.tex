@@ -1,0 +1,310 @@
+%
+% kugelfunktionen.tex -- Kugelfunktionen
+%
+% (c) 2018 Prof Dr Andreas Müller, Hochschule Rapperswil
+%
+\subsection{Kugelfunktionen}
+Die Basisfunktionen im Lorenzmodell waren aus zwei Gründen besonders
+erfolgreich.
+\begin{enumerate}
+\item
+Die Basisfunktionen waren Produkte von Funktionen, die jeweils nur von
+einer Koordinate abhängen.
+In einem Produkt 
+$f(x,y)=X(x)\cdot Y(y)$ 
+sind die Ableitungen nach den Koordinaten besonders einfach auszurechnen,
+da gilt
+\[
+\begin{aligned}
+\frac{\partial f}{\partial x}(x,y) &= X'(x)\cdot Y(y)
+&&\text{und}&
+\frac{\partial f}{\partial y}(x,y) &= X(x)\cdot Y'(y).
+\end{aligned}
+\]
+\item
+Die Basisfunktionen waren Eigenfunktionen des Laplace-Operators, also
+\[
+\Delta f = \lambda f.
+\]
+Da in den Gleichungen der Strömungsdynamik der Laplace-Operator
+prominent vorkommt, bedeutet diese Eigenschaft, dass die Wirkung des
+Laplace-Operators auf die Basisfunktionen durch Multiplikation mit
+dem Eigenwert ersetze werden kann.
+Dadurch werden die Gleichungen sehr vereinfacht und die Ordnung
+der Differentialgleichung reduziert sich.
+\end{enumerate}
+Wenn der Erfolg der speziellen Basiswahl im Lorenz-System für ein
+Wetter- oder Klimamodell auf der Kugeloberfläche repliziert werden
+soll, dann ist naheliegend, dass dazu Funktionen mit den gleichen
+Eigenschaften in Kugelkoordinaten gefunden werden müssen.
+
+\subsubsection{Separationsansatz}
+Die Produkteigenschaft bedeutet, dass die Basisfunktionen in der Form
+\[
+f(r,\varphi,\vartheta)
+=
+R(r)\cdot \Phi(\varphi)\cdot \Theta(\vartheta)
+\]
+gefunden werden müssen.
+Das Separationsverfahren für
+\index{Separationsverfahren}
+partielle Differentialgleichungen~\cite[Chapter 4]{skript:pde}
+basiert genau auf dieser Art von Ansatz für die Lösung einer
+partiellen Differentialgleichung, man nennt ihn daher auch
+einen {\em Separationsansatz}.
+\index{Separationsansatz}
+
+\subsubsection{Eigenwertgleichung}
+Die Eigenwerteigenschaft bedeutet, dass die Funktionen Eigenfunktionen
+des Laplace-Operators sein müssen, also Lösungen der partiellen
+Differentialgleichungen
+\[
+\Delta f = \lambda f.
+\]
+Wenden wir den Laplace-Operator in Kugelkoordinaten auf $f$ an, finden
+wir
+\begin{align*}
+\Delta f
+&=
+\biggl(
+\frac{1}{r^2} \frac{\partial}{\partial r}
+\biggl(r^2\frac{\partial f}{\partial r}\biggr)
++
+\frac1{r^2\sin\vartheta}\frac{\partial}{\partial\vartheta}
+\biggl(\sin\vartheta\frac{\partial f}{\partial\vartheta}\biggr)
++
+\frac1{r^2\sin^2\vartheta}\frac{\partial^2 f}{\partial\varphi^2}
+\biggr)
+R(r)\cdot \Phi(\varphi)\cdot \Theta(\vartheta)
+\\
+&=
+\frac1{r^2}\frac{\partial}{\partial r}\bigl(r^2R'(r)\bigr)
+\cdot \Theta(\vartheta)\cdot \Phi(\varphi)
++
+\frac1{r^2\sin\vartheta}\frac{d}{d\vartheta}
+\bigl(\sin\vartheta \Theta'(\vartheta)\bigr)
+\cdot R(r)\cdot \Phi(\varphi)
+\\
+&\qquad
++
+\frac1{r^2\sin^2\vartheta}\Phi''(\varphi)
+\cdot R(r)\cdot \Theta(\vartheta)
+\\
+&=
+\frac1{r^2}\bigl(2rR'(r)+r^2R''(r)\bigr)
+\Theta(\vartheta)\Phi(\varphi)
++
+\frac1{r^2\sin\vartheta}
+\bigl(\sin\vartheta\Theta'(\vartheta)\bigr)'
+\cdot R(r)\cdot\Phi(\varphi)
+\\
+&\qquad
++
+\frac1{r^2\sin^2\vartheta}
+\Phi''(\varphi)
+\cdot R(r)\cdot \Theta(\vartheta)
+\\
+&=
+\lambda
+R(r)\cdot \Theta(\vartheta)\cdot \Phi(\varphi).
+\end{align*}
+
+\subsubsection{Separation von $r$}
+Um die einzelnen Funktionen zu isolieren, teilen wir durch $f$.
+Zwar kann $f$ Nullstellen haben, aber für die meisten Werte der Koordinaten
+ist $f$ von Null verschieden, für diese Punkte ist die Division unproblematisch
+und ausreichend, um die Faktoren zu bestimmen.
+Wir erhalten
+\begin{align*}
+\frac{2rR'(r)+r^2R''(r)}{r^2R(r)}
++
+\frac{
+\bigl(\sin\vartheta\Theta'(\vartheta)\bigr)'
+}{r^2\sin\vartheta\Theta(\vartheta)}
++
+\frac{1}{r^2\sin^2\vartheta}\frac{\Phi''(\varphi)}{\Phi(\varphi)}
+&=\lambda
+\end{align*}
+Um die Variable $r$ allein auf die linke Seite zu bringen, multiplizieren wir
+mit $r^2$, subtrahieren $\lambda r^2$ und bringen den zweiten und dritten 
+Term auf der linken Seite auf die rechte Seite.
+So erhalten wir
+\begin{align*}
+\frac{r^2R''(r)+2rR'(r)-\lambda r^2R(r)}{R(r)}
+&=
+-
+\frac{
+\bigl(\sin\vartheta\,\Theta'(\vartheta)\bigr)'
+}{\sin\vartheta\,\Theta(\vartheta)}
+-\frac{1}{\sin^2\vartheta}\frac{\Phi''(\varphi)}{\Phi(\varphi)}
+\end{align*}
+Die linke Seite hängt nur von $r$ ab, die rechte Seite nur von $\vartheta$
+und $\varphi$.
+Dies ist nur möglich, wenn beide Seiten konstant sind.
+Es gibt also ein Zahl $\mu$ derart, dass
+\begin{align}
+\frac{r^2R''(r)+2rR'(r)-\lambda r^2R(r)}{R(r)}&=\mu
+\\
+\frac{\bigl(\sin\vartheta\,\Theta'(\vartheta)\bigr)'}{\sin\vartheta\,\Theta(\vartheta)}
++
+\frac{1}{\sin^2\vartheta}\frac{\Phi''(\varphi)}{\Phi(\varphi)}
+&=
+-\mu
+\label{skript:kugel:thetaphi}
+\end{align}
+Die erste Gleichung kann man vereinfachen zu
+\begin{equation}
+r^2R''(r)+2rR'(r)-(\lambda r^2-\mu)R(r) = 0,
+\end{equation}
+eine gewöhnliche lineare Differentialgleichung zweiter Ordnung.
+$\mu$ kann nicht beliebig gewählt werden, der Wert muss so sein,
+dass \eqref{skript:kugel:thetaphi} gelöst werden kann.
+
+Doch auch $\lambda$ ist nicht beliebg, sein Wert muss so gewählt
+werden, dass eventuelle Randbedingungen für die zugehörigen Funktion
+$R(r)$ erfüllt sind.
+Da die $r$-Abhängigkeit für die folgende Diskussion nicht wichtig ist,
+verfolgen wir diese Frage hier nicht weiter.
+
+\subsubsection{Separation von $\vartheta$ und $\varphi$}
+Die Gleichung~\eqref{skript:kugel:thetaphi} enthält nur noch die
+Variablen $\vartheta$ und $\varphi$. 
+Wir versuchen den gleichen Trick erneut: indem wir mit $\sin^2\vartheta$
+multiplizieren, den Term mit $\mu$ auf die linke Seite bringen und
+den zweiten Term auf die rechte Seite bringen, erhalten wir
+\[
+\sin\vartheta
+\frac{1}{\Theta(\vartheta)}
+\frac{d}{d\vartheta}\bigl(\sin\vartheta\,\Theta'(\vartheta)\bigr)
++
+\mu\sin^2\vartheta
+=
+-\frac{\Phi''(\varphi)}{\Phi(\varphi)}.
+\]
+Erneut haben wir eine Gleichung, deren linke Seite nur von $\vartheta$
+und deren rechte Seite nur von $\varphi$ abhängt.
+Also sind wieder beide Seiten konstant, es gibt also eine Konstante
+$\nu$ derart, dass $\Theta(\vartheta)$ und $\Phi(\varphi)$ die 
+Gleichungen
+\begin{align}
+\sin\vartheta\frac{d}{d\vartheta}
+\biggl(
+\sin\vartheta\frac{d}{d\vartheta}\Theta(\vartheta)
+\biggr)
+&=
+(-\mu\sin^2\vartheta+\nu)\Theta(\vartheta)
+\label{skript:kugel:thetagl}
+\\
+-\frac{\Phi''(\varphi)}{\Phi(\varphi)}&=\nu
+\label{skript:kugel:phigl}
+\end{align}
+erfüllen.
+
+\subsubsection{Lösungsfunktionen $\Phi(\varphi)$}
+Die zweite Gleichung~\eqref{skript:kugel:phigl} ist gleichbedeutend mit
+\begin{equation}
+\Phi''(\varphi)=-\nu\Phi(\varphi),
+\label{skript:kugel:philsg}
+\end{equation}
+wobei $\Phi(\varphi)$ eine $2\pi$-periodische Funktion ist.
+Die Lösungen der Gleichung~\eqref{skript:kugel:philsg}
+sind $\cos\sqrt{\nu}\varphi$ und $\sin\sqrt{\nu}\varphi$,
+aber die Periodizität verlangt, dass $\sqrt{\nu}$ eine ganze Zahl ist.
+Es muss also gelten $\nu=m^2$ mit $m\in \mathbb N$.
+
+\subsubsection{Lösungsfunktionen $\Theta(\vartheta)$}
+Im vorangegangen Absatz wurde gezeigt, dass $\nu=k^2$ ist, was die
+Gleichung~\eqref{skript:kugel:thetagl} zu
+\begin{equation}
+\sin\vartheta\frac{d}{d\vartheta}\sin\vartheta\frac{d}{d\vartheta}\Theta(\vartheta)
+=
+\biggl(\sin\vartheta\frac{d}{d\vartheta}\biggr)^2 \Theta(\vartheta)
+=
+(-\mu\sin^2\vartheta+k^2)\Theta(\vartheta)
+\label{skript:kugel:legendredgl0}
+\end{equation}
+In dieser Form ist die Differentialgleichung nicht so leicht zu
+erkennen.
+Schreibt man aber $z=\sin\vartheta$, dann wird die Ableitung einer
+Funktion $P(z)=\Theta(\vartheta)$
+\begin{align*}
+\frac{d}{d\vartheta}\Theta(\vartheta)
+=
+\frac{d}{d\vartheta}P(\cos\vartheta)
+=
+-P'(\cos\vartheta) \sin\vartheta
+&=
+-\sqrt{1-\cos^2\vartheta}P'(\cos\vartheta)
+\\
+&=
+-\sqrt{1-z^2}P'(z)
+=
+-\sqrt{1-z^2}\frac{d}{dz}P(z).
+\end{align*}
+Ableitungen nach $\vartheta$ sind also zu ersetzen durch Ableitungen
+nach $z$ gefolgt von Multiplikation mit $-\sqrt{1-z^2}$.
+In der Differentialgleichung~\eqref{skript:kugel:legendredgl0}
+wird die Ableitung nach $\vartheta$ jeweils auch noch mit $\sin\vartheta=\sqrt{1-z^2}$
+multipliziert.
+Der Operator
+\begin{equation}
+\sin\vartheta\frac{d}{d\vartheta}
+\qquad
+\text{bekommt daher die Form}
+\qquad
+-(1-z^2)\frac{d}{dz}.
+\label{skript:kugel:zoperator}
+\end{equation}
+Das Vorzeichen ist nicht wichtig, da der Operator in der Differentialgleichung
+\eqref{skript:kugel:legendredgl0} nur im Quadrat vorkommt.
+
+Wir setzen jetzt die Form \eqref{skript:kugel:zoperator}
+des Differentialoperators in die Differentialgleichung
+\eqref{skript:kugel:legendredgl0} ein
+und erhalten 
+\begin{align}
+(1-z^2)\frac{d}{dz}\bigl((1-z^2)P'(z)\bigr)
+&=
+(-\mu(1-z^2)+m^2)P(z)
+\notag
+\\
+\Rightarrow\qquad
+(1-z^2)P''(z) -2z P'(z)
++
+\mu P(z)
+-\frac{m^2}{1-z^2}P(z)
+&=
+0.
+\label{skript:kugel:legendredgl}
+\end{align}
+Für $m=0$ ist
+\eqref{skript:kugel:legendredgl}
+die sogenannte Legendresche Differentialgleichung.
+\index{Differentialgleichung!Legendresche}
+\index{Legendresche Differentialgleichung}
+Sie hat Lösungen für $\mu=l(l+1)$ mit $l\in\mathbb N$.
+Für $m>0$ ist
+\eqref{skript:kugel:legendredgl}
+die assozierte Legendre-Differentialgleichung.
+Für beide Gleichung lassen sich Lösungen angeben, es sind die
+sogenannten Legendre-Polynome $P_l(z)$ im Fall $m=0$ und die zugeordneten
+Legendre-Polynome $P_l^m(z)$ für beliebiges $m$.
+
+\subsubsection{Kugelflächenfunktionen}
+Mit den gefundenen Lösungen für $\Phi(\varphi)$ und $\Theta(\vartheta)$
+finden wir jetzt die allgemeinen Lösungen 
+der Differentialgleichung \eqref{skript:kugel:thetaphi}.
+Es sind die Funktionen
+\[
+Y_l^m(\vartheta,\varphi)
+=
+N_{lm}
+P_l^m(\cos\vartheta) e^{im\varphi}
+\]
+mit einem geeigneten Normierungsfaktor $N_{lm}$.
+Diese Funktionen haben genau die Eigenschaften, die wir in der Einleitung
+dieses Abschnitts als Voraussetzungen für eine geeignete Basis
+gefordert haben.
+
+
+

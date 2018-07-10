@@ -25,7 +25,7 @@ Es braucht nicht nur einen einzelnen Anfangswertvektor, sondern eine ganze Funkt
 Um die analytischen Lösungsverfahren zu verstehen, werden diese zunächst an einem einfachen Beispiel erläutert.
 In den folgenden Betrachtungen analysieren wir die DDE:
 \begin{equation}\label{bsp}
-\dot{y}(t)=ky(t-\tau)
+\dot{y}(t)=ky(t-\tau).
 \end{equation}
 
 \subsubsection{Schrittweises Lösen}
@@ -33,7 +33,7 @@ Beim schrittweisen Lösen wird die DDE immer in Schritten von einem $\tau$ gelö
 Wir nehmen an, dass $y$ im Bereich von $-\tau$ bis $0$ immer konstant bleibt.
 Somit haben wir die folgende Funktion der Anfangswerte:
 \begin{equation}
-	y(t)=1 \quad\text{wenn}\quad -1\le t<0
+	y(t)=1 \quad\text{wenn}\quad -1\le t<0.
 \end{equation}
 Daraus folgt, dass im Bereich von $0\le t<\tau$ die Ableitung
 \begin{equation}\label{abl}
@@ -47,7 +47,7 @@ für den Bereich $0\le t<\tau$.
 Dieses $y(t)$ kann als Anfangswert für den nächsten Schritt genommen werden.
 Wir erhalten für den zweiten Schritt  $\tau\le t<2\tau$ 
 \begin{equation}\label{abl2}
-	\dot{y}(t)=k(1+k(t-\tau))=k+k^2(t-\tau)
+	\dot{y}(t)=k(1+k(t-\tau))=k+k^2(t-\tau).
 \end{equation}
 Es ist offensichtlich, dass diese Methode nur für kurze Zeiten, einfache Anfangswerte und einfache Formeln funktioniert. 
 Bereits \eqref{abl2} ist nicht mehr ganz einfach zu integrieren. 
@@ -63,21 +63,21 @@ Ab Schritt 2 ist die Lösung nicht mehr eine lineare Funktion, sondern eine komp
 	\label{fig:bsp}
 \end{figure}
 
-\subsubsection{Charakteristisches Polynom}
+\subsubsection{Charakteristische Gleichung}
 Bei gewöhnlichen Differentialgleichungen können Lösungen mit Hilfe des charakteristischen Polynoms gefunden werden. 
 Bei DDEs wird das Polynom zu einer Gleichung. 
 Wir betrachten wiederum die Gleichung \eqref{bsp} und verwenden als Lösungsansatz
 \begin{equation}\label{ansatz}
-	y(t) = ce^{\lambda t}
+	y(t) = ce^{\lambda t}.
 \end{equation}
 Dieser klassische Ansatz eignet sich (fast) immer, da die Exponentialfunktion beim Differenzieren erhalten bleibt. 
 \eqref{ansatz} eingesetzt in \eqref{bsp} ergibt
 \begin{equation}
-	\lambda ce^{\lambda t} = kce^{\lambda (t-\tau )}
+	\lambda ce^{\lambda t} = kce^{\lambda (t-\tau )}.
 \end{equation} 
 Diese Gleichung kann durch $ce^{\lambda t}$ gekürzt werden zu
 \begin{equation}\label{chareq}
-	\lambda  - ke^{-\lambda \tau}= 0
+	\lambda  - ke^{-\lambda \tau}= 0.
 \end{equation} 
 Damit können nun verschiedene Werte für die Konstante $k$ berechnet werden, je nachdem wie die Lösung $\lambda$ aussehen soll.
 Wir nehmen an, dass $\lambda$ komplex ist und setzen $\lambda = \lambda_r + i\lambda_i$ in die Gleichung \eqref{chareq} ein.
@@ -87,11 +87,11 @@ Wir nehmen an, dass $\lambda$ komplex ist und setzen $\lambda = \lambda_r + i\la
 Real- und Imaginärteil dieser Gleichung können wir mit Hilfe der eulerschen Formel $e^{iy}=\cos(y)+i\sin(y)$ trennen und erhalten
 \begin{align}
 	\lambda_r - ke^{-\lambda_r\tau}\cos(\lambda_i\tau)&=0 \label{realchar} \\
-	\lambda_i + ke^{-\lambda_r\tau}\sin(\lambda_i\tau)&=0 \label{imagchar}
+	\lambda_i + ke^{-\lambda_r\tau}\sin(\lambda_i\tau)&=0 \label{imagchar}.
 \end{align}
 Nimmt man den zweiten Term auf die rechte Seite und dividiert die beiden Gleichungen, erhält man
 \begin{equation} \label{chareq_kompl_frac}
-	-\frac{\lambda_r}{\lambda_i} = \cot(\lambda_i\tau)
+	-\frac{\lambda_r}{\lambda_i} = \cot(\lambda_i\tau).
 \end{equation}
 Damit lassen sich nun beliebig viele Kombinationen von $\lambda$ und $k$ generieren.
 Als Beispiel wollen wir eine periodische Schwingung mit gleichbleibender Amplitude erreichen.
@@ -99,10 +99,10 @@ Daraus ergibt sich ein $\lambda_r = 0$.
 Die Verzögerung ist gegeben als $\tau = 1$.
 Eingesetzt in \eqref{chareq_kompl_frac} erhalten wir:
 \begin{equation}
-	\cot(\lambda_i) = 0 \qquad\Rightarrow\qquad \lambda_i = (2n-1)\frac{\pi}{2}
+	\cot(\lambda_i) = 0 \qquad\Rightarrow\qquad \lambda_i = (2n-1)\frac{\pi}{2}.
 \end{equation}
 Mit $n\in \mathbb{N}$ können wir z.B. die kleinste Frequenz $n=1$ einsetzen und erhalten $\lambda_i = \frac{\pi}{2}$.
-Damit können wir aus \eqref{imagchar} die Konstante $k$ bestimmen
+Damit können wir aus \eqref{imagchar} die Konstante $k$ bestimmen.
 \begin{equation}
 	\frac{\pi}{2} + k = 0 \qquad\Rightarrow\qquad k = -\frac{\pi}{2}
 \end{equation}

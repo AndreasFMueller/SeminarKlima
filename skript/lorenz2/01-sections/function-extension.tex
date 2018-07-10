@@ -7,17 +7,17 @@ stellt man fest, dass diese auch ein wenig anders geschrieben werden k"onnen:
 \cos(ax)\sin(y) &= \cos(1ax)\sin(1y),\\
 \sin(2y) &= \cos(0ax)\sin(2y).
 \end{align*}
-Wenn wir nun noch ein paar zus"atzliche, auf den ersten Blick etwas nutzlose 
-Gleichungen hinzuf"ugen:
+Nun f"ugen wir ein paar zus"atzliche, auf den ersten Blick etwas nutzlose, 
+Gleichungen hinzu:
 \begin{align*}
 0 &= \sin(0ax)\sin(2y) \\
 \sin(ax)\sin(y) &= \sin(1ax)\sin(1y)\\
 0 &= \sin(2ax)\sin(0y) \\
-\sin(2y) &= \cos(0ax)\sin(2y)
+\sin(2y) &= \cos(0ax)\sin(2y)\\
 \cos(ax)\sin(y) &= \cos(1ax)\sin(1y)\\
 0 &= \cos(2ax)\sin(0y)\\
 \end{align*}
-Daraus l"asst sich nun das Pattern
+Daraus l"asst sich nun das Muster
 \begin{equation}
 \begin{split}
 \sin(\alpha_1 ax)\sin(\alpha_2 y) \\
@@ -25,17 +25,17 @@ Daraus l"asst sich nun das Pattern
 \end{split}
 \label{equation:lorenz2:basic-functions}
 \end{equation}
-ableiten, wobei $\alpha_1$ und $\alpha_2$ Teile eines Multi-Index sind und die 
-Bedingung $|\alpha| = k = 2$ erf"ullen.
+erkennen, wobei $\alpha_1$ und $\alpha_2$ Teile eines Multi-Indices sind und 
+die Bedingung $|\alpha| = k = 2$ erf"ullen.
 
-F"ur unser dreidimensionales Modell haben wir also Basisfunktionen zweiten 
-Grades ($k = 2$) gefunden. Mit diesen Funktionen k"onnen wir nicht nur die uns 
-bekannten generieren, sondern diese auch noch erweitern indem wir den Grad $k$ 
-varieren.
+F"ur unser dreidimensionales Modell hatten wir also Basisfunktionen zweiten 
+Grades ($k = 2$) gefunden. Mit den neuen Funktionen k"onnen wir aber nicht nur 
+die uns bekannten generieren, sondern diese auch noch erweitern indem wir den 
+Grad $k$ variieren.
 
 Leicht zu erkennen ist, dass f"ur $k = 0$ nur die $0$-Funktion 
 "ubrig bleibt, da einzig das $(0, 0)$-Tupel die Bedingung $|\alpha| = 0$ 
 erf"ullt. $k = 1$ generiert die beiden Tupel $(0, 1)$ und $(1, 0)$, womit die 
 Funktion $\sin(y)$ "ubrig bleibt. Somit k"onnen wir Grad $k \geq 1$ 
-voraussetzen. So wird auch gleich das Problem einer m"oglichen Division durch 
-$0$ elegant umgangen, wie wir sp"ater sehen werden.
+voraussetzen. Damit wird auch gleich das Problem einer m"oglichen Division 
+durch $0$ elegant umgangen, wie wir sp"ater sehen werden.

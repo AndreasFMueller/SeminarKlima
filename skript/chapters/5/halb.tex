@@ -1,0 +1,65 @@
+%
+% halb.tex
+%
+% (c) 2018 Prof Dr Andreas Müller, Hochschule Rapperswil
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage[utf8]{inputenc}
+\usepackage{graphics}
+\usepackage{ifthen}
+\usepackage{color}
+\usetikzlibrary{arrows,intersections}
+\begin{document}
+
+\def\R{4}
+\def\winkel{30}
+\def\neigung{23.4}
+
+\begin{tikzpicture}[scale=1,>=latex,thick]
+
+\begin{scope}[rotate=-150]
+\fill[color=gray!10]
+	plot[domain=0:180,samples=100]
+		({\R*cos(\x)},{\R*sin(\x)})
+	--
+	plot[domain=0:180,samples=100]
+		({\R*cos(180-\x)},{\R*sin(\neigung)*sin(180-\x)});
+	
+\end{scope}
+
+
+\draw[color=gray]
+	({\R*cos(\winkel-180)},{\R*sin(\winkel-180)})
+		--({\R*cos(\winkel)},{\R*sin(\winkel)});
+\draw[color=gray]
+	(0,0)--({\R*sin(\neigung)*cos(\winkel-90)},{\R*sin(\neigung)*sin(\winkel-90)});
+
+\node at ({\R*cos(\winkel)/2},{\R*sin(\winkel)/2}) [above left] {$R$};
+\node at ({\R*sin(\neigung)*cos(\winkel-90)*0.6},{\R*sin(\neigung)*sin(\winkel-90)*0.6}) [below left] {$R\sin\gamma$};
+
+\begin{scope}[rotate=30]
+\draw[color=gray,line width=1pt]
+	plot[domain=0:180,samples=100]
+		({\R*cos(\x)},{\R*sin(\neigung)*sin(\x)});
+\end{scope}
+
+\begin{scope}[rotate=-150]
+\draw[line width=1pt]
+	plot[domain=0:180,samples=100]
+		({\R*cos(\x)},{\R*sin(\neigung)*sin(\x)});
+\end{scope}
+
+\draw[line width=1pt] (0,0) circle[radius={\R}];
+
+\fill[color=gray] (0,0) circle[radius=0.06];
+\fill ({\R*cos(\neigung)*cos(\winkel+90)},{\R*cos(\neigung)*sin(\winkel+90)})
+	circle[radius=0.06];
+\node at ({\R*cos(\neigung)*cos(\winkel+90)},{\R*cos(\neigung)*sin(\winkel+90)})
+	[below left] {$N$};
+
+\end{tikzpicture}
+
+\end{document}

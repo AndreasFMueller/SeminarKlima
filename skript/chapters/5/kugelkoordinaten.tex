@@ -1,0 +1,291 @@
+%
+% kugelkoordinaten.tex -- Kugelkoordinaten
+%
+% (c) 2018 Prof Dr Andreas Müller, Hochschule Rapperswil
+%
+
+\subsection{Kugelkoordinaten}
+Spektrale Methoden verwenden auf entscheidende Art und Weise die
+Besonderheiten des natürlichen Koordinatensystems auf der Kugeloberfläche.
+In diesem Abschnitt sollen daher Kugelkoordinaten und die zugehörigen 
+Differentialoperatoren genauer untersucht werden.
+
+\subsubsection{Koordinatenumrechnung}
+\index{Kugelkoordinaten}%
+Wir verwenden in diesem Abschnitt Kugelkoordinaten mit der üblichen
+Konvention, dass die geographische Breite als Winkel $\vartheta$
+ausgehend vom Nordpol oder der $z$-Achse gemessen wird,
+dass also $\vartheta\in[0,\pi]$.
+Die geographische Breite wird ausgehen von der $x$-Achse als
+Winkel $\varphi$ gemessen.
+Schliesslich bezeichnet $r$ die Entfernung eines Punktes vom Nullpunkt.
+
+Ein Breitenkreis zur geographischen Breite $\vartheta$ hat Radius
+$r\sin\vartheta$.
+Damit ergeben sich die Formeln
+\begin{align*}
+x
+&=
+r\sin\vartheta\cos\varphi
+\\
+y
+&=
+r\sin\vartheta\sin\varphi
+\\
+z
+&=
+r\cos\vartheta
+\end{align*}
+für die Umrechnung von Kugelkoordinaten in kartesische Koordinaten.
+\index{Umrechnungsformel!Kugel-Koordinaten in kartesische Koordinaten}%
+
+\subsubsection{Differentialoperatoren}
+Das Ziel ist, den Laplace-Operator in Kugelkoordinaten auszudrücken.
+Zu diesem Zweck müssen die partiellen Ableitungsoperatoren nach den
+Koordinaten $x$, $y$ und $z$ durch die Operatoren
+\[
+\frac{\partial}{\partial r},
+\;
+\frac{\partial}{\partial\vartheta}
+\quad\text{und}\quad
+\frac{\partial}{\partial\varphi}
+\]
+ausgedrückt werden.
+
+Für die Ableitungsoperatoren gilt die Kettenregel in der Form
+\begin{equation}
+\begin{aligned}
+\frac{\partial}{\partial x}
+&=
+\frac{\partial r}{\partial x}\frac{\partial}{\partial r}
++
+\frac{\partial\vartheta}{\partial x}\frac{\partial}{\partial\vartheta}
++
+\frac{\partial\varphi}{\partial x}\frac{\partial}{\partial\varphi},
+\\
+\frac{\partial}{\partial y}
+&=
+\frac{\partial r}{\partial y}\frac{\partial}{\partial r}
++
+\frac{\partial\vartheta}{\partial y}\frac{\partial}{\partial\vartheta}
++
+\frac{\partial\varphi}{\partial y}\frac{\partial}{\partial\varphi},
+\\
+\frac{\partial}{\partial z}
+&=
+\frac{\partial r}{\partial z}\frac{\partial}{\partial r}
++
+\frac{\partial\vartheta}{\partial z}\frac{\partial}{\partial\vartheta}
++
+\frac{\partial\varphi}{\partial z}\frac{\partial}{\partial\varphi}.
+\end{aligned}
+\label{skript:kugel:kettenregel}
+\end{equation}
+Die gesuchte Darstellung der Ableitungsoperatoren läuft also darauf
+hinaus, die Ableitungen von Kugelkoordinaten nach nach kartesischen
+Koordinaten zu bestimmen.
+
+Die Ableitungen von $r$ werden einfacher zur berechnen durch die
+Beziehung
+\[
+\frac{\partial r^2}{\partial x}
+=
+2r\frac{\partial r}{\partial x}
+\qquad\Rightarrow\qquad
+\frac{\partial r}{\partial x}
+=\frac1{2r}\frac{\partial r^2}{\partial x}.
+\]
+Da $r^2=x^2+y^2+z^2$ folgt
+\begin{equation}
+\begin{aligned}
+\frac{\partial r}{\partial x}
+&=
+\frac1{2r}\frac{\partial}{\partial x}(x^2+y^2+z^2)
+=
+\frac1{2r}2x
+=
+\frac{x}{r}
+=
+\sin\vartheta\cos\varphi,
+\\
+\frac{\partial r}{\partial y}
+&=
+\frac1{2r}\frac{\partial}{\partial x}(x^2+y^2+z^2)
+=
+\frac1{2r}2y
+=
+\frac{y}{r}
+=
+\sin\vartheta\sin\varphi
+\\
+\text{und}
+\qquad
+\frac{\partial r}{\partial z}
+&=
+\frac1{2r}\frac{\partial}{\partial z}(x^2+y^2+z^2)
+=
+\frac1{2r}2z
+=
+\frac{z}{r}
+=
+\cos\vartheta.
+\end{aligned}
+\label{skript:kugel:rableitungen}
+\end{equation}
+
+Auf ähnliche Weise lassen sich die Ableitungen von $\vartheta$ bestimmen.
+Dazu geht man aus von der Identität $z=r\cos\vartheta$ und leitet sie
+nach den kartesischen Koordinaten ab:
+\begin{align*}
+0
+=
+\frac{\partial z}{\partial x}
+&=
+\frac{\partial r}{\partial x}\cos\vartheta
+-
+r\sin\vartheta\frac{\partial \vartheta}{\partial x}
+&&\Rightarrow&
+\frac{\partial\vartheta}{\partial x}
+&=
+\frac{1}{r\sin\vartheta}
+\cos\vartheta
+\frac{\partial r}{\partial x},
+\\
+0
+=
+\frac{\partial z}{\partial y}
+&=
+\frac{\partial r}{\partial y}\cos\vartheta
+-
+r\sin\vartheta\frac{\partial \vartheta}{\partial y}
+&&\Rightarrow&
+\frac{\partial \vartheta}{\partial y}
+&=
+\frac{1}{r\sin\vartheta}
+\cos\vartheta
+\frac{\partial r}{\partial y},
+\\
+1
+=
+\frac{\partial z}{\partial z}
+&=
+\frac{\partial r}{\partial y}\cos\vartheta
+-
+r\sin\vartheta\frac{\partial \vartheta}{\partial y}
+&&\Rightarrow&
+\frac{\partial\vartheta}{\partial y}
+&=
+-\frac1{r\sin\vartheta}
+\biggl(1-
+\cos\vartheta
+\frac{\partial r}{\partial z}
+\biggr).
+\end{align*}
+Die Ableitungen von $r$ wurden in \eqref{skript:kugel:rableitungen}
+bereits berechnet, so dass wir nach den
+Ableitungen von $\vartheta$ auflösen können.
+Wir erhalten
+\begin{equation}
+\begin{aligned}
+\frac{\partial\vartheta}{\partial x}
+&=
+\frac1{r\sin\vartheta} \cos\vartheta \sin\vartheta\cos\varphi
+=
+\frac{\cos\vartheta\cos\varphi}{r},
+\\
+\frac{\partial\vartheta}{\partial y}
+&=
+\frac{1}{r\sin\vartheta} \cos\vartheta \sin\vartheta\sin\varphi
+=
+\frac{\cos\vartheta\sin\varphi}{r},
+\\
+\frac{\partial\vartheta}{\partial z}
+&=
+-\frac{1}{r\sin\vartheta}\underbrace{(1-\cos^2\vartheta)}_{\displaystyle\sin^2\vartheta}
+=
+-
+\frac{\sin\vartheta}r.
+\end{aligned}
+\label{skript:kugel:thetaableitungen}
+\end{equation}
+Diese Umformungen waren möglich, weil $z$ nur von $r$ und $\vartheta$ abhing.
+Die Kettenregel hat dann eine Beziehung zwischen den beiden Ableitungen
+dieser Variablen geliefert.
+
+Die verbleibenden Anleitungen können auf ähnliche Weise aus dem Ausdruck
+$x=r\sin\vartheta\cos\varphi$
+oder
+$y=r\sin\vartheta\sin\varphi$
+gewonnen werden.
+Wenn ihn partiell nach kartesischen Koordinaten ableitet,
+steht auf der linken Seite eine 1 oder 0,
+auf der rechten Seite ein Ausdruck mit allen drei Ableitungen von
+Kugelkoordinaten nach $x$, wovon die Ableitungen von $r$ und $\vartheta$
+nach den kartesischen Koordinaten bereits bekannt sind.
+Man kann also nach den Ableitungen von $\varphi$ auflösen.
+Die etwas mühsame Berechnung liefert
+\begin{equation}
+\begin{aligned}
+\frac{\partial \varphi}{\partial x}
+&=
+-\frac{\sin\varphi}{r\sin\vartheta},
+\\
+\frac{\partial \varphi}{\partial y}
+&=
+\frac{\cos\varphi}{r\sin\vartheta},
+\\
+\frac{\partial \varphi}{\partial z}
+&=
+0.
+\end{aligned}
+\label{skript:kugel:phiableitungen}
+\end{equation}
+
+In den Gleichungen
+\eqref{skript:kugel:rableitungen},
+\eqref{skript:kugel:thetaableitungen}
+und
+\eqref{skript:kugel:phiableitungen}
+haben wir alle Koeffizienten für die Kettenregel
+\eqref{skript:kugel:kettenregel}
+gefunden.
+Zusammen erlauben sie, Ableitungen nach karteischen Koordinaten
+durch Ableitungen nach Kugelkoordinaten auszudrücken.
+
+\subsubsection{Laplace-Operator}
+In kartesischen Koordinaten ist der Laplace-Operator gegeben durch die
+Definition
+\[
+\Delta
+=
+\frac{\partial^2}{\partial x^2}
++
+\frac{\partial^2}{\partial y^2}
++
+\frac{\partial^2}{\partial z^2}.
+\]
+Durch Einsetzen der Ableitungsoperatoren nach
+\eqref{skript:kugel:kettenregel} unter Verwendung der Gleichungen
+\eqref{skript:kugel:rableitungen},
+\eqref{skript:kugel:thetaableitungen}
+und
+\eqref{skript:kugel:phiableitungen}
+kann man nach ziemlich langwieriger
+Rechnung~\cite[Anhang B.3]{skript:mathsem-qm}
+den Ausdruck
+\begin{equation}
+\Delta
+=
+\frac1{r^2}\frac{\partial}{\partial r}
+\biggl(r^2\frac{\partial}{\partial r}\biggr)
++
+\frac{1}{r^2\sin\vartheta}\frac{\partial}{\partial\vartheta}
+\biggl(\sin\vartheta\frac{\partial}{\partial\vartheta}\biggr)
++
+\frac{1}{r^2}
+\frac{1}{\sin^2\vartheta}
+\frac{\partial^2}{\partial\varphi^2}.
+\end{equation}
+für den Laplace-Operator in Kugelkoordinaten finden.
+\index{Laplace-Operator in Kugelkoordinaten}%
+

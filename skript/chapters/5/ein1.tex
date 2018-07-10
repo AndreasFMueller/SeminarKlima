@@ -1,0 +1,105 @@
+%
+% ein1.tex
+%
+% (c) 2018 Prof Dr Andreas Müller, Hochschule Rapperswil
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage[utf8]{inputenc}
+\usepackage{graphics}
+\usepackage{ifthen}
+\usepackage{color}
+\usetikzlibrary{arrows,intersections}
+\begin{document}
+
+\def\pivalue{3.1415926}
+\def\n{30}
+\def\yscale{0.25}
+
+\def\curve#1{
+\draw[color=red!50,line width=1.0pt]
+	plot[domain=0:{#1},samples=100]
+	({\pivalue*\x/180},{\yscale * 2 * \pivalue * cos(\x)*sin(\x)*sin(#1)})
+	--
+	plot[domain={#1+1}:89,samples=100]
+	({\pivalue*\x/180},{\yscale*sin(\x)*(
+		+2 * cos(\x) * cos(#1) * sqrt(tan(\x)^2-tan(#1)^2)
+		+4 * cos(\x) * sin(#1) *
+			atan(sqrt((tan(\x)+tan(#1))/(tan(\x)-tan(#1))))
+				* (\pivalue/180))
+	})
+	--
+	plot[domain=91:{179-#1},samples=100]
+	({\pivalue*\x/180},{\yscale*sin(\x)*(
+		-2 * cos(\x) * cos(#1) * sqrt(tan(\x)^2-tan(#1)^2)
+		+4 * cos(\x) * sin(#1) *
+			atan(sqrt((tan(\x)+tan(#1))/(tan(\x)-tan(#1))))
+				* (\pivalue/180))
+	})
+	--
+	({\pivalue*(180-#1)/180},0)--({\pivalue},0);
+}
+
+\begin{tikzpicture}[scale=4,>=latex,thick]
+
+\foreach \neigung in {10,20,...,80}{
+	\curve{\neigung}
+}
+
+\draw[color=red!50,line width=1pt]
+	plot[domain=0:180,samples=100]
+		({\pivalue*\x/180},{\yscale*2*sin(\x)^2});
+
+\draw[color=red!50,line width=1pt]
+	plot[domain=0:90,samples=100]
+		({\pivalue*\x/180},{\yscale*2 *\pivalue*cos(\x)*sin(\x)})
+		--(\pivalue,0);
+
+\draw[color=red,line width=1.4pt]
+	plot[domain=0:{\n},samples=10]
+	({\pivalue*\x/180},{\yscale * 2 * \pivalue * cos(\x)*sin(\x) *sin(\n)})
+	--
+	plot[domain={\n+1}:89,samples=100]
+	({\pivalue*\x/180},{\yscale*sin(\x)*(
+		+2 * cos(\x) * cos(\n) * sqrt(tan(\x)^2-tan(\n)^2)
+		+4 * cos(\x) * sin(\n) *
+			atan(sqrt((tan(\x)+tan(\n))/(tan(\x)-tan(\n))))
+				* (\pivalue/180))
+	})
+	--
+	plot[domain=91:{179-\n},samples=100]
+	({\pivalue*\x/180},{\yscale*sin(\x)*(
+		-2 * cos(\x) * cos(\n) * sqrt(tan(\x)^2-tan(\n)^2)
+		+4 * cos(\x) * sin(\n) *
+			atan(sqrt((tan(\x)+tan(\n))/(tan(\x)-tan(\n))))
+				* (\pivalue/180))
+	})
+	--
+	({\pivalue*(180-\n)/180},0)--({\pivalue},0);
+
+\draw[->] (-0.1,0)--({\pivalue+0.3},0) coordinate[label={$\vartheta$}];
+\draw[->] (0,-0.1)--(0,0.9) coordinate[label={right:$E_\text{in}(\vartheta)$}];
+
+\draw ({\pivalue/2},0.02)--({\pivalue/2},-0.02);
+\node at ({\pivalue/2},0) [below] {$\frac{\pi}2$};
+
+\draw ({\pivalue},0.02)--({\pivalue},-0.02);
+\node at ({\pivalue},0) [below] {$\pi$};
+
+\node at (0,0) [below right] {$0$};
+
+\node at (0.8,0.2) {$\varepsilon=0$};
+\node at (1.3,0.51) [above] {$\varepsilon=\frac{\pi}6$};
+\node at ({\pivalue/4},{\pivalue/4-0.01}) [above] {$\varepsilon=\frac{\pi}2$};
+
+%\draw (-0.02,{\pivalue/2})--(0.02,{\pivalue/2});
+%\node at (0,{\pivalue/2}) [left] {$2\pi$};
+
+\draw (-0.02,{\pivalue/4})--(0.02,{\pivalue/4});
+\node at (0,{\pivalue/4}) [left] {$\pi$};
+
+\end{tikzpicture}
+
+\end{document}

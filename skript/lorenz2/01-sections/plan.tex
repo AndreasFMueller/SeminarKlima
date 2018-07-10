@@ -1,0 +1,66 @@
+Auf das dreidimensionale Lorenzsystem wurde bereits in 
+\cref{section:lorenz-modell} sowie in \cref{chapter:lorenz} detailliert 
+eingegangen. Trotzdem werden folgend nochmals die f"ur das Lorenz-Modell 
+relevanten Grundgleichungen
+\begin{equation}
+	\begin{aligned}
+	\frac{\partial\Delta\psi}{\partial t}
+	&=
+	\nu\Delta^2\psi 
+	+c\frac{\partial\vartheta}{\partial x}
+	-\frac{\partial(\psi,\Delta\psi)}{\partial(x,y)}
+	\\
+	\frac{\partial\vartheta}{\partial t}
+	&=
+	\kappa\Delta\vartheta
+	+ \frac{T_0}{\pi}\frac{\partial\psi}{\partial x}
+	- \frac{\partial(\psi,\vartheta)}{\partial(x,y)}
+	\end{aligned}
+	\label{equation:lorenz2:base}
+\end{equation}
+genauer analysiert. Dank einer geschickten Wahl von Basisfunktionen
+\begin{equation*}
+	\sin(ax)\sin(y),
+	\qquad
+	\cos(ax)\sin(y)
+	\qquad\text{und}\qquad
+	\sin(2y)
+\end{equation*}
+und einigen Vereinfachungen, hatten wir es geschafft, das System auf drei 
+gew"ohnliche Differentialgleichungen
+\begin{equation*}
+	\begin{aligned}
+	\dot X(t)
+	&=
+	-\nu(a^2+1)X(t)
+	+\frac{ac}{a^2+1}Y(t)
+	\\
+	\dot Y(t)
+	&=
+	\frac{aT_0}{\pi}X(t)
+	-(a^2+1)\kappa Y(t)
+	-aX(t)Z(t)
+	\\
+	\dot Z(t)
+	&=
+	-4\kappa Z(t)
+	+\frac{a}{2}X(t)Y(t)
+	\end{aligned}
+\end{equation*}
+zu reduzieren, welche unser dreidimensionale Lorenzsystem beschreiben.
+
+In diesem Kapitel wollen wir nun diese mittels Separationsverfahren gefunden 
+L"osungen, welche unsere Basisfunktionen bilden, erweitern. Diese neuen 
+Basisfunktionen sollen es uns erm"oglichen auch Terme, die wir bisher bei 
+unserer L"osung vernachl"assigt haben, miteinzubeziehen. Dies f"uhrt uns dann 
+schlussendlich zu einem neuen Lorenzsystem, welches nicht mehr 
+dreidimensional sondern h"oherdimensional ist. Bis wir die daraus entstehenden 
+Resultate in \cref{section:lorenz2:numeric-solution} begutachten k"onnen, 
+m"ussen wir erst ein paar Dinge zur Notation und allgemeinen Formeln in 
+\cref{section:lorenz2:einstieg} kl"aren. Danach machen wir uns auf die Suche 
+neuer Basisfunktionen in \cref{section:lorenz2:basic_function} und generieren 
+nach Einsetzen und Vereinfachen in \cref{section:lorenz2:ho-model} die zum 
+L"osen unserer neuen h"oherdimensionalen Lorenzsystems ben"otigten 
+gew"ohnlichen Differentialgleichungen. \Cref{section:lorenz2:4degreelorenz} 
+zeigt uns zudem an einem konkreten Beispiel eines Lorenzsystem vierten 
+Grades, welche Informationen verloren gehen, wenn Terme vernachl"assigt werden.

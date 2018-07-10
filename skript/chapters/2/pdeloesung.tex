@@ -1,0 +1,371 @@
+%
+% pdeloesung.tex -- Loesungsprinzip für partielle Differentialgleichungen
+%
+% (c) 2018 Prof Dr Andreas Müller, Hochschule Rapperswil
+%
+\section{Lösungen von partiellen Differentialgleichungen}
+In diesem Kapitel haben wir Strömungen mit Hilfe partieller
+Differentialgleichungen beschrieben.
+Funktionenräume sind unendlich dimensional, was sehr erschwert,
+dafür überhaupt eine Lösung zu finden.
+
+\subsection{Diskretisation}
+Der einfachste Ansatz, partielle Differntialgleichungen zu lösen,
+folgt den Verfahren, die auch für gewöhnliche Differentialgleichungen
+\cite{skript:mathsem-dgl} 
+
+\subsection{Basisfunktionen}
+Lineare Differentialgleichungen haben die Eigenschaft, dass 
+mit zwei Lösungen auch deren Linearkombinationen wieder Lösungen sind.
+In der Theorie der gewöhnlichen linearen Differentialgleichungen endlicher
+Ordnung geben die Koeffizienten der Linearkombination die nötige Flexibilität,
+die Anfangsbedingungen zu erfüllen.
+Dasselbe gilt auch für partielle Differentialgleichungen, mit dem Unterschied
+allerdings, dass es meinstens unendlich viele linear unabhängige Lösungen
+gibt.
+Ist $L$ ein linearer Differentialoperator und $u_k$, $k\in\mathbb N$ eine
+Familie von Lösungen der Gleichung $Lu=0$.
+Im besten Fall lässt sich dann jede andere Lösung $u$ in einem noch
+zu definierenden Sinn beliebig genau durch Linearkombinationen
+\[
+u=\sum_{k\in\mathbb N} a_ku_k
+\]
+approximiert werden.
+Wir verzichten darauf, auf die analytischen Details einzugehen.
+
+Bei einer nichtlinearen Differentialgleichung ist es sicher nicht
+mehr möglich, Lösungen durch Linearkombination anderer Lösungen
+zu bilden.
+Aber es spricht nichts dagegen, dass es eine Familie $u_k$, $k=1,\dots,N$,
+von Funktionen gibt, mit der man Lösungen genügend genau approximieren
+kann.
+
+\subsubsection{Die Potenzreihenmethode}
+Diese Idee liegt zum Beispiel der Potenzreihenmethode zu Grunde.
+Dabei nimmt man an, dass die Lösung einer Differentialgleichung als
+Linearkombination der Potenzfunktionen $u_k(x)=x^k, k=0\dots,N$
+approximiert werden kann.
+Als Beispiel betrachten wir die Differentialgleichung
+\[
+y''=-\lambda y.
+\]
+Eine Potenzfunktion $u_k(x)=x^k$ ist offensichtlich keine Lösung.
+Man kann aber die Lösung als eine Linearkombination
+der Potenzfunktionen
+\[
+y(x)
+=
+a_0+a_1x+a_2x^2+a_3x^3+\dots
+\]
+ansetzen und in die Differentialgleichung einsetzen.
+Man erhält
+\[
+2\cdot 1 \cdot a_2
++
+3\cdot 2 \cdot a_3x
++
+4\cdot 3 \cdot a_4x^2
++
+\dots
+=
+-\lambda(
+a_0+a_1x+a_2x^2+a_3x^3+\dots)
+\]
+Man liest daraus die Gleichungen für die Koeffizienten $a_k$ ab:
+\begin{equation*}
+\left.
+\begin{aligned}
+2\cdot 1\cdot a_2&=-\lambda a_0\\
+3\cdot 2\cdot a_3&=-\lambda a_1\\
+4\cdot 3\cdot a_4&=-\lambda a_2\\
+5\cdot 4\cdot a_5&=-\lambda a_3\\
+&\;\;\vdots
+\end{aligned}
+\right\}
+\qquad\Rightarrow\qquad
+\left\{
+\begin{aligned}
+a_{2k}  &=(-1)^k\frac{\lambda^k}{ 2k!   }a_0\\
+a_{2k+1}&=(-1)^k\frac{\lambda^k}{(2k+1)!}a_1
+\end{aligned}
+\right.
+\end{equation*}
+Daraus kann man erkennen, dass jede Lösung die Form
+\begin{align*}
+u(x)
+&=
+a_0
+\biggl(
+1-\frac{(\sqrt{\lambda}x)^2}{2!} + \frac{(\sqrt{\lambda}x)^4}{4!}-\dots
+\biggr)
++
+\frac{a_1}{\sqrt{\lambda}}
+\biggl(
+\sqrt{\lambda}x
+-
+\frac{(\sqrt{\lambda}x)^3}{3!} + \frac{(\sqrt{\lambda}x)^5}{5!}-\dots
+\biggr)
+\\
+&= a_0 \cos \sqrt{\lambda}x
++ \frac{a_1}{\sqrt{\lambda}} \sin\sqrt{\lambda}x
+\end{align*}
+hat.
+
+\subsubsection{Erfolgsfaktoren}
+Aus dem eben entwickelten Beispiel kann man einige heuristische Regeln ableiten,
+wie die Funktionenfamilie $u_k$ beschaffen sein muss, damit es
+durchführbar ist.
+\begin{enumerate}
+\item Die Ableitungen $u_k'(x)$ der Funktionen können durch
+Linearkombinationen derselben ausgedrückt werden.
+Im Beispiel ist $u'_k(x)=kx^{k-1}=ku_{k-1}(x)$.
+\item Produkte von Funktionen $u_k(x)$ lassen sich durch Linearkombinationen
+approximieren.
+Im Beispiel ist $u_k(x)u_l(x)=x^kx^k = x^{k+l}=u_{k+l}(x)$.
+\item Beim Einsetzen des Ansatzes in die Differentialgleichungen
+entstehen algebraische Gleichungen, aus denen die Koeffizienten
+bestimmt werden können.
+Im Beispiel 
+\end{enumerate}
+
+\subsubsection{Alternative Lösung für das Beispiel}
+
+\subsubsection{Ein etwas komplexeres Beispiel}
+Wir versuchen, diese Idee auf die Lösung der Gleichung von
+Burgers
+\[
+\frac{\partial u}{\partial t} + u\frac{\partial u}{\partial x}=0
+\]
+anzuwenden.
+Wir suchen $2\pi$-periodische Lösungen für ebensolche Anfangsbedingung
+$u(0,x)=g(x)$.
+Wie im Kapitel~\ref{chapter:fourier} dargelegt wird, sind die Funktionen
+$\cos kx$ und $\sin kx$ geeignete Basisfunktionen für das skizzierte Verfahren.
+Zur Vereinfachung der Rechnung verwenden wir statt der reellen Funktion
+$\cos kx$ und $\sin kx$ die komplexen Exponentialfunktionen $e^{ikx}$.
+Als Ansatz verwenden wir daher
+\[
+u(x) = \sum_{k\in\mathbb Z} c_k(t) e^{ikx}
+\]
+und setzen dies in die Differentialgleichung ein, die dadurch zu
+\[
+\sum_{k\in\mathbb Z} \dot c_k(t) e^{ikx}
+=
+\sum_{j,l\in\mathbb Z} c_j(t)e^{ijx} c_l(t) le^{ilx}
+=
+\sum_{j,l\in\mathbb Z} c_j(t)c_l(t) le^{i(j+l)x}
+\]
+Daraus lesen wir die Gleichungen
+\begin{equation}
+\dot c_k(t) = \sum_{l} lc_l(t)c_{k-l}(t)
+\label{burgers:gewoedgl}
+\end{equation}
+für die Koeffizienten ab.
+Wir haben also ein System von gewöhnlichen linearen Differentialgleichungen
+erster Ordnung gefunden, und damit das partielle Differentialgleichungssystem
+auf ein einfachers System reduziert.
+Allerdings ist von der rechten Seite der Differentialgleichung
+\eqref{burgers:gewoedgl}
+nicht einmal garantiert, dass diese Summen konvergieren.
+
+Für eine approximative Lösung vernachlässigen wir die Koeffizienten $c_k$
+mit $|k|>N$.
+
+
+\subsection{Separation}
+\index{Separation}%
+\subsubsection{Motivation}
+Besonders gut geeignet als Basisfunktionen sind Funktionen, die bereits
+Lösungen einer vereinfachten Variante der partiellen Differentialgleichung
+sind oder die die Randbedingungen leicht wiederzugeben erlauben.
+Zum Beispiel kommt in den Strömungsdifferentialgleichungen häufig der
+Laplace-Operator vor, also könnte es nützlich sein, als Basisfunktionen
+eine Familie von Funktionen $u_n$ heranzuziehen, welche bereits Lösungen
+der Gleichung $\Delta u_n$ sind. In Kapitel~\ref{chapter:lorenz2}) wird
+gezeigt, wie man diese Idee auf das in
+Abschnitt~\label{section:lorenz-modell} vorgestellte Lorenz-Modell
+andwenden kann.
+Wenn man dann die Lösung als Linearkombination $\sum a_nu_n$ dieser Funktionen
+ansetzt, verschwinden alle Terme der Form $\Delta u_n$, was die gewöhnlichen
+Differentialgleichungen für die Koeffizienten $a_n$ dramatisch vereinfachen
+kann.
+In diesem Abschnitt zeigen wir daher an einem Beispiel, wie solche Funktionen
+gefunden werden können. 
+
+\subsubsection{Die Separationsmethode an einem Beispiel}
+Gegeben sei die Differentialgleichung
+\[
+\begin{aligned}
+\Delta u &= \lambda u&&
+\text{auf dem Gebiet $\Omega=\{ (x,y)\,|\, 0<x<a\text{ und }0<y<b\}$}
+\\
+\text{mit}
+\qquad
+u=&0&&\text{auf dem Rand $\partial\Omega$.}
+\end{aligned}
+\]
+Das Gebiet ist ein Rechteck mit Seitenlängen $a$ und $b$.
+Die Relation $\Delta u=\lambda u$ ermöglicht, jedes Vorkommen eines auf
+die Funktion $u$ wirkenden Laplace-Operators durch die Multiplikation
+mit $\lambda$ zu ersetzen, und damit die Differentialgleichung zu vereinfachen.
+
+Die Separationsmethode nimmt jetzt an, dass sich die Lösung der
+Differentialgleichung in der besonders einfachen Form eines Produktes
+$u(x,y)=X(x)\cdot Y(y)$ finden lässt.
+Setzt man diesen Separationsansatz
+\index{Separationsansatz}
+in die Differentialgleichung ein, erhält man
+\[
+\Delta u
+=
+\biggl(
+\frac{\partial^2}{\partial x^2}
++
+\frac{\partial^2}{\partial y^2}
+\biggr)
+X(x)\cdot Y(y)
+=
+X''(x)\cdot Y(y) + X(x)\cdot Y''(y)
+=
+\lambda X(x)\cdot Y(y).
+\]
+Wir interessieren uns für nicht verschwindende Lösungen, wir nehmen daher
+an, dass die Funktionen $X(x)$ und $Y(y)$ nur isolierte Nullstellen haben.
+Ausserhalb dieser Nullstellen ist es erlaubt, durch $X(x)\cdot Y(y)$ zu
+divideren. 
+Damit wird es möglich, die Variablen $x$ und $y$ zu trennen, man
+erhält
+\[
+0
+=
+\frac{X''(x)\cdot Y(y) + X(x)\cdot Y''(y)}{X(x)\cdot Y(y)} - \lambda
+=
+\frac{X''(x)}{X(x)}
++
+\frac{Y''(y)}{Y(y)}
+-
+\lambda
+\qquad\Rightarrow\qquad
+\frac{X''(x)}{X(x)}=-\frac{Y''(y)}{Y(y)}+\lambda.
+\]
+Die linke Seite der Gleichung hängt nur von $x$ ab, die rechte nur von $y$.
+Ändert man $x$ während man $y$ konstant hält, dann kann sich die rechte
+Seite nicht ändern, die linke muss daher auch konstant sein.
+Wenn aber die linke Seite eine konstante ist, dann muss auch die rechte
+eine Konstante sein. 
+Es gibt also eine vorerst noch unbekannte Konstante $\mu$, so dass
+die Funktionen $X(x)$ und $Y(y)$ die Differentialgleichungen
+\begin{equation}
+X''(x) = -\mu X(x)
+\qquad\text{und}\qquad
+Y''(y) = (\lambda+\mu)Y(y)
+\label{skript:separation:gleichungen}
+\end{equation}
+erfüllen.
+Mögliche Werte für $\mu$ werden sich daraus ergeben, welche Werte die
+Differentialgleichungen überhaupt lösbar sind, oder für welche Werte
+sich die gegebenen Randbedinungen erfüllen lassen.
+
+Wir lösen die Differntialgleichungen~\eqref{skript:separation:gleichungen}
+so, dass auch die Randbedingungen $u=0$ auf $\partial\Omega$ erfüllt sind.
+Für die Funktionen $X(x)$ und $Y(y)$ bedeutet dies:
+\[
+\begin{aligned}
+X(0)&=0 & Y(0) &= 0 \\
+X(a)&=0 & Y(b) &= 0.
+\end{aligned}
+\]
+Die linearen Differntialgleichungen~\eqref{skript:separation:gleichungen}
+haben Exponentialfunktionen oder trigonometrische Funktionen als
+Lösungen.
+Da sich mit Exponentialfunktionen die Randbedingungen ohnehin nicht
+einhalten lassen, suchen wir Lösungen als trigonometrische Funktionen.
+Da $X(0)=0$ und $Y(0)=0$ gilt, müssen die Lösungen Sinus-Funktionen sein,
+wir nehmen daher an, dass $X(x)=\sin \kappa x$ und $Y(y)=\sin \nu y$.
+Für diese Funktionen gilt
+\[
+\begin{aligned}
+X''(x) &= -\kappa^2\sin \kappa x = -\kappa^2 X(x)
+&&\text{und}&
+Y''(y) &= -\nu^2\sin \nu x = -\nu^2 Y(y).
+\end{aligned}
+\]
+Die Randbedingungen am rechten Rand sind
+\[
+\begin{aligned}
+X(a) = \sin \kappa a = 0
+&
+Y(b) = \sin \nu b = 0.
+\end{aligned}
+\]
+Da die Sinus-Funktion ihre Nullstellen genau bei den ganzzahligen Vielfachen
+von $\pi$ hat, schliessen wir, dass $\kappa a = k\pi$ und $\nu b = l\pi$
+mit $k,l\in\mathbb Z$ gilt.
+Die Lösungen sind daher von der Form
+\[
+\begin{aligned}
+X(x) &= \sin \frac{xk\pi}{a}
+\qquad \text{und} \qquad
+Y(y) &= \sin\frac{yl\pi}{b}
+\end{aligned}
+\]
+Und damit für die Familie der Lösungesfunktionen
+\[
+u_{kl}(x,y) = \sin \frac{xk\pi}{a} \sin\frac{yl\pi}{b}.
+\]
+Wir berechnen auch noch die Werte von $\mu$ und $\lambda$:
+\begin{align*}
+X''(x)
+&=
+-\mu X(x) = -\frac{k^2\pi^2}{a^2}
+\\
+\Delta u_{kl}
+&=
+-\frac{k^2\pi^2}{a^2} u_{kl}
+-\frac{l^2\pi^2}{b^2} u_{kl}
+=
+-\biggl(\frac{k^2}{a^2}+\frac{l^2}{b^2}\biggr)\pi^2 u_{kl}
+=
+\lambda  u_{kl}
+&&\Rightarrow&
+\lambda_{kl} = - \biggl(\frac{k^2}{a^2}+\frac{l^2}{b^2}\biggr)\pi^2.
+\end{align*}
+Nur ein diskrete Menge von Zahlenwerten $\mu$ sind also möglich, und nur 
+für eine diskrete Menge von Eigenwerten $\lambda$ ist die ursprüngliche 
+Differentialgleichung überhaupt lösbar.
+
+Damit haben wir eine Familie $u_{kl}$, $k,l\in\mathbb Z$ von Funktionen
+gefunden, die Lösungen der Differentialgleichung
+$\Delta u_{kl}=\lambda_{kl} u_{kl}$ sind.
+Das Anfangs gestellt Ziel ist erreicht.
+
+\subsubsection{Verallgemeinerungen}
+Das Beispiel deutet auch an, wie die Methode verallgemeinert werden kann.
+\begin{enumerate}
+\item
+Wenn möglich, wähle ein Koordinatensystem, mit welchem das Definitionsgebiet
+einfach beschrieben werden kann.
+Formuliere die Differentialgleichung in diesen Koordinaten.
+Darstellungen des Laplace-Operator für fast alle wichtigen Koordinatensysteme
+können zum Beispiel in guten Formelsammlungen gefunden werden.
+\item
+Separationsansatz: setze die Lösung als Produkt von Funktionen an,
+jeweils von nur einer Koordinate abhängen, also
+$u(x,y)=X(x)\cdot Y(y)$ in einem $x$-$y$-Koordinatensystem.
+\item
+Setze den Ansatz in die Differentialgleichung ein und versuche die
+Variablen zu trennen. 
+Gesucht ist eine Gleichung, deren linke Seite nur von einer Variablen
+abhängt, die rechte nur von allen anderen.
+Wie im Beispiel folgt, dass beide Seiten konstant sein müssen.
+Damit hat man das Problem darauf reduziert, eine gewöhnliche
+Differentialgleichung für eine Funktion der einen Variable zu lösen.
+Integrationskonstation, die in der Lösung der gewöhnlichen
+Differentialgleichung immer auftreten wird, können oft mit Hilfe
+eines Teils der Randbedingungen eliminiert werden.
+\item
+Durch Iteration von Schritt~3 können Teillösungen $u_n$ gefunden werden,
+die von den Konstanten abhängen, die bei der Separation eingefügt werden
+müssen.
+\end{enumerate}
+

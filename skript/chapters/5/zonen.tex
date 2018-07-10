@@ -1,0 +1,114 @@
+%
+% zonen.tex -- Zonenmodelle
+%
+% (c) 2018 Prof Dr Andreas Müller, Hochschule Rapperswil
+%
+\section{Zonenmodelle}
+\rhead{Zonenmodelle}
+Das einfachste Bilanzmodell kommt mit einer einzigen modellierten
+Grösse, der globalen Mitteltemperatur $T(t)$ aus.
+Es reicht aus, den Zusammenhang zwischen Treibhausgaskonzentration
+und globaler Erwärmung zu erklären.
+Es ist aber zu grob, den zum Beispiel für die thermohaline Zirkulation
+wesentliche Abhängigkeit der Temperatur von der Breite wiederzugeben.
+
+Im Kapitel~\ref{chapter:fluiddynamik} wurde gezeigt, dass der
+Coriolis-Effekt dazu führt, dass die Atmosphäre mindestens im Mittel
+in Zonen organisiert ist, die ums ausgeprägter sind, je schneller
+die Umdrehungsgeschwindigkeit ist.
+Die in Abbildung~\ref{skript:globalezirkulation} sichtbaren Zellen
+zeigen, dass der Austausch von Energie zwischen den Zonen erschwert
+ist, weil die Zellengrenzen für die Strömung undurchlässig sind.
+Die Strömung innerhalb der Zellen und die vergleichsweise schnelle
+Rotation der Erde führt also dazu, dass sich die Atmosphäre in
+Zonen aufteilen lässt, die einzeln mit einer Zonenmitteltemperatur
+modellieren lassen.
+
+Ein erstes solches Modell könnte die Nord- und die Südhalbkugel voneinander
+trennen.
+Der Energieaustausch zwischen den beiden Halbkugeln ist dadurch 
+eingeschränkt, dass die globale Zirkulation den Äquator nicht überquert.
+Die mit den Jahreszeiten schwankende Einstrahlung auf eine Halbkugel
+wird also nicht durch die andere Halbkugel kompensiert, so dass die
+Mitteltemperaturen der Halbkugeln ausgeprägte Jahresrythmen zeigen.
+In Kapitel~\ref{chapter:neigung} wird gezeigt, wie sich daraus ableiten
+lässt, wie die schwankende Neigung der Erdachse zu Eiszeiten führen kann.
+
+Ein einfaches diskretes Modell könnte wie folgt aufgebaut werden.
+Man unterteilt die Atmosphäre in Zonen, numeriert mit $i=1,\dots,n$.
+Die Einstrahlung in eine Zone kann durch Integration der Einstrahlung
+\eqref{skript:einstrahlung:mittlereinsolation}
+über das $\vartheta$-Interval ermittelt werden.
+Wir bezeichnen die Einstrahlung in Zone $i$ mit $Q_i$.
+Wie bei einem Bilanzmodell könnten wir jetzt die zeitliche
+Entwicklung mit einer Gleichung der Form
+\[
+C_i\frac{dT_i}{dt}
+=
+(1-\alpha_i(T_i)) Q_i - \varepsilon_i \sigma T_i^4
+\]
+modellieren.
+Dabei würden wir aber den Wärmeaustausch mit den Nachbarzonen
+vernachlässigen.
+Die Gleichung muss daher mit zusätzlichen Termen für die Nachbarzonen
+korrigiert werden, also
+\begin{equation}
+C_i\frac{dT_i}{dt}
+=
+(1-\alpha_i(T_i)) Q_i - \varepsilon_i \sigma T_i^4
++
+\kappa_{i,i+1} (T_{i+1}-T_i)
+-
+\kappa_{i-1,i} (T_i-T_{i-1}).
+\end{equation}
+Die Konstanten $C_i$ geben die Wärmekapazität einer Zone wieder.
+Je grösser der Anteil ist, zu dem eine Zone mit Wasser bedeckt ist,
+desto grösser ist ihre Wärmekapazität.
+Die Albedo einer Zone hängt ebenfalls von deren Bodenbedeckung ab, 
+daher braucht es eine eigene Albedo-Funktionen $\alpha_i$ für jede
+einzelne Zone.
+Die Ausstrahlung modellieren wir wieder mit dem Stefan-Boltzmannschen
+Gesetz.
+Die Konstanten $\varepsilon_i$ geben einerseits Abweichungen von
+der Strahlung eines schwarzen Körpers wieder oder die Tatsache, dass
+auch der Treibhauseffekt nicht in allen Zonen gleich ist.
+
+Die Konstanten $\kappa_{ij}$ geben die Wärmeleitung zwischen den
+Zonen wieder.
+Indem wir abkürzen
+\[
+k_{ij}
+=
+\begin{cases}
+\kappa_{i,i+1}&\qquad j=i+1
+\\
+-\kappa_{i,i+1}-k_{i-1,i}&\qquad i=j
+\\
+\kappa_{i-1,i}&\qquad j=i-1
+\\
+0&\qquad\text{sonst}
+\end{cases}
+\]
+Die Modellgleichung wird dann
+\begin{equation}
+C_i \frac{dT_i}{dt}
+=
+(1-\alpha_i(T_i)) Q_i - \varepsilon_i \sigma T_i^4
++
+\sum_{j=1}^n k_{ij}T_j.
+\label{skript:zonen:modellgl}
+\end{equation}
+Die Gleichungen
+\eqref{skript:zonen:modellgl}
+enthalten sehr viele experimentell zu bestimmenden Konstanten,
+wir können daher ohne zusätzliche Informationen keine Aussagen
+über die zeitliche Entwicklung der Lösungen machen.
+
+Die Wärmeleitungsgleichung auf der Kugeloberfläche bietet eine
+Grundlage zur Bestimmung der unbekannten Koeffizienten.
+Ein direkterer Weg ist jedoch, nicht eine Aufteilung in Zonen
+zu verwenden, sondern auch die Basisfunktionen für die Beschreibung
+der Temperaturverteilung der Geometrie der Kugel anzupassen.
+Dies ist, was die spektralen Methoden versuchen, die im nächsten
+Abschnitt erläutert werden.
+

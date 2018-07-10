@@ -119,7 +119,7 @@ Nun ist bekannt das $y$ gegen $0$ gehen muss, wenn t erhöht wird.
 Dies geschieht nur, falls $\vert 1+hk \vert < 1$ ist.
 Falls $\vert 1+hk \vert \ge 1$, explodiert oder schwingt die Lösung.
 
-Die identische Rechnung lässt sich auch als Vektorgleichung neu schreiben.
+Die gleiche Rechnung lässt sich als Vektorgleichung neu schreiben.
 \begin{equation}
 	\left( \begin{array}{c}y_{n+1} \\ y_n \end{array} \right) = A \left( \begin{array}{c}y_n \\ y_{n-1} \end{array} \right) = \begin{pmatrix} 
 	1+hk & 0 \\
@@ -134,14 +134,14 @@ Das Potenzieren der Matrix $A$ hat zur Folge, dass die Lösung explodiert, falls
 Unsere Matrix im Beispiel hat nur einen sinnvollen Eigenwert $\lambda = 1+hk$.
 Wir erhalten damit folgende Ungleichung:
 \begin{equation}
-	\vert 1+hk \vert < 1
+	\vert 1+hk \vert < 1.
 \end{equation}
 Dies entspricht der Stabilitätsfunktion des expliziten Euler-Verfahren (vgl. \cite{verzoegert:euler}).
 
 
 \subsubsection{Berechnung der Eigenwerte am Beispiel}
-Am Beispiel sieht die Berechnung komplexer aus, da Werte aus der Vergangenheit wichtig sind.
-Wir berechnen das ganze nur für eine Schrittweite $h=0.2$, also mit 100 Berechnungsschritten (vgl. Abbildung \ref{fig:instab100}).
+Am Beispiel \eqref{bsp} sieht die Berechnung komplexer aus, da Werte aus der Vergangenheit wichtig sind.
+Wir berechnen das Ganze für eine Schrittweite $h=0.2$, also mit 100 Berechnungsschritten (vgl. Abbildung \ref{fig:instab100}).
 Beim Einsetzen erhalten wir: 
 \begin{equation}
 	\left( \begin{array}{c}y_{n+1} \\ y_n \\ y_{n-1} \\ y_{n-2} \\ y_{n-3} \\ y_{n-4}\end{array} \right) =

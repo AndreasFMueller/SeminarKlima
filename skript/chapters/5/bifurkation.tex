@@ -1,0 +1,111 @@
+%
+% bifurkation.tex
+%
+% (c) 2018 Prof Dr Andreas Müller, Hochschule Rapperswil
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage[utf8]{inputenc}
+\usepackage{graphics}
+\usepackage{ifthen}
+\usepackage{color}
+\usetikzlibrary{arrows,intersections,math}
+\begin{document}
+
+\def\Q{342}
+
+\tikzmath{
+	real \epseins, \Teinsoben, \Teinsunten, \Teinsmitte;
+	\epseins = 0.491;
+	\Teinsoben = 304.5;
+	\Teinsunten = 252;
+	\Teinsmitte = (\Teinsoben + \Teinsunten) / 2;
+	real \epszwei, \Tzweioben, \Tzweiunten, \Tzweimitte;
+	\epszwei = 0.689;
+	\Tzweioben = 274.4;
+	\Tzweiunten = 226.5;
+	\Tzweimitte = (\Tzweioben + \Tzweiunten) / 2;
+	real \Teins, \Tzwei, \Tdrei;
+	\Teins = 234.5;
+	\Tzwei = 264.2;
+	\Tdrei = 289.3;
+}
+
+\begin{tikzpicture}[>=latex,thick,scale=10]
+
+\fill[color=red!20]
+	(0,0)--
+	plot[domain=220:320,samples=100]
+	({2*((\Q / ((0.015431 * \x)^4) * (0.5 + 0.2*tanh((\x-265)/10))-0.3)},{\x/100-2.2})
+	--(0,1)--cycle;
+
+\fill[color=blue!20]
+	(1,0)--(1,1)--
+	plot[domain=320:220,samples=100]
+	({2*((\Q / ((0.015431 * \x)^4) * (0.5 + 0.2*tanh((\x-265)/10))-0.3)},{\x/100-2.2})
+	--cycle;
+
+\draw[color=black,line width=1.4pt] 
+	plot[domain=220:320,samples=100]
+	({2*((\Q / ((0.015431 * \x)^4) * (0.5 + 0.2*tanh((\x-265)/10))-0.3)},{\x/100-2.2});
+
+\draw ({2*(0.6-0.3)},0)--({2*(0.6-0.3)},1);
+
+\foreach \e in {0.3,0.4,0.5,0.6,0.7,0.8}{
+	\node at ({2*(\e-0.3)},0) [below] {$\e$};
+	\draw ({2*(\e-0.3)},-0.01)--({2*(\e-0.3)},0.01);
+}
+
+\foreach \T in {220,230,...,320}{
+	\draw (-0.01,{\T/100-2.2})--(0.01,{\T/100-2.2});
+	\node at (-0.01,{\T/100-2.2}) [left] {$\T$};
+}
+
+\draw[color=red,line width=1.4pt,->] 
+	({2*(\epseins-0.3)},{\Teinsunten/100-2.2})--
+	({2*(\epseins-0.3)},{\Teinsmitte/100-2.2});
+\draw[color=red,line width=1.4pt] 
+	({2*(\epseins-0.3)},{\Teinsmitte/100-2.2-0.03})--
+	({2*(\epseins-0.3)},{\Teinsoben/100-2.2});
+\fill[color=red]
+	({2*(\epseins-0.3)},{\Teinsunten/100-2.2}) circle[radius=0.008];
+\fill[color=red]
+	({2*(\epseins-0.3)},{\Teinsoben/100-2.2}) circle[radius=0.008];
+
+\node[color=black] at ({2*(\epseins-0.3)},{\Teinsunten/100-2.2})
+	[left] {$\varepsilon_1$};
+
+\draw[color=blue,line width=1.4pt,->] 
+	({2*(\epszwei-0.3)},{\Tzweioben/100-2.2})--
+	({2*(\epszwei-0.3)},{\Tzweimitte/100-2.2});
+\draw[color=blue,line width=1.4pt] 
+	({2*(\epszwei-0.3)},{\Tzweimitte/100-2.2+0.03})--
+	({2*(\epszwei-0.3)},{\Tzweiunten/100-2.2});
+\fill[color=blue]
+	({2*(\epszwei-0.3)},{\Tzweiunten/100-2.2}) circle[radius=0.008];
+\fill[color=blue]
+	({2*(\epszwei-0.3)},{\Tzweioben/100-2.2}) circle[radius=0.008];
+\node[color=black] at ({2*(\epszwei-0.3)},{\Tzweioben/100-2.2})
+	[right] {$\varepsilon_2$};
+
+\node at 
+	({2*(\epszwei-0.3)},{\Tzweiunten/100-2.2}) [above right] {Snowball Earth};
+
+\fill ({2*(0.6-0.3)},{\Tdrei/100-2.2}) circle[radius=0.008];
+\node at ({2*(0.6-0.3)},{\Tdrei/100-2.2}) [above right] {$T_3^*$};
+\node at ({2*(0.6-0.3)},{\Tdrei/100-2.2}) [below left] {heute};
+
+\fill ({2*(0.6-0.3)},{\Tzwei/100-2.2}) circle[radius=0.008];
+\node at ({2*(0.6-0.3)},{\Tzwei/100-2.2}) [above left] {$T_2^*$};
+
+\fill ({2*(0.6-0.3)},{\Teins/100-2.2}) circle[radius=0.008];
+\node at ({2*(0.6-0.3)},{\Teins/100-2.2}) [above right] {$T_1^*$};
+
+\draw[->] (-0.01,0)--(1.04,0) coordinate[label={$\varepsilon$}];
+\draw[->] (0,-0.01)--(0,1.03) coordinate[label={right:$T\,[\text{K}]$}];
+
+\end{tikzpicture}
+
+\end{document}

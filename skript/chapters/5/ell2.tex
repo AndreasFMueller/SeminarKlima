@@ -1,0 +1,48 @@
+%
+% ell2.tex
+%
+% (c) 2018 Prof Dr Andreas Müller, Hochschule Rapperswil
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage[utf8]{inputenc}
+\usepackage{graphics}
+\usepackage{ifthen}
+\usepackage{color}
+\usetikzlibrary{arrows,intersections}
+\begin{document}
+
+\def\pivalue{3.1415926}
+
+\begin{tikzpicture}[scale=4,>=latex,thick]
+
+\input{elltheta.tex}
+
+\draw[->] (-0.1,0)--({\pivalue+0.1},0) coordinate[label={$\vartheta$}];
+\draw[->] (0,-0.1)--(0,1.6) coordinate[label={right:$s_\gamma(\vartheta)$}];
+
+\node at (0,0) [below right] {$0$};
+
+\draw ({\pivalue/4},-0.02)--({\pivalue/4},0.02);
+\draw ({\pivalue/2},-0.02)--({\pivalue/2},0.02);
+\draw ({3*\pivalue/4},-0.02)--({3*\pivalue/4},0.02);
+\draw ({\pivalue},-0.02)--({\pivalue},0.02);
+
+\node at (0,1) [left] {$1.0$};
+\node at (0,0.5) [left] {$0.5$};
+\node at (0,1.5) [left] {$1.5$};
+
+\node at ({\pivalue/4},0) [below] {$\frac{\pi}4$};
+\node at ({\pivalue/2},0) [below] {$\frac{\pi}2$};
+\node at ({3*\pivalue/4},0) [below] {$\frac{3\pi}4$};
+\node at ({\pivalue},0) [below] {$\pi$};
+
+\foreach \ytic in {0.1,0.2,...,1.5}{
+	\draw (-0.02,\ytic)--(0.02,\ytic);
+}
+
+\end{tikzpicture}
+
+\end{document}

@@ -1,0 +1,20 @@
+#! /bin/bash
+#
+# bbfix -- fix bounding boxes of all EPS files
+#
+# (c) 2018 Prof Dr Andreas Müller, Hochschule Rapperswil
+#
+for f in *.eps
+do
+	echo 
+	echo fixing ${f}
+	tmpfile=`basename ${f} .eps`.bbox.eps
+	pdffile=`basename ${f} .eps`.pdf
+	if [ -r ${tmpfile} -o -r ${pdffile} ]
+	then
+		echo "${f} alread fixed?"
+	else
+		epstool --copy --bbox ${f} ${tmpfile}
+		epstopdf ${tmpfile} ${pdffile}
+	fi
+done

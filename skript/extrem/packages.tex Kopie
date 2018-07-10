@@ -1,0 +1,9 @@
+%
+% packages.tex -- zusätzliche Packages 
+%
+% In diesem File werden \usepackage{}-Aufrufe eingetragen für Packages, die
+% noch nicht im skript.tex aufgerufen werden
+%
+% (c) 2018 Melina Staub, Hochschule Rapperswil
+%
+

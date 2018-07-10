@@ -1,0 +1,56 @@
+%
+% bilanzmodell.tex
+%
+% (c) 2018 Prof Dr Andreas Müller, Hochschule Rapperswil
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage[utf8]{inputenc}
+\usepackage{graphics}
+\usepackage{ifthen}
+\usepackage{color}
+\usetikzlibrary{arrows,intersections}
+\begin{document}
+
+\def\Q{342}
+\def\Teins{234.5} \def\Peins{103}
+\def\Tzwei{264.2} \def\Pzwei{165.5}
+\def\Tdrei{289.3} \def\Pdrei{238.3}
+
+\begin{tikzpicture}[>=latex,thick,scale=1.35]
+
+\foreach \T in {220,230,...,310}{
+	\draw[color=gray!50] ({\T/10-22},0)--({\T/10-22},6);
+	\draw ({\T/10-22},-0.05)--({\T/10-22},0.05);
+	\node at ({\T/10 - 22},-0.1) [below] {$\T$};
+}
+
+\foreach \P in {50,100,...,350}{
+	\draw[color=gray!50] (0,{\P/50-1})--(9,{\P/50-1});
+	\node at (-0.1,{\P/50-1}) [left] {$\P$};
+	\draw (-0.05,{\P/50-1})--(0.05,{\P/50-1});
+}
+
+\draw[->] (-0.05,0)--(9.3,0) coordinate[label={$T\, [\text{K}]$}];
+\draw[->] (0,-0.05)--(0,6.3) coordinate[label={right:$P\,[\text{Wm}^{-2}]$}];
+
+\draw[color=red,line width=1.4pt] plot[samples=100,domain=220:310]
+	({\x/10-22},{(0.6 * (0.015431 * \x)^4) / 50 - 1});
+
+\draw[color=blue,line width=1.4pt] plot[samples=100,domain=220:310]
+	({\x/10-22},{(0.5 + 0.2 * tanh((\x - 265)/10)) * \Q / 50 -1});
+
+\draw ({\Teins/10-22},{\Peins/50 - 1}) circle[radius=0.05];
+\node at ({\Teins/10-22},{\Peins/50 -1 }) [above] {$T^*_1$};
+
+\draw ({\Tzwei/10-22},{\Pzwei/50 - 1}) circle[radius=0.05];
+\node at ({\Tzwei/10-22},{\Pzwei/50 -1 }) [above left] {$T^*_2$};
+
+\draw ({\Tdrei/10-22},{\Pdrei/50 - 1}) circle[radius=0.05];
+\node at ({\Tdrei/10-22},{\Pdrei/50 -1 }) [above] {$T^*_3$};
+
+\end{tikzpicture}
+
+\end{document}

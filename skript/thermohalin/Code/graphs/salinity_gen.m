@@ -10,5 +10,5 @@ density = 1+salinity*0.0008333;
 figure(1)
 plot(salinity,density);
 xlabel('Salinity(psu)')
-ylabel('Density(g/(cm)^3')
+ylabel('Density(g/cm^3)')
 grid on;

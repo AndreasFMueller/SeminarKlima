@@ -1,0 +1,31 @@
+%
+% burgertraining.tex -- Trainingsdaten für Burgers Gleichung
+%
+% (c) 2018 Prof Dr Andreas Müller, Hochschule Rapperswil
+%
+\subsection{Trainingsdaten für die Gleichung von Burgers\label{burgers:training}}
+Damit die Gleichung von Burgers mit einem Machine-Learning-Ansatz gelöst
+werden kann, müssen geeignete Trainingsdaten bereitgestellt werden.
+
+
+\subsubsection{Lösung mit Charakteristiken}
+Glatte Lösungen existieren nur für eine beschränkte Zeit.
+Um das Verhalten für glatte Lösungen zu trainineren, generieren
+wir Lösungen mit Hilfe der Charakteristiken-Methode.
+Wir müssen aber sicherstellen, dass die Lösungen nur so lange verwendet
+werden, bis sich Sprungstellen entwickeln.
+Wir wählen daher das folgende Vorgehen.
+Zunächst erzeugen wählen wir eine zufällige Anfangsfunktion.
+Dann bestimmen wir die Zeit, bis zu der die zu dieser Anfangsbedingungen
+gehörende Funktion keine Sprungstelle entwickelt.
+Für diese Zeit berechnen wir die Lösung mit der Charakteristiken-Methode.
+
+\subsubsection{Sprungstellen}
+Um das Verhalten bei Sprungstellen zu trainieren generieren wir
+einfache Lösungen mit genau einer Sprungstelle.
+Wir verwenden dazu die Hugoniot-Rankine-Bedingung \eqref{burgers:hugonito-rankine}.
+
+
+
+
+

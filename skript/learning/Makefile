@@ -3,7 +3,15 @@
 #
 # (c) 2018 Martin Stypinski, Hochschule Rapperswil
 #
-all:
+all:	images
 
-images:
+images:	compmod.pdf burgerwave.pdf
 
+compmod.pdf:	compmod.tex
+	pdflatex compmod.tex
+
+burgerwave.pdf:	burgerwave.tex bw.tex
+	pdflatex burgerwave.tex
+
+bw.tex:	expl.m
+	octave expl.m

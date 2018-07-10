@@ -1,0 +1,51 @@
+%
+% compmod.tex -- Beispiel zum computational mode
+%
+% (c) 2018 Prof Dr Andreas Müller, Hochschule Rapperswil
+%
+\documentclass[tikz]{standalone}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage[utf8]{inputenc} 
+\usepackage{graphics}
+\usepackage{ifthen}
+\usepackage{color}
+\usetikzlibrary{arrows,intersections}
+\usetikzlibrary{math}
+\begin{document} 
+\begin{tikzpicture}[>=latex,thick]
+
+\input{bw.tex}
+
+\begin{scope}[yshift=0cm]
+\pfada
+\draw[->] (-0.1,0)--(12.5,0) coordinate[label=$x$];
+\draw[->] (0,-0.5)--(0,3.0) coordinate[label={right:$u$}];
+\end{scope}
+
+\begin{scope}[yshift=-3.6cm]
+\pfadb
+\draw[->] (-0.1,0)--(12.5,0) coordinate[label=$x$];
+\draw[->] (0,-0.5)--(0,3.0) coordinate[label={right:$u$}];
+\end{scope}
+
+\begin{scope}[yshift=-7.2cm]
+\pfadc
+\draw[->] (-0.1,0)--(12.5,0) coordinate[label=$x$];
+\draw[->] (0,-0.5)--(0,3) coordinate[label={right:$u$}];
+\end{scope}
+
+\begin{scope}[yshift=-10.8cm]
+\pfadd
+\draw[->] (-0.1,0)--(12.5,0) coordinate[label=$x$];
+\draw[->] (0,-0.5)--(0,3) coordinate[label={right:$u$}];
+\end{scope}
+
+%\begin{scope}[yshift=-16cm]
+%\pfade
+%\draw[->] (-0.1,0)--(12.5,0) coordinate[label=$x$];
+%\draw[->] (0,-0.5)--(0,3) coordinate[label={right:$u$}];
+%\end{scope}
+
+\end{tikzpicture}
+\end{document}

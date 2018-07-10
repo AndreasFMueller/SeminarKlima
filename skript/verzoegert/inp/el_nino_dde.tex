@@ -5,7 +5,7 @@
 \subsection{Gleichung}
 Zur Modellierung des El Niño Effektes wurde im Kapitel \ref{section:dde-nino} die folgende DDE gefunden
 \begin{equation} \label{eldde}
-\dot{T}(t)=-cT(t)+aT(t-\frac{1}{2}\tau_K)-bT(t-(\frac{1}{2}\tau_R+\tau_K))
+\dot{T}(t)=-cT(t)+aT(t-\frac{1}{2}\tau_K)-bT(t-(\frac{1}{2}\tau_R+\tau_K)).
 \end{equation}
 Mit dieser DDE wird die Änderung der Meerestemperaturanomalie $T$ vor der Küste Südamerikas beschrieben.
 Die Konstanten $c,a,b$ müssen so bestimmt werden, dass die DDE ein möglichst gutes Resultat ergibt.
@@ -22,7 +22,7 @@ Die charakteristische Gleichung für die DDE \eqref{eldde} scheint schwierig zu 
 Aus diesem Grund vereinfachen wir die DDE so weit, bis wir einen Ansatz versuchen können.
 Weil $\tau_K \ll \tau_R$ setzen wir $\tau_K = 0$ und erhalten
 \begin{equation}
-	\dot{T}(t)=-cT(t)+aT(t)-bT(t-(\frac{1}{2}\tau_R))
+	\dot{T}(t)=-cT(t)+aT(t)-bT(t-(\frac{1}{2}\tau_R)).
 \end{equation}
 Nun stellen wir eine einfache DDE auf, mit $\alpha = a-c$, $\beta = b$ und $\tau = \frac{1}{2}\tau_R$.
 \begin{equation}
@@ -30,11 +30,11 @@ Nun stellen wir eine einfache DDE auf, mit $\alpha = a-c$, $\beta = b$ und $\tau
 \end{equation}
 In diese DDE setzen wir nun den bekannten Ansatz $e^{\lambda t}$ mit $\lambda \in \mathbb{C}$ ein und erhalten
 \begin{equation} \label{char_eldde}
-	\lambda e^{\lambda t} = \alpha e^{\lambda t} - \beta e^{\lambda(t-\tau)} \qquad\Rightarrow\qquad \lambda = \alpha-\beta e^{-\lambda \tau}
+	\lambda e^{\lambda t} = \alpha e^{\lambda t} - \beta e^{\lambda(t-\tau)} \qquad\Rightarrow\qquad \lambda = \alpha-\beta e^{-\lambda \tau}.
 \end{equation}
-Es sind beliebig viele Lösungen für $\Lambda$ und die Konstanten möglich.
+Es sind beliebig viele Lösungen für $\lambda$ und die Konstanten möglich.
 Wir suchen nun die Lösung, welche dem El Niño Phänomen entspricht.
-Da der El Niño oszilliert (vgl. Abbildung \ref{fig:elnino})\footnote{El Niño oszilliert in grober Annäherung Sinusförmig, ohne Dämpfung}, betrachten wir nur die Lösungen bei denen $\lambda$ rein imaginär wird.
+Da der El Niño in grober Näherung ohne Dämpfung oszilliert (vgl. Abbildung \ref{fig:elnino}), betrachten wir nur die Lösungen bei denen $\lambda$ rein imaginär wird.
 \begin{figure}
 	\centering
 	\includegraphics{verzoegert/inp/figures/elnino.eps}
@@ -43,15 +43,15 @@ Da der El Niño oszilliert (vgl. Abbildung \ref{fig:elnino})\footnote{El Niño o
 \end{figure}
 Wir setzen also $\lambda = i\omega$ und nach der Formel von Euler wird die Gleichung \eqref{char_eldde} umgeschrieben zu 
 \begin{equation}
-	 i\omega = \alpha-\beta(\cos(-\omega \tau)+i\sin(-\omega \tau))
+	 i\omega = \alpha-\beta(\cos(-\omega \tau)+i\sin(-\omega \tau)).
 \end{equation}
 Es ergeben sich daraus zwei Gleichungen für Imaginär- und Realteil
 \begin{equation} \label{bed1}
-  	\alpha-\beta\cos(\omega \tau) = 0 \quad\text{und}\quad \beta\sin(\omega\tau)=\omega
+  	\alpha-\beta\cos(\omega \tau) = 0 \quad\text{und}\quad \beta\sin(\omega\tau)=\omega.
 \end{equation}
 Wenn diese beiden Gleichungen miteinander dividiert werden, erhalten wir die Bedingung
 \begin{equation} \label{bed}
-	\tan(\omega\tau)=\frac{\omega}{\alpha}
+	\tan(\omega\tau)=\frac{\omega}{\alpha}.
 \end{equation}
  
 \subsection{Berechnen der Konstanten}
@@ -64,11 +64,11 @@ Alle Zeitangaben werden in Jahren angegeben.
 
 Aus der Periodendauer ergibt sich $\omega = \frac{2\pi}{T_\text{Periode}} = \frac{\pi}{2}$ und aus der Bedingung \eqref{bed} erhalten wir nun 
 \begin{equation}
-	a-c=\alpha=\frac{\omega}{\tan(\frac{1}{2}\tau_R \omega)}=\frac{\frac{\pi}{2}}{\tan(\frac{\pi}{4})}=\frac{\pi}{2}\approx 1.6
+	a-c=\alpha=\frac{\omega}{\tan(\frac{1}{2}\tau_R \omega)}=\frac{\frac{\pi}{2}}{\tan(\frac{\pi}{4})}=\frac{\pi}{2}\approx 1.6.
 \end{equation}
 Weiter berechnen wir $\beta$ aus \eqref{bed1} und erhalten
 \begin{equation}
-	b=\beta=\frac{\omega}{\sin(\frac{1}{2}\tau_R \omega)}=\frac{\frac{\pi}{2}}{\sin(\frac{\pi}{4})}\approx 2.3
+	b=\beta=\frac{\omega}{\sin(\frac{1}{2}\tau_R \omega)}=\frac{\frac{\pi}{2}}{\sin(\frac{\pi}{4})}\approx 2.3.
 \end{equation}
 
 \subsection{Chaotisches Verhalten}
@@ -87,10 +87,10 @@ Dieser besteht aus $-\varepsilon T(t)^3$ und verhindert explodierende Lösungen.
 Bei zunehmendem Funktionswert nimmt der limitierungsterm mit der dritten Potenz zu und dämpft somit den Funktionswert.
 Wir erhalten die Gleichung
 \begin{equation} \label{eldde_epsilon}
-\dot{T}(t)=-cT(t)+aT(t-\frac{1}{2}\tau_K)-bT(t-(\frac{1}{2}\tau_R+\tau_K))-\varepsilon T(t)^3
+\dot{T}(t)=-cT(t)+aT(t-\frac{1}{2}\tau_K)-bT(t-(\frac{1}{2}\tau_R+\tau_K))-\varepsilon T(t)^3.
 \end{equation}
 In Abbildung \ref{fig:chaos_fix} wird die gleiche Änderung von $a$ gezeigt, aber mit einem $\varepsilon = 0.1$.
-Man sieht sehr gut den Einfluss, den die Konstante $a$ auf die Lösung hat (verändert Frequenz und Amplitude).
+Man sieht nun sehr gut den Einfluss, den die Konstante $a$ auf die Lösung hat (verändert Frequenz und Amplitude).
 \begin{figure}
 	\centering
 	\includegraphics{verzoegert/inp/figures/param_a_e01.eps}

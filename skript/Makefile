@@ -30,6 +30,9 @@ CHAPTERS = 								\
 	chapters/fluiddynamik.tex					\
 	chapters/zonen.tex						\
 	chapters/2/hydrodynamik.tex					\
+	chapters/2/coriolisstroemung.tex				\
+	chapters/2/2d.tex						\
+	chapters/2/pdeloesung.tex					\
 	chapters/2/lorenz.tex						\
 	chapters/2/aufgabe1.tex						\
 	chapters/2/aufgabe2.tex						\
@@ -40,6 +43,13 @@ CHAPTERS = 								\
 	chapters/4/salinitaet.tex					\
 	chapters/4/box.tex						\
 	chapters/4/dimensionslos.tex					\
+	chapters/5/kugelkoordinaten.tex					\
+	chapters/5/kugelfunktionen.tex					\
+	chapters/5/spektral.tex						\
+	chapters/5/spektralegleichungen.tex				\
+	chapters/5/einstrahlung.tex					\
+	chapters/5/halbkugel.tex					\
+	chapters/5/strahlung.tex					\
 	chapters/6/periodisch.tex					\
 	chapters/6/fourierkoef.tex					\
 	chapters/6/vektorgeometrie.tex					\

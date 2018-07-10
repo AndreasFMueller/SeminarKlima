@@ -1,0 +1,419 @@
+%
+% main.tex -- Paper zum Thema "Extreme Ereignisse"
+%
+% (c) 2018 Melina Staub, Hochschule Rapperswil
+%
+\chapter{Extreme Ereignisse\label{chapter:thema}}
+\lhead{Extreme Ereignisse}
+\begin{refsection}
+\chapterauthor{Melina Staub}
+
+
+\section{Einleitung}
+Fast täglich erscheinen Schlagzeiten wie diese in der Zeitung
+
+\begin{itemize}
+\item Wetter-Extreme häufen sich auch in der Schweiz
+\item Seit Lothar wird es der vielleicht stärkste Sturm
+\item Die Schweiz reagiert empfindlich
+\item Unwetter sorgten für eine chaotische Nacht
+\item Schweiz besonders stark vom Klimawandel betroffen
+\end{itemize}
+
+Doch wieviel Wahrheit steckt in diesen Headlines? Sind sie nur Hirngespinste der Nachrichtenindustrie? Wollen uns die Medien täuschen oder geht da draussen wirklich etwas vor sich?
+
+Das die Natur im Wandel ist, steht ausser Frage. In der Geschichte der Erde waren extreme Ereignisse keine Seltenheit. Ob Eiszeiten, Trockenperioden oder lang anhaltende Regenschauer, wohl jedes vorstellbare Ereignis ist vorgekommen. Vulkanausbrüche pumpten Kohlendioxid in die Atmosphäre und Meteoriteneinschläge lösten Tsunamis aus, welche die Landflächen fluteten. Die Erde hat sich von Zeit zu Zeit und nach jedem Ereignis erholt oder angepasst. Doch seit Mitte des 18. Jahrhunderts und somit mit der Industrialisierung hat sich viel verändert.
+
+Vergessen Sie für die nachfolgenden Seiten ihre Vorurteile und Feststellungen rund um den Klimawandel und lassen sie sich am Ende von der Wahrheit überzeugen. Was bereits klar ist, die Erde wird den Klimawandel überstehen, wie sie auch schon extreme Trockenperioden oder Eiszeiten überlebt hat. Doch was wird mit uns?
+
+
+\section{Was sind extreme Ereignisse?}
+Die Diskussionen um den Klimawandel erregt die Gemüter auf der ganzen Welt. Einige verleugnen ihn und andere schenken im Glauben und tun alles um ihn zu stoppen. Besonders extreme Ereignisse wie starke Regenfälle und die daraus resultierenden Überschwemmungen und Verwüstungen bleiben uns stark in Erinnerung.
+Ebendiese Ereignisse weichen stark von den Durchschnittswerten ab und hinterlassen oft grosse Schäden und eine ebenso grosse Schadensummen. Doch nicht nur überdurchschnittlich starke Ereignisse, sondern auch sehr kleine wie Trockenperioden oder Wasserknappheit sind extreme Ereignisse.
+Jetzt stellt sich die Frage, ob diese extremen Ereignisse natürlichen Ursprungs sind, also  die Anordnung durch den Zufall bestimmt wird und auch ohne den Einfluss des Menschen passiert wären oder ob diese auf den Klimawandel zurückzuführen sind und somit eine unnatürliche Häufung aufzeigen.
+
+
+\subsection{Aufzeichnungen in der Schweiz}
+In den \textit{Schweizer Wetterjahresbücher} und \textit{Analen der Schweizerischen Meteorologischen Zentralanstalt} lassen sich Wetter- und Klimadaten bis ins Jahr 1864 abrufen. Umfangreiche Tabellen und Berichte sind für Wetter- und Klimainteressierte ein historisch sehr bedeutender Datenschatz. 
+Der Monatliche Wetterverlauf wurde ab dem Jahr 1911 geführt und  extreme Wetterereignisse in Berichten beschrieben und aufgezeichnet (Abbildung \ref{Analen}). Die Analen wurden 2011 durch den Klimareport abgelöst. Seit dem Jahr 2011 sind der Klimabericht wie auch die Analen für die Öffentlichkeit zugänglich und können Online eingesehen werden.
+Mit diesen langen und genauen Klimadaten, lässt sich tief in die Vergangenheit des Schweizer Klima blicken. Ein Blick in die Klima-Vergangenheit wird möglich.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.8\textwidth]{extrem/Analen.jpg}
+\caption{Originaltext aus den Annalen 1910 zur Hochwasserkathastrophe vom Juni 1910. (Quelle: MeteoSchweiz)}
+\label{Analen}
+\end{figure}
+
+
+\subsection{Homogene Messreihen}
+Um die Klimadaten der letzten 150 Jahren miteinander vergleichen zu können, müssen die Messergebnisse vor dem Vergleich homogensisiert werden (Abbildung \ref{Homogen}). Die Modernisierung der Messgeräte,  eine Verschiebung des Messstandortes oder die Veränderung der Umgebung führen zu anderen Messwerten als beispielsweise das Vorgänger Messgerät. Die Daten würden einen verfälschten Vergleich liefern, wenn man sie ohne homogenisierung miteinander vergleicht.
+Wenn man den Messstandort verlegt, verändert sich die Höhenlage. Dies wirkt sich auf die Temperaturmessung aus, da sich diese mit der Höhe im Mittel verschiebt. Die Messreihe wird ungenau und ein Verfälschtes Bild zeichnet sich ab, welches nichts mit dem Klima zu tun hat.
+Um diese Fehlinterpretationen zu vermeiden, sind in den \textit{Schweizer Wetterjahresbücher} und \textit{Analen der Schweizerischen Meteorologischen Zentralanstalt} sämtliche Messwerte homogenisiert worden. Ein direkter Vergleich wird so möglich.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.6\textwidth]{extrem/Homogen.jpg}
+\caption{Entwicklung der Anzahl Sommertage (Maximum-Temperatur $\ge 25^{\circ}$C ) pro Jahr an der Messstation Zürich/Fluntern seit 1901, gerechnet aus der originalen und homogenen Temperatur-Messreihe. Der geglättete Verlauf ist rot eingezeichent. (Quelle: MeteoSchweiz)}
+\label{Homogen}
+\end{figure}
+
+
+\section{Unwetterlotto}
+Um herauszufinden ob extreme Ereignisse nicht durch den Zufall bestimmt werden, benötigen wir vorerst ein Modell um diese Berechnungen durchführen zu können.
+Hierbei bedienen wir uns dem Glücksspiel, genauer gesagt dem Lotto.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.4\textwidth]{extrem/Kiosk.pdf}
+\caption{Unwetterlottoschein exklusive erhältlich für Mathsem Teilnehmer.}
+\label{Kiosk}
+\end{figure}
+
+Exklusiv für die Leserinnen und Leser dieses Seminarbuches, steht der Unwetterlottoschein zur Verfügung, welchen man am Zeitungskiosk \ref{Kiosk}) erwerben und statt auf Zahlen auf Unwetterereignisse tippen kann. Auf dem Unwetter-Lotto-Schein (Abbildung \ref{Lottoschein}) kann wie beim normalen Zahlenlotto aus verschiedenen Zahlen ausgewählt, und seine Tipps abgeben werden. Danach gibt es eine Unwetterziehung, welche man mit seinen abgegebenen Tipps vergleichen kann.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.7\textwidth]{extrem/Lottoschein.pdf}
+\caption{Unwetterlottoschein.}
+\label{Lottoschein}
+\end{figure}
+
+Die Kugeln 1-30 beschreiben unsere Totalen Ereignisse, welche wir \textcolor{red}{\textbf{N}} nennen. Die fünf Wolken stehen für die Anzahl Kreuze welche wir machen dürfen. Sprich, welche Unwetter \textcolor{blue}{\textbf{n}} wir aus den totalen Ereignissen 1-30 auswählen. Die bei der Unwetterziehung gezogenen Ereignisse \textcolor{green}{\textbf{M}} ist unsere Stichprobe aus allen Ereignissen.
+
+Jetzt stellen wir uns die Entscheidende Frage: Wie Wahrscheinlich ist en 5er im Unwetter-Lotto (Abbildung \ref{WahrscheinlichkeitUnwetterlotto})zu erhalten? Diese Wahrscheinlichkeit bezeichnen wir mit \textcolor{yellow}{\textbf{k}}.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.6\textwidth]{extrem/Lottoscheinausgefuellt.pdf}
+\caption{Unwetterlottoschein mit den Variabeln und der Unwetterziehung.}
+\label{Lottoscheinausgefuellt}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.6\textwidth]{extrem/wkeitlotto.pdf}
+\caption{Wahrscheinlichkeit einen 5er im Unwetterlotto zu erhalten.}
+\label{WahrscheinlichkeitUnwetterlotto}
+\end{figure}
+
+\subsection{Lottoproblem}
+Mit dem Unwetterlotto wurde das bekannte Lottoproblem beschrieben. Ein Experiment ohne zurücklegen. Mit jeder Ziehung ändert sich im Laufe des Experiments die Grundgesamtheit und somit auch die Wahrscheinlichkeit ein bestimmtes Ereignis zu ziehen. Der Ziehmodus ist gegeben und somit auch der Gewinn bekannt.
+
+
+\subsection{Unwetter Verteilung}
+Die Unwetter Verteilung (Abbildung \ref{UnwetterVerteilung}) und das oben beschriebene Lottoproblem liefert uns folgendes Ergebnis:
+
+
+Wie wahrscheinlich ist es...
+
+\begin{itemize}
+\item ... auf einem Lottozettel mit \textcolor{red}{\textbf{N}} Feldern...
+\item ... auf welchem man \textcolor{blue}{\textbf{n}} Unwetter ankreuzen kann...
+\item ... und bei der Ziehung \textcolor{green}{\textbf{M}} Unwetter gezogen werden...
+\item ... genau \textcolor{yellow}{\textbf{k}} Richtige zu haben?
+\end{itemize}
+
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.5\textwidth]{extrem/Unwettervert.pdf}
+\caption{Unwetterverteilung mit den Ereignissen, ergeben die Wahrscheinlichkeit für den 5er im Unwetterlotto.}
+\label{UnwetterVerteilung}
+\end{figure}
+
+\section{Die hypergeometrische Verteilung}
+Um die Frage zu beantworten ob sich das Klima verändert und ob immer häufiger extreme Ereignisse auftreten, bedienen wir uns aus dem Werkzeugkasten der Statistik. Die Unwetter Verteilung ist somit nichts anderes als die Hypergeometrische Verteilung. 
+
+\begin{align*}
+P(X = k) = 
+\frac{ \binom{M}{k} \binom{N-M}{n-k}}{ \binom{N}{n} }
+\end{align*}
+
+Sie beschreibt die Wahrscheinlichkeit aus N gegebenen Elementen, mit M Elementen einer speziellen Eigenschaft, und einer Stichprobe aus n Elementen genau k Treffer zu erzielen. 
+Anders als die Binomialverteilung, ist die Hypergeometrische Verteilung ein Experiment ohne zurücklegen. Sprich die Wahrscheinlichkeit ändert sich mit jeder Ziehung.
+
+
+
+\subsection{Herleitung}
+Die hypergeometrische Verteilung setzt sich aus verschiedenen Binomialkoeffizienten
+
+\begin{align*}
+\binom{n}{k} = \frac {n!}{k! \cdot (n-k)!} 
+\end{align*}
+
+zusammen.
+
+Um im Kapitel ~\ref{Beispiele} \nameref{Beispiele} die Klimadaten auszuwerten, werden in der folgenden Herleitung der hypergeometrischen Verteilung die folgenden Werte für die entsprechenden Variabeln verwendet
+\begin{align*}
+N = 75 \quad \quad \quad \quad \quad \quad 
+n = 7 \\
+M = 10 \quad \quad \quad \quad \quad \quad 
+k = 3
+\end{align*}
+
+Die Wahrscheinlichkeit P(X = 3) ergibt sich aus:
+
+Anzahl der Möglichkeiten, genau 3 extreme Ereignisse (und damit genau 4 normale) Ereignisse auszuwählen, dividiert durch die Anzahl Möglichkeiten 7 Ereignisse aus allen Ereignissen auszuwählen.
+ 
+Dabei gibt es
+\begin{align*}
+\binom{M}{k} = \binom{10}{3} = 120
+\end{align*}
+
+Möglichkeiten, genau 3 extreme Ereignisse auszuwählen.
+
+Zudem gibt es 
+\begin{align*}
+\binom{N-M}{n-k} = \binom{75-10}{7-3} = \binom{65}{4} = 677040
+\end{align*}
+
+Möglichkeiten, genau 4 normale Ereignisse auszuwählen.
+
+Da jede Möglichkeit 3 extreme Ereignisse mit jeder Möglichkeit 4 normale Ereignisse auszuwählen kombiniert werden kann, ergibt sich
+\begin{align*}
+\binom{M}{k} \cdot \binom{N-M}{n-k} = \binom{10}{3} \cdot \binom{75-10}{7-3} = 120 
+\cdot 677040 = 81244800
+\end{align*}
+
+Möglichkeiten für genau 3 extreme und 4 normale Ereignisse auszuwählen.
+
+
+Zusätzlich gibt es insgesamt
+\begin{align*}
+\binom{N}{n} = \binom{75}{7} = 1984829850
+\end{align*}
+
+Möglichkeiten, 7 Ereignisse aus allen Ereignissen zu ziehen.
+
+
+Für k = 3 erhalten wir somit die Wahrscheinlichkeit
+\begin{align*}
+P(X = 3) = \frac{ \binom{10}{3} \cdot \binom{75-10}{7-3}}{ \binom{75}{7} } = \frac{ 120 \cdot 677040}{ 1984829850 } = 0.0409329
+\end{align*}
+
+Sprich in rund 4.09 \% aller Fälle werden genau 3 extreme und 4 normale Ereignisse vorkommen. Diese Berechnung lässt sich mit allen X = k durchführen, dies wird im Kapitel ~\ref{Dichtehyper} \nameref{Dichtehyper} gemacht.
+
+
+\subsection{Dichte der hypergeometrischen Verteilung} \label{Dichtehyper}
+Im vorangehenden Beispiel wurde die Dichte der hypergeometrischen Verteilung berechnet für k = 3. Für alle P(X = k) ergeben sich folgende Wahrscheinlichkeiten (Abbildung \ref{TabHyper}).
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.2\textwidth]{extrem/TabHyper.pdf}
+\caption{Wahrscheinlichkeiten P(X=k) aller Ereignisse.}
+\label{TabHyper}
+\end{figure}
+
+Die Wahrscheinlichkeit beschreibt dabei wie wahrscheinlich es ist, genau k extreme Ereignisse in den letzten 10 Jahren zu finden.
+Beachte, das die Werte N, M und n das Experiment beschreiben und nicht mehr verändert werden. Die Variable x hingegen kann alle möglichen Ausgänge des Experiments annehmen, in unserem Beispiel also von 0 bis 7.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.8\textwidth]{extrem/Hyper.pdf}
+\caption{Die Dichte der hypergeometrischen Verteilung zeigt auf, wie wahrscheinlich es ist genau k Ereignisse in den letzten 10 Jahren vorzufinden.}
+\label{Hyper}
+\end{figure}
+
+In der Grafik (Abbildung \ref{Hyper}) ist sehr gut ersichtlich, das die Wahrscheinlichkeit bei genau einem extremen Ereignis in den letzten 10 Jahren am höchsten ist. Wohingegen genau 3 Ereignisse nur noch eine Wahrscheinlichkeit von 4.09\% aufweisen, was bereits sehr unwahrscheinlich ist. Häufungen von Ereignissen welche die Menge 3 überschreiten, sind sowas von unwahrscheinlich, das sie kaum natürlichen Ursprungs sein können.
+
+\subsection{Sind viele extreme Ereignisse wahrscheinlich?}
+Stellt man sich nun die Frage ob viele extreme Ereignisse wahrscheinlich sind, muss berechnet werden wie wahrscheinlich es ist k oder mehr Ereignisse in den letzten M Jahren zu erhalten. 
+
+\begin{align*}
+P($X \ge $I ) = \sum_{k=I}^n {P ($x = $k)}
+\end{align*}
+
+Dies ist die komplementäre Verteilfunktion der hypergeometrischen Verteilung. Für unser Beispiel ergeben sich folgende Werte
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.3\textwidth]{extrem/TabExt.pdf}
+\caption{Wahrscheinlichkeit P(X grösser als = I aller Ereignisse}
+\label{TabExt}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.8\textwidth]{extrem/HyperExt.pdf}
+\caption{Die komplementäre Verteilfunktion der hypergeometrischen Verteilung zeigt auf, wie wahrscheinlich es ist mehr als k Ereignisse in den letzten 10 Jahren vorzufinden.}
+\label{HyperExt}
+\end{figure}
+
+
+\section{Hypothesentest}
+Hypothesentests werden immer dann durchgeführt, wenn man aus erhobenen Daten etwas nachweisen möchte, zum Beispiel das sich extreme Ereignisse in den letzten Jahren häufen. Der Grundsatz bei allen statistischen Tests ist, das wir das Gegenteil widerlegen müssen - wir müssen also widerlegen, dass extreme Ereignisse in den letzten Jahren willkürlich verteilt sind. Das heisst die Häufung entscheidet der Zufall und keine Unbekannte von ausserhalb.
+
+Zu vergleichen ist ein Hypothesentest mit einer Gerichtsverhandlung. Im Zweifel für den Angeklagten. Es muss davon ausgegangen werden, dass die Hypothese stimmt, auch wenn man es nicht weiss bis das Gegenteil bewiesen werden kann. Hierfür benötigt es genügend Beweise, welche die Schuld oder hier die Hypothese widerlegen, ohne das Zweifel aufkommen können. Falls ungenügend viele Beweise vorliegen, muss davon ausgegangen werden, dass die Hypothese stimmt oder eben der Angeklagte unschuldig ist.
+Zuerst muss eine Nullhypothese aufgestellt werden, welche das Gegenteil besagt von dem zu beweisenden Ziel.
+
+\subsection{Nullhypothese}
+Unsere Nullhypothese welche geprüft werden soll, heisst somit:
+
+In den letzten Jahren gab es keinen Wandel oder eine Häufigkeit von extremen Ereignissen. 
+
+Kurz gesagt:
+\begin{itemize}
+\item Das Klima verändert sich nicht
+\item Alles bleibt beim alten
+\item Der Zufall bestimmt die Anordnung der (extremen) Ereignisse
+\end{itemize}
+
+Diese Nullhypothese muss nun widerlegt werden, um den Klimawandel zu beweisen.
+
+\subsection{Signifikanzniveau}
+Die Grenze für die Widerlegung der Nullhypothese beschreibt die statistische Signifikanz $\alpha$. Über diesen Wert wird eine bestimmte Irrtumswahrscheinlichkeit abgeschätzt. 
+Bei der Festlegung dieser Schwelle wird bedacht, was für Konsequenzen es hätte, das ein beobachteter Unterschied nur zufällig erfolgt. Sind die Folgen gravierend, wählt man eher ein tiefes Niveau (1 \% statt 5\%).
+
+Bei einem Medikament wird daher eher ein tiefes Signifikanzniveau gewählt. Als Vergleich, beim Nachweis der Existenz des Higgs-Bosons\footnote{%
+Das Higgs-Boson ist Elementarteilchen (Benannt nach dem britischen Physiker Peter Higgs), deren Existenz wurde im Juli 2012 durch das CERN (mit dem Larce Hadron Collider LHC) bestätigt.} wurde ein noch viel strengeres Kriterium gewählt, es entspricht einem Wert von 1 in 3.5 Millionen. Da extreme Ereignisse nicht direkt Lebensbedrohlich sind, wird ein $\alpha$ = 5% gewählt.
+Falls die Nullhypothese richtig ist, darf die Wahrscheinlichkeit dafür das sie fälschlicherweise abgelehnt wird, nicht unter 5\% fallen.
+In unserem Beispiel bedeutet das:
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.8\textwidth]{extrem/Signi.pdf}
+\caption{Die komplementäre Verteilfunktion der hypergeometrischen Verteilung mit der $\alpha$ Schranke.}
+\label{Signifikanzniveau}
+\end{figure}
+
+Eine Häufung von 3 oder mehr extremen Ereignissen wären nicht mehr durch den Zufall bestimmt. 
+
+Konkret: Wenn von den 7 extremsten Ereignissen der letzten 75 Jahre 3 oder mehr in den letzten 10 Jahren waren, müssen wir auf den Klimawandel schliessen.
+
+
+\section{Messpunkte Schweiz} \label{Beispiele}
+Um eine möglichst grosse Vielfalt von Messreihen zu bekommen, werden verschiedene Messpunkte in der Schweiz angeschaut. 
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.8\textwidth]{extrem/Schweiz.pdf}
+\caption{Gewählte Messpunkte in der Schweiz.}
+\label{MesspunkteSchweiz}
+\end{figure}
+
+Die Messreihen der Standorte Basel Binningen, Zürich-Fluntern, Lugano und Davos sind von MeteoSchweiz und sind öffentlich zugänglich. Die Daten sind bereits homogenisiert.
+Die Messdaten der Gletscher werden vom Schweizerischen Gletschermessnetz GLAMOS\footnote{%
+Die Veränderungen der Schweizer Gletscher werden jährlich gemessen. Das Messnetz GLAMOS wird getragen durch die ETH Zürich und die Universitäten Fribourg und Zürich mit finanzieller Unterstützung durch das Bundesamt für Umwelt BAFU, MeteoSchweiz und SCNAT.}ebenfalls öffentlich zugänglich zur Verfügung gestellt.
+
+\section{Temperatur}
+
+
+\subsection{Jahres Mitteltemperatur}
+Die Jahres Mitteltemperatur ist wie folgt definiert
+
+\begin{definition}
+Mittlere Jahrestemperatur in $^{\circ}$C.
+\end{definition}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=1.0\textwidth]{extrem/JMittel.pdf}
+\caption{BLaBLa}
+\label{JMittel}
+\end{figure}
+
+
+
+\subsection{Sommertage}
+Ein Sommertag ist wie folgt definiert
+
+\begin{definition}
+Maximale Temperatur $\ge 25^{\circ}$C und langjähriger Mittelwert (1961 - 1990).
+\end{definition}
+
+
+\subsection{Tropennächte}
+Eine Tropennacht ist wie folt definiert
+
+\begin{definition}
+Minimale Temperatur $\ge 20^{\circ}$C und langjähriger Mittelwert (1961 - 1990).
+\end{definition}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=1.0\textwidth]{extrem/Tropennacht.pdf}
+\caption{BLaBLa}
+\label{Tropennacht}
+\end{figure}
+
+\subsection{Hitzetage}
+Ein Hitzetag ist wie folgt definiert
+
+\begin{definition}
+Maximale Temperatur $\ge 30^{\circ}$C und langjähriger Mittelwert (1961 - 1990).
+\end{definition}
+
+
+\subsection{Frosttage}
+Ein Frosttag ist wie folgt definiert
+
+\begin{definition}
+Minimale Temperatur $< 0^{\circ}$C und langjähriger Mittelwert (1961 - 1990).
+\end{definition}
+
+
+\subsection{Eistage}
+Ein Eistag ist wie folgt definiert
+
+\begin{definition}
+Maximale Temperatur $< 0^{\circ}$C und langjähriger Mittelwert (1961 - 1990).
+\end{definition}
+
+
+\section{Niederschlag}
+
+
+\subsection{Jahresniederschlag}
+Der Jahresniederschlag ist wie folgt definiert
+
+\begin{definition}
+Jahresniederschlag in mm.
+\end{definition}
+
+
+\subsection{Neuschnee}
+Die Neuschneemenge ist wie folgt definiert
+
+\begin{definition}
+Neuschneemenge, Jahressumme der täglichen Aufzeichnung in cm.
+\end{definition}
+
+
+\section{Gletscher}
+
+
+\subsection{Grosser Aletschgletscher}
+
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=1.0\textwidth]{extrem/Aletsch.jpg}
+\caption{Der grosse Aletschgletscher im Wandel der Zeit. Links im Jahr 2015 und rechts im Jahr 2010.}
+\label{Aletsch}
+\end{figure}
+
+\subsection{Vadret da Morteratsch}
+
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=1.0\textwidth]{extrem/Morteratsch.jpg}
+\caption{Der Morteratschgletscher im Wandel der Zeit. Links im Jahr 2015 und rechts im Jahr 1985.}
+\label{Morteratsch}
+\end{figure}
+
+
+\section{Ist die Klimaerwärmung in der Schweiz real?}
+
+
+
+\rhead{Schlussfolgerung}
+
+
+\rhead{Abschnitt}
+
+
+
+\printbibliography[heading=subbibliography]
+\end{refsection}
