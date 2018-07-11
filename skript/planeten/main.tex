@@ -274,33 +274,17 @@ Wolken regnen, wenn sich die mikroskopischen Wassertropfen oder Eiskristalle ver
 Durch Zusammenfassen von Strahlungsbilanz und Wasserkreislauf erhält man folgendes Gleichungssystem:
 \begin{equation}
 \begin{matrix}
-<<<<<<< HEAD
-\dot{T} = &  & \xi_1 \left(P_{\text{in}}(C) - P_{\text{out}}(T, H) \right) &
-\\
-\dot{H} = & \xi_2 P_{\text{in}}(C) & - \xi_3 H \Delta T &
-\\
-\dot{C} = &                        &   \xi_3 H \Delta T & - \xi_4 C
-=======
 \dot{T_S} = & \xi_1 \sigma T_{\astrosun}^4 \left( \frac{R_{\astrosun}}{a_{\text{planet}}} \right) ^2 \cdot (0.65 \cdot C + 0.15) && - \xi_1 4 \pi R^2 \sigma T_{S}^4  (1 - \xi_8 \cdot H)\\
 \dot{H}   = & \xi_2 T_S              & - \xi_3 H \frac{\xi_9}{C T_S}          & \\
 \dot{C}   = &                        &   \xi_3 H \frac{\xi_9}{C T_S}          & - \xi_4 C
->>>>>>> 698e0fdf7d5ad6102632a1d5eda72eb70e6eaa8a
 \end{matrix}
 \end{equation}
 Um zu verhindern, dass eine Luftfeuchtigkeit oder Wolkenabdeckung von über 100\% auftritt, werden zu gewissen linearen Termen noch den gleichen Term mit grosser Potenz dazu addiert. Somit wird der Effekt verstärkt wenn die Grösse nahe an $1$ also $100\%$ kommt. Das mit Anpassungen für gesättigten Wasserdampf und Wolkenabdeckung versehene Gleichungssystem lautet somit:
 \begin{equation}
 \begin{matrix}
-<<<<<<< HEAD
-\dot{T} = & & \xi_1 \left(P_{\text{in}}(C) - P_{\text{out}}(T, H) \right) &
-\\
-\dot{H} = & \xi_2 P_{\text{in}}(C) & - \xi_3 (H + H^9) \Delta T   &
-\\
-\dot{C} = &                        &   \xi_3 (H + H^9) \Delta T   & - \xi_4 (C + C^5)
-=======
 \dot{T_S} = & \xi_1 \sigma T_{\astrosun}^4 \left( \frac{R_{\astrosun}}{a_{\text{planet}}} \right) ^2 \cdot (0.65 \cdot C + 0.15) && - \xi_1 4 \pi R^2 \sigma T_{S}^4  (1 - \xi_8 \cdot H)\\
 \dot{H}   = & \xi_2 P_{\text{in}}(C) & - \xi_3 (H + H^9) \frac{\xi_9}{C T_S}   &                   \\
 \dot{C}   = &                        &   \xi_3 (H + H^9) \frac{\xi_9}{C T_S}   & - \xi_4 (C + C^5)
->>>>>>> 698e0fdf7d5ad6102632a1d5eda72eb70e6eaa8a
 \end{matrix}
 \end{equation}
 
