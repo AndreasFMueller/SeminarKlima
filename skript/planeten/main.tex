@@ -106,7 +106,7 @@ Durch eine Simulation des Modells im Zeitbereich sollte dann eine Aussage über 
 	Andere klimabestimmenden atmosphärischen Gase wie $\text{CO}_\text{2}$ werden nicht simuliert, um das Modell im gegebenen Rahmen umzusetzen.
 	Das Modell sollte erdähnliche Bedingungen bewusst erstreben, um zu sehen ob diese auf den Planeten Mars und Venus auch bestehen können.
 Auf Grund der zum Teil starken Vereinfachungen müssen einzelne Parameter abgeschätzt werden. Durch diese freien Parametern kann das System getrimmt werden um überhaupt plausible Lösungen zu erreichen. Diese Parameter sind mit $\xi$'s gekennzeichnet.
-	Abbildung \ref{planeten_model} zeigt eine Übersicht des Modells. Die einzelnen Bestandteile werden im Folgenden beschrieben.
+	Abbildung \ref{planeten:model} zeigt eine Übersicht des Modells. Die einzelnen Bestandteile werden im Folgenden beschrieben.
 
 %Des Weiteren ist es für den Menschen interessant Planeten mit Erdähnlichen Zuständen anzutreffen.
 
@@ -127,7 +127,7 @@ Auf Grund der zum Teil starken Vereinfachungen müssen einzelne Parameter abgesc
 	\centering
 	\includegraphics[width=0.8\textwidth]{planeten/Pictures/Model.eps}
 	\caption{Modell-Übersicht}
-	\label{planeten_model}
+	\label{planeten:model}
 \end{figure}
 
 \subsection{Strahlungsbilanz}
@@ -136,8 +136,13 @@ Die Strahlungsbillanz wird in Kapitel \ref{skript:grundlagen:strahlung} ausführ
 
 Damit die Durchschnittstemperatur eines Planeten stabil ist, muss die Leistungsbilanz Null sein.
 \begin{equation}
-\dot{T_S} = \xi_1(P_{\text{in}} - P_{\text{out}})
+\dot{T_S} \propto P_{\text{in}} - P_{\text{out}}
 \end{equation}
+Die Planeten sind jedoch nicht gleich gross. Damit die Auswirkung eines Strahlungsungleichgewicht für alle Planeten gleich ist, muss die Leistung auf eine Flächeneinheit normalisiert werden. Somit hat eine Stück Fläche mit der Atmosphäre darüber auf jedem Planeten die gleiche Wärmekapazität.
+\begin{equation}
+\dot{T_S} = \xi_1 \frac{P_{\text{in}} - P_{\text{out}}}{A} = \xi_1 \frac{P_{\text{in}} - P_{\text{out}}}{4 \pi R_{\text{planet}}^2}
+\end{equation}
+
 %TODO anderer begriff für Aktives Planet-Inneres .. geothermie? (nur für erde)
 Die Eintreffende Leistung $P_{\text{in}}$ besteht primär aus der absorbierten Sonnenstrahlung. Andere Energiequellen wie ein Aktives Planet-Inneres und die Energie aus Gezeiten wird vernachlässigt. Es gilt:
 %TODO P oder S für leistung pro fläche
@@ -148,10 +153,10 @@ Dabei ist $\alpha$ die Albedo des Planeten.
 
 Dabei ist $\sigma$ die Stefan-Boltzmann-Konstante, $T_{\astrosun}$ \& $R_{\astrosun}$ die Oberflächentemperatur und Radius der Sonne, $ A_{\text{planet}}$ die mittlere Distanz des Planeten zur Sonne und $\alpha$ die Albedo des Planeten.
 
-Die Abgestrahlte Leistung besteht praktisch ausschliesslich aus der Black-body Strahlung, welche sich aus der Durchschnittstemperatur $T$ und dem Radius $R$ des Planeten bestimmen lässt. Diese Leistung bleibt jedoch teilweise durch den Treibhauseffekt in der Atmosphäre gefangen. Es gilt: 
+Die Abgestrahlte Leistung besteht praktisch ausschliesslich aus der Black-body Strahlung, welche sich aus der Durchschnittstemperatur $T$ und dem Radius $R_{\text{planet}}$ des Planeten bestimmen lässt. Diese Leistung bleibt jedoch teilweise durch den Treibhauseffekt in der Atmosphäre gefangen. Es gilt: 
 
 \begin{equation}
-P_{\text{out}} = 4 \pi R^2 \sigma T_{S}^4 \epsilon
+P_{\text{out}} = 4 \pi R_{\text{planet}}^2 \sigma T_{S}^4 \epsilon
 \end{equation}
 Dabei ist $\epsilon$ der Anteil der durchdringenden Leistung.
 
@@ -159,28 +164,29 @@ Dabei ist $\epsilon$ der Anteil der durchdringenden Leistung.
 
 \subsection{Albedo}
 
-Die Albedo wird als Funktion der prozentualen Wolkenabdeckung $C$ modelliert. Es wird ein linearer Zusammenhang erwartet. Unter der Annahme, dass bei allen Planeten die Oberflächenalbedo $\alpha_{surface}$ gleich ist, wird eine minimale $\alpha_{min}$ und maximale Albedo $\alpha_{max}$ definiert. Bei 100\% Wolkendeckung soll der Maximalwert erreicht werden und bei 0\% die Oberflächenalbedo.
+Die Albedo wird als Funktion der prozentualen Wolkenabdeckung $C$ modelliert. Es wird ein linearer Zusammenhang erwartet. Unter der Annahme, dass bei allen Planeten die Oberflächenalbedo $\alpha_{S}$ gleich ist, wird noch eine maximale Albedo $\alpha_{max}$ definiert. Bei 100\% Wolkendeckung soll der Maximalwert erreicht werden und bei 0\% die Oberflächenalbedo.
+
 \begin{equation}
-\alpha = \alpha_{\text{surface}} + C(\alpha_{\text{max}} - \alpha_{\text{surface}})
+\alpha = \alpha_S + C(\alpha_{\text{max}} - \alpha_S)
 \end{equation}
 
-Die minimale Albedo entspricht etwa jeder des Mondes, der kleinsten in unserem Sonnensystem. Die maximale Albedo wird etwas grösser als diejenige der Venus gesetzt. Somit ergibt sich: 
+Die minimale Albedo entspricht etwa jeder des Mondes, der kleinsten in unserem Sonnensystem. Die maximale Albedo wird etwas grösser als diejenige der Venus gesetzt.
 \begin{equation}
-\alpha(C) = 0.65 \cdot C + 0.15;
+\alpha_S = 0.15, \alpha_{max} = 0.7
 \end{equation}
 
 \subsection{Treibhauseffekt}
 
 Wasserdampf ist ein sehr effektives Treibhausgas. Es wird angenommen dass der atmosphärische Wasserdampf der Erde für 60\% des Treibhauseffekts sorgt.  
 % 60\%    % https://www.acs.org/content/acs/en/climatescience/climatesciencenarratives/its-water-vapor-not-the-co2.html 
-Im verwendeten Modell wirkt sich deren Konzentrazion $H$ linear auf den Teibhauseffekt $\beta$ aus. Die Wirkung wird mit $xi_8$ beschränkt und kann vor der Simulation justiert werden.
+Im verwendeten Modell wirkt sich deren Konzentrazion $H$ linear auf den Teibhauseffekt $\beta$ aus. Die Wirkung wird mit $\xi_8$ beschränkt und kann vor der Simulation justiert werden.
 
 \begin{equation}
 \epsilon  = (1 - \beta) = (1 - \xi_8 \cdot H)
 \end{equation}
 
 \begin{equation}
-\dot{T_S} = \xi_1 \sigma T_{\astrosun}^4 \left( \frac{R_{\astrosun}}{a_{\text{planet}}} \right) ^2 \cdot (0.65 \cdot C + 0.15) - \xi_1 4 \pi R^2 \sigma T_{S}^4  (1 - \xi_8 \cdot H)
+\dot{T_S} = \xi_1 \frac{\sigma T_{\astrosun}^4 R_{\astrosun}^2}{4 \pi R_{\text{planet}}^2 a_{\text{planet}}^2} (\alpha_S + C(\alpha_{\text{max}} - \alpha_S)) - \xi_1 \sigma T_{S}^4  (1 - \xi_8 \cdot H)
 \end{equation}
 
 \subsection{Wasserkreislauf}
@@ -274,7 +280,7 @@ Wolken regnen, wenn sich die mikroskopischen Wassertropfen oder Eiskristalle ver
 Durch Zusammenfassen von Strahlungsbilanz und Wasserkreislauf erhält man folgendes Gleichungssystem:
 \begin{equation}
 \begin{matrix}
-\dot{T_S} = & \xi_1 \sigma T_{\astrosun}^4 \left( \frac{R_{\astrosun}}{a_{\text{planet}}} \right) ^2 \cdot (0.65 \cdot C + 0.15) && - \xi_1 4 \pi R^2 \sigma T_{S}^4  (1 - \xi_8 \cdot H)\\
+\dot{T_S} = & \xi_1 \frac{\sigma T_{\astrosun}^4 R_{\astrosun}^2}{4 \pi R_{\text{planet}}^2 a_{\text{planet}}^2} (\alpha_S + C(\alpha_{\text{max}} - \alpha_S)) && - \xi_1 \sigma T_{S}^4  (1 - \xi_8 \cdot H)\\
 \dot{H}   = & \xi_2 T_S              & - \xi_3 H \frac{\xi_9}{C T_S}          & \\
 \dot{C}   = &                        &   \xi_3 H \frac{\xi_9}{C T_S}          & - \xi_4 C
 \end{matrix}
@@ -282,7 +288,7 @@ Durch Zusammenfassen von Strahlungsbilanz und Wasserkreislauf erhält man folgen
 Um zu verhindern, dass eine Luftfeuchtigkeit oder Wolkenabdeckung von über 100\% auftritt, werden zu gewissen linearen Termen noch den gleichen Term mit grosser Potenz dazu addiert. Somit wird der Effekt verstärkt wenn die Grösse nahe an $1$ also $100\%$ kommt. Das mit Anpassungen für gesättigten Wasserdampf und Wolkenabdeckung versehene Gleichungssystem lautet somit:
 \begin{equation}
 \begin{matrix}
-\dot{T_S} = & \xi_1 \sigma T_{\astrosun}^4 \left( \frac{R_{\astrosun}}{a_{\text{planet}}} \right) ^2 \cdot (0.65 \cdot C + 0.15) && - \xi_1 4 \pi R^2 \sigma T_{S}^4  (1 - \xi_8 \cdot H)\\
+\dot{T_S} = & \xi_1 \frac{\sigma T_{\astrosun}^4 R_{\astrosun}^2}{4 \pi R_{\text{planet}}^2 a_{\text{planet}}^2} (\alpha_S + C(\alpha_{\text{max}} - \alpha_S)) && - \xi_1 \sigma T_{S}^4  (1 - \xi_8 \cdot H)\\
 \dot{H}   = & \xi_2 P_{\text{in}}(C) & - \xi_3 (H + H^9) \frac{\xi_9}{C T_S}   &                   \\
 \dot{C}   = &                        &   \xi_3 (H + H^9) \frac{\xi_9}{C T_S}   & - \xi_4 (C + C^5)
 \end{matrix}
@@ -311,6 +317,25 @@ Die hinzugefügten Freiheitsgrade $\xi_1$ bis $\xi_6$ wurden empirisch gesetzt u
 \xi_8 = & 0.6
 \end{matrix}
 \end{equation}
+
+In Tabelle \ref{planeten:planetValues} sind die für die Planeten eingesetzten Parameten $a_{\text{planet}}$ und $R_{\text{planet}}$ ersichtlich.
+\begin{center}
+\begin{table}
+	\center
+	\begin{tabular}{l|c c c c}
+                        & Merkur                    & Venus                    & Erde                    & Mars     \\
+  \hline
+  $a_{\text{planet}}$   & $2.353 \cdot 10^{11}$ m   & $1.076 \cdot 10^{11}$ m  & $1.499 \cdot 10^{11}$ m & $2.353 \cdot 10^{11}$ m \\
+  $R_{\text{planet}}$   & $3.3895 \cdot 10^{6}$ m   & $6.0519 \cdot 10^{6}$ m  & $6.371 \cdot 10^{6}$ m  & $3.3895 \cdot 10^{6}$ m 
+\end{tabular}
+\caption{Für die Planeten eingesetzte Werte aus WolframAlpha}
+\label{planeten:planetValues}
+\end{table}
+\end{center}
+
+
+
+
 
 Das System wurde bis zum stationären Zustand simuliert. Aus der Zeitachse können keine quantitative Schlüsse gezogen werden.
 
