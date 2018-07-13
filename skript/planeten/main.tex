@@ -50,7 +50,9 @@ Man könnte meinen, dass primär die Distanz der Planeten zur Sonne für deren T
 %Auf Venus, Erde und Mars kann flüssiges Wasser auftreten (Godilooks-Zone).
 %Trotzdem sind neben der Erde auch Venus und Mars in der Godilooks-Zone, dem Gürtel um die Sonne, in welchem flüssiges Wasser auftreten kann.
 
-Ein extremes Klima kann auch dazu führen, dass ein Planet sich irreversibel verändert, indem er zum Beispiel seine Atmosphäre ins All verliert. Wie es vermutlich beim Mars der Fall war. Trotz allen Einwirkungen sind wir in der glücklichen Lage auf der Erde ein mildes Klima vorzufinden, das Leben ermöglicht. Der Astrobiologe David Grinspoon ist folgender Meinung:
+Ein extremes Klima kann auch dazu führen, dass ein Planet sich irreversibel verändert, indem er zum Beispiel seine Atmosphäre ins All verliert. Dies wurde vermutlich dem dem Mars zum Verhängnis. Trotz allen Einwirkungen sind wir in der glücklichen Lage auf der Erde ein mildes Klima vorzufinden, das Leben ermöglicht. 
+%TODO übergang sprunghaft, siehe mail
+Der Astrobiologe David Grinspoon ist folgender Meinung:
 
 %TODO quote syntax?
 \vspace{5pt}
@@ -106,7 +108,21 @@ Durch eine Simulation des Modells im Zeitbereich sollte dann eine Aussage über 
 	Andere klimabestimmenden atmosphärischen Gase wie $\text{CO}_\text{2}$ werden nicht simuliert, um das Modell im gegebenen Rahmen umzusetzen.
 	Das Modell sollte erdähnliche Bedingungen bewusst erstreben, um zu sehen ob diese auf den Planeten Mars und Venus auch bestehen können.
 Auf Grund der zum Teil starken Vereinfachungen müssen einzelne Parameter abgeschätzt werden. Durch diese freien Parametern kann das System getrimmt werden um überhaupt plausible Lösungen zu erreichen. Diese Parameter sind mit $\xi$'s gekennzeichnet.
-	Abbildung \ref{planeten:model} zeigt eine Übersicht des Modells. Die einzelnen Bestandteile werden im Folgenden beschrieben.
+
+
+	Abbildung \ref{planeten:model} zeigt eine Übersicht des Modells.
+	
+	%TODO zu modellierende bestandteile
+	Das Modell hat die Form eines Differentialgleichungssystems, wobei drei Parameter modelliert werden.
+	$T_s$ ist die mittlere Oberflächentemperatur des Planeten. 
+	$C$ ist die prozentuale Wolkenabdeckung.
+	$H$ ist die 
+	Dieser besteht aus den zwei Boxen atmosphärischer Wasserdampf $H$ und Wolken $C$. Beides sind prozentuale Grössen und können näherungsweise als relative Luftfeuchtigkeit beziehungsweise prozentuale Wolkenabdeckung interpretiert werden.
+	
+	
+	
+	
+	Die einzelnen Bestandteile werden im Folgenden beschrieben.
 
 %Des Weiteren ist es für den Menschen interessant Planeten mit Erdähnlichen Zuständen anzutreffen.
 
@@ -191,14 +207,24 @@ Im verwendeten Modell wirkt sich deren Konzentrazion $H$ linear auf den Teibhaus
 
 \subsection{Wasserkreislauf}
 
-Das Modell beinhaltet einen stark vereinfachten Wasserkreislauf. Dieser besteht aus den zwei Boxen atmosphärischer Wasserdampf $H$ und Wolken $C$. Beides sind prozentuale Grössen und können näherungsweise als relative Luftfeuchtigkeit beziehungsweise prozentuale Wolkenabdeckung interpretiert werden. Dazu kommt das auf der Planetenoberfläche vorhandene flüssige Wasser, welches als Quelle und Senke dient und zugleich unerschöpflich ist. Das Modell beachtet nicht, dass der atmosphärische Wasserdampf ins All entweichen kann und dadurch die Ozeane austrocknen können.
-
+Das Modell beinhaltet einen stark vereinfachten Wasserkreislauf.
+Dieser verknüpft die Parameter $C$ und $H$.
+%TODO ausformulieren
+Dazu kommt das auf der Planetenoberfläche vorhandene flüssige Wasser, welches als Quelle und Senke dient und zugleich unerschöpflich ist. Das Modell beachtet nicht, dass der atmosphärische Wasserdampf ins All entweichen kann und dadurch die Ozeane austrocknen können.
+%TODO text formulieren: Aufbau wasserkreislauf
+\begin{equation}
+\begin{matrix}
+\dot{H}   = & h_{\text{Wasserdampfbildung}} & - h_{\text{Wolkenbildung}}   &                      \\
+\dot{C}   = &                     		    &   h_{\text{Wolkenbildung}}   & - h_{\text{Wolkenabbau}}
+\end{matrix}
+\end{equation}
+%TODO h_verdunsten usw. überall bei gleichungen einsetzen
 %Dieser Prozess ist auf der Erde sehr komplex.
 
 %\subsubsection{Wasserdampfbildung}
 Wasserdampf bildet sich durch Verdunsten von der Ozeane. Der Durchsatz wird linear zur Oberflächentemperatur $T_S$ angenommen.
 \begin{equation}
-\xi_2 T_S
+h_{\text{Wasserdampfbildung}} = \xi_2 T_S
 \end{equation}
 %TODO linear zur temperatur !! überall kontrollieren
 
@@ -210,7 +236,7 @@ Dabei nimmt die Wolkenbildung mit grösserer Luftfeuchtigkeit $H$ und grösserem
 %feuchte Luft abgekühlt wird
 %bei grossem Temperaturgradienten
 \begin{equation}
-\xi_3 H \frac{dT}{dh}
+h_{\text{Wolkenbildung}} = \xi_3 H \frac{dT}{dh}
 \end{equation}
 
 Wenn der Temperaturgradient linear Angenommen wird, lässt sich $\frac{dT}{dh}$ durch den Skalar $\Delta T $ vereinfachen.
@@ -223,13 +249,13 @@ Der Temperaturgradient sinkt bei
 
 Eingesetzt erhält man für die Wolkenbildung:
 \begin{equation}
-\xi_3 H \frac{\xi_9}{C T_S}
+h_{\text{Wolkenbildung}} = \xi_3 H \frac{\xi_9}{C T_S}
 \end{equation}
 
 %\subsubsection{Wolkenabbau}
 Wolken regnen, wenn sich die mikroskopischen Wassertropfen oder Eiskristalle verbinden und nicht mehr getragen werden können. Im hier verwendeten Modell wird angenommen, dass sich Regenbildung somit proportional zur Wolkenabdeckung $C$ verhält.
 \begin{equation}
-\xi_4 C
+h_{\text{Wolkenabbau}} = \xi_4 C
 \end{equation}
 
 %\subsection{Zusammengefasst}
@@ -294,11 +320,14 @@ Um zu verhindern, dass eine Luftfeuchtigkeit oder Wolkenabdeckung von über 100\
 \end{matrix}
 \end{equation}
 
+%TODO graphik der limitierung
+
 \section{Simulation}
 \rhead{Simulation}
 
 Das Modell wurde in MATLAB mittels Transientenanalyse simuliert. Dazu kam ein ODE45 Solver zur Hilfe. Die Anfangswerte wurden so gesetzt, dass sie Erdbedingungen unterstützen.  
 %System anregen Erdähnliche Werte zu generieren.
+%TODO 0.44 durchschnittliche Luftfeuchtigkeit,  0.68 duchschnittliche Wolkenabdeckung
 \begin{equation}
 \begin{matrix}
 T_0 = & 287 \\
@@ -307,14 +336,14 @@ C_0 = & 0.68
 \end{matrix}
 \end{equation}
 Die hinzugefügten Freiheitsgrade $\xi_1$ bis $\xi_6$ wurden empirisch gesetzt um für die Erde stabile Resultate zu erhalten.
-%TODO why i picked those xi's
+%TODO why i picked those xi's, erklärung
 \begin{equation}
 \begin{matrix}
-\xi_1 = & 1                 \\
-\xi_2 = & 1.5 \cdot 10^{-3} \\
-\xi_3 = & 1.9 \cdot 10^{-2} \\
-\xi_4 = & 4   \cdot 10^{-1} \\
-\xi_8 = & 0.6
+\xi_1 = & 1                 & \text{blah} \\
+\xi_2 = & 1.5 \cdot 10^{-3} & \text{blah} \\
+\xi_3 = & 1.9 \cdot 10^{-2} & \text{blah} \\
+\xi_4 = & 4   \cdot 10^{-1} & \text{blah} \\
+\xi_8 = & 0.6				& \text{Maximale wirkung des Treibhauseffekts}
 \end{matrix}
 \end{equation}
 
@@ -341,6 +370,8 @@ Das System wurde bis zum stationären Zustand simuliert. Aus der Zeitachse könn
 
 \subsection{Ergebnisse}
 
+
+		%TODO referenz auf bilder, graphen ausführlicher beschreiben
 		Die Strich-Punkt-Linie der entsprechenden Farbe zeigt den heutigen Wert der Grösse. 
 
 		\begin{figure}
