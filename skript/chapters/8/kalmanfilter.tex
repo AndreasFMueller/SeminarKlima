@@ -4,6 +4,7 @@
 % (c) 2018 Prof Dr Andreas Müller, Hochschule Rapperswil
 %
 \section{Kalman-Filter\label{section:kalman-filter}}
+\index{Kalman-Filter}%
 Die bisherige Sicht auf das Problem war, dass aus dem Modell und den
 Anfangsbedingungen der zukünftige Zustand des Modells abgeleitet werden
 kann.
@@ -156,8 +157,10 @@ positiv definite Matrix ist.
 Die nachfolgend beschriebene Theorie lässt sich damit unverändert
 entwickeln.
 }.
-Die Matrix enthält auf der Diagonalen die Varianzen der Systemfehler $u_k$ 
+Die Matrix $Q_k$, die {\em Systemfehler-Kovarianz}
+enthält auf der Diagonalen die Varianzen der Systemfehler $u_k$ 
 und ausserhalb der Diagonalen die Kovarianzen.
+\index{Systemfehler-Kovarianz}
 
 \subsection{Schätzfehler\label{subsection:schaetzfehler}}
 Wenn Vorhersage $\hat{x}_{k|k-1}$ und Messung $\hat{z}_k$ 
@@ -169,6 +172,7 @@ Die Schätzung $\hat{x}_k$ sollte mindestens im Mittel korrekt sein.
 Dies lässt sich dadurch ausdrücken, dass die Fehler $x_k - \hat{x}_k$
 als Zufallsvariablen mit Erwartungswert $0$ modelliert werden können.
 Als Mass für den Schätzfehler kann man daher die Kovarianzmatrix von
+\index{Schätzfehler-Kovarianz}%
 $x_k-\hat{x}_k$ verwenden, die mit
 \[
 P_k =  E\bigl(\, (x_k-\hat{x}_k) (x_k-\hat{x}_k)^t\,\bigr)
@@ -210,11 +214,14 @@ R_k = E(w_kw_k^t) =
 \varrho_1^2&\dots & 0\\
 \vdots     &\ddots&\vdots\\
 0          &\dots &\varrho_m^2
-\end{pmatrix}
+\end{pmatrix},
 \]
+die {\em Messfehler-Kovarianz-Matrix},
 ist\footnote{Wie bei der Systemfehler-Kovarianz würde es auch hier
 genügen anzunehmen, dass $R_k$ eine symmetrisch positiv definite Matrix
 ist.}.
+\index{Messfehler}%
+\index{Messfehler-Kovarianz}%
 
 \subsection{Filterung\label{subsection:filterung}}
 Wenn Vorhersage $\hat{x}_{k|k-1}$ und Messung $z_k$ nicht im Konflikt
@@ -277,7 +284,7 @@ P_{k|k-1}H_k^t
 \end{aligned}
 \]
 sofern die Matrix in Klammern tatsächlich invertierbar ist.
-Die Matrix $K_k$ heisst die Kalman-Filter-Matrix.
+Die Matrix $K_k$ heisst die {\em Kalman-Filter-Matrix}.
 \index{Kalman-Filter-Matrix}%
 
 Damit haben wir alle Formeln für den Kalman-Filter zusammengetragen.
