@@ -53,7 +53,11 @@ CHAPTERS = 								\
 	chapters/6/periodisch.tex					\
 	chapters/6/fourierkoef.tex					\
 	chapters/6/vektorgeometrie.tex					\
-	chapters/6/aufgabe1.tex
+	chapters/6/aufgabe1.tex						\
+	chapters/7/rossby.tex						\
+	chapters/7/kelvin.tex						\
+	chapters/7/verzoegert.tex					\
+	chapters/8/assimilation.tex
 
 PAPERDIRS = eis extrem lorenz planeten thermohalin vegetation		\
 	verzoegert lorenz2 kalman learning

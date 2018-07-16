@@ -1,0 +1,226 @@
+%
+% kalmanfilter.tex
+%
+% (c) 2018 Prof Dr Andreas Müller, Hochschule Rapperswil
+%
+\section{Kalman-Filter\label{section:kalman-filter}}
+Die bisherige Sicht auf das Problem war, dass aus dem Modell und den
+Anfangsbedingungen der zukünftige Zustand des Modells abgeleitet werden
+kann.
+Doch bei fehlerhaften Anfangsdaten wird auch der zukünftige Zustand
+fehlerhaft sein.
+Ein erster Versuch, die Situation wieder gerade zu rücken ist, auch für
+den späteren Zustand ein Messung durchzuführen und zu versuchen,
+den Systemzustand derart zu korrigieren, dass auch die Vorhersagen des
+Modells besser mit der Realität übereinstimmen.
+Dies ist genau, was der Kalman-Filter ermöglicht.
+
+In diesem Abschnitt soll eine kurze Übersicht über den Kalman-Filter
+gegeben werden.
+Sie stützt sich auf \cite{skript:catlin}, eine detailliertere Darstellung
+findet sich in \cite[Kapitel 8]{skript:wrstatskript}.
+
+\subsection{Messung und System\label{subsection:messung und system}}
+Wir gehen davon aus, dass das System, zum Beispiel das Klimasystem der Erde,
+mit einem Vektor $x\mathbb R^n$ von Zustandsvariablen beschrieben werden
+kann.
+Den detaillierten Zustand des Systems können wir nicht erfahren, die
+Grössen $x$ sind also bestenfalls teilweise bekannt sein.
+Das Wissen über den Systemzustand kann wiedergegeben werden
+durch eine Schätzung $\hat x$.
+
+Durch direkte Messung können möglicherweise einzelne dieser Variablen
+bestimmt werden.
+Möglicherweise können diese Variablen aber nicht direkt gemessen werden.
+Das Modell braucht vielleicht Temperatur, aber gemessen werden kann nur
+die Strahlungsintensität, die auch von der Dichte abhängig sein kann.
+Die gemessenen Variablen $z\in\mathbb R^m$ sind also bestenfalls eine
+Funktion $z=f(x)$ der Zustandsvariablen $x$.
+
+Der Kalman-Filter soll ermöglichen, das Wissen über den System-Zustand
+$\hat x$ durch Messung der Grössen $z$ zu verbessern, und so eine
+verbesserte Schätzung zu erhalten.
+Dies bedeutet, dass durch wiederholte Messung die Zustandsschätzung
+laufen verbessert werden kann, so dass die ursprünglich gewählten 
+Anfangsbedingungen immer unbedeutender werden.
+Dies bedeutet aber, dass die Entwicklung des Systems mit einer Folge
+$x_k$, $k\in\mathbb N$, modelliert werden muss.
+Diese Zustände sind nur näherungsweise bekannt als eine Folge
+von Schätzungen $\hat{x}_k$, $k\in\mathbb N$.
+Mit jeder Messung $z_k$ erfahren wir etwas über den Systemzustand.
+Die Messung $z_k$ und das bisherige Wissen $\hat{x}_{k-1}$ ergeben
+daher die neueste beste Schätzung $\hat{x}_k$.
+Das Ziel des Kalman-Filters ist daher, den Zusammenhang zwischen den
+genannten Grössen in Form eines funktionalen Zusammenhangs der Form
+\begin{equation}
+\hat{x}_k = F(\hat{x}_{k-1},z_n)
+\label{skript:filterbasis}
+\end{equation}
+zu finden.
+
+Die implizite Annahme hinter \eqref{skript:filterbasis} ist,
+dass es einen Zusammenhang zwischen $x_{k-1}$ und $x_k$ und damit auch
+zwischen den Schätzungen $\hat{x}_{k-1}$ und $\hat{x}_k$ gibt.
+Es ist daher denkbar \eqref{skript:filterbasis}, in zwei Teilschritte
+aufzuteilen.
+Das vorhandene Wissen $\hat{x}_{k-1}$ macht eine Vorhersage über den
+Zustand $\hat{x}_{k|k-1}$, welches anschliessend mit den neuen 
+Messwerten $z_n$ zur bestmöglichen Information $\hat{x}_k$ über den
+aktuellen Zustand verbunden werden kann.
+Dazu braucht es einerseits eine Beschreibung der Systementwicklung
+$x_{k+1} = \varphi(x_k)$, aus der sich auch eine Entwicklung der
+Schätzungen $\hat{x}_{k|k-1} = \Phi(\hat{x}_{k-1})$ ableiten lässt.
+Andererseits brauchen wir eine Funktion
+\begin{equation}
+\hat{x}_k = K(\hat{x}_{k|k-1}, z_n)
+\end{equation}
+mit der der Zustand korrigiert werden kann.
+
+\subsection{Systemmodellierung\label{subsection:systemmodellierung}}
+Die früher entwickelten Modelle zur Klimaentwicklung resultierten in
+zum Teil sehr komplizierten Abhängigkeiten zwischen Systemvariablen
+zu weit auseinander liegenden Zeitpunkten.
+Sie hatten jedoch gemeinsam, dass sie durch eine Differentialgleichungen
+erster Ordnung der Form
+\[
+\frac{dx}{dt} = f(x,t)
+\]
+beschrieben werden konnten.
+Für genügend kurze Zeitschritt $\Delta t$ können die Zustandsvariablen
+$x_k = x(k\Delta t)$ zu den Zeitpunkten $t_k=k\Delta t$
+durch lineare Approximation
+\[
+x_k = x_{k-1} + f(x_{k-1}, t_{k-1}) \cdot \Delta t
+\]
+bestimmt werden.
+Eine Schätzung $\hat{x}_{k-1}$ des Zustandes zur Zeit $k-1$ 
+kann dann mit Hilfe von
+\begin{equation}
+\hat{x}_{k|k-1} = \hat{x}_{k-1} + f(\hat{x}_{k-1},t_{k-1})\cdot \Delta t
+\label{kalman:filter-schaetzung}
+\end{equation}
+zu einem Zustand $\hat{x}_{k|k-1}$ entwickelt werden.
+
+Um zu beurteilen, wie gross die Korrektur durch die Messung sein soll,
+muss bekannt sein, in welchem Ausmass die Schätzung vom tatsächlichen
+Zustand abweicht.
+Insbesondere muss \eqref{kalman:filter-schaetzung} dazu verwendet werden
+können, auch die Entwicklung der Abweichung $x_{k|k-1}-\hat{x}_{k|k-1}$
+aus $x_{k-1} - \hat{x}_{k-1}$.
+Für eine beliebige Funktion $f$ ist dies im Allgemeinen zu schwierig.
+Durch erneute Linearisierung kann aus
+\eqref{skript:filterbasis} eine lineare Entwicklungsgleichung
+\begin{equation}
+x_k = \varphi_k x_{k-1}
+\end{equation}
+gewonnen werden, wobei $\varphi_k$ eine $n\times n$-Matrix ist.
+
+Nur die allereinfachsten Modelle stellen ein System korrekt dar.
+Fast immer enthält ein Modell Vereinfachungen, die nötig sind, um über
+überhaupt ein Modell zu erhalten, mit dem Vorhersagen möglich sind.
+Entsprechend können die Vorhersagen auch nicht exakt sein, es verbleibt
+immer ein Fehler.
+Die Systementwicklung kann dies mit
+\begin{equation}
+x_k = \varphi_k x_{k-1} + u_k
+\label{skript:kalman-system-mitfehler}
+\end{equation}
+berücksichtigen, worin $u_k$ alle nicht modellierten Einflüsse
+enthält. 
+Wir nehmen an, dass das Modell alle wesentlichen Einflüsse umfasst.
+Die Fehler $u_k$ müssen daher zufällig und unvorhersagbar erscheinen,
+die sich im Mittel nicht auswirken.
+Es wird daher angenommen, dass die Komponenten $u_k$ normalverteilte
+und unabhängige Zufallsvariablen mit Erwartungswert $0$ sind, dass also
+\[
+E(u_k) =0
+\qquad\text{und}\qquad
+E(u_ku_k^t)
+=
+\begin{pmatrix}
+\sigma_1^2&0         &\dots &0\\
+0         &\sigma_2^2&\dots &0\\
+\vdots    &\vdots    &\ddots&\vdots\\
+0         &0         &\dots &\sigma_n^2
+\end{pmatrix}
+=
+Q_k
+\]
+ist\footnote{%
+Aus der Argumentation oben lässt sich nicht ableiten, dass
+die Fehler $u_k$ unabhängig sind, genau genommen gehen wir daher zu
+weit, wenn wir annehmen, dass $Q_k$ Diagonalform hat, auch wenn dies
+in der Literatur der Einfachheit halber üblicherweise angenommen wird.
+Etwas allgemeiner sollte man nur voraussetzen, dass $Q_k$ eine symmetrische,
+positiv definite Matrix ist.
+Die nachfolgend beschriebene Theorie lässt sich damit unverändert
+entwickeln.
+}.
+Die Matrix enthält auf der Diagonalen die Varianzen der Systemfehler $u_k$ 
+und ausserhalb der Diagonalen die Kovarianzen.
+
+\subsection{Schätzfehler\label{subsection:schaetzfehler}}
+Wenn Vorhersage $\hat{x}_{k|k-1}$ und Messung $\hat{z}_k$ 
+miteinander kombiniert werden sollen um die bestmögliche Schätzung
+$\hat{x}_k$ zu erhalten, wird Kenntnis über den zu erwartenden
+Fehler der Schätzung benötigt.
+
+Die Schätzung $\hat{x}_k$ sollte mindestens im Mittel korrekt sein.
+Dies lässt sich dadurch ausdrücken, dass die Fehler $x_k - \hat{x}_k$
+als Zufallsvariablen mit Erwartungswert $0$ modelliert werden können.
+Als Mass für den Schätzfehler kann man daher die Kovarianzmatrix von
+$x_k-\hat{x}_k$ verwenden, die mit
+\[
+P_k =  E\bigl(\, (x_k-\hat{x}_k) (x_k-\hat{x}_k)^t\,\bigr)
+\]
+bezeichnet wird.
+Die Zeitentwicklung~\eqref{skript:kalman-system-mitfehler} führt einen
+zusätzlichen Fehler ein, der mit
+\begin{equation}
+P_{k|k-1} = P_k + \varphi_k^t Q_k \varphi_k 
+\label{skript:kalman:fehlerentwicklung}
+\end{equation}
+bezeichnet werden soll.
+
+\subsection{Messprozess\label{subsection:messprozess}}
+Früher wurde gezeigt, wie der Messprozess die Werte der Messgrössen $z_k$
+aus den Zustandsvariablen ableitet.
+Auch hier ist die Modellierung mit einer allgemeinen Funktion $z=f(x)$ 
+zu kompliziert.
+Auch für den Messprozes wird daher angenommen, dass er durch eine
+lineare Abbildung $z=Hx$ beschrieben werden kann, wobei $H$ eine
+$m\times n$-Matrix ist.
+Um einen Rest von Nichtlinearität von $f$ zu retten, können wir davon
+ausgehen, dass $H$ zusätzlich vom Zeitpunkt abhängt, also $z_k=H_kx_k$.
+
+Jede Messung ist aber mit Fehlern behaftet, die mit einem Fehler-Vektor
+$w_k$ in
+\begin{equation}
+z_k = H_kx_k + w_k,
+\label{skript:kalman:messfehler}
+\end{equation}
+wobei $w_k$ eine normalverteile Zufallsvariable mit Erwartungswert $0$
+ist.
+Meist wird zudem angenommen, dass die einzelnen Messgrössen unabhängig
+sind, dass die Kovarianzen von $w_k$ also eine
+Diagonalmatrix
+\[
+R_k = E(w_kw_k^t) =
+\begin{pmatrix}
+\varrho_1^2&\dots & 0\\
+\vdots     &\ddots&\vdots\\
+0          &\dots &\varrho_m^2
+\end{pmatrix}
+\]
+ist\footnote{Wie bei der Systemfehler-Kovarianz würde es auch hier
+genügen anzunehmen, dass $R_k$ eine symmetrisch positiv definite Matrix
+ist.}.
+
+\subsection{Filterung\label{subsection:filterung}}
+
+
+
+
+
+
+
