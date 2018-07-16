@@ -3,7 +3,7 @@
 
 
 \section{Lorenz-Modell}\label{lorenz-modell}
-Die Gleichungen, welche das Lorenz-Modell beschreiben, enthalten viele physikalische Eigenschaften wie die Dichte, Geschwindigkeit und Temperatur der Atmosphäre. Lorenz wollte aus den bereits existierenden Gleichungen der Hydrodynamik ein Modell zur Wetterprognose erstellen. Basierend auf vorgehenden Werken von Saltzman startete Lorenz mit den hyrodynamischen Gleichungen und verfolgte ein systematisches Näherungsvorgehen, womit er auf die folgenden drei Gleichungen stoss:
+Die Gleichungen, welche das Lorenz-Modell beschreiben, enthalten viele physikalische Eigenschaften wie die Dichte, Geschwindigkeit und Temperatur der Atmosphäre. Lorenz wollte aus den bereits existierenden Gleichungen der Hydrodynamik ein Modell zur Wetterprognose erstellen. Basierend auf vorgehenden Arbeiten von Saltzman \cite{saltzman62} startete Lorenz mit den hyrodynamischen Gleichungen und verfolgte ein systematisches Näherungsvorgehen, womit er auf die folgenden drei Gleichungen stiess:
 
 \begin{align}
 \dot{x} &= \sigma(x - y)\\
@@ -49,7 +49,7 @@ Auch das besprochene Verfahren kann das Anfangswert-Problem nicht lösen, sonder
 
 Wir versuchten zuerst den Anfangswert $ P(0, 0, 0) $ zu nehmen. In den anschliessenden Untersuchungen des Algorithmus stellte sich heraus, dass dieser Anfangswert zugleich eine Lösung des Lorenz-Systems ist. Aus diesem Grund hat sich das Model auf den Ursprung stabilisiert. Unsere Lösung war es den Anfangswert auf $ P(0.1, 0.1, 0.1) $ zu verschieben, der diese Eigenschaft nicht besitzt.
 
-Als Basis für das Euler-Verfahren verwenden wir den Differenzenquotient $ \frac{dx}{dt} \approx \frac{x_{n + 1} - x_n}{\Delta t} $. \cite{euler1768} Weil wir den nächsten Punkt im 3D-Raum ausrechnen möchten, formen wir die Gleichung zu $ x_{n + 1} $  um und rechnen sie für alle Achsen getrennt aus.
+Als Basis für das Euler-Verfahren verwenden wir den Differenzenquotient $ \frac{dx}{dt} \approx \frac{x_{n + 1} - x_n}{\Delta t} $ \cite{euler1768}.  Weil wir den nächsten Punkt im 3D-Raum ausrechnen möchten, formen wir die Gleichung zu $ x_{n + 1} $  um und rechnen sie für alle Achsen getrennt aus.
 
 \begin{align}
     x_{n + 1} &= x_n + \frac{dx}{dt} \cdot \Delta t\\
@@ -58,11 +58,11 @@ Als Basis für das Euler-Verfahren verwenden wir den Differenzenquotient $ \frac
 \end{align}
 
 % TODO Neuschreiben, detailhafter
-Wir können nun die Gleichungen des Lorenz-Modells einsetzen. Die Variablen $ x, y, z $ haben wir ausserdem zu Iterationsvariablen 
+Für die Ableitungen können wir nun die Gleichungen des Lorenz-Modells einsetzen. Die Variablen $ x, y, z $ haben wir ausserdem zu Iterationsvariablen 
 \begin{align}
     x_{n + 1} &= x_n + \sigma(x_n - y_n) \cdot \Delta t\\
     y_{n + 1} &= y_n + x_n(\rho - z_n) - y_n \cdot \Delta t\\
     z_{n + 1} &= z_n + (x_n \cdot y_n - \beta \cdot z_n) \cdot \Delta t
 \end{align}
 
-Dieses System entspricht dem Code der Visualisierung unterhalb. Im Differentialterm wurde die Differentialgleichung des Lorenz-Modells eingesetzt.
+Dieses System entspricht dem Code der Visualisierung weiter unten. Im Differentialterm wurde die Differentialgleichung des Lorenz-Modells eingesetzt.
