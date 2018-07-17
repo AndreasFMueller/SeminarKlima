@@ -1,0 +1,411 @@
+%
+% bayesianfilter.tex
+%
+% (c) 2018 Prof Dr Andreas Müller, Hochschule Rapperswil
+%
+
+\newtheorem*{lemma*}{Lemma}
+
+\section{Kalman-Filter als Bayesscher Filter}
+In Satz~\ref{satz:filter und vorhersage} wurde gezeigt, wie das allgemeine
+Filterproblem gelöst werden kann.
+Ohne zusätzliche Voraussetzungen über den Prozess $X(k)$ sind die Formeln
+des Satzes jedoch kaum brauchbar.
+Einerseits sind die Übergangswahrscheinlichkeiten im Allgemeinen kaum
+bekannt, andererseits sind die vielen Integrale nur in einfachen
+Fällen ausführbar.
+
+Im Kalman-Filter ist jedoch sehr viel mehr über den stochastischen 
+Prozess bekannt.
+Bis auf den Systemfehler sind die Übergänge durch lineare Abbildungen,
+die Matrizen $\varphi_k$, gegeben und der Messprozess, beschrieben durch
+die Matrize $H_k$, ist ebenfalls linear.
+Die Verteilungen sind jeweils Normalverteilungen, daher sollten
+alle Integrale leicht zu berechnen sein und es sollten sich als Lösung
+des Filterproblems der Formelsatz des Kalman-Filters und insbesondere
+die Formel~\eqref{kalman:kmatrix} für die Matrix $K_k$ ergeben.
+
+Für die Zwecke dieses Seminars könnten wir es damit bewenden lassen.
+Das im Seminar verwendete Buch \cite{skript:kaperengler} beweist die
+Kalman-Filter-Formeln aus den Formeln von Satz~\ref{satz:filter und vorhersage}.
+Das zentrale Lemma in dieser Rechnung ist Lemma~20.1, leider ist
+der Beweis sehr fehlerhaft.
+Ausserdem ist auch die Übungsaufgabe 4 in den Exercises, die im Beweis in
+Abschnitt 20.3.1 benötigt wird, ebenfalls falsch.
+Das Ziel dieses Abschnitts ist, diese Fehler zu korrigieren und damit
+den Seminarteilnehmern das Verständnis des Kapitels~20 von
+\cite{skript:kaperengler} zu erleichtern.
+
+In Abschnitt~\ref{subsection:bayesian:normalverteilt} wird gezeigt,
+wie die bedingten Wahrscheinlichkeitsdichten für normalverteilte
+Zufallsvariablen dargestellt werden können.
+Der Beweis des Lemmas~20.1 und damit der Nachweis, dass der in
+Abschnitt~\ref{section:kalmanfilter} dargestellte Kalmanfilter nichts
+anderes als ein Spezialfall des in
+Abschnitt~\ref{section:assimilationsproblem} beschriebenen Bayesschen
+Filterprozesses ist, wird in Abschnitt~\ref{subsection:lemma 20.1}
+geführt.
+Die fehlerhafte Aufgabe 4 in Kapitel 20 von \cite{skript:kaperengler}
+wird in Abschnitt~\ref{subsection:aufgabe4} korrigiert.
+
+\subsection{Normalverteilte Variablen\label{subsection:bayesian:normalverteilt}}
+Wir gehen aus von einem Zustandsvektor $X$ und einer Messmatrix $H$,
+die die Messwerte $Y=HX + w$ bis auf einen Messfehler $w$ mit
+Kovarianzmatrix $R$ aus $X$ berechnen kann.
+In \cite{skript:kaperengler} wird darauf hingewiesen, dass die Berechnung
+von $f_{X|y}$ mit Hilfe des Satzes von Bayes 
+unpraktikabel ist ausser in dem Spezialfall, wo $X$ und $Y|X$ 
+normalverteilt sind.
+Dies bedeutet, dass die Wahrscheinlichkeitsdichte von $X$ geschrieben
+werden kann als
+\begin{equation}
+f_X(x) = \exp\biggl(
+-\frac12 (x-\mu)^t P^{-1} (x-\mu)
+\biggr).
+\label{xverteilung}
+\end{equation}
+Darin ist $\mu=E(X)$ der Vektor der Erwartungswerte und $P$ die
+Kovarianzmatrix $P=E(XX^t)$ von $X$.
+
+Die Zufallsvariable $Y|X$ beschreibt die Messwerte von $Y$, die im
+Systemzustand $X$ zu erwarten sind.
+Die Messmatrix $H$ ermittelt bis auf ebenfalls normalverteilten
+Messfehler die Messwerte, $Y|X$ ist also normalverteilt mit
+Erwartungswert $E(HX)=H\mu$.
+Die Wahrscheinlichkeitsdichte von $Y|X$ ist daher
+\begin{equation}
+f_{Y|x}(y)
+=
+\exp\biggl(-\frac12
+(y-Hx)^tR^{-1}(y-Hx)
+\biggr).
+\label{yverteilung}
+\end{equation}
+
+\subsection{Lemma 20.1\label{subsection:lemma 20.1}}
+In \cite{skript:kaperengler} wird dann das folgende Lemma formuliert,
+welches im wesentlichen die Formel \eqref{kalman:kmatrix} für die
+Kalman-Filter-Matrix beweist.
+
+\begin{lemma*}
+Seien $X$ und $Y$ normalverteilte Zufallsvariablen wie oben ausgeführt.
+Dann ist $X|Y$ ebenfalls normalverteilt mit
+Erwartungswert $\mu^*$ und Kovarianzmatrix $P^*$ mit
+\begin{align}
+\mu^*
+&=
+\mu + K(Y - H\mu)
+\label{mustern}
+\\
+P^*
+&=
+(I-KH)P,
+\label{Pstern}
+\\
+\intertext{wobei $K$ die Kalman-Gain-Matrix}
+K
+&=
+PH^t(R+HPH^t)^{-1}
+\label{kalman-formel}
+\end{align}
+ist.
+\end{lemma*}
+
+\begin{proof}[Beweis]
+Das Lemma behauptet, dass es möglich ist, die Wahrscheinlichkeitsdichte
+$f_{X|y}$ bis auf einen Normierungsfaktor, der nur von $y$ abhängen darf,
+in der Form
+\[
+f_{X|y}(x)
+\sim
+\exp\biggl(
+-\frac12 (x-\mu^*)^t{P^*}^{-1}(x-\mu^*)
+\biggr)
+\]
+zu schreiben.
+Dies bedeutet, dass nach
+\eqref{xverteilung} und \eqref{yverteilung}
+\begin{align*}
+\exp\biggl(
+-\frac12 (x-\mu^*)^t{P^*}^{-1}(x-\mu^*)
+\biggr)
+&\sim
+f_X(x)\, f_{Y|x}(y)
+\\
+&=
+\exp\biggl(
+-\frac12\bigl(
+(x-\mu)^tP^{-1}(x-\mu)
++
+(y-Hx)^tR^{-1}(y-Hx)
+\bigr)
+\biggr)
+\end{align*}
+gelten muss.
+Die Terme in den Exponentialfunktionen müssen also bis auf eine Konstante,
+die nur von $y$ abhängen darf, übereinstimmen:
+\[
+(x-\mu^*)^t{P^*}^{-1}(x-\mu^*)
+=
+(x-\mu)^tP^{-1}(x-\mu)
++
+(y-Hx)^tR^{-1}(y-Hx)
++c(y).
+\]
+Wir multiplizieren beide Seiten aus und verwenden dabei, dass die
+Kovarianzmatrizen und ihre Inversen symmetrisch sind.
+Die linke Seite ergibt:
+\[
+\text{LHS}
+=
+x^t{P^*}^{-1}x
+-2{\mu^*}^t {P^*}^{-1}x
++{\mu^*}^t{P^*}^{-1}\mu^*.
+\]
+Die rechte Seite ist:
+\begin{align*}
+\text{RHS}
+&=
+x^tP^{-1}x-2\mu^tP^{-1}x+\mu^tP^{-1}\mu+
+x^tH^tR^{-1}Hx-2y^tR^{-1}Hx+y^tR^{-1}y+c(y)
+\\
+&=
+x^t(P^{-1}+H^tR^{-1}H)x
+-2(\mu^tP^{-1}+y^tR^{-1}H)x
++\mu^tP^{-1}\mu +y^tR^{-1}y+c(y).
+\end{align*}
+Nur der erste Term auf beiden Seiten enthält die quadratischen Terme, 
+es folgt
+\[
+{P^*}^{-1} = P^{-1}+H^tR^{-1}H
+\qquad\Rightarrow\qquad
+P^*
+=
+(P^{-1}+H^tR^{-1}H)^{-1}.
+\]
+Ebenso lesen wir an den Termen linear in $x$ ab, dass
+\[
+{\mu^*}^t {P^*}^{-1}
+=
+\mu^tP^{-1}+y^tR^{-1}H
+\]
+sein muss.
+Durch Transponieren finden wir die Gleichung
+\[
+{P^*}^{-1}\mu^*
+=
+P^{-1}\mu + H^tR^{-1}y,
+\]
+was wir durch Multiplikation mit $P^*$ von links nach $\mu^*$ auflösen
+können:
+\begin{align*}
+\mu^*
+&=
+P^*( P^{-1}\mu + H^tR^{-1}y)
+\end{align*}
+Schreiben wir $P^{-1}={P^*}-H^tR^{-1}H$, erhalten wir
+\begin{align*}
+\mu^*
+&=
+P^*( ({P^*}-H^tR^{-1}H)
+\mu + H^tR^{-1}y)
+\\
+&=
+\mu + P^*H^tR^{-1}y-P^*H^tR^{-1}H\mu
+\\
+&=
+\mu + P^*H^tR^{-1}(y-H\mu).
+\end{align*}
+Mit der Abkürzung
+\begin{equation}
+K=P^*H^tR^{-1}
+=
+(P^{-1}+H^tR^{-1}H)^{-1}H^tR^{-1}
+\label{kalman-gain}
+\end{equation}
+wird daraus
+\[
+\mu^* = \mu + K(y-H\mu).
+\]
+Damit ist gezeigt, dass sich die Wahrscheinlichkeitsdichte von $X|Y$
+tatsächlich als Normalverteilung schreiben lässt, und dass der Erwartungswert
+$\mu^*$ von $X|Y$ in der Form \eqref{mustern} geschrieben werden kann.
+
+Jetzt muss nur noch gezeig werden, dass für $P^*$ und $K$ die im Lemma
+genannten Formeln gelten.
+Wir rechnen zuerst nach, dass die Formel für die $K$ im Lemma gleichbedeutend
+ist mit der Formel~\eqref{kalman-gain}.
+Wir multiplizieren zu diesem Zweck die Differenz der beiden zu vergleichenden
+Terme von links mit
+$P^{-1}+H^tR^{-1}H$
+und von rechts mit $R+HPH^t$.
+Wir erhalten
+\begin{align*}
+(P^{-1}+H^tR^{-1}H)PH^t
+-
+H^tR^{-1}(R+HPH^t)
+&=
+H^t + H^tR^{-1}HPH^t
+- H^t - H^tR^{-1}HPH^t
+=0,
+\end{align*}
+womit die Formel~\eqref{kalman-formel} nachgewiesen ist.
+
+Es bleibt, die Formel \eqref{Pstern} für $P^*$ nachzuweisen.
+Zunächst lesen wir aus der Abkürzung \eqref{kalman-gain} ab, dass
+\begin{align*}
+KH
+&=
+P^*
+H^tR^{-1}H
+\\
+&=
+(P^{-1}+H^tR^{-1}H)^{-1}(P^{-1}
++H^tR^{-1}H
+-P^{-1}
+)
+\\
+&=
+I- P^* P^{-1}
+\\
+\Rightarrow\qquad
+P^*P^{-1}&=I-KH.
+\end{align*}
+Multiplizieren wir jetzt beide Seiten von rechts mit $P$, erhalten wir
+\[
+P^*
+=
+(I-KH)P,
+\]
+wie im Lemma behauptet.
+\end{proof}
+
+\subsection{Übungsaufgabe 4\label{skript:aufgabe4}}
+Die Formeln für
+$\operatorname{var}(X_1|y)$
+und
+$\operatorname{var}(X_3|y)$
+auf Seite~266 von \cite{skript:kaperengler} sind ebenfalls falsch.
+In diesem Abschnitt leiten wir korrigierte Versionen her.
+
+Zunächst ist die Matrix $P$ (oder $\Sigma$, wie sie in der Aufgabe~4 und 
+im Abschnitt~20.3.1 heisst) zu finden.
+Aus der Rekursionsformel
+\begin{align*}
+\operatorname{var}(X_{i+1})
+&=
+\operatorname{var}(\alpha X_i + \xi_{i+1})
+=
+\alpha^2 \operatorname{var}(X_i) + \operatorname{var}(\xi_{i+1})
+=
+\alpha^2 \operatorname{var}(X_i) + \sigma^2
+\end{align*}
+für die Varianzen lesen wir zum Beispiel ab
+\begin{align*}
+\operatorname{var}(X_1)
+&=
+\sigma^2
+\\
+\operatorname{var}(X_2)
+&=
+\alpha^2\sigma^2 +\sigma^2 = (\alpha^2 + 1)\sigma^2
+\\
+\operatorname{var}(X_3)
+&=
+(\alpha^4+\alpha^2+1)\sigma^2
+\\
+\operatorname{var}(X_4)
+&=
+(\alpha^6+\alpha^4+\alpha^2+1)\sigma^2
+\end{align*}
+Analog kann man aus der Rekursionsformel
+\begin{align*}
+\operatorname{cov}(X_i,X_{i+k})
+&=
+\operatorname{cov}(X_i,\alpha X_{i+k-1}+ \xi_{i+k})
+=
+\alpha \operatorname{cov}(X_i,X_{i+k-1}) + \operatorname{cov}(X_i,\xi_{i+k})
+=
+\alpha \operatorname{cov}(X_i,X_{i+k-1})
+\end{align*}
+ablesen:
+\begin{align*}
+\operatorname{cov}(X_1,X_2)
+&=
+\alpha \operatorname{var}(X_i)=\alpha\sigma^2
+\\
+\operatorname{cov}(X_1,X_3)
+&=
+\alpha\operatorname{cov}(X_1,X_2)
+=
+\alpha^2\sigma^2
+\\
+\operatorname{cov}(X_1,X_4)
+&=
+\alpha^3\sigma^2
+\\
+\operatorname{cov}(X_2,X_3)
+&=
+\alpha\operatorname{var}(X_2)
+=
+\alpha(\alpha^2+1)\sigma^2
+\\
+\operatorname{cov}(X_2,X_4)
+&=
+\alpha^2(\alpha^2+1)\sigma^2
+\\
+\operatorname{cov}(X_3,X_4)
+&=
+\alpha\operatorname{var}(X_3)
+=
+\alpha(\alpha^4+\alpha^2+1)\sigma^2
+\end{align*}
+Die Kovarianzmatrix ist daher
+\[
+P
+=
+\sigma^2
+\begin{pmatrix}
+1       &\alpha              &\alpha^2           &\alpha^3                    \\
+\alpha  &\alpha^2 + 1        &\alpha(\alpha^2+1) &\alpha^2(\alpha^2+1)        \\
+\alpha^2&\alpha(\alpha^2+1)  &\alpha^4+\alpha^2+1&\alpha(\alpha^4+\alpha^2+1) \\
+\alpha^3&\alpha^2(\alpha^2+1)&\alpha(\alpha^4+\alpha^2+1)&\alpha^6+\alpha^4+\alpha^2+1\\
+\end{pmatrix}
+\]
+Aus den Formel für $K$ und $P^*$ im Lemma kann man jetzt beide berechnen
+und die verlangten Varianzen als Diagonalelemente von $P^*$ ablesen:
+\begin{align*}
+\operatorname{var}(X_1|y)
+&=
+\frac{\sigma^2\,\tau^4+(\alpha^2+2)\sigma^4\,\tau^2+\sigma^6
+ }{\tau^4+(\alpha^4+2\alpha^2+2)\sigma^2\tau^2+(\alpha^2+1
+ )\sigma^4}
+\\
+&=
+\sigma^2
+\frac{\tau^4+(\alpha^2+2)\sigma^2\,\tau^2+\sigma^4}%
+{\tau^4+(\alpha^4+2\alpha^2+2)\sigma^2\,\tau^2+(\alpha^2+1
+ )\sigma^4} < \sigma^2
+\\
+\operatorname{var}(X_3|y)
+&=
+\frac{(\alpha^4+a^2+1)\,\sigma^2\,\tau^4+(\alpha^2+1)\,
+ \sigma^4\,\tau^2}{\tau^4+(\alpha^4+2\alpha^2+2)\sigma^2
+ \tau^2+(\alpha^2+1)\sigma^4}
+\\
+&=
+\tau^2\sigma^2
+\frac{(\alpha^4+a^2+1)\tau^2+(\alpha^2+1)
+ \sigma^2}{\tau^4+(\alpha^4+2\alpha^2+2)\sigma^2
+ \tau^2+(\alpha^2+1)\sigma^4}
+=
+O(\tau^2)\qquad \text{für $\tau\to 0$}.
+\end{align*}
+Die Schlussfolgerungen der Aufgabe bleiben somit gültig.
+
+%$${{\sigma^2\,\tau^4+\left(a^2+2\right)\,\sigma^4\,\tau^2+\sigma^6
+% }\over{\tau^4+\left(a^4+2\,a^2+2\right)\,\sigma^2\,\tau^2+\left(a^2+1
+% \right)\,\sigma^4}}$$
+%$${{\left(a^4+a^2+1\right)\,\sigma^2\,\tau^4+\left(a^2+1\right)\,
+% \sigma^4\,\tau^2}\over{\tau^4+\left(a^4+2\,a^2+2\right)\,\sigma^2\,
+% \tau^2+\left(a^2+1\right)\,\sigma^4}}$$

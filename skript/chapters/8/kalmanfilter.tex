@@ -298,12 +298,13 @@ P_{k|k-1}      &= \varphi_kP_{k-1}\varphi_k^t + Q_k
 \end{align*}
 \item
 Berechnung der Kalman-Filter-Matrix
-\begin{align*}
+\begin{align}
 K_k
 &=
 P_{k|k-1}H_k^t
 (H_kP_{k|k-1}H_k^t+R_k)^{-1}
-\end{align*}
+\label{kalman:kmatrix}
+\end{align}
 \item
 Korrektur:
 \begin{align*}
