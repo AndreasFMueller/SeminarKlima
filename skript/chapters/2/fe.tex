@@ -14,7 +14,7 @@
 \begin{document}
 
 
-\begin{tikzpicture}[thick,>=latex]
+\begin{tikzpicture}[thick,>=latex,scale=0.92]
 
 \begin{scope}[xshift=-4cm]
 
@@ -36,7 +36,7 @@
 
 \draw[color=red,line width=1.4pt] (-0.3,0)--(1,0)--(2,4)--(3,0)--(6.2,0);
 
-\draw[->] (0,-0.2)--(0,4.3) coordinate[label={left:$u$}];
+\draw[->] (0,-0.2)--(0,4.3) coordinate[label={above:$u$}];
 
 \node[color=red!20] at (0,4) [above right] {$h_0$};
 \node[color=red!20] at (1,4) [above] {$h_1$};
@@ -58,7 +58,7 @@
 
 \begin{scope}[xshift=4cm]
 
-\draw[->] (0,-0.2)--(0,4.3) coordinate[label={left:$u$}];
+\draw[->] (0,-0.2)--(0,4.3) coordinate[label={above:$u$}];
 
 \begin{scope}
 \clip (-0.2,-0.1) rectangle (6.2,4.1);
