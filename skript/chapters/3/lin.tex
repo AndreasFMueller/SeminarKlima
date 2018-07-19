@@ -1,0 +1,95 @@
+%
+% lin.tex
+%
+% (c) 2018 Prof Dr Andreas Müller, Hochschule Rappreswil
+%
+\section{Linearisierung und Stabilität\label{section:linearisierung}}
+\rhead{Linarisierung und Stabilität}
+Die Technik der Phasendiagramme hat es sehr einfach gemacht, auf graphische
+Art zwischen stabilen und instabilen Gleichgewichten zu unterscheiden.
+Tatsächlich kann sie weiterentwickelt werden, in \cite{skript:mathsem-dgl}
+wird gezeigt, wie man Gleichgewichtslösungen auch zweidimensionaler
+Systeme ganz ähnlich graphisch analysieren kann.
+In diesem Abschnitt soll aber nur gezeigt werden, wie auch mit relativ
+bescheidenem Aufwand auch auf algebraischem oder analytischem Weg
+Aussagen über die Stabilität von Gleichgewichtslösungen gefunden werden
+können.
+
+\subsection{Lineare Differentialgleichungen}
+Eine lineare Differentialgleichung
+\begin{equation}
+\frac{dx}{dt}
+=
+Ax
+\label{skript:lin:dgl}
+\end{equation}
+kann mit der Matrix-Exponentialfunktion
+\begin{equation}
+x(t) = e^{At} x(0)
+=
+\biggl(
+\sum_{k=0}^\infty \frac{t^k}{k!}A^k
+\biggr) x(0)
+=
+\biggl(
+1+ At + \frac{A^2t^2}{2!} +\frac{A^3t^3}{3!}+\dots
+\biggl)\cdot x(0)
+\label{skript:lin:potenzreihe}
+\end{equation}
+gelöst werden.
+
+Für eine diagonalisierbare Matrix $A$ ist die Berechnung der
+Potenzreihe~\eqref{skript:lin:potenzreihe} sehr viel einfacher, da
+gilt
+\begin{equation}
+A^k
+=
+\begin{pmatrix}
+\lambda_1&\dots &0        \\
+\vdots   &\ddots&\vdots   \\
+0        &\dots &\lambda_n
+\end{pmatrix}^k
+=
+\begin{pmatrix}
+\lambda_1^k&\dots &0        \\
+\vdots     &\ddots&\vdots   \\
+0          &\dots &\lambda_n^k
+\end{pmatrix}
+\qquad\Rightarrow\qquad
+e^{tA}
+=
+\begin{pmatrix}
+e^{\lambda_1 t} & \dots  & 0             \\
+\vdots          & \ddots &\vdots         \\
+0               & \dots  &e^{\lambda_n t}
+\end{pmatrix}.
+\label{skript:lin:expreihe}
+\end{equation}
+Insbesondere lässt sich damit sehr einfach entscheiden, ob wie Lösungen
+für zunehmendes $t$ anwachsen oder gegen $0$ konvergieren.
+Ist $\lambda_j = a_j + ib_j$ die Aufteilung in Real- und Imaginärteil,
+dann ist
+\[
+e^{\lambda_jt} = e^{a_jt}(\cos b_jt +i\sin b_jt).
+\qquad\Rightarrow\qquad
+|e^{\lambda_j t}| = e^{a_jt}
+\]
+Ist $a_j < 0$, dann konvergiert $e^{\lambda_jt}$ gegen $0$.
+Da die $0$-Lösung eine Gleichgewichtslösung von~\eqref{skript:lin:dgl}
+ist kann gefolgert werden, dass diese Lösung genau dann stabil ist, 
+wenn alle Eigenwerte von $A$ negativen Realteil ist.
+
+\subsection{Linearisierung}
+
+
+
+
+
+
+
+
+
+
+
+
+
