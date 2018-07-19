@@ -18,6 +18,7 @@ images:
 
 CHAPTERS = 								\
 	chapters/part1.tex						\
+	chapters/einleitung.tex						\
 	chapters/assim.tex						\
 	chapters/dgl.tex						\
 	chapters/elnino.tex						\
