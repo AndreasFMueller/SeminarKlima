@@ -3,15 +3,19 @@
 
 
 \section{Lorenz-Modell}\label{lorenz-modell}
-Die Gleichungen, welche das Lorenz-Modell beschreiben, enthalten viele physikalische Eigenschaften wie die Dichte, Geschwindigkeit und Temperatur der Atmosphäre. Lorenz wollte aus den bereits existierenden Gleichungen der Hydrodynamik ein Modell zur Wetterprognose erstellen. Basierend auf vorgehenden Werken von Saltzman startete Lorenz mit den hyrodynamischen Gleichungen und verfolgte ein systematisches Näherungsvorgehen, womit er auf die folgenden drei Gleichungen stoss:
+Das Lorenz-Modell versucht die Luftbewegungen innerhalb der untersten Luftschicht, auch Troposphäre genannt, zu beschreiben. Diese Luftschicht verläuft vom Erdboden bis zur Tropopause, welche die Grenze zwischen der Troposphere und der Stratosphere darstellt.
 
-\begin{align}
-\dot{x} &= \sigma(x - y)\\
-\dot{y} &= x(\rho - z) - y\\
-\dot{z} &= xy - \beta z
-\end{align}
+Die X-Achse entspricht dabei der hydrodynamischen, räumlichen Durchschnittsgeschwindigkeit, also die durchschnittliche Konvektionsgeschwindigkeit. Die Y-Achse repräsentiert die Temperatur und die Z-Achse der Temperaturgradient. Also wie schnell sich die Temperatur verändert.
 
-Die X-Achse entspricht dabei der hydrodynamischen, räumlichen Durchschnittsgeschwindigkeit, also die durchschnittliche Konvektionsgeschwindigkeit. Die Y-Achse repräsentiert die Temperatur und die Z-Achse der Temperaturgradient. Also wie schnell sich die Temperatur verändert. 
+Die Gleichungen, welche das Lorenz-Modell beschreiben, enthalten viele physikalische Eigenschaften wie die Dichte, Geschwindigkeit und Temperatur der Atmosphäre. Lorenz wollte aus den bereits existierenden Gleichungen der Hydrodynamik ein Modell zur Wetterprognose erstellen. Basierend auf vorgehenden Arbeiten von Saltzman startete Lorenz mit den hyrodynamischen Gleichungen und verfolgte ein systematisches Näherungsvorgehen, womit er auf die folgenden drei Gleichungen stiess:
+\begin{figure}
+	\begin{align}
+		\dot{x} &= \sigma(x - y)\\
+		\dot{y} &= x(\rho - z) - y\\
+		\dot{z} &= xy - \beta z
+	\end{align}
+	\caption{Gleichungen des Lorenz-Systems, siehe Kapitel \ref{section:lorenz-modell}}
+\end{figure}
 
 Wie aus den obigen Gleichungen ersichtlich ist, sind drei Parameter vorhanden. Alle sind immer positiv.
 
