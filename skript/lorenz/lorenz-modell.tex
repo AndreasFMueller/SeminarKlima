@@ -41,19 +41,19 @@ Es gibt für das Lösen von Differentialgleichungen zwei Ansätze. Zum einen der
 
 Der zweite Ansatz ist, eine \textit{Diskretisierung} vorzunehmen und den Computer für jeden definierten Zeitpunkt die Resultate der Gleichungen \textit{numerisch} ausrechnen zu lassen. Dies ist auch der in dieser Arbeit gewählte Weg, der im Folgenden bis zur tatsächlichen Visualisierung genauer beschrieben wird.
 
-\subsubsection{Euler-Verfahren}
+Differentialgleichungen beschreiben die Änderungsrate der Variablen $ X, Y, Z $. Sie sagen nichts über die X-Achsen-Verschiebung der Werte aus. Aus diesem Grund kennt man die absolute Werte nicht und kann auch keine andere Werte davon ableiten. Der numerische Algorithmen können lediglich die anderen Werte ausrechnen von einem definierten Startwert. Im Abschnitt \ref{euler-verfahren} Euler-Verfahren werden wir weiter auf die Wahl des Startwertes eingehen.
+
+\subsubsection{Euler-Verfahren} \label{euler-verfahren}
 
 Wir wählten für die Diskretisierung das \textit{Euler-Verfahren} zur Annäherung der Werte des Lorenz-Modells. Das resultierende Gleichungssystem besteht aus einfachen Arithmetik-Operationen und ist für einen Computer einfach berechenbar. Dies erlaubt auch \textit{Smartphones} die Visualisierung effizient zu berechnen und flüssig anzuzeigen.
 
-Das Euler-Verfahren ist ein Algorithmus der Familie der Einschritt-Verfahren. Diese Verfahren rechnen schrittweise die Werte von einem Startwert aus. Sie können dies in einer $ O(N) $ Schleife bei welcher die Lösung des vorherigen Durchgangs als neuer Startwert verwendet wird. 
+Das Euler-Verfahren ist ein Algorithmus der Familie der Einschritt-Verfahren. Diese Verfahren rechnen iterativ in einer Schleife die Werte von einem bekannten Startwert aus. Als nächster Ausgangspunkt wird dann das Ergebnis der vorherigen Iteration genommen und mithilfe der Differenzialgleichung die Änderung zum Ausgangspunkt bestimmen. 
 
-Differentialgleichungen beschreiben die Steigung relativ zu bekannter Lösung. Sie sagen nichts über die X-Achsen-Verschiebung der Werte aus. Aus diesem Grund kennt man die absolute Position dieser Werte nicht und kann auch keine andere Positionen daraus ausrechnen. Der vorhergehend vorgestellte Algorithmus kann lediglich die anderen Werte ausrechnen wenn dieser Startwert im vorhinein bekannt ist. Dieses Hindernis wird das \textit{Anfangswert-Problem} genannt.
+Da Einschritt-Verfahren einen Startwert brauchen von wessen sie die nächsten Ausgangspunkte ausrechnen können, muss der erste Startwert vorgegeben werden. Wir haben im Rahmen dieses Berichtes keine Optimierung des Startwertes durchführen können, sondern einfach eine sinnvolle Annahme getroffen. Dieser Anfangswert war konstant und fester Teil des Algorithmus, den wir modeliert haben.
 
-Auch das besprochene Verfahren kann das Anfangswert-Problem nicht lösen, sondern nur schrittweise vom Anfangswert die anderen Punkte ausrechnen. Wir haben diese Problematik im Rahmen dieses Berichtes nicht lösen können und stattdessen den Anfangswert $ P(0.1, 0.1, 0.1) $ angenommen. Dieser Anfangswert war konstant und fester Teil des Algorithmus, den wir modeliert haben.
+Wir starteten zuerst mit dem Startwert $ P(0, 0, 0) $. In den anschliessenden Untersuchungen des Algorithmus zeigte sich, dass dieser Startwert zugleich eine Lösung des Lorenz-Systems ist. Aus diesem Grund hat sich das Model auf den Ursprung stabilisiert. Wir entschieden uns den Startwert auf $ P(0.1, 0.1, 0.1) $ zu verschieben, dieser Wert ist keine Lösung des Lorenz-Systems und das Modell stabilisierte sich nicht mehr.
 
-Wir versuchten zuerst den Anfangswert $ P(0, 0, 0) $ zu nehmen. In den anschliessenden Untersuchungen des Algorithmus stellte sich heraus, dass dieser Anfangswert zugleich eine Lösung des Lorenz-Systems ist. Aus diesem Grund hat sich das Model auf den Ursprung stabilisiert. Unsere Lösung war es den Anfangswert auf $ P(0.1, 0.1, 0.1) $ zu verschieben, der diese Eigenschaft nicht besitzt.
-
-Als Basis für das Euler-Verfahren verwenden wir den Differenzenquotient $ \frac{dx}{dt} \approx \frac{x_{n + 1} - x_n}{\Delta t} $ \cite{euler1768}.  Weil wir den nächsten Punkt im 3D-Raum ausrechnen möchten, formen wir die Gleichung zu $ x_{n + 1} $  um und rechnen sie für alle Achsen getrennt aus.
+Als Basis für das Euler-Verfahren verwenden wir den Differenzenquotient $ \frac{dx}{dt} \approx \frac{x_{n + 1} - x_n}{\Delta t} $ \cite{dahmen2008}.  Weil wir den nächsten Punkt im 3D-Raum ausrechnen möchten, formen wir die Gleichung zu $ x_{n + 1} $  um und rechnen sie für alle Achsen getrennt aus.
 
 \begin{align}
     x_{n + 1} &= x_n + \frac{dx}{dt} \cdot \Delta t\\
