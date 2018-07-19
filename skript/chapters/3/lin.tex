@@ -143,12 +143,51 @@ Dies bedeutet, dass das Stabilitätskriterium an die Eigenwerte von $A$
 weiterhin zutrifft: Die Gleichgewichtslösung $x=0$ ist genau dann stabil,
 wenn alle Eigenwerte von $A$ negativen Realteil haben.
 
-\subsection{Linearisierung}
+\subsection{Linearisierung\label{subsection:linearisierung}}
+Ist $x_0$ ein kritischer der Punkt der autonomen Differentialgleichung
+\[
+\frac{dx}{dt} = f(x),
+\]
+dann können wir mit Hilfe einer Koordinatentransformation
+\[
+x = x_0 + \tilde x
+\qquad
+\text{und}
+\qquad
+\tilde f(\tilde x) = f(x_0 + \tilde x)
+\]
+die Differentialgleichung in die Form
+\[
+\frac{d\tilde x}{dt}
+=
+\tilde f(\tilde x)
+\]
+bringen, welche $0$ als Gleichgewichtslösung hat.
+Im Folgenden schreiben wir wieder $f$ und $x$ für $\tilde f$ und $\tilde x$.
 
+Da $f(0)=0$ gilt, kann $f(x)$ in eine Potenzreihe der Form
+\[
+f(x) = Ax + O(|x|^2)
+\]
+entwickelt werden.
+Darin ist $A$ die Ableitungsmatrix
+\[
+A=(a_{ij})=Df
+\qquad\text{mit}\qquad
+(Df)_{ij}
+=
+\frac{\partial f_i(x)}{\partial x_j} = a_{ij}
+\]
+der Funktion $f$.
+Dies ist die linearisierte Version der
+Differentialgleichung~\eqref{skript:lin:dgl}.
 
-
-
-
+In unmittelbarer Nähe des Gleichgewichtspunktes $0$ sind analog wie
+bei der linearen Differentialgleichung~\eqref{skript:lin:dgl}
+wieder die Eigenwerte der Matrix $A=Df$ darüber entscheidend, ob der
+Gleichgewichtspunkt stabil ist.
+$x_0$ ist genau dann ein stabilier Gleichgewichtspunkt, wenn alle
+Eigenwerte der Ableitungsmatrix $Df$ negativ sind.
 
 
 
