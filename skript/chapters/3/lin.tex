@@ -70,14 +70,78 @@ für zunehmendes $t$ anwachsen oder gegen $0$ konvergieren.
 Ist $\lambda_j = a_j + ib_j$ die Aufteilung in Real- und Imaginärteil,
 dann ist
 \[
-e^{\lambda_jt} = e^{a_jt}(\cos b_jt +i\sin b_jt).
+e^{\lambda_jt} = e^{a_jt}(\cos b_jt +i\sin b_jt)
 \qquad\Rightarrow\qquad
-|e^{\lambda_j t}| = e^{a_jt}
+|e^{\lambda_j t}| = e^{a_jt}.
 \]
 Ist $a_j < 0$, dann konvergiert $e^{\lambda_jt}$ gegen $0$.
 Da die $0$-Lösung eine Gleichgewichtslösung von~\eqref{skript:lin:dgl}
 ist kann gefolgert werden, dass diese Lösung genau dann stabil ist, 
 wenn alle Eigenwerte von $A$ negativen Realteil ist.
+
+Natürlich lässt sich nicht jede Matrix diagonalisieren, aber man kann
+mindestens eine Basis finden, in der $A$ Jordan-Normalform hat, also aus
+Blöcken der Form
+\[
+A_{\lambda}
+=
+\begin{pmatrix}
+\lambda&   1   &       &       &       \\
+       &\lambda&   1   &       &       \\
+       &       &\lambda&\ddots &       \\
+       &       &       &\ddots &    1  \\
+       &       &       &       &\lambda
+\end{pmatrix}
+=
+\begin{pmatrix}
+\lambda&       &       &       \\
+       &\lambda&       &       \\
+       &       &\ddots &       \\
+       &       &       &\lambda
+\end{pmatrix}
++
+\begin{pmatrix}
+   0   &   1   &       &       \\
+       &   0   &\ddots &       \\
+       &       &\ddots &   1   \\
+       &       &       &   0
+\end{pmatrix}
+=
+\lambda E + N.
+\]
+Die Matrizen $\lambda E$ und $N$ vertauschen, so dass die
+Produkteigenschaft der Exponentialfunktion verwendet werden kann,
+es gilt
+\begin{equation}
+e^{A_\lambda t}
+=
+e^{\lambda tE}\cdot e^{Nt}
+=
+e^{\lambda t} e^{Nt}.
+\label{skript:lin:faktorisierung}
+\end{equation}
+Bezeichnet man mit $N_i$ die Matrix, die in der $i$-ten Nebendiagonale
+Einsen enthält und sonst nur Nullen, dann ist $N=N_1$.
+Die Potenzen von $N$ können dann sofort in der Form $N^k=N_k$ ausgedrückt
+werden, und damit kann man auch
+\begin{equation}
+e^{Nt}
+=
+\begin{pmatrix}
+1&t&\frac{t^2}{2!}&\frac{t^3}{3!}& \dots & \frac{t^{n-1}}{(n-1)!}\\
+0&1&       t      &\frac{t^2}{2!}& \dots & \frac{t^{n-2}}{(n-2)!}\\
+      &\ddots&\ddots& \ddots     &       & \vdots                \\
+      &      &\ddots& \ddots     &\ddots & \vdots                \\
+      &      &      &         0  &    1  & t \\
+      &      &      &            &    0  & 1
+\end{pmatrix}
+\end{equation}
+sofort berechnen.
+Der Faktor $e^{Nt}$ von \eqref{skript:lin:faktorisierung}
+hängt nicht von $\lambda$ ab und wächste höchstens mit $t^{n-1}$ an.
+Dies bedeutet, dass das Stabilitätskriterium an die Eigenwerte von $A$
+weiterhin zutrifft: Die Gleichgewichtslösung $x=0$ ist genau dann stabil,
+wenn alle Eigenwerte von $A$ negativen Realteil haben.
 
 \subsection{Linearisierung}
 
