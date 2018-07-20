@@ -3,18 +3,18 @@
 
 
 \section{Lorenz-Modell}\label{lorenz-modell}
-Die Gleichungen, welche das Lorenz-Modell beschreiben, enthalten viele physikalische Eigenschaften wie die Dichte, Geschwindigkeit und Temperatur der Atmosphäre. Lorenz wollte aus den bereits existierenden Gleichungen der Hydrodynamik ein Modell zur Wetterprognose erstellen. Basierend auf vorgehenden Arbeiten von Saltzman \cite{saltzman62} startete Lorenz mit den hyrodynamischen Gleichungen und verfolgte ein systematisches Näherungsvorgehen, womit er auf die folgenden drei Gleichungen stiess:
 
-Die X-Achse entspricht dabei der hydrodynamischen, räumlichen Durchschnittsgeschwindigkeit, also die durchschnittliche Konvektionsgeschwindigkeit. Die Y-Achse repräsentiert die Temperatur und die Z-Achse der Temperaturgradient. Also wie schnell sich die Temperatur verändert.
+Die Gleichungen, welche das Lorenz-Modell beschreiben, enthalten viele physikalische Eigenschaften wie die Dichte, Geschwindigkeit und Temperatur der Atmosphäre. Lorenz wollte aus den bereits existierenden Gleichungen der Hydrodynamik ein Modell zur Wetterprognose erstellen. Basierend auf vorgehenden Arbeiten von Saltzman \cite{saltzman62} startete Lorenz mit den hyrodynamischen Gleichungen und verfolgte ein systematisches Näherungsvorgehen, womit er auf die drei Gleichungen stiess, die als dreidimensionales System betrachtet werden. 
 
-Die Gleichungen, welche das Lorenz-Modell beschreiben, enthalten viele physikalische Eigenschaften wie die Dichte, Geschwindigkeit und Temperatur der Atmosphäre. Lorenz wollte aus den bereits existierenden Gleichungen der Hydrodynamik ein Modell zur Wetterprognose erstellen. Basierend auf vorgehenden Arbeiten von Saltzman startete Lorenz mit den hyrodynamischen Gleichungen und verfolgte ein systematisches Näherungsvorgehen, womit er auf die folgenden drei Gleichungen stiess:
+Die X-Achse entspricht dabei der hydrodynamischen, räumlichen Durchschnittsgeschwindigkeit, also die durchschnittliche Konvektionsgeschwindigkeit. Die Y-Achse repräsentiert die Temperatur und die Z-Achse der Temperaturgradient. Also wie schnell sich die Temperatur verändert. Die Gleichungen lauten folgendermassen:
+
 \begin{figure}
 	\begin{align}
 		\dot{x} &= \sigma(x - y)\\
 		\dot{y} &= x(\rho - z) - y\\
 		\dot{z} &= xy - \beta z
 	\end{align}
-	\caption{Gleichungen des Lorenz-Systems, siehe Kapitel \ref{section:lorenz-modell}}
+	\caption{Gleichungen des Lorenz-Systems, Herleitung siehe Kapitel \ref{section:lorenz-modell}}
 \end{figure}
 
 Wie aus den obigen Gleichungen ersichtlich ist, sind drei Parameter vorhanden. Alle sind immer positiv.
@@ -47,7 +47,7 @@ Differentialgleichungen beschreiben die Änderungsrate der Variablen $ X, Y, Z $
 
 Wir wählten für die Diskretisierung das \textit{Euler-Verfahren} zur Annäherung der Werte des Lorenz-Modells. Das resultierende Gleichungssystem besteht aus einfachen Arithmetik-Operationen und ist für einen Computer einfach berechenbar. Dies erlaubt auch \textit{Smartphones} die Visualisierung effizient zu berechnen und flüssig anzuzeigen.
 
-Das Euler-Verfahren ist ein Algorithmus der Familie der Einschritt-Verfahren. Diese Verfahren rechnen iterativ in einer Schleife die Werte von einem bekannten Startwert aus. Als nächster Ausgangspunkt wird dann das Ergebnis der vorherigen Iteration genommen und mithilfe der Differenzialgleichung die Änderung zum Ausgangspunkt bestimmen. 
+Das Euler-Verfahren ist ein Algorithmus der Familie der Einschritt-Verfahren. Diese Verfahren rechnen iterativ in einer Schleife die Werte von einem bekannten Startwert aus. Als nächster Ausgangspunkt wird dann das Ergebnis der vorherigen Iteration genommen und mithilfe der Differentialgleichung die Änderung zum Ausgangspunkt bestimmen. 
 
 Da Einschritt-Verfahren einen Startwert brauchen von wessen sie die nächsten Ausgangspunkte ausrechnen können, muss der erste Startwert vorgegeben werden. Wir haben im Rahmen dieses Berichtes keine Optimierung des Startwertes durchführen können, sondern einfach eine sinnvolle Annahme getroffen. Dieser Anfangswert war konstant und fester Teil des Algorithmus, den wir modeliert haben.
 
