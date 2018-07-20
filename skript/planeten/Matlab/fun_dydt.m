@@ -1,27 +1,29 @@
-function dydt = fun_dydt(t,y, p)
+function dydt = fun_dydt(t,y)
 %DTDT Summary of this function goes here
 %   Detailed explanation goes here
 
-    T_s    = y(1);
-    T_t    = y(2);
-    h2o    = y(3);
-    clouds = y(4);
+    global PLANET;
+    global CONST;
+    global PARAM
 
-    %T_grad = T_s - T_t; 
+    T_s = y(1);
+    H   = y(2);
+    C   = y(3); 
     
-    P_in = P_absorption() * (1-albedo(clouds));
-    P_out = P_blackbody(T_s) * (1-greenhouse(h2o));
+    P = pi * PLANET.R^2 * CONST.sigma * CONST.T_sun^4 * (CONST.R_sun / PLANET.A)^2;
+    P_absorption = P / (4* pi * PLANET.R^2); %W/m^2
     
-    T_grad = p(3) * 1./(clouds * T_s); 
+    P = 4* pi * PLANET.R^2 * CONST.sigma * T_s.^4;
+    P_blackbody  = P / (4* pi * PLANET.R^2); %W/m^2
     
-    d_T_s    =    p(1)*(P_in - P_out); %- p(2)*h2o*T_s;
-    %d_T_t    =                          p(2)*h2o*T_s - p(3)*P_blackbody(T_t)*albedo(clouds) + p(4)*(T_grad * h2o);
-    d_h2o    =    p(5)*(P_in) - p(6)*((h2o^9 + h2o) * T_grad);    
-    d_clouds =                  p(6)*((h2o^9 + h2o) * T_grad) - p(7)*(clouds^5 + clouds); % - clouds * convection;
+    P_in  = P_absorption * (1 - (((PARAM.alpha_max - PARAM.alpha_s) * C) + PARAM.alpha_s) );
+    P_out = P_blackbody  * (1 - ( PARAM.xi8 * H)         );
+    
+    T_grad = PARAM.xi3 * 1./(C * T_s); 
+    
+    d_T_s  = PARAM.xi1 * (P_in - P_out)                                                    ;
+    d_H    = PARAM.xi2 * T_s    - PARAM.xi3 * (H^9 + H) * T_grad                           ;    
+    d_C    =                      PARAM.xi3 * (H^9 + H) * T_grad   - PARAM.xi4 * (C^5 + C) ;
    
-    d_T_t=0;
-    
-%     d_h2o = vaporisation(T_s) *1e-1 + ( -escape(T_t) - precipitation(T_s) ) * h2o;
-
-    dydt = [d_T_s; d_T_t; d_h2o; d_clouds];
+    dydt = [d_T_s; d_H; d_C];
 end

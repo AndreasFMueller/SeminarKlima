@@ -1,0 +1,334 @@
+%
+% assimilation.tex
+%
+% (c) 2018 Prof Dr Andreas Müller, Hochschule Rapperswil
+%
+\section{Das Assimilationsproblem\label{section:assimilationsproblem}}
+Der Kalman-Filter ist ein Beispiel dafür, wie laufend neue Messdaten und
+ein Modell des untersuchten System ermöglichen, selbst dann einigermassen
+vollständige Informationen über den Zustand des Systems zu erhalten, wenn
+nicht alle Zustandsgrössen direkt gemessen werden.
+Dass dies sogar für ein chaotisches System bis zu einem gewissen Grad
+möglich ist, zeigen die Experimente in Kapitel~\ref{chapter:kalman}.
+
+Allerdings wurden bei der Konstruktion des Kalman-Filters einige
+einschränkende Annahmen gemacht.
+Das System und der Messprozess musste linear beschreibbar sein, 
+und Fehler mussten normalverteilt, unabhängig und mit Mittelwert $0$ sein.
+Ausserdem wurden immer nur Messungen des aktuellen Zeitpunktes verwendet,
+um die aktuellste Zustandsschätzung zu verbessern.
+Dieses Vorgehen ist natürlich in vielen technischen Anwendungen angemessen
+und auch passend zum Beispiel für Wetterprognosen, wo fast nur der aktuelle
+Zustand der Atmosphäre interessiert.
+
+In einem Klimamodell ist jedoch nicht nur der aktuelle Zustand der Atmosphäre
+interessant.
+Vielmehr geht es darum, die Geschichte des Erdklimas möglichst genau
+zu rekonstruieren und dabei immer weitere, neu zugänglich gemachte 
+Daten in das Modell zu integrieren und die Qualität der Vorhersagen zu
+verbessern.
+
+In diesem Kapitel soll daher angedeutet werden, wie ein allgemeineres
+Datenassimilationsproblem formuliert werden kann, welches als Spezialfall
+das im vorangegangenen Abschnitt~\ref{section:kalman-filter} gelöste
+Filterproblem hat.
+
+\subsection{Markov-Kette und Markov-Eigenschaft\label{subsection:markov}}
+Der Zustand des Klimasystems zu einem beliebigen Zeitpunkt kann mit einem
+Vektor $x\in\mathbb R^n$ von Variablen beschrieben werden, im einfachsten
+Fall bestehend allein aus der globalen Mitteltemperatur.
+Natürlich ist $x$ nicht bekannt, wir können bestenfalls $X$ ist eine
+Zufallsvariable betrachten, die den Wert $x$ angenommen hat.
+
+Da die ganze Klimageschichte rekonstruiert werden soll, sind die Werte von
+$x$ zu diskreten Zeitpunkten $0,\dots,N$ zu bestimmen.
+Die Klimageschichte ist also eine Folge $X(k)$ mit $k=0,\dots,N$ von
+Zufallsvariablen.
+Im Folgenden wird davon ausgegangen, dass die Wahrscheinlichkeitsdichte
+$f_{X(k)}(x)$ von $X(k)$ bekannt ist.
+Man nennt $X(k)$ einen diskreten {\em stochastischen Prozess}.
+\index{stochastischer Prozess}%
+\index{Prozess, stochastischer}%
+In der Realität steht uns jeweils nur ein Teil der Werte des Prozesses zur
+Verfügung, so bezeichnen wir mit $X(i:j)$ die Folge
+\[
+X(i),X(i+1),\dots,X(j-1),X(j).
+\]
+Damit ist $X(0:n)$ die Klimageschichte bis zur Zeit $n$, und $X(n:N)$ die
+Zukunft.
+
+Das Assimilationsproblem besteht darin, dass Messwerte $Y(k)$ zur Verfügung
+gestellt werden, mit denen sich die Wahrscheinlichkeitsidichte von $X(k)$
+``genauer'' bestimmen lässt.
+Um den Formalismus herauszuarbeiten seien $X$ und $Y$ Zufallsvariablen,
+es soll die Frage beantwortet werden, wie sich die Verteilung von $X$
+ändert, wenn $Y$ den Wert von $y$  annimmt.
+Die Wahrscheinlichkeitsdichte von $(X,Y)$ sei $f_{X,Y}(x,y)$, sie kann
+sich daher auf zwei verschiedene Arten als Produkt
+\begin{equation}
+f_{X,Y}(x,y)
+= 
+f_{X|y}(x)\,f_Y(y)
+=
+f_{Y|x}(y)\,f_X(x)
+\label{skript:bedpdf}
+\end{equation}
+beschrieben werden.
+\index{Satz von Bayes}%
+Der {\em Satz von Bayes} für die {\em bedingten Wahrscheinlichkeitsdichten}
+wird 
+\begin{equation}
+f_{X|y}(x)
+=
+\frac{f_X(x)}{f_Y(y)}\,f_{Y|x}(y).
+\label{assim:bayes}
+\end{equation}
+Wenn die Zufallsvariablen $X$ und $Y$ unabhängig sind, dann hat der
+Werte von $y$ keinen Einfluss auf die Wahrscheinlichkeitsdichte von $X$,
+es ist also
+\[
+f_{X|y}(x)
+=
+f_X(x)\quad\forall y.
+\]
+Gegeben $f_{X|y}(x)$ lässt sich auch Wahrscheinlichkeitsdichte
+$f_X$ berechnen, es gilt
+\begin{align}
+f_X(x)
+&=
+\int f_{X|y}(x)\,f_Y(y) dy.
+\label{assim:total}
+\end{align}
+Dies ist der Satz von der {\em totalen Wahrscheinlichkeit}.
+\index{totale Wahrscheinlichkeit}%
+
+Kausalität verlangt, dass der Zustand $X(k)$ zur Zeit $k$ abhängig ist
+von den Zustandswerten $x(j)$ mit $j<k$.
+Da $X(k)$ Zufallsvariablen sind, muss sich diese Eigenschaft mit den
+Wahrscheinlichkeitsdichten für $X(k)$ ausdrücken lassen.
+
+Mit Ausnahme der verzögerten Differentialgleichung, die zur Modellierung
+des El~Niño-Phänomens in Kapitel~\ref{chapter:elnino} verwendet wurde,
+haben alle bisher studierten Modelle die Eigenschaft, dass der Zustand
+zur Zeit $k$ vollständig bestimmt ist durch den Zustand zur Zeit $k-1$.
+Frühere Zustände zu Zeiten $j < k-1$ müssen nicht berücksichtigt werden.
+Mit Hilfe der bedingten Wahrscheinlichkeitsdichte~\eqref{skript:bedpdf}
+kann dies wie folgt ausgedrückt werden:
+
+\begin{definition}
+\index{Makrov-Eigenschaft}%
+\index{Markov-Kette}%
+Der stochastische Prozess $X(k)$ hat die {\em Markov-Eigenschaft}, wenn gilt
+\begin{equation}
+f_{X(n:N)|x(0:n-1)}(x(n:N)) 
+=
+f_{X(n:N)|x(n-1)}(x(n:N)).
+\end{equation}
+Ein solcher stochastischer Prozess heiss {\em Markov-Kette}.
+\end{definition}
+Die Definition besagt, dass die Verteilung von $X(n:N)$ sich nicht
+ändert, wenn ausser den Werten $x(n-1)$ auch noch die früheren
+Werte $x(0:n-2)$ kennt.
+
+Die Markov-Eigenschaft eines stochastischen Prozesses bedeutet,
+dass für Vorhersagen von $X(n:N)$ nur die Verteilung von $X(n-1)$
+bekannt sein muss.
+Weiteres Wissen über weiter zurück liegende Werte $X(0:n-2)$ hat
+liefert keine Verbesserung der Vorhersage von $X(n)$.
+Durch wiederholte Anwendung von \eqref{skript:bedpdf} erhält man
+daraus
+\begin{align*}
+f_{X(0:n)}(x(0:n))
+&=
+f_{X(n)|x(0:n-1)}(x(n))\,
+f_{X(0:n-1)}(x(0:n-1))
+=
+f_{X(n)|x(n-1)}(x(n))\,
+f_{X(0:n-1)}(x(0:n-1))
+\\
+&=
+f_{X(n)|x(n-1)}(x(n))\,
+f_{X(n-1)|x(n-2)}(x(n-1))\,
+\dots\,
+f_{X(0}(x(0))
+\end{align*}
+Die Wahrscheinlichkeitsdichten $f_{X(j)|x(j-1)}(x(j))$ heissen
+die {\em Übergangswahrscheinlichkeiten } der Markov-Kette.
+
+\subsection{Filterung, Vorhersage und Reanalyse}
+Die Aufgabe, die sich jetzt stellt, ist aus Ausschnitten der
+Messwertegeschichte $Y(0:N)$ Ausschnitte der Klimageschichte zu
+rekonstruieren.
+Die folgenden Spezialfälle werden unterschieden:
+\begin{enumerate}
+\item
+\index{Filterung}%
+Filterung: Schätze $X(n)$ aus den Werten von $Y(1:n)$.
+\item
+\index{Vorhersage}%
+Vorhersage: Schätze $X(n)$ aus den Werten von $Y(1:n-1)$.
+\item
+\index{Reanalyse}%
+Reanalyse: Schätze $X(n)$ aus den Werten von $Y(1:N)$.
+\end{enumerate}
+Man beachte, dass bei der Reanalyse auch die späteren Werte zur
+Verfügung stehen.
+
+Um eines dieser Probleme zu lösen, muss der Zusammenhang zwischen den
+Zustandsvariablen $X(k)$ und den Messgrössen $Y(j)$ bekannt sein.
+Die Messgrösse $Y(k)$ soll nur vom Zustand zur Zeit $k$ abhängen,
+nicht von früheren oder späteren Zeitpunkten.
+Die Zufallsvariablen $Y(j)$ und $X(k)$ mit $j\ne k$ müssen daher
+unabhängig sein.
+Dies bedeutet, dass sich die Wahrscheinlichkeitsdichten als Produkt
+\begin{align*}
+f_{Y(1:n)|x(0:n)} (y(1:n))
+&=
+f_{Y(n)|x(n)}(y(n))\,
+f_{Y(n-1)|x(n-1)}(y(n-1))\,
+\dots\,
+f_{Y(1)|x(1)}(y(1))
+\end{align*}
+zerlegen lässt.
+
+Damit lassen sich jetzt die Problemstellungen genauer formulieren 
+und auch lösen.
+
+\begin{satz}[Filter und Vorhersage]
+\label{satz:filter und vorhersage}
+Gegeben sei
+\begin{enumerate}
+\item die Wahrscheinlichkeitsdichte $f_{X(0)}$ für den Anfangszustand,
+\item die Übergangswahrscheinlichkeiten $f_{X(j)|x(j-1)}$ der
+Markov-Kette $X(0:N)$ und
+\item die bedingten Wahrscheinlichkeitsdichten $f_{Y(j)|x(j)}$ für die
+Messungen.
+\end{enumerate}
+Dann können wie Wahrscheinlichkeitsdichten $f_{X(i)|y(1:i)}$ für das
+Filterproblem sowie die Wahrscheinlichkeitsdichten $f_{X(i)|y(1:i-1)}$
+für das Vorhersage-Problem wie folgt bestimmt werden.
+\begin{enumerate}
+\item Schritt:
+\begin{align}
+f_{X(1)}(x(1))
+&=
+\int f_{X(1)|x(0)}(x(1)) \, f_{X(0)}(x(0))\, dx(0)
+\label{assim:totalstep1}
+\\
+f_{X(1)|y(1)}(x(1))
+&\sim
+f_{Y(1)|x(1)}(y(1))\, f_{X(1)}(x(1)),
+\label{assim:bayesstep1}
+\end{align}
+wobei der Proportionalitätsfaktor so gewählt werden muss, dass tatsächlich
+eine Wahrscheinlichkeitsdichte entsteht.
+\item Schritt: für $i=2,\dots,N$
+\begin{align}
+f_{X(i)|y(1:i-1)}(x(i))
+&=
+\int f_{X(i)|x(i-1)}(x(i))\, f_{X(i-1)|y(1:i-1)}(x(i-1))\,dx(i-1)
+\label{assim:totalstep2}
+\\
+f_{X(i)|y(1:i)}(x(i))
+&\sim
+f_{Y(i)|x(i)}(y(i))\, f_{X(i)|y(1:i-1)}(x(i)),
+\label{assim:bayesstep2}
+\end{align}
+liefert,
+wobei wiederum der Proportionalitätsfaktor so gewählt werden muss, dass
+eine Wahrscheinlichkeitsdichte entsteht.
+\end{enumerate}
+\end{satz}
+
+\begin{proof}[Beweis]
+Die Formeln von Schritt~1 sind nichts anderes als der Satz von
+Bayes~\eqref{assim:bayes}.
+
+Für den Beweis der Formeln für den zweiten Schritt verwenden wir 
+vollständig Induktion.
+Die Verankerung für $i=2$ ist gegeben durch den Satz von der totalen
+Wahrscheinlichkeit~\eqref{assim:total}
+\begin{align*}
+f_{X(2)|y(1)}(x(2))
+&=
+\int f_{X(2)|x(1)}(x(2))  f_{X(1)}(x(1))\, dx(1).
+\end{align*}
+und erhalten damit die Formel~\eqref{assim:totalstep1}.
+Die zweite Formel~\eqref{assim:bayesstep1} ergibt sich aus dem Satz
+von Bayes~\eqref{assim:bayes}.
+
+Für den Induktionsschritt verwenden wir wieder zuerst den Satz von der
+totalen Wahrscheinlichkeit~\eqref{assim:total} und erhalten
+\begin{align*}
+f_{X(i)|y(1:i-1)}(x(i))
+&=
+\int f_{X(i)|x(i-1)}(x(i)) \, f_{X(i-1)|y(1:i-1)}(x(i-1))\,dx(i-1)
+\end{align*}
+also die Formel~\eqref{assim:totalstep2}.
+Die zweite Formel~\eqref{assim:bayesstep2} folgt daraus mit dem Satz
+von Bayes~\eqref{assim:bayes}.
+\end{proof}
+
+
+\begin{satz}[Reanalyse]
+\label{satz:reanalyse}
+Gegeben seien
+\begin{enumerate}
+\item
+die Übergangswahrscheinlichkeiten $f_{X(i)|x(i-1)}$ für die
+Markov-Kette $X(0:n)$
+\item
+die Wahrscheinlichkeitsdichte für das Filterproblem
+$f_{X(i)|y(1:i)}$.
+\end{enumerate}
+Dann kann die Wahrscheinlichkeitsdichte für das Reanalyse-Problem wie folgt
+bestimmt werden
+\begin{enumerate}
+\item Falls $i=N$, dann ist die Wahrscheinlichkeitsdichte für das
+Reanalyse-Problem dieselbe dieselbe wie jene für das Filterproblem.
+\item Für $i=2,\dots,N-1$ und für die Wahrscheinlichkeitsdichte 
+$f_{X(i+1)|y(1:N)}$  für das Reanalyse-Problem für $X(i+1)$ 
+wird die Wahrscheinlichkeitsdichte für das Reanalyse-Problem für $X(i)$
+durch
+\begin{align}
+f_{X(i)|x(i+1),y(1:i)}(x(i))
+&\sim
+f_{X(i+1)|x(i)}(x(i+1))\, f_{X(i)|y(1:i)}(x(i))
+\label{assim:reanabayes}
+\\
+f_{X(i)|y(1:N)}(x(i))
+&=
+\int f_{X(i)|x(i+1),y(1:i)}(x(i))\, f_{X(i+1)|y(1:N)}(x(i+1))\,dx(i+1)
+\label{assim:reanatotal}
+\end{align}
+berechnet,
+wobei der Proportionalitätsfaktor wieder so gewählt werden muss, dass
+eine Wahrscheinlichkeitsdichte entsteht.
+\end{enumerate}
+\end{satz}
+
+\begin{proof}[Beweis]
+Fall~1 ist klar, das Reanalyse-Problem für $X(N)$ ist dasselbe wie des
+Filterproblem für $X(N)$.
+
+Es bleibt daher nur noch, die Formeln
+\eqref{assim:reanabayes}
+und
+\eqref{assim:reanatotal}
+nachzuweisen.
+Die Formel
+\eqref{assim:reanabayes}
+ist nichts anderes als der 
+als der Satz von Bayes
+\eqref{assim:bayes}.
+Die Formel 
+\eqref{assim:reanatotal}
+ist der Satz von der totalen Wahrscheinlichkeit
+\eqref{assim:total}.
+\end{proof}
+
+
+
+
+
+

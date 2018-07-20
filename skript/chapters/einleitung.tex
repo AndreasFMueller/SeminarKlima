@@ -1,0 +1,150 @@
+%
+% einleitung.tex
+%
+% (c) 2018 Prof Dr Andreas Müller
+%
+\chapter*{Einleitung\label{chapter:einleitung}}
+\lhead{Einleitung}
+\addcontentsline{toc}{chapter}{Einleitung}
+Dass sich das Klima verändert ist unbestritten,
+Diskussionen entstehen nur über die Ursache.
+Das Klima-System umfasst die gesamte Atmosphäre, die Weltmeere und auch in
+den Landmassen kann wärme gespeichert werden.
+Je nach Bodenbedeckung, sei es durch Vegetation oder Eis, wird mehr
+Strahlung absorbiert oder reflektiert.
+Diese grosse Zahl von auf das Klima einwirkenden Faktoren macht es
+schwierig, einfache Kausalketten zu konstruieren zum Beispiel zwischen
+$\text{CO}_2$ und Anstieg der globalen Mitteltemperatur.
+Aber ist auch genauso unangemessen, aus einzelnen Datenpunkten 
+abzuleiten, dass der Klimawandel gar nicht existiert, wie es einzelne
+interessierte Akteure tun.
+
+Die Lösung dieses Dilemmas ist natürlich, das Klimasystem mathematisch
+zu modellieren.
+Genau dies wird seit der Mitte des letzten Jahrhunderts versucht.
+Doch auch dies ist keine einfache Aufgabe.
+Zunächst müssen Klimafaktoren, also Aussagen über längerfristige
+Mittelwerte, von den kurzfristigen Schwankungen des Wetters getrennt werden.
+Die globale Jahres-Mitteltemperatur ist ein einfacher solcher Faktor,
+doch mit dieser Mittelung geht der Blick auf die jahreszeitlichen
+Schwankungen verloren. 
+Es könnte ja sein, die Mitteltemperatur nur langsam ansteigt, aber die
+mit den Jahreszeiten verbundene Amplitude der Temperatur über das Jahr
+derart gross wird, dass sich Ökosysteme derart verändern, dass zum
+Beispiel die Nahrungsversorgung gefährdet wird.
+Erfolgreiche Modellierung bedeutet also, dass geeignete Variablen 
+gefunden werden, die die wesentlichen Aspekte des Klimas darstellen
+können, sie nicht übermässig vereinfachen und immer noch die Fähigkeit
+aufrechterhalten, Vorhersagen über die zukünftige Entwicklung des Klimas 
+zu machen.
+
+Es ist naheliegend, dass eine detaillierte Beschreibung der Atmosphäre,
+der Weltmeere, des Wärmeaustausches mit den Landmassen mit allen bekannten
+Gesetzen der Physik im Prinzip korrekte Vorhersagen ermöglichen dürfte.
+Es stellt sich aber heraus, dass dies nicht realistisch ist.
+Schon in einfachen Strömungsmodellen tritt das Phänomen der sensitiven
+Abhängigkeit von Anfangsbedingungen auf.
+Selbst winzigste Unterschiede in den Anfangsbedingungen führen zu völlig
+verschiedener langfristiger Entwicklung des Modells.
+Solche Modelle mögen zum Beispiel für kurzfristige Wetterprognosen
+noch geeignet sein, sie sind aber offenbar ungeeignet für Klimaprognosen.
+Dieses Phänomen wird an Hand des Lorenz-Modells in
+\index{Lorenz-Modell}
+Abschnitt~\ref{section:lorenz-modell} illustriert.
+
+Ein weiteres Problem ist, dass eine detaillierte Modellierung nach dem
+Vorbild der Fluiddynamik zu derart komplexen Gleichungen führt, dass 
+sie für lange Zeiträume nicht mehr effizient gelöst werden können.
+Zwar steigt mit der Weiterenticklung der Computer-Technologie die 
+zur Verfügung stehende Rechenleistung und damit der technisch erreichbare
+Prognosehorizont, er bleibt aber immer noch weit entfernt von den
+angestrebten Zeiträumen von mindestens 100 Jahren.
+Die Modelle müssen daher soweit vereinfacht werden und durch relativ
+niedrigdimensionale Modelle ersetzt werden, die robuste Vorhersagen
+über wenige Jahrhunderte ermöglichen.
+Die detaillierte Kenntnis der physikalischen Prozesse kann solche 
+Variablen nahelegen, daher werden in Kapitel~\ref{chapter:wetter und klima}
+die wichtigsten physikalischen Grundlagen zusammengestellt.
+Die in Kapitel~\ref{chapter:thc} beschriebene thermohaline Zirkulation
+oder die Zonenmodelle von Kapitel~\ref{chapter:zonenmodelle}
+kommt ebenfalls mit einer sehr kleinen Zahl von physikalisch motivierten
+Parametern aus.
+
+Manchmal können jedoch auch mathematische Methoden dazu verwendet werden,
+geeignete Variablen zu finden.
+Zum Beispiel kann dies mit Hilfe der Fourier-Analyse geschehen, die
+im Kapitel~\ref{chapter:fourier} entwickelt wird.
+Die Fourier-Koeffizienten $a_0$ und $a_1,b_1$ trennen zum Beispiel die
+langfristigen Mittelwerte und die jährlichen Schwankungen, sie geben
+also mathematisch wieder, was man auch aus einer physikalischen
+Argumentation hätte ableiten können.
+In Abschnitt~\ref{section:pdeloesungen} wird das Separationsverfahren 
+für partielle Differentialgleichungen dargestellt.
+Es liefert eine Basis von Funktionen, mit denen die unendlichdimensionalen
+partiellen Differentialgleichungen in endlichdimensionale gewöhnliche
+Differentialgleichungen umgewandelt werden können.
+Das Lorenz-Modell von Abschnitt~\ref{section:lorenz-modell} ist ein
+Beispiel, wie die Dimensionszahl reduziert werden kann.
+Die spektrale Methoden, die in Abschnitt \ref{section:spektrale methoden}
+beschrieben werden, sind nicht nur in der Wetterprognose üblich, sondern
+sind auch für Klimamodelle nützlich, zum Beispiel auch, weil sie auf
+ganz natürliche Weise die für Klimauntersuchungen häufig irrelevante
+Erdrotation von der Breitenabhängigkeit zu trennen gestatten.
+
+Das Phänomen des El Niño illustriert, dass Koppelungen wesentlicher
+\index{El Niño}
+Klimaparameter sowohl über grosse Distanzen wie auch lange Zeiträume
+existieren.
+Die Modellierung dieser Koppelungen kann zum Beispiel auf der Basis
+der Strömungsdynamik von Kapitel~\ref{chapter:fluiddynamik} erfolgen.
+Damit lässt sich dann ein realistischeres Modell des El Niño-Phänomens
+in Form einer verzögerten Differentialgleichung konstruieren.
+Kapitel~\ref{chapter:elnino} zeigt den Weg dazu.
+Die numerischen Probleme in diesem Modell werden in
+Kapitel~\ref{chapter:verzoegert} untersucht.
+
+Woher weiss man, ob ein Modell die Zukunft korrekt vorhersagen wird?
+Da je nach Prognose möglicherweise dringender Handlungsbedarf für die
+Menschheit besteht, kann man nicht warten, bis klar wird, dass die
+Prognose direkt überprüft werden kann.
+Vertrauen in das Modell muss daher dadurch hergestellt werden, dass
+man die Vorhersagen des Modells mit der bisherigen Klimageschichte
+der Erde vergleicht.
+Dies wird zum Beispiel ansatzweise in Kapitel~\ref{chapter:planeten}
+durchgeführt.
+
+Häufig stellt sich das Problem, dass gar nicht alle Parameter eines
+Modelles überhaupt bekannt sind.
+Noch schwieriger ist es, den Anfangszustand zu ermitteln.
+Woher kennen wir zum Beispiel den Atmosphärenzustand zu Beginn des
+Kambriums, der Phase der Erdgeschichte, in der zum ersten mal komplexe
+\index{Kambrium}
+Fossilien auftauchen.
+Diese Informationen sind nicht alle der direkten Bestimmung
+zugänglich.
+Man kann aber versuchen, diejenigen Parameter zu finden, die zusammen
+mit den messbaren Grössen eine Vorhersage des Modells ergeben, die
+gut mit der tatsächlich überlieferten Klimageschichte der Erde 
+übereinstimmen.
+Dieser Prozess der Datenassimilation wird in
+Kapitel~\ref{chapter:assimilation} abstrakt beschrieben und in
+Kapitel~\ref{chapter:kalman} an einem Modellbeispiel durchgeführt.
+
+Die Darstellungen im ersten Teil des Buches erheben nicht den Anspruch
+einer vollständigen Darstellung.
+Gegebenüber dem Buch \cite{skript:kaperengler}, welches dieses Seminar
+begleitet hat, wird nur versucht, die Schwergewichte etwas klarer auf
+die in dieser Einleitung genannten Punkte zu leiten.
+Diese Prinzipien, mit denen man zweckmässige Modelle vernünftiger
+Dimensionalität konstruieren kann, die stabile langfristige
+Aussagen ermöglichen, sind nicht nur in der Klimamodellierung
+nützlich, sondern können in jeder Modellierungsaufgabe in den Ingenieur-
+oder Naturwissenschaften angewendet werden.
+
+
+
+
+
+
+
+

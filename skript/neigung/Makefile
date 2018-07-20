@@ -3,7 +3,10 @@
 #
 # (c) 2018 Autor, Hochschule Rapperswil
 #
-all:
+all: 	images
 
-images:
+images:	erdbahn.pdf
+
+erdbahn.pdf:	erdbahn.tex
+	pdflatex erdbahn.tex
 

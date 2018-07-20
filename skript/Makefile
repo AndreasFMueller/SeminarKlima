@@ -18,6 +18,7 @@ images:
 
 CHAPTERS = 								\
 	chapters/part1.tex						\
+	chapters/einleitung.tex						\
 	chapters/assim.tex						\
 	chapters/dgl.tex						\
 	chapters/elnino.tex						\
@@ -39,6 +40,7 @@ CHAPTERS = 								\
 	chapters/2/aufgabe3.tex						\
 	chapters/3/crit.tex						\
 	chapters/3/dgl.tex						\
+	chapters/3/lin.tex						\
 	chapters/3/aufgabe1.tex						\
 	chapters/4/salinitaet.tex					\
 	chapters/4/box.tex						\
@@ -53,7 +55,14 @@ CHAPTERS = 								\
 	chapters/6/periodisch.tex					\
 	chapters/6/fourierkoef.tex					\
 	chapters/6/vektorgeometrie.tex					\
-	chapters/6/aufgabe1.tex
+	chapters/6/komplex.tex						\
+	chapters/6/aufgabe1.tex						\
+	chapters/7/rossby.tex						\
+	chapters/7/kelvin.tex						\
+	chapters/7/verzoegert.tex					\
+	chapters/8/kalmanfilter.tex					\
+	chapters/8/assimilation.tex					\
+	chapters/8/bayesianfilter.tex
 
 PAPERDIRS = eis extrem lorenz planeten thermohalin vegetation		\
 	verzoegert lorenz2 kalman learning
