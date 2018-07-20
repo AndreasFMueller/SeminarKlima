@@ -47,11 +47,11 @@ Differentialgleichungen beschreiben die Änderungsrate der Variablen $ X, Y, Z $
 
 Wir wählten für die Diskretisierung das \textit{Euler-Verfahren} zur Annäherung der Werte des Lorenz-Modells. Das resultierende Gleichungssystem besteht aus einfachen Arithmetik-Operationen und ist für einen Computer einfach berechenbar. Dies erlaubt auch \textit{Smartphones} die Visualisierung effizient zu berechnen und flüssig anzuzeigen.
 
-Das Euler-Verfahren ist ein Algorithmus der Familie der Einschritt-Verfahren. Diese Verfahren rechnen iterativ in einer Schleife die Werte von einem bekannten Startwert aus. Als nächster Ausgangspunkt wird dann das Ergebnis der vorherigen Iteration genommen und mithilfe der Differentialgleichung die Änderung zum Ausgangspunkt bestimmen. 
+Das Euler-Verfahren ist ein Algorithmus der Familie der Einschritt-Verfahren. Diese Verfahren rechnen iterativ in einer Schleife die Werte von einem bekannten Startwert aus. Als nächster Ausgangspunkt wird dann das Ergebnis der vorherigen Iteration genommen und mithilfe der Differentialgleichung die Änderung bestimmt. 
 
-Da Einschritt-Verfahren einen Startwert brauchen von wessen sie die nächsten Ausgangspunkte ausrechnen können, muss der erste Startwert vorgegeben werden. Wir haben im Rahmen dieses Berichtes keine Optimierung des Startwertes durchführen können, sondern einfach eine sinnvolle Annahme getroffen. Dieser Anfangswert war konstant und fester Teil des Algorithmus, den wir modeliert haben.
+Einschritt-Verfahren brauchen einen Startwert, von wessen sie die nächsten Ausgangspunkte ausrechnen können. Wir haben im Rahmen dieses Berichtes keine Optimierung des Startwertes durchführen können, sondern einfach eine sinnvolle Annahme getroffen. Dieser Anfangswert war konstant und fester Teil des Algorithmus, den wir modeliert haben.
 
-Wir starteten zuerst mit dem Startwert $ P(0, 0, 0) $. In den anschliessenden Untersuchungen des Algorithmus zeigte sich, dass dieser Startwert zugleich eine Lösung des Lorenz-Systems ist. Aus diesem Grund hat sich das Model auf den Ursprung stabilisiert. Wir entschieden uns den Startwert auf $ P(0.1, 0.1, 0.1) $ zu verschieben, dieser Wert ist keine Lösung des Lorenz-Systems und das Modell stabilisierte sich nicht mehr.
+Wir begannen zuerst mit dem Startwert $ P(0, 0, 0) $. In den anschliessenden Untersuchungen des Algorithmus zeigte sich, dass dieser Startwert zugleich eine Lösung des Lorenz-Systems ist. Aus diesem Grund hat sich das Model auf den Ursprung stabilisiert. Wir entschieden uns den Startwert auf $ P(0.1, 0.1, 0.1) $ zu verschieben, dieser Wert ist keine Lösung des Lorenz-Systems und das Modell stabilisierte sich nicht mehr.
 
 Als Basis für das Euler-Verfahren verwenden wir den Differenzenquotient $ \frac{dx}{dt} \approx \frac{x_{n + 1} - x_n}{\Delta t} $ \cite{dahmen2008}.  Weil wir den nächsten Punkt im 3D-Raum ausrechnen möchten, formen wir die Gleichung zu $ x_{n + 1} $  um und rechnen sie für alle Achsen getrennt aus.
 
@@ -62,7 +62,7 @@ Als Basis für das Euler-Verfahren verwenden wir den Differenzenquotient $ \frac
 \end{align}
 
 % TODO Neuschreiben, detailhafter
-Für die Ableitungen können wir nun die Gleichungen des Lorenz-Modells einsetzen. Die Variablen $ x, y, z $ haben wir ausserdem zu Iterationsvariablen 
+Für die Ableitungen können wir nun die Gleichungen des Lorenz-Modells einsetzen.
 \begin{align}
     x_{n + 1} &= x_n + \sigma(x_n - y_n) \cdot \Delta t\\
     y_{n + 1} &= y_n + x_n(\rho - z_n) - y_n \cdot \Delta t\\
