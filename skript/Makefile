@@ -56,6 +56,7 @@ CHAPTERS = 								\
 	chapters/6/fourierkoef.tex					\
 	chapters/6/vektorgeometrie.tex					\
 	chapters/6/komplex.tex						\
+	chapters/6/fft.tex						\
 	chapters/6/aufgabe1.tex						\
 	chapters/7/rossby.tex						\
 	chapters/7/kelvin.tex						\
