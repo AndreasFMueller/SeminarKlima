@@ -57,9 +57,6 @@ Alle anderen Planeten konnten offenbar kein freundliches Klima bewahren. Tabelle
 \end{center}
 Die planetaren Wassermassen gefroren unter der Oberfläche oder entwichen es ins All. Das letztere ist besonders schlimm, da es irreversibel ist. Der Planet verliert somit seine lebensfreundlichen Lage für immer.
 
-%Auf Venus, Erde und Mars kann flüssiges Wasser auftreten (Godilooks-Zone).
-%Trotzdem sind neben der Erde auch Venus und Mars in der Godilooks-Zone, dem Gürtel um die Sonne, in welchem flüssiges Wasser auftreten kann.
-
 Doch wie kommen diese extremen Konditionen zu Stande? Man könnte meinen, dass primär die Distanz der Planeten zur Sonne für deren Temperatur ausschlaggebend ist. Jedoch nimmt die Temperatur über die Planeten mit der Entfernung zur Sonne nicht stetig ab.
 %Wegen anderen parametern?
 Das Klima muss somit auch von anderen Parametern abhängig sein, wie zum Beispiel Durchmesser, Rotation, Vulkanismus, Magnetfeld und viele andere.
@@ -94,104 +91,79 @@ Durch eine Simulation des Modells im Zeitbereich sollte dann eine Aussage über 
 	Das Modell sollte erdähnliche Bedingungen bewusst erstreben, um zu sehen ob diese auf den Planeten Mars und Venus auch bestehen können.
 Auf Grund der zum Teil starken Vereinfachungen müssen einzelne Parameter abgeschätzt werden. Durch diese freien Parametern kann das System getrimmt werden um überhaupt plausible Lösungen zu erreichen. Diese Parameter sind mit $\xi$'s gekennzeichnet.
 
-
-	Abbildung \ref{planeten:model} zeigt eine Übersicht des Modells.
-	
-	%TODO zu modellierende bestandteile
-	Das Modell hat die Form eines Differentialgleichungssystems, wobei drei Parameter modelliert werden.
-	$T_s$ ist die mittlere Oberflächentemperatur des Planeten. 
-	$C$ ist die prozentuale Wolkenabdeckung.
-	$H$ ist die 
-	Dieser besteht aus den zwei Boxen atmosphärischer Wasserdampf $H$ und Wolken $C$. Beides sind prozentuale Grössen und können näherungsweise als relative Luftfeuchtigkeit beziehungsweise prozentuale Wolkenabdeckung interpretiert werden.
-	
-	
-	
-	
-	Die einzelnen Bestandteile werden im Folgenden beschrieben.
-
-%Des Weiteren ist es für den Menschen interessant Planeten mit Erdähnlichen Zuständen anzutreffen.
-
-%Zusammengefasst:
-
-%Dazu müssen einige Annahmen getroffen werden:
-%\begin{itemize}
-%	\item Gleiche materielle Eigenschaften
-%	\item Gleiches Vorkommen an Wasser
-%	\item Wasser hat grösste Auswirkung auf Klima
-%\end{itemize}			
-	
-
-%Möglichst auf einfachen Physikalischen Gesetzen basieren.	
-	
-
+%TODO zu modellierende bestandteile [check]
 \begin{figure}
 	\centering
 	\includegraphics[width=0.8\textwidth]{planeten/Pictures/Model.eps}
 	\caption{Modell-Übersicht}
 	\label{planeten:model}
 \end{figure}
+Abbildung \ref{planeten:model} zeigt eine Übersicht des Modells. Es beinhaltet die zwei Hauptprozesse  Strahlungsbillanz und Wasserkreislauf.	
+Das Modell hat die Form eines Differentialgleichungssystems, wobei folgende drei Parameter modelliert werden:
+\begin{itemize}
+\item [$T_s$]	Mittlere Oberflächentemperatur des Planeten
+\item [$C$]		Wolkenabdeckung zwischen 0 und 1
+\item [$H$]		Atmosphärischer Wasserdampf zwischen 0 und 1
+\end{itemize}
+Die Parameter $C$ und $H$ können näherungsweise als prozentuale Wolkenabdeckung respektive relative Luftfeuchtigkeit beziehungsweise interpretiert werden.
+Das Modell wird für die Planeten Merkur, Venus, Erde und Mars Simuliert, wobei deren Mittlere Distanz $a_\text{planet}$ zur Sonne und Radius $R_\text{planet}$ eingesetzt werden.
 
 \subsection{Strahlungsbilanz}
 %TODO reference
 Die Strahlungsbillanz wird in Kapitel \ref{skript:grundlagen:strahlung} ausführlich beschrieben. Das hier verwendeten Modell baut direkt darauf auf.
 
-Damit die Durchschnittstemperatur eines Planeten stabil ist, muss die Leistungsbilanz Null sein.
+Damit die Durchschnittstemperatur eines Planeten stabil ist, muss die Leistungsbilanz Null sein:
 \begin{equation}
-\dot{T_S} \propto P_{\text{in}} - P_{\text{out}}
+\dot{T_S} \propto P_{\text{in}} - P_{\text{out}}\text{ .}
 \end{equation}
-Die Planeten sind jedoch nicht gleich gross. Damit die Auswirkung eines Strahlungsungleichgewicht für alle Planeten gleich ist, muss die Leistung auf eine Flächeneinheit normalisiert werden. Somit hat eine Stück Fläche mit der Atmosphäre darüber auf jedem Planeten die gleiche Wärmekapazität.
+Die Planeten sind jedoch nicht gleich gross. Damit die Auswirkung eines Strahlungsungleichgewicht für alle Planeten gleich ist, muss die Leistung auf eine Flächeneinheit normalisiert werden. Somit hat eine Stück Fläche mit der Atmosphäre darüber auf jedem Planeten die gleiche Wärmekapazität. Mit normalisierung ist
 \begin{equation}
-\dot{T_S} = \xi_1 \frac{P_{\text{in}} - P_{\text{out}}}{A} = \xi_1 \frac{P_{\text{in}} - P_{\text{out}}}{4 \pi R_{\text{planet}}^2}
+\dot{T_S} = \xi_1 \frac{P_{\text{in}} - P_{\text{out}}}{A} = \xi_1 \frac{P_{\text{in}} - P_{\text{out}}}{4 \pi R_{\text{planet}}^2}\text{ .}
 \end{equation}
 
 %TODO anderer begriff für Aktives Planet-Inneres .. geothermie? (nur für erde)
-Die Eintreffende Leistung $P_{\text{in}}$ besteht primär aus der absorbierten Sonnenstrahlung. Andere Energiequellen wie ein Aktives Planet-Inneres und die Energie aus Gezeiten wird vernachlässigt. Es gilt:
-%TODO P oder S für leistung pro fläche
+Wie in Kapitel \ref{skript:grundlagen:strahlung} beschrieben, wird die Solarkonstante
 \begin{equation}
-P_{\text{in}} = \sigma T_{\astrosun}^4 \left( \frac{R_{\astrosun}}{a_{\text{planet}}} \right) ^2 \cdot (1-\alpha)
+P_{\text{solar}} = \sigma T_{\astrosun}^4 \left( \frac{R_{\astrosun}}{a_{\text{planet}}} \right) ^2
 \end{equation}
-Dabei ist $\alpha$ die Albedo des Planeten.
+aus der Entfernung $a_{\text{planet}}$ des Planeten zur Sonne berechnet. Multipliziert mit der zur Sonne zeigenden Querschnitsfläche $\pi R_{\text{planet}}^2$ ergibt sich die total auftreffende Leistung. Diese wird teils von der Albedo $\alpha$ reflektiert. Zurück bleibt die vom Planeten absorbierte Leistung \begin{equation}
+P_{\text{in}} = P_{\text{solar}}  \pi R_{\text{planet}}^2 (1-\alpha) = \sigma T_{\astrosun}^4 \left( \frac{R_{\astrosun}}{a_{\text{planet}}} \right) ^2 \pi R_{\text{planet}}^2 (1-\alpha)\text{ .}
+\end{equation}
 
-Dabei ist $\sigma$ die Stefan-Boltzmann-Konstante, $T_{\astrosun}$ \& $R_{\astrosun}$ die Oberflächentemperatur und Radius der Sonne, $ A_{\text{planet}}$ die mittlere Distanz des Planeten zur Sonne und $\alpha$ die Albedo des Planeten.
-
-Die Abgestrahlte Leistung besteht praktisch ausschliesslich aus der Black-body Strahlung, welche sich aus der Durchschnittstemperatur $T$ und dem Radius $R_{\text{planet}}$ des Planeten bestimmen lässt. Diese Leistung bleibt jedoch teilweise durch den Treibhauseffekt in der Atmosphäre gefangen. Es gilt: 
-
+Aus dem Radius und Oberflächentemperatur $T_{S}$ eines Planeten wird deren Black-body Strahlung \begin{equation}
+P_{\text{blackbody}} = 4 \pi R_{\text{planet}}^2 \sigma T_{S}^4
+\end{equation}
+berechnet. Diese Leistung bleibt jedoch teilweise durch den Treibhauseffekt $\beta$ in der Atmosphäre gefangen. Der Anteil der durchdringenden Leistung ist
 \begin{equation}
-P_{\text{out}} = 4 \pi R_{\text{planet}}^2 \sigma T_{S}^4 \epsilon
+P_{\text{out}} = P_{\text{blackbody}} (1 - \beta) = 4 \pi R_{\text{planet}}^2 \sigma T_{S}^4 (1 - \beta)\text{ .}
 \end{equation}
-Dabei ist $\epsilon$ der Anteil der durchdringenden Leistung.
-
-
 
 \subsection{Albedo}
-
-Die Albedo wird als Funktion der prozentualen Wolkenabdeckung $C$ modelliert. Es wird ein linearer Zusammenhang erwartet. Unter der Annahme, dass bei allen Planeten die Oberflächenalbedo $\alpha_{S}$ gleich ist, wird noch eine maximale Albedo $\alpha_{max}$ definiert. Bei 100\% Wolkendeckung soll der Maximalwert erreicht werden und bei 0\% die Oberflächenalbedo.
-
+Die Albedo $\alpha$ wird als Funktion der Wolkenabdeckung $C$ modelliert. Es wird ein linearer Zusammenhang erwartet. Sie ist begrenzt durch die zwei Werte
 \begin{equation}
-\alpha = \alpha_S + C(\alpha_{\text{max}} - \alpha_S)
+\\alpha_{\text{min}} = 0.15 \text{ und } \alpha_{\text{max}} = 0.7 \text{ .}
 \end{equation}
-
-Die minimale Albedo entspricht etwa jeder des Mondes, der kleinsten in unserem Sonnensystem. Die maximale Albedo wird etwas grösser als diejenige der Venus gesetzt.
+Die minimale Albedo $\alpha_{\text{min}}$ tritt bei 0\% Wolkenabdeckung auf und hat den Wert der Albedo des Mondes, der kleinsten in unserem Sonnensystem. Die maximale Albedo $\alpha_{\text{max}}$ tritt bei 100\% Wolkenabdeckung auf und wird etwas grösser als diejenige der Venus gesetzt. Somit ist
 \begin{equation}
-\alpha_S = 0.15, \alpha_{max} = 0.7
+\alpha = \alpha_S + C(\alpha_{\text{max}} - \alpha_S) \text{ .}
 \end{equation}
 
 \subsection{Treibhauseffekt}
-
 Wasserdampf ist ein sehr effektives Treibhausgas. Es wird angenommen dass der atmosphärische Wasserdampf der Erde für 60\% des Treibhauseffekts sorgt.  
 % 60\%    % https://www.acs.org/content/acs/en/climatescience/climatesciencenarratives/its-water-vapor-not-the-co2.html 
-Im verwendeten Modell wirkt sich deren Konzentrazion $H$ linear auf den Teibhauseffekt $\beta$ aus. Die Wirkung wird mit $\xi_8$ beschränkt und kann vor der Simulation justiert werden.
-
+Im verwendeten Modell wirkt sich deren Konzentrazion $H$ linear auf den Teibhauseffekt 
 \begin{equation}
-\epsilon  = (1 - \beta) = (1 - \xi_8 \cdot H)
+\beta  = \xi_8 \cdot H
 \end{equation}
+aus. Die Wirkung wird mit $\xi_8$ beschränkt und kann vor der Simulation justiert werden.
 
+Die Strahlungsbilanz kann somit mit
 \begin{equation}
 \dot{T_S} = \xi_1 \frac{\sigma T_{\astrosun}^4 R_{\astrosun}^2}{4 \pi R_{\text{planet}}^2 a_{\text{planet}}^2} (\alpha_S + C(\alpha_{\text{max}} - \alpha_S)) - \xi_1 \sigma T_{S}^4  (1 - \xi_8 \cdot H)
 \end{equation}
+zusammengefasst werden.
 
 \subsection{Wasserkreislauf}
-
 Das Modell beinhaltet einen stark vereinfachten Wasserkreislauf.
 Dieser verknüpft die Parameter $C$ und $H$.
 %TODO ausformulieren
