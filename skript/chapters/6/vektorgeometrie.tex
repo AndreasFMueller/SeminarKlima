@@ -361,19 +361,20 @@ und die Fourier-Reihe ist
 \sum_{k=1}^\infty (a_k\cos kx+b_k\sin kx).
 \end{equation}
 
-\subsection{Fourier-Transformation}
+\subsection{Diskrete Fourier-Transformation}
 Die Fourier-Koeffizienten $a_k$ und $b_k$ hängen linear von den
 Funktionswerten $y_j$ ab.
 Der Vektor der Fourier-Koeffizienten muss daher der Bildvektor des
 Vektors $\vec y$ der Funktionswerte unter einer linearen Transformation
 sein.
-In diesem Abschnitt soll zunächst diese diskrete Fourier-Transformation 
-hergeleitet werden.
-Anschliessend soll gezeigt werden, wie sich diese Eigenschaft auf 
-periodische Funktionen und auf beliebige Funktionen auf $\mathbb R$
-ausdehenen lässt.
+In diesem Abschnitt soll die diskrete Fourier-Transformation in etwas
+mehr Detail hergeleitet werden.
+Ausserdem soll gezeigt werden, wie die Fourier-Transformation
+mit der schnellen Fouriertransformation
+effizient berechnet werden kann, die in vielen Softwarepaketen zur
+numerischen Berechnung implementiert ist.
 
-\subsubsection{Diskrete Fourier-Transformation}
+\subsubsection{Transformationsmatrix}
 Die Berechnung der Fourier-Koeffizienten ist eine lineare Operation
 mit der $N\times N$-Matrix:
 \[
@@ -504,13 +505,4 @@ nur die Parseval-Identität anders formuliert haben.
 
 \input{chapters/6/komplex.tex}
 \input{chapters/6/fft.tex}
-
-\subsubsection{Fourier-Transformation von $2\pi$-periodischen Funktionen}
-
-\subsubsection{Fourier-Transformation von Funktionen auf $\mathbb R$}
-
-
-
-
-
 

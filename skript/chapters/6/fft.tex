@@ -22,7 +22,7 @@ Da $N$ gerade ist, kann man die Summe zur Berechnung der Koeffizienten
 \begin{align*}
 c_l
 &=
-\sum_{j=0}^{N-1} y_j e^{ilt}
+\sum_{j=0}^{N-1} y_j e^{ilt_j}
 \intertext{aufteilen in gerade und ungerade Terme}
 &=
 \sum_{j=0}^{N/2-1} y_{2j} e^{ilt_{2j}}
@@ -32,7 +32,7 @@ c_l
 &=
 \sum_{j=0}^{N/2-1} y_{2j} e^{ilj t_{2}}
 +
-e^{it_1}
+e^{ilt_1}
 \sum_{j=0}^{N/2-1} y_{2j+1} e^{ilj t_{2}},
 \end{align*}
 ist zu erkennen, dass jeder Summand eine Fourier-Transformation
@@ -42,9 +42,9 @@ Der Aufwand für die Berechnung der Koeffizienten $c_l$ ist
 also mit $g(N)=N/2 + g(N/2)$ Operationen möglich.
 Wenn $N$ sogar eine Zweierpotenz ist, dann $2^m$, dann lässt sich dies
 Idee iterieren, und die Summe aufteilen
-\[
+\begin{align*}
 g(N)
-=
+&=
 g(2^m)
 =
 2^{m-1}
@@ -58,12 +58,136 @@ g(2^{m-1})
 g(2^{m-2})
 =
 \dots
-=
+\\
+&=
 2^m+2^{m-1}+2^{m-2}+\dots + 1 + g(1)
 =
 O(Nm)
 =
 O(N\log(N)).
+\end{align*}
+
+Diese schnelle Variante der Fourier-Transformation wurde von Cooley 
+und Tukey 1965 veröffentlicht.
+Das Verfahren war allerdings auch schon Carl Friedrich Gauss bekannt,
+er hat es zur Berechnung der Bahnelemente der Asteroiden Pallas und
+Juno verwendet.
+Der Algorithmus wird von vielen Softwarepaketen für numerische Berechnung
+implementiert.
+Sehr verbreitet ist die Bibliothek FFTW3 (Fastest Fourier Transform in the
+West, Version 3) \cite{skript:fftw}. 
+Diese Bibliothek wird zum Beispiel auch von Octave verwendet um die
+Funktion \texttt{fft} zu implementieren.
+Sie ist sehr einfach zu verwenden: als Argument wird der Vektor der
+$y$-Werte übergeben, der Rückgabewert ist der Vektor der komplexen
+Koeffizienten $c_l$.
+Der Koeffizient $c_0$ ist das erste Element im Rückgabevektor, gefolgt
+von $c_1,\dots,c_{N/2-1}$.
+Der Koeffizient $c_{-1}$ ist das letzte Element im Rückgabevektor, davor
+steht $c_{-2}$.
+Als Zeilenvektor geschrieben ist der Rückgabewert von \texttt{fft}
+\[
+( c_0, c_1, c_2, \dots , c_{n-1}, c_n=c_{-n},
+c_{-n+1},c_{-n+2},\dots, c_{-2},c_{-1}).
 \]
+
+
+%Für reelle Werte $y_j$ haben die Koeffizienten $c_l$ zusätzliche
+%Symmetrieeigenschaften.
+%Die komplex konjugierte $\bar c_l$ ist
+%\[
+%\bar c_l
+%=
+%\overline{\sum_{j=0}^{N-1} y_j e^{2\pi ijl/N}}
+%=
+%\sum_{j=0}^{N-1} y_j e^{-2\pi i jl/N}
+%=
+%c_{-l}.
+%\]
+%Daraus liest man zum Beispiel ab, dass $c_0\in\mathbb R$ ist, nämlich
+%\[
+%c_0 = \frac{1}{N} \sum_{j=0}^{N-1} y_j = a_0.
+%\]
+%Für die anderen Koeffizienten gilt zunächst
+%\begin{align*}
+%c_l
+%&=
+%\frac{1}{N}\sum_{j=0}^{N-1} y_j e^{-2\pi ilj/N}
+%=
+%\frac{1}{N}\sum_{j=0}^{N-1} y_j \biggl(\cos \frac{2\pi lj}{N} + i \sin\frac{2\pi lj}{N}\biggr)
+%\\
+%&=
+%\frac{1}{N}\sum_{j=0}^{N-1} y_j
+%\cos \frac{2\pi lj}{N}
+%+
+%i
+%\frac{1}{N}\sum_{j=0}^{N-1} y_j
+%\sin\frac{2\pi lj}{N}
+%\\
+%&=
+%\frac12(a_l + ib_l)
+%\end{align*}
+%Zusammen mit der Beziehung $\bar c_l=c_{-l}$, können wir die reellen
+%Fourier-Koeffizienten auch verwenden, um die reellen Koeffizienten
+%\begin{align*}
+%a_l
+%&=
+%c_l + c_{-l}
+%&&\text{und}&
+%b_l
+%&=
+%\frac1{i}
+%(c_l - c_{-l})
+%\end{align*}
+%durch die komplexen Koeffizienten auszudrücken.
+
+In der Übungsaufgabe zu diesem Kapitel wird verlangt die
+Fourier-Koeffizienten von Hand zu berechnen.
+Mit der Funktion \texttt{fft} in Octave kann dies jetzt natürlich viel
+schneller erreicht werden.
+Wendet man \texttt{fft} auf den Vektor
+\[
+y = (-3.2, -13.6, -12.3, -3.9, 3.1, 2.0, -4.1, -6.1, 0.5, 10.7, 16.3, 10.6 )
+\]
+erhält man einen Vektor mit 12 komplexen Fourier-Koeffizienten.
+Wie im letzten Abschnitt erklart, können wir die reellen Fourier-Koeffizienten
+$a_k$ und $b_k$ wieder erkennen.
+Man liest ab:
+\[
+\texttt{fft}(y) / 6
+=
+\left[
+\begin{tabular}{>{\tt}r}
+   0.00000 + 0.00000i\\
+   0.34210 + 7.52778i\\
+  -3.57500 + 9.16544i\\
+   0.08333 + 0.25000i\\
+  -0.12500 + 0.15877i\\
+   0.02456 + 0.02222i\\
+   0.10000 + 0.00000i\\
+   0.02456 - 0.02222i\\
+  -0.12500 - 0.15877i\\
+   0.08333 - 0.25000i\\
+  -3.57500 - 9.16544i\\
+   0.34210 - 7.52778i
+\end{tabular}
+\right]
+\qquad\Rightarrow\qquad
+\begin{tabular}{|>{$}c<{$}|>{$}r<{$}|>{$}r<{$}|}
+\hline
+k     &\hat{a}_k&\hat{b}_k\\
+\hline
+0     & 0.00000&        \\
+1     & 0.34210&-7.52778\\
+2     &-3.57500&-9.16544\\
+3     & 0.08333&-0.25000\\
+4     &-0.12500&-0.15877\\
+5     & 0.02456&-0.02222\\
+6     & 0.10000&        \\
+\hline
+\end{tabular}
+\]
+Die direkte Berechnung in der Aufgabe~1 führt auf die gleichen Werte.
+
 
 
