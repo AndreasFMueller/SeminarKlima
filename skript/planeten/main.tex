@@ -101,9 +101,9 @@ Auf Grund der zum Teil starken Vereinfachungen müssen einzelne Parameter abgesc
 Abbildung \ref{planeten:model} zeigt eine Übersicht des Modells. Es beinhaltet die zwei Hauptprozesse  Strahlungsbillanz und Wasserkreislauf.	
 Das Modell hat die Form eines Differentialgleichungssystems, wobei folgende drei Parameter modelliert werden:
 \begin{itemize}
-\item [$T_s$]	Mittlere Oberflächentemperatur des Planeten
-\item [$C$]		Wolkenabdeckung zwischen 0 und 1
-\item [$H$]		Atmosphärischer Wasserdampf zwischen 0 und 1
+\item [Surface temperature $T_s$]	Mittlere Oberflächentemperatur des Planeten
+\item [Clouds $C$]		Wolkenabdeckung zwischen 0 und 1
+\item [Humidity $H$]		Atmosphärischer Wasserdampf zwischen 0 und 1
 \end{itemize}
 Die Parameter $C$ und $H$ können näherungsweise als prozentuale Wolkenabdeckung respektive relative Luftfeuchtigkeit beziehungsweise interpretiert werden.
 Das Modell wird für die Planeten Merkur, Venus, Erde und Mars Simuliert, wobei deren Mittlere Distanz $a_\text{planet}$ zur Sonne und Radius $R_\text{planet}$ eingesetzt werden.
@@ -114,7 +114,7 @@ Die Strahlungsbillanz wird in Kapitel \ref{skript:grundlagen:strahlung} ausführ
 
 Damit die Durchschnittstemperatur eines Planeten stabil ist, muss die Leistungsbilanz Null sein:
 \begin{equation}
-\dot{T_S} \propto P_{\text{in}} - P_{\text{out}}\text{ .}
+\dot{T}_S \propto P_{\text{in}} - P_{\text{out}}\text{ .}
 \end{equation}
 Die Planeten sind jedoch nicht gleich gross. Damit die Auswirkung eines Strahlungsungleichgewicht für alle Planeten gleich ist, muss die Leistung auf eine Flächeneinheit normalisiert werden. Somit hat eine Stück Fläche mit der Atmosphäre darüber auf jedem Planeten die gleiche Wärmekapazität. Mit normalisierung ist
 \begin{equation}
@@ -165,55 +165,46 @@ zusammengefasst werden.
 
 \subsection{Wasserkreislauf}
 Das Modell beinhaltet einen stark vereinfachten Wasserkreislauf.
-Dieser verknüpft die Parameter $C$ und $H$.
+Dieser verknüpft die Parameter Clouds $C$ und Humidity $H$.
 %TODO ausformulieren
-Dazu kommt das auf der Planetenoberfläche vorhandene flüssige Wasser, welches als Quelle und Senke dient und zugleich unerschöpflich ist. Das Modell beachtet nicht, dass der atmosphärische Wasserdampf ins All entweichen kann und dadurch die Ozeane austrocknen können.
+Dazu kommt das auf der Planetenoberfläche vorhandene flüssige Wasser, welches als Quelle und Senke dient und zugleich unerschöpflich ist. Das Modell beachtet nicht, dass der atmosphärische Wasserdampf ins All entweichen kann und dadurch die Ozeane austrocknen können. Zwischen den Parametern gibt es die drei Flüsse $h_{\text{Wasserdampfbildung}}$, $h_{\text{Wolkenbildung}}$ und $h_{\text{Wolkenabbau}}$. Diese bilden das folgende Gleichungssystem: 
 %TODO text formulieren: Aufbau wasserkreislauf
 \begin{equation}
 \begin{matrix}
 \dot{H}   = & h_{\text{Wasserdampfbildung}} & - h_{\text{Wolkenbildung}}   &                      \\
 \dot{C}   = &                     		    &   h_{\text{Wolkenbildung}}   & - h_{\text{Wolkenabbau}}
-\end{matrix}
+\end{matrix} \text{ .}
 \end{equation}
-%TODO h_verdunsten usw. überall bei gleichungen einsetzen
-%Dieser Prozess ist auf der Erde sehr komplex.
 
 %\subsubsection{Wasserdampfbildung}
-Wasserdampf bildet sich durch Verdunsten von der Ozeane. Der Durchsatz wird linear zur Oberflächentemperatur $T_S$ angenommen.
+Wasserdampf bildet sich durch Verdunsten von der Ozeane. Der Durchsatz wird linear zur Oberflächentemperatur $T_S$ angenommen und ist dadurch
 \begin{equation}
-h_{\text{Wasserdampfbildung}} = \xi_2 T_S
+h_{\text{Wasserdampfbildung}} = \xi_2 T_S \text{ .}
 \end{equation}
 %TODO linear zur temperatur !! überall kontrollieren
 
 %\subsubsection{Wolkenbildung}
-
 Wolken entstehen wenn feuchte Luft beim aufsteigen sich abkühlt und kondensiert. Näherungswiese entstehen mehr Wolken je grösser die Luftfeuchtigkeit $H$ ist und je schneller die Temperatur mit der Höhe abnimmt.
-Dabei nimmt die Wolkenbildung mit grösserer Luftfeuchtigkeit $H$ und grösserem Temperaturgradienten $\frac{dT}{dh}$ zu. Durch Multiplizieren mit einem wählbaren Freiheitsgrad $\xi_3$ kann die Wirkung des Prozesses justiert werden. 
+Dabei nimmt die Wolkenbildung mit grösserer Luftfeuchtigkeit $H$ und grösserem Temperaturgradienten $\frac{dT}{dh}$ zu. Durch Multiplizieren mit einem wählbaren Freiheitsgrad $\xi_3$ kann die Wirkung des Prozesses justiert werden. Die Wolkenbildung ist somit
 %Wolken bilden sich durch kondensieren des Wasserdampfs. Dieser Vorgang
 %feuchte Luft abgekühlt wird
 %bei grossem Temperaturgradienten
 \begin{equation}
-h_{\text{Wolkenbildung}} = \xi_3 H \frac{dT}{dh}
+h_{\text{Wolkenbildung}} = \xi_3 H \frac{dT}{dh} \text{ .}
 \end{equation}
 
 Wenn der Temperaturgradient linear Angenommen wird, lässt sich $\frac{dT}{dh}$ durch den Skalar $\Delta T $ vereinfachen.
-Er existiert sowohl in vertikaler, sowie in horizontaler Ausrichtung. Einen grossen horizontalen Gradienten findet man bei einer Wetterfront vor. Im Modell wird nur der vertikale berücksichtigt. Dieser ist bei ungesättigter Luft annähernd konstant. Sobald Wasserdampf kondensiert wird der Prozess feuchtadiabatisch. Dabei wird der Gradient kleiner und sinkt mit zunehmender Temperatur noch weiter.
-%TODO xi_10 neuen index zuweisen und andere anpassen.
-Der Temperaturgradient sinkt bei 
+Er existiert sowohl in vertikaler, sowie in horizontaler Ausrichtung. Einen grossen horizontalen Gradienten findet man zum Beispiel bei einer Wetterfront vor. Im Modell wird nur der vertikale berücksichtigt. Dieser ist bei ungesättigter Luft annähernd konstant. Sobald Wasserdampf kondensiert wird der Prozess feuchtadiabatisch. Dabei wird der Gradient kleiner und sinkt mit zunehmender Temperatur noch weiter. Linear approximiert ergibt sich 
 \begin{equation}
-\frac{dT}{dh} = \Delta T = \frac{\xi_9}{C T_S} 
-\end{equation}
-
-Eingesetzt erhält man für die Wolkenbildung:
-\begin{equation}
-h_{\text{Wolkenbildung}} = \xi_3 H \frac{\xi_9}{C T_S}
+h_{\text{Wolkenbildung}} = \xi_3 H \Delta T = \xi_3 H \frac{\xi_9}{C T_S} \text{ .}
 \end{equation}
 
 %\subsubsection{Wolkenabbau}
-Wolken regnen, wenn sich die mikroskopischen Wassertropfen oder Eiskristalle verbinden und nicht mehr getragen werden können. Im hier verwendeten Modell wird angenommen, dass sich Regenbildung somit proportional zur Wolkenabdeckung $C$ verhält.
+Wolken regnen, wenn sich die mikroskopischen Wassertropfen oder Eiskristalle verbinden und nicht mehr getragen werden können. Im hier verwendeten Modell wird angenommen, dass sich Regenbildung somit proportional zur Wolkenabdeckung $C$ verhält. Somit ist
 \begin{equation}
-h_{\text{Wolkenabbau}} = \xi_4 C
+h_{\text{Wolkenabbau}} = \xi_4 C \text{ .}
 \end{equation}
+
 
 %\subsection{Zusammengefasst}
 %Der ganze Wasserkreislauf lässt sich somit durch folgendes Gleichungssystem zusammenfassen.
@@ -263,26 +254,35 @@ h_{\text{Wolkenabbau}} = \xi_4 C
 Durch Zusammenfassen von Strahlungsbilanz und Wasserkreislauf erhält man folgendes Gleichungssystem:
 \begin{equation}
 \begin{matrix}
-\dot{T_S} = & \xi_1 \frac{\sigma T_{\astrosun}^4 R_{\astrosun}^2}{4 \pi R_{\text{planet}}^2 a_{\text{planet}}^2} (\alpha_S + C(\alpha_{\text{max}} - \alpha_S)) && - \xi_1 \sigma T_{S}^4  (1 - \xi_8 \cdot H)\\
+\dot{T}_S = & \xi_1 \frac{\sigma T_{\astrosun}^4 R_{\astrosun}^2}{4 \pi R_{\text{planet}}^2 a_{\text{planet}}^2} (\alpha_S + C(\alpha_{\text{max}} - \alpha_S)) && - \xi_1 \sigma T_{S}^4  (1 - \xi_8 \cdot H)\\
 \dot{H}   = & \xi_2 T_S              & - \xi_3 H \frac{\xi_9}{C T_S}          & \\
 \dot{C}   = &                        &   \xi_3 H \frac{\xi_9}{C T_S}          & - \xi_4 C
-\end{matrix}
+\end{matrix} \text{ .}
 \end{equation}
-Um zu verhindern, dass eine Luftfeuchtigkeit oder Wolkenabdeckung von über 100\% auftritt, werden zu gewissen linearen Termen noch den gleichen Term mit grosser Potenz dazu addiert. Somit wird der Effekt verstärkt wenn die Grösse nahe an $1$ also $100\%$ kommt. Das mit Anpassungen für gesättigten Wasserdampf und Wolkenabdeckung versehene Gleichungssystem lautet somit:
+Um zu verhindern, dass eine Luftfeuchtigkeit oder Wolkenabdeckung von über 100\% auftritt, werden zu gewissen linearen Termen noch den gleichen Term mit grosser Potenz dazu addiert. Eine Funktion
+\begin{equation}
+y = f(x) = x \hspace{0.5cm}\text{wird zu}\hspace{0.5cm} y = f'(x) = x + x^n \text{ ,}
+\end{equation}
+wobei $n$ ungerade ist und somit auch $f'(x)$ ungerade bleibt. Der Effekt von $f'(x)$ wird für $x$ gegen $1$ exponentiell grösser und Verstärkt den Term. Abbildung \ref{planeten:limit_graph} zeigt das Verhalten beider Funktionen.
+\begin{figure}[!h]
+	\center
+	\includegraphics[height=0.45\textheight]{planeten/Matlab/figures/limiter.eps}
+	\caption{Limitierung von Termen}
+	\label{planeten:limit_graph}
+\end{figure}
+Diese Art von Limitierung wird bei der Wolkenbildung, sowohl beim Wolkenabbau eingesetzt. Das fertige, angepasste Modell lautet somit:
 \begin{equation}
 \begin{matrix}
-\dot{T_S} = & \xi_1 \frac{\sigma T_{\astrosun}^4 R_{\astrosun}^2}{4 \pi R_{\text{planet}}^2 a_{\text{planet}}^2} (\alpha_S + C(\alpha_{\text{max}} - \alpha_S)) && - \xi_1 \sigma T_{S}^4  (1 - \xi_8 \cdot H)\\
+\dot{T}_S = & \xi_1 \frac{\sigma T_{\astrosun}^4 R_{\astrosun}^2}{4 \pi R_{\text{planet}}^2 a_{\text{planet}}^2} (\alpha_S + C(\alpha_{\text{max}} - \alpha_S)) && - \xi_1 \sigma T_{S}^4  (1 - \xi_8 \cdot H)\\
 \dot{H}   = & \xi_2 P_{\text{in}}(C) & - \xi_3 (H + H^9) \frac{\xi_9}{C T_S}   &                   \\
 \dot{C}   = &                        &   \xi_3 (H + H^9) \frac{\xi_9}{C T_S}   & - \xi_4 (C + C^5)
-\end{matrix}
+\end{matrix} \text{ .}
 \end{equation}
-
-%TODO graphik der limitierung
 
 \section{Simulation}
 \rhead{Simulation}
 
-Das Modell wurde in MATLAB mittels Transientenanalyse simuliert. Dazu kam ein ODE45 Solver zur Hilfe. Die Anfangswerte wurden so gesetzt, dass sie Erdbedingungen unterstützen.  
+Das Modell wurde in MATLAB mittels Transientenanalyse simuliert. Dazu kam ein ODE45 Solver zur Hilfe. Die Anfangswerte wurden so gesetzt, dass sie Erdbedingungen unterstützen.
 %System anregen Erdähnliche Werte zu generieren.
 %TODO 0.44 durchschnittliche Luftfeuchtigkeit,  0.68 duchschnittliche Wolkenabdeckung
 \begin{equation}
@@ -303,8 +303,7 @@ Die hinzugefügten Freiheitsgrade $\xi_1$ bis $\xi_6$ wurden empirisch gesetzt u
 \xi_8 = & 0.6				& \text{Maximale wirkung des Treibhauseffekts}
 \end{matrix}
 \end{equation}
-
-In Tabelle \ref{planeten:planetValues} sind die für die Planeten eingesetzten Parameten $a_{\text{planet}}$ und $R_{\text{planet}}$ ersichtlich.
+In Tabelle \ref{planeten:planetValues} sind die für die Planeten eingesetzten Parametern $a_{\text{planet}}$ und $R_{\text{planet}}$ ersichtlich.
 \begin{center}
 \begin{table}[!h]
 	\center
@@ -318,11 +317,6 @@ In Tabelle \ref{planeten:planetValues} sind die für die Planeten eingesetzten P
 \label{planeten:planetValues}
 \end{table}
 \end{center}
-
-
-
-
-
 Das System wurde bis zum stationären Zustand simuliert. Aus der Zeitachse können keine quantitative Schlüsse gezogen werden.
 
 \subsection{Ergebnisse}
