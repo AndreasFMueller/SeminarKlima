@@ -107,14 +107,17 @@ erfolgt ausschliesslich durch Wärmeleitung.
 Bei genügend grosser Temperaturdifferenz wird die Atmosphäre jedoch
 instabil, der Wärmetransport wird zusätzlich von Konvektion übernommen.
 Die entstehenden Konvektionszellen können wegen der Translationssymmetrie
-entlang der $x$-Achse an einer beliebigen Stelle entstehen, es gibt also
+entlang der $x$-Achse an jeder beliebigen Stelle entstehen, es gibt also
 unendlich viele Lösungen, von denen eine gewählt werden muss.
-In der Realität würden kleine Temperaturfluktionen dies unterstützen,
-kleine Unterschiede in den Anfangsbedingungen führen also zu völlig
+In der Realität würden kleine Temperaturfluktionen als Auslöser der 
+Konvektion dienen.
+Kleine Unterschiede in den Anfangsbedingungen führen also zu völlig
 verschiedenen Strömungen.
 % Abbildung?
 Diese sensitive Abhängigkeit der Lösung von Anfangsbedingungen wird
 oft als ein Kennzeichen von Chaos angesehen.
+In Kapitel~\ref{chapter:lorenz} wird etwas vertieft auf die chaotischen
+Aspekte des Lorenz-Systems eingegangen.
 
 Im folgenden sollen zunächst die Gleichungen der Fluiddynamik auf die
 vorliegende Situation spezialisiert werden.
@@ -130,6 +133,7 @@ bereits eine Gleichung gefunden, welche den Wärmetransport in einem
 Fluid beschreibt.
 Wir können daraus aber noch eine etwas einfacher zu handhabende Form
 gewinnen, indem wir nur die Anomalie der Temperatur betrachten, also
+\index{Anomalie}%
 die Abweichung vom Temperaturprofil, welches sich bei einem ruhenden
 Fluid einstellt. 
 Aufgrund der gewählten Geometrie ist 
@@ -227,8 +231,9 @@ ist, also
 \qquad
 \nabla\times\vec{b}
 =
-c\frac{\partial\vartheta}{\partial x}.
+c\frac{\partial\vartheta}{\partial x}
 \]
+mit der Proportionalitätskonstante $c$.
 Damit erhalten wir die Bewegungsgleichung in der Form
 \begin{equation}
 \frac{\partial\Delta\psi}{\partial t}
@@ -273,6 +278,7 @@ Man sieht aber auch, dass keine anderen Ableitungen vorkommen als erste
 Ableitungen von $\psi$ oder $\Delta\psi$.
 Dies ist geeignet, die Diskussion zu vereinfachen, weshalb wird darauf
 achten, diese Struktur nicht zu zerstören.
+
 Wir können die linke Seite der Gleichungen zum Beispiel vektoriell schreiben
 als
 \[
@@ -345,7 +351,8 @@ System zu studieren.
 Zwar ist \eqref{skript:allgemeinesmodell} immer noch ein partielles
 Differentialgleichungssystem und die Operatororen $D$, $A$ und $N$
 sind partielle Differentialoperatoren.
-Wenn es aber gelingt, die Funktionen zu diskretisieren und durch
+Wir können die in Abschnitt~\ref{section:pdeloesungen} zusammengestellten
+Methoden anwenden um die Funktionen durch
 Vektoren in einem endlichdimensionalen Vektorraum zu ersetzen, dann
 werden $D$ und $A$ zu linearen Abbildungen, die durch Matrizen beschrieben
 werden können, und $N$ wird zu einer nichtlinearen Funktion auf einem
@@ -377,11 +384,11 @@ System Konvektion einsetzt.
 Eine einzelne Konvektionszelle hat Stromlinien, wie sie in Abbildung
 \ref{skript:stromlinien konvektion}
 dargestellt sind.
-Vernachlässigt man in der
-ersten der Differentialgleichungen
+Vernachlässigt man in der ersten der Differentialgleichungen
 \eqref{skript:lorenzausgangsgleichung}
 $\vartheta$ und den nichtlinearen Term, bleibt eine Wärmeleitungsgleichung
-für $\Delta \psi$
+für $\Delta \psi$.
+\subsubsection{Separationsansatz}
 Die Wärmeleitungsgleichung auf einem Rechteckgebiet 
 einer solchen Zelle könnte man mit einem Separationsansatz zu lösen
 versuchen, dies würde auf Lösungen der Form
@@ -412,9 +419,8 @@ Y(t) \cos(ax) \sin(y) - Z(t) \sin(2y).
 Das Ziel ist, für die drei Funktionen $X(t)$, $Y(t)$ und $Z(t)$
 gewöhnliche Differentialgleichungen aufzustellen, also die Ortsabhängigkeit
 der Lösungsfunktionen vollständig zu eliminieren.
-Diese Technik heisst in der Theorie der partiellen Differentialgleichungen
-auch die Transformationsmethode.
 
+\subsubsection{Ableitungen}
 Wir können allerdings nicht erwarten, dass dies exakte Lösungen sind.
 Beim Einsetzen in die Differentialgleichungen werden auch noch
 andere Terme entstehen.
@@ -431,7 +437,7 @@ Terme, die sich nicht als Vielfache der Funktionen
 \end{equation}
 schreiben lassen.
 
-Wir müssen jetzt also die Lösungsansatze
+Wir müssen jetzt also die Lösungsansätze
 \eqref{skript:psiansatz}
 und
 \eqref{skript:thetaansatz}
@@ -545,6 +551,7 @@ Y(t)\underbrace{\sin(y)\cos(y)}_{\displaystyle{\textstyle\frac12}\sin(2y)}-2a\co
 -
 2aX(t)Z(t) \cos(ax)\sin(3y).
 \end{align*}
+\subsubsection{Approximation}
 Der letzte Term kann nicht durch Funktionen aus der Liste
 \eqref{skript:funktionsauswahl}
 ausgedrückt werden, und muss daher vernachlässigt werden.
@@ -566,6 +573,7 @@ ein, erhalten wir
 &\qquad
 -\frac{a}2X(t)Y(t)\sin(2y) - 2aX(t)Z(t)\cos(ax)\sin(y).
 \end{align*}
+\subsubsection{Gewöhnliche Differentialgleichungen}
 Wir vergleichen die Koeffizienten der Funktionen aus der Liste
 \eqref{skript:funktionsauswahl}
 dann erhalten wir das Differentialgleichungssystem 

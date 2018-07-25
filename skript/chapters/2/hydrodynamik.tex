@@ -97,7 +97,7 @@ Die Massenänderung ist daher
 -
 \varrho(x,y,z+\Delta z,t) v_z(x,y,z+\Delta z,t)\,\Delta x\,\Delta y\,\Delta t.
 \notag
-\intertext{Wir fassen die Terme zu gegenüberliegenden Wänden zusammen wobei
+\intertext{Wir fassen die Terme zu gegenüberliegenden Wänden zusammen, wobei
 wir das Produkt $\Delta x\,\Delta y\,\Delta z$ ausklammern können.
 Wir teilen ausserdem durch $\Delta t$, um die zeitliche Massenänderungsrate
 zu erhalten.}
@@ -126,6 +126,8 @@ $\Delta t$ gegen $0$ gehen, werden aus den Differenzenquotienten
 Ableitungen.
 Wir erhalten daher die {\em Kontinuitätsgleichung}
 \index{Kontinuitätsgleichung} }
+0
+=
 \frac{\partial \varrho}{\partial t}
 &=
 -
@@ -139,35 +141,15 @@ Wir erhalten daher die {\em Kontinuitätsgleichung}
 \label{skript:kontinuitaetsgleichung}
 \end{align}
 \index{Kontinuitätsgleichung}%
-Die rechte Seite kann mit Hilfe des {\em Nabla-Operators}
-\index{Nabla-Operator}
-\[
-\nabla
-=
-\begin{pmatrix}
-\frac{\partial}{\partial x}\\
-\frac{\partial}{\partial y}\\
-\frac{\partial}{\partial z}
-\end{pmatrix}
-\]
-kürzer geschrieben werden.
-Der Nabla-Operator wird wie ein Vektor behandelt.
-Für eine (skalare) Funktion $f$ ist $\nabla f$ ein Vektor,
-der {\em Gradient}
-\index{Gradient} der Funktion $f$.
-Das Skalarprodukt $\nabla\cdot\vec{v}$ ist ein Skalar, die
-{\em Divergenz}
-\index{Divergenz}
-eines Vektorfeldes $\vec{v}$, sie wird manchmal auch 
-$\operatorname{div}\vec{v}$ geschrieben.
-Aus 
+Mit dem Nabla-Operator kann
 \eqref{skript:kontinuitaetsgleichung}
-wird dann
-\[
+auch prägnanter als
+\begin{equation}
 \frac{\partial \varrho}{\partial t}
 =
 -\nabla\cdot (\varrho\vec{v})
-\]
+\label{skript:hydro:kontvekt}
+\end{equation}
 geschrieben werden.
 %So erhält die Kontinuitätsgleichung die kompakte Form
 %\[
@@ -175,7 +157,7 @@ geschrieben werden.
 %\]
 
 \subsection{Inkompressible Strömung}
-Bei einem inkompressiblen Fluid ist die Dichte eine Konstante, alle
+Bei einem inkompressiblen Fluid ist die Dichte $\varrho$ eine Konstante, alle
 \index{Fluid!inkompressibel}
 \index{inkompressibel}
 Ableitungen von $\varrho$ verschwinden.
@@ -228,7 +210,8 @@ Kräfte auf das Fluid ändern daher die Impulsdichte des Fluids.
 Die Impulsdichte des Fluids wird an jeder Stelle durch die Grösse
 $\vec{p}=\varrho\vec{v}$ gegeben.
 Das zweite Newtonsche Gesetz besagt dann, dass die Änderung von $\vec p$
-durch die äusseren Kräfte $\vec{b}$ bestimmt wird, die auf das Fluid wirkt.
+durch die äusseren Beschleunigungen $\vec{b}$ bestimmt wird,
+die auf das Fluid wirkt.
 Der Impuls in einem Volumen kann aber auch ändern, dass das Fluid Impuls
 in das Volumen hinein- oder aus dem Volumen heraustransportiert.
 Jede Komponente des Impulses ist eine Erhaltungsgrösse, für die ohne
@@ -283,7 +266,7 @@ von Bedeutung, wir werden daher diesen Begriff verwenden, ohne ihn wirklich
 zu definieren.
 
 Die resultierende Kraft $\vec{F}$ auf einen Quader mit den Kantenlängen
-$\Delta x$, $\Delta y$ und $\Delta z$  hat daher die $i$-Komponente
+$\Delta x$, $\Delta y$ und $\Delta z$  hat daher die $x$-Komponente
 \begin{align*}
 F_x
 &=
@@ -354,15 +337,17 @@ hinschreiben, sie lautet
 +
 \varrho b_x
 +
-f_x.
+f_x
 \label{skript:navier-stokes komponente}
 \end{equation}
+mit $f_x$ wie in \eqref{skript:spannungskraftdichte}.
+
 \subsubsection{Vektorschreibweise}
 Die Schreibweise
 \eqref{skript:navier-stokes komponente}
 für die Bewegungsgleichungen ist sehr schwerfällig und passt nicht
 zu der deutlich elegantere vektoriellen Schreibweise zum Beispiel
-der Kontinuitätsgleichung.
+der Kontinuitätsgleichung \eqref{skript:hydro:kontvekt}.
 Die linke Seite von
 \eqref{skript:navier-stokes komponente}
 und der mittlere Term auf der rechten Seite können natürlich sofort
@@ -424,11 +409,19 @@ $A$ der Vektor mit den Komponenten
 \[
 (\nabla\cdot A)_x
 =
-\sum_{i}\frac{\partial A_{ix}}{\partial i}.
+\sum_{i}\frac{\partial A_{ix}}{\partial i},
+\qquad
+(\nabla\cdot A)_y
+=
+\sum_{i}\frac{\partial A_{iy}}{\partial i}
+\qquad\text{und}\qquad
+(\nabla\cdot A)_z
+=
+\sum_{i}\frac{\partial A_{iz}}{\partial i}
 \]
 \end{definition}
-Falls die Matrix $\tau_{ij}$ symmetrisch ist, kann diese Definition
-auch auf $\bm{\tau}$ angewendet werden.
+Da die Matrix $\tau_{ij}$ symmetrisch ist, wie weiter unten gezeigt wird,
+kann diese Definition auch auf $\bm{\tau}$ angewendet werden.
 Die $x$-Komponente der Divergenz von $\bm{\tau}$ ist dann
 \[
 (\nabla\cdot \bm{\tau})_x
@@ -603,7 +596,7 @@ geschrieben werden kann als
 \]
 Die spezielle Form von $\bm{\varepsilon}$ ist notwendig, damit die Matrix
 $\bm{\varepsilon}$ symmetrisch wird.
-Der zweite Term im Ausdruck von $\bm{\sigma}$ ist nötig, damit die Spur
+Der zweite Term im Ausdruck für $\bm{\sigma}$ ist nötig, damit die Spur
 \[
 \operatorname{Spur}{\bm{\sigma}}
 =
@@ -710,7 +703,7 @@ einfache Form
 die klassische Navier-Stokes Gleichung.
 
 \subsection{Zustandsgleichungen}
-Die Dichte hängt vor allem auch von der Temperatur ab.
+Die Dichte eines Gases hängt vor allem von der Temperatur und dem Druck ab.
 In den Ozeanen ändert die Dichte des Wassers mit dem Salzgehalt.
 Eine vollständige Beschreibung der Strömung in Ozeanen oder der
 Atmosphäre muss daher auch noch weitere Variablen modellieren.
@@ -761,8 +754,8 @@ Navier-Stokes-Gleichung
 sind bedeutender.
 Für die vertikale Bewegung ist der Term der äusseren Kräfte,
 nämlich die Schwerkraft, dominant.
-Wir können dies berücksichtigen, indem wir die Erdbeschleunigung
-$g$ durch
+Wir können dies modellieren, indem wir die konstante Erdbeschleunigung
+$g$ durch dichteabhängige Beschleunigung
 \begin{equation}
 g\frac{\varrho}{\varrho_0}
 \label{skript:boussinesq}

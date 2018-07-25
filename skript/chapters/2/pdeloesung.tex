@@ -8,14 +8,15 @@
 In diesem Kapitel haben wir Strömungen mit Hilfe partieller
 Differentialgleichungen beschrieben.
 Natürlich ist die Theorie der partiellen Differentialgleichungen viel
-zu umfangreich.
+zu umfangreich, als dass in diesem Abschnitt eine Darstellung gegeben
+werden könnte, die diesem Thema auch nur annährend gerecht werden könnte.
 Wir können bestenfalls hoffen, ein paar für unsere Zwecke wesentliche
 Ideen zu vermitteln.
 Für eine vollständigere Darstellung sei auf \cite{skript:pde}
 oder \cite{skript:part-diff} verwiesen.
 
 Die Funktionenräume, in denen die Lösungsfunktionen von Differentialgleichungen
-zu finden sind unendlich dimensional, was sehr erschwert,
+zu finden sind, sind unendlich dimensional, was sehr erschwert,
 dafür überhaupt eine Lösung zu finden.
 Bereits bei der Lösung gewöhnlicher Differentialgleichungen hat man
 gelernt, dass sich die Lösungsmenge durch einige wenige Integrationskonstanten
@@ -23,7 +24,7 @@ beschreiben lassen.
 Bei partiellen Differentialgleichungen ist eine Lösungsfunktion von
 mehrern Variablen gesucht.
 Es wäre uns daher bereits geholfen, wenn wir sie durch
-Funktionen parametrisieren könnten, die nur von einger Variablen
+Funktionen parametrisieren könnten, die nur von wenigen Variablen
 abhängen.
 Im besten Fall können wir dann für diese Parameterfunktionen gewöhnliche
 Differentialgleichungen aufstellen.
@@ -39,7 +40,7 @@ in ein endlichdimensionales Problem umwandeln kann.
 Der einfachste Ansatz, partielle Differntialgleichungen zu lösen,
 folgt den Verfahren, die auch für gewöhnliche Differentialgleichungen
 \cite{skript:mathsem-dgl} 
-zum Erfolg führt, nämlich sich auf die Berechnung von Funktionswerten
+zum Erfolg führen, nämlich sich auf die Berechnung von Funktionswerten
 der Lösungsfunktion an diskreten Punkten des Definitionsgebietes zu
 beschränken.
 Zu diesem Zweck werden Ableitungen durch Differenzenquotienten ersetzt.
@@ -55,8 +56,8 @@ Dies ist das Poisson-Problem.
 Die allgemeine Theorie \cite{skript:pde} klassifiziert dieses Problem
 als eine elliptische partielle Differentialgleichungen und erklärt,
 dass das Poisson-Problem unter milden Annahmen über die Randwerte
-eine eindeutig bestimmte glatte Lösung hat und liefert auch eine Methode,
-diese Lösung zu finden.
+eine eindeutig bestimmte glatte Lösung hat.
+Sie liefert auch eine Methode, diese Lösung zu finden.
 
 Für die numerische Lösung verwenden wir ein Gitter mit den Punkten
 \[
@@ -289,10 +290,13 @@ in jeder Gleichungen drei verschiedene Variablen $u_{i,j+1}$,
 die durch diese Gleichungen implizit gegeben sind.
 Man nennt dies ein implizites Verfahren.
 \index{implizites Verfahren}
+Leider führt dieses sogenannte Leapfrog-Verfahren zu einem numerischen
+Stabilitätsproblem, dem Computational Mode, welches in
+Kapitel~\ref{chapter:learning} etwas ausführlicher dargestellt wird.
 
 \subsection{Basisfunktionen}
 Lineare Differentialgleichungen haben die Eigenschaft, dass 
-mit zwei Lösungen auch deren Linearkombinationen wieder Lösungen sind.
+mit zwei Lösungen auch deren Linear\-kombinationen wieder Lösungen sind.
 In der Theorie der gewöhnlichen linearen Differentialgleichungen endlicher
 Ordnung geben die Koeffizienten der Linearkombination die nötige Flexibilität,
 die Anfangsbedingungen zu erfüllen.
@@ -306,8 +310,8 @@ zu definierenden Sinn beliebig genau durch Linearkombinationen
 \[
 u=\sum_{k\in\mathbb N} a_ku_k
 \]
-approximiert werden.
-Wir verzichten darauf, auf die analytischen Details einzugehen.
+approximieren.
+Wir verzichten darauf, auf diese Details der Approximation einzugehen.
 
 Bei einer nichtlinearen Differentialgleichung ist es sicher nicht
 mehr möglich, Lösungen durch Linearkombination anderer Lösungen
@@ -345,7 +349,7 @@ Man erhält
 \dots
 =
 -\lambda(
-a_0+a_1x+a_2x^2+a_3x^3+\dots)
+a_0+a_1x+a_2x^2+a_3x^3+\dots).
 \]
 Man liest daraus die Gleichungen für die Koeffizienten $a_k$ ab:
 \begin{equation*}
@@ -368,7 +372,7 @@ a_{2k+1}&=(-1)^k\frac{\lambda^k}{(2k+1)!}a_1
 \end{aligned}
 \right.
 \end{equation*}
-Daraus kann man erkennen, dass jede Lösung die Form
+Man kann erkennen, dass jede Lösung die Form
 \begin{align*}
 u(x)
 &=
@@ -403,7 +407,6 @@ Im Beispiel ist $u_k(x)u_l(x)=x^kx^k = x^{k+l}=u_{k+l}(x)$.
 \item Beim Einsetzen des Ansatzes in die Differentialgleichungen
 entstehen algebraische Gleichungen, aus denen die Koeffizienten
 bestimmt werden können.
-Im Beispiel 
 \end{enumerate}
 
 \subsubsection{Finite Elemente}
@@ -467,7 +470,8 @@ und setzen dies in die Differentialgleichung ein, die dadurch zu
 =
 -\sum_{j,l\in\mathbb Z} c_j(t)c_l(t) le^{i(j+l)x}
 \]
-Daraus lesen wir die Gleichungen
+wird.
+Wir lesen die Gleichungen
 \begin{equation}
 \dot c_k(t) = -\sum_{l} lc_l(t)c_{k-l}(t)
 \label{burgers:gewoedgl}
@@ -496,7 +500,7 @@ unbrauchbar (unten).
 
 Für eine approximative Lösung vernachlässigen wir die Koeffizienten $c_k$
 mit $|k|>N$ und berechnen die Lösungen der Differentialgleichungen
-\eqref{burgers:gewoedgl} numerisch für die Anfangsfunktione
+\eqref{burgers:gewoedgl} numerisch für die Anfangsfunktionen
 \begin{equation}
 u(0,x) = g(x) = \sin 2x.
 \end{equation}
@@ -527,7 +531,7 @@ Dies kann man auch aus der numerischen Lösung in
 Abbildung~\ref{skript:burgfourier}
 in der Mitte beobachten.
 Natürlich kann eine Sprungstelle mit endlich vielen Fourier-Termen
-nicht getreu wiedergegeben werden, das Gibbs-Phänomen verspricht,
+nicht getreu wiedergegeben werden, das Gibbs-Phänomen sagt voraus,
 dass sich in der Nähe der Sprungstelle grösser werdende Oszillationen
 entwickeln.
 Diese Oszillationen breiten sich in der numerischen Lösung rasch
@@ -553,7 +557,8 @@ sind oder die die Randbedingungen leicht wiederzugeben erlauben.
 Zum Beispiel kommt in den Strömungsdifferentialgleichungen häufig der
 Laplace-Operator vor, also könnte es nützlich sein, als Basisfunktionen
 eine Familie von Funktionen $u_n$ heranzuziehen, welche bereits Lösungen
-der Gleichung $\Delta u_n$ sind. In Kapitel~\ref{chapter:lorenz2}) wird
+der Gleichung $\Delta u_n=\lambda_nu_n$ sind.
+In Kapitel~\ref{chapter:lorenz2} wird
 gezeigt, wie man diese Idee auf das in
 Abschnitt~\label{section:lorenz-modell} vorgestellte Lorenz-Modell
 andwenden kann.
@@ -623,7 +628,7 @@ erhält
 Die linke Seite der Gleichung hängt nur von $x$ ab, die rechte nur von $y$.
 Ändert man $x$ während man $y$ konstant hält, dann kann sich die rechte
 Seite nicht ändern, die linke muss daher auch konstant sein.
-Wenn aber die linke Seite eine konstante ist, dann muss auch die rechte
+Wenn aber die linke Seite eine Konstante ist, dann muss auch die rechte
 eine Konstante sein. 
 Es gibt also eine vorerst noch unbekannte Konstante $\mu$, so dass
 die Funktionen $X(x)$ und $Y(y)$ die Differentialgleichungen
@@ -634,8 +639,8 @@ Y''(y) = (\lambda+\mu)Y(y)
 \label{skript:separation:gleichungen}
 \end{equation}
 erfüllen.
-Mögliche Werte für $\mu$ werden sich daraus ergeben, welche Werte die
-Differentialgleichungen überhaupt lösbar sind, oder für welche Werte
+Mögliche Werte für $\mu$ werden sich daraus ergeben, ob die
+Differentialgleichungen überhaupt lösbar sind, oder ob
 sich die gegebenen Randbedinungen erfüllen lassen.
 
 Wir lösen die Differntialgleichungen~\eqref{skript:separation:gleichungen}
@@ -681,7 +686,7 @@ X(x) &= \sin \frac{xk\pi}{a}
 Y(y) &= \sin\frac{yl\pi}{b}
 \end{aligned}
 \]
-Und damit für die Familie der Lösungesfunktionen
+Und damit für die Familie der Lösungsfunktionen
 \[
 u_{kl}(x,y) = \sin \frac{xk\pi}{a} \sin\frac{yl\pi}{b}.
 \]

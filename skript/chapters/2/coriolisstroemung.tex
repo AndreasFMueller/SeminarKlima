@@ -10,7 +10,7 @@ Strömungsdynamik die Rechtsablenkung der Windströmung auf der Nordhalbkugel
 korrekt vorhersagen.
 Wir erheben dabei keinen Anspruch auf eine vollständige Beschreibung
 der Strömung, es geht nur darum zu zeigen, dass die Strömungsgleichungen
-einige wesentlichen Aspekten der globalen Zirkulationen korrekt
+diesen wesentlichen Aspekt der globalen Zirkulationen korrekt
 wiedergeben.
 
 \subsection{Modellgleichungen}
@@ -97,7 +97,7 @@ Lösung zu finden.
 In geschlossener Form lässt sich das System~\eqref{skript:coriolis:symdgl}
 leider nicht lösen, wir versuchen daher eine numerische Lösung.
 Dazu müssen wir es erst in Vektorform bringen.
-Dazu lösen wir die zweite Gleichung von \eqref{skript:coriolis:symdgl}
+Wir lösen die zweite Gleichung von \eqref{skript:coriolis:symdgl}
 nach $v'$ auf:
 \[
 v'(y)
@@ -169,9 +169,9 @@ der Erde bei den Passatwinden beobachtet.
 \includegraphics[width=0.48\hsize]{chapters/2/downright.pdf}
 \caption{Simulation der Strömung in gemässigten Breiten der Nordhalbkugel
 mit Hilfe des Modells
-\eqref{section:coriolis:udgl}
+\eqref{skript:coriolis:udgl}
 und
-\eqref{section:coriolis:vdgl}.
+\eqref{skript:coriolis:vdgl}.
 Die Strömung wird unter dem Einfluss der Coriolis-Beschleunigung nach
 rechts abgelenkt ($\beta=1.2$, $h=0.1$).
 \label{section:coriolis:simbild}}
@@ -180,7 +180,7 @@ Wie schon angedeutet kann man nicht davon ausgehen, eine analytische
 Lösung des Differentialgleichungssystems~\eqref{skript:coriolis:udgl}
 und \eqref{skript:coriolis:vdgl}
 finden zu können.
-Wir beschränken uns daher auf eine numerische Lösung und lösen
+Wir beschränken uns daher auf eine numerische Lösung und
 lösen das Systems mit Hilfe von Octave mit der Implementation
 \lstinputlisting[style=Matlab]{chapters/2/coriolisdgl.m}
 der Differentialgleichung.
@@ -207,8 +207,8 @@ und zwar umso schneller, je grösser der Faktor $\beta$ ist.
 Man kann dies als Indiz dafür deuten, dass die Strömung nicht beliebig
 lange nach Norden oder Süden fliessen kann, dass sich also zonale
 Strömungen mit alternierenden Druckgradienten ausbilden werden, wie man
-sie auf dem Jupiter (Abbildung~\ref{skript:jupiterzirkulation} oder
+sie auf dem Jupiter (Abbildung~\ref{skript:jupiterzirkulation}) oder
 in der globalen Zirkulation der Erde wie in
-Abbildung~\ref{skript:globalezirkulation} dargestellt beobachtet.
+Abbildung~\ref{skript:globalezirkulation} dargestellt.
 
 
