@@ -22,7 +22,7 @@ einstrahlt.
 Der Querschnitt der Erde ist $\pi R^2$, auf den eine Leistung von
 $\pi R^2 S_0$ fällt.
 Die Atmosphäre und die Weltmeere transportieren diese Energie, wir nehmen
-an, sie gleichmässig über die ganze Erdoberfläche verteilt wird.
+an, dass sie gleichmässig über die ganze Erdoberfläche verteilt wird.
 Die pro Flächeneinheit anfallende Leistung ist daher
 \begin{equation}
 \frac{\pi R^2 S_0}{4\pi R^2} = \frac14S_0=Q.
@@ -109,12 +109,19 @@ zu reproduzieren müssen wir $\varepsilon=0.32$ wählen.
 Die Albedo hängt von der Temperatur ab und wird mit abnehmender 
 Temperatur grösser.
 Bei sehr tiefen Temperaturen kann die Albedo auf bis $0.7$ steigen.
-Ein einfaches Modell, welches Diesen Sachverhalt abbildet, ist
+Ein einfaches Modell,
+welches diesen Sachverhalt abbildet, ist
 \begin{equation}
-\alpha(T)=0.5-0.2\tanh\biggl(\frac{T-265}{10}\biggr)
+\alpha(T)=0.5-0.2\tanh\biggl(\frac{T-265}{10}\biggr).
 \label{skript:bilanz:albedo}
 \end{equation}
+Die ist zwar etwas willkürlich, trifft die Realität aber qualitativ nicht
+schlecht.
 \end{enumerate}
+Das Modell mit der Albedo-Funktion~\eqref{skript:bilanz:albedo}
+hat nicht nur einen sondern drei Gleichgewichtspunkte.
+Die Einstrahlung und die Ausstrahlung ist in
+Abbildung~\ref{skript:bilanz:modellbild} dargestellt.
 
 \subsubsection{Gleichgewichte}
 \begin{figure}
@@ -130,11 +137,6 @@ Es entstehen drei Gleichgewichtspunkte $T_1^*$, $T_2^2*$ und $T_3^*$,
 von denen aber $T_2^*$ nicht stabil ist.
 \label{skript:bilanz:modellbild}}
 \end{figure}
-Das Modell mit der Albedo-Funktion~\eqref{skript:bilanz:albedo}
-hat nicht nur einen sondern drei Gleichgewichtspunkte.
-Die Einstrahlung und die Ausstrahlung ist in
-Abbildung~\ref{skript:bilanz:modellbild} dargestellt.
-
 Die beiden Gleichgewichtspunkte $T_1^*$ und $T_3^*$ sind stabil.
 In beiden Punkten ändert sich die absorbierte Energie kaum bei
 einer Temperaturänderung, aber die Ausstrahlung wird bei erhöhter 
@@ -156,7 +158,7 @@ langsam zurückgeht, die Erde kühlt sich bis auf die Temperatur $T_1^*$ ab.
 \begin{figure}
 \centering
 \includegraphics{chapters/5/bifurkation.pdf}
-\caption{Bifurkationsdiagramm für das Bilanzmodell
+\caption{Phasendiagramm für das Bilanzmodell
 \eqref{skript:bilanz:basic2}
 in Abhängigkeit vom Treibhauseffekt-Parameter $\varepsilon$.
 \label{skript:bilanz:bifurkation}}
@@ -166,11 +168,11 @@ Steigt die Konzentration der Klimagase in der Atmosphäre, wird die
 abgestrahlten Leistung geringer, also $\varepsilon$ kleiner.
 Es lohnt sich daher, die Entwicklung des Gleichgewichtspunkte in 
 Abhängigkeit von $\varepsilon$ zu untersuchen.
-Das Bifurkationsdiagramm des Modells
+Das Phasendiagramm des Modells
 \eqref{skript:bilanz:basic2} in Abhängigkeit von $\varepsilon$
 ist in Abbildung~\ref{skript:bilanz:bifurkation} dargestellt.
 
-Man kann aus dem Diagramm ablesen, dass mit weitterer Zunahme des 
+Man kann aus dem Diagramm ablesen, dass mit weiterer Zunahme des 
 Treibhauseffektes, als mit Abnahme von $\varepsilon$, die globale
 Mitteltemperatur weiter ansteigen wird.
 Sinkt $\varepsilon$ unter den kritischen Wert $\varepsilon_1$ steigt die
@@ -185,7 +187,7 @@ $T_3^*$ und $T_2^*$, es bleibt nur der Gleichgewichtspunkt $T_1^*$,
 bei dem die ganze auf sehr tiefer Temperatur vereist.
 Man vermutet, dass genau dieser Zustand in der Phase des {\em Snowball Earth}
 eingetreten ist, als die ersten photosynthetisierenden Organismen die
-Treibhausgase dramatische reduziert und damit $\varepsilon$ stark
+Treibhausgase dramatisch reduziert und damit $\varepsilon$ stark
 erhöht hatten.
 Man beachte dass es nur möglich ist, den heutigen Zustand wieder zu 
 erreichen, indem die Treibhausgaskonzentration soweit gesteigert
@@ -193,6 +195,8 @@ wird, dass $\varepsilon<\varepsilon_1$ wird.
 Es muss im Laufe der Erdgeschichte also nach der Snowball Earth Phase
 auch Phasen mit wesentlich höherer Treibhausgaskonzentration als heute
 gegeben haben.
+Es ist denkbar, dass grosse Vulkanausbrüche genügend $\text{CO}_2$ in die
+Atmosphäre gebracht haben, umd diesen Übergang zu erzwingen.
 
 \subsection{Modell von Budyko\label{subsection:modell von budyko}}
 Bisher haben wir die Ausstrahlung mit Hilfe des Stefan-Boltzmannschen
@@ -228,8 +232,8 @@ B.
 \label{skript:budyko:cond}
 \end{equation}
 Dieses Modell wurde schon in den sechziger Jahren von Budyko vorgeschlagen.
-Zahlenwerte für $A$ und $B$ konnte seit der damaligen Zeit durch
-Satellitenmessungen bestimmt werden.
+Zahlenwerte für $A$ und $B$ konnten seit der damaligen Zeit durch
+Satellitenbeobachtungen bestimmt werden.
 
 Die Folgen des Treibhauseffektes sind auch in diesem einfacheren Modell
 nachvollziehbar.
