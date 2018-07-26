@@ -47,6 +47,12 @@ Zu diesem Zweck werden Ableitungen durch Differenzenquotienten ersetzt.
 Wir illustrieren das Vorgehen an einigen Beispielen.
 
 \subsubsection{Das Poisson-Problem}
+\begin{figure}
+\centering
+\includegraphics{chapters/2/poisson.pdf}
+\caption{Diskretisation des Poisson-Problems
+\label{skript:poisson:grid}}
+\end{figure}
 Wir suchen eine Lösung der Differentialgleichung
 $\Delta u = 0$ auf dem Einheitsquadrat $\Omega=\{(x,y)\,|\, 0<x,y < 1\}$
 mit den Randbedinungen $u(x,y)=g(x,y)$ für Punkte $(x,y)$ auf dem
@@ -68,8 +74,9 @@ P_{ij}
 (ih, jh)
 \qquad\text{mit}\qquad
 i,j=0,\dots,n,\quad
-h = \frac1n.
+h = \frac1n
 \]
+(siehe auch Abbildung~\ref{skript:poisson:grid}).
 Die Punkte mit $i,j=0,n$ beschreibend den Rand.
 Wir kürzen die Werte $u_{ij}=u(x_i,y_j)$ ab.
 Die Randwerte sind bekannt, es gilt
@@ -112,12 +119,13 @@ zum Beispiel
 &=
 \frac{ u(x_i+h,y_j)-2u(x_i,y_j)+u(x_i-h,y_j) }{h^2}
 =
-\frac{u_{i+1,j}-2u_{ij}+u_{i-1,j}}{h^2}.
+\frac{u_{i+1,j}-2u_{ij}+u_{i-1,j}}{h^2}
 \end{align*}
+und analog für die Ableitungen nach $y$.
 Wir müssen also das lineare Gleichungssystem
 \begin{equation}
 \begin{aligned}
-\frac{u_{i+1,j}-2u_{ij}+u_{i-1,j}}{h^2} &=0
+\frac{u_{i+1,j}+u_{i-1,j}+u_{i,j-1}+u_{i,j+1}-4u_{ij}}{h^2} &=0
 &&\text{für $1 \le i,j< n$}
 \\
 u_{i0} &= g(ih, 0)&&\text{für $1\le i<n$}\\
@@ -131,6 +139,17 @@ Damit haben wir die Lösung der partiellen Differentialgleichungen auf
 die Lösung eines linearen Gleichungssystems zurückgeführt.
 
 \subsubsection{Wellengleichung}
+\begin{figure}
+\centering
+\includegraphics{chapters/2/wellengl.pdf}
+\caption{Gitter für die Diskretisation der Wellengleichung.
+Der etwas dunkler hinterlegte Wert $u_{i,j+1}$ kann direkt aus den
+Werten $u_{i-1,j}$, $u_{ij}$ und $u_{i+1,j}$ berechnet werden.
+Links unten grün hinterlegt ist die Methode illustriert, wie $u_{i,-1}$
+aus den Randbedingungen berechnet werden muss, damit die Wellengleichung
+gelöst werden kann.
+\label{skript:wellengl:grid}}
+\end{figure}
 Die Wellengleichung
 \index{Wellengleichung}
 \[
@@ -156,7 +175,8 @@ d'Alembert gefunden werden kann.
 \index{d'Alembert-Lösung}
 
 Für die numerische Lösung wird wieder ein Gitter aus Punkten
-$(ih_x, jh_t)$  mit $i\in\mathbb Z$ und $j\in\mathbb N$.
+$(ih_x, jh_t)$  mit $i\in\mathbb Z$ und $j\in\mathbb N$
+(Abbildung~\ref{skript:wellengl:grid}).
 Unter Verwendung der gleichen Approximationen  für die Ableitungen
 können wir die Differentialgleichungen in ein lineares Gleichungssystem
 \begin{equation}
@@ -197,11 +217,28 @@ u_{i,-1} = u_{i0} -h_t g(ih_x,0)
 \]
 approximieren und damit einen Werte für $u_{i,-1}$ aus den Randbedingungen
 ermitteln.
+Dies ist in Abbildung~\ref{skript:wellengl:grid} grün hinterlegt illustriert.
 Erneut haben wir es geschafft, das Problem, eine Lösung der partiellen
 Differentialgleichung zu finden, auf ein lineares Gleichungssystems
 zurückzuführen.
 
 \subsubsection{Wärmeleitungsgleichung}
+\begin{figure}
+\centering
+\includegraphics{chapters/2/waerme.pdf}
+\caption{Gitter zur Diskretisation der Wärmeleitungsgleichung.
+Oben rechts sind die sechs Gitterpunkte hervorgehoben, mit denen
+die Gleichungen für das implizite Verfahren aufgestellt werden
+können.
+Etwas dunkler hinterlegt die unbekannten Variablen.
+Links unten das nicht ganz exakte Verfahren, weil des die erste
+Ableitung nach der Zeit $t$ an der Stelle $(ih_x,(j+\frac12)h_t)$
+(rot eingezeichnet)
+verwendet.
+Die Randpunkte bei $i=\pm n$ sind nicht eingezeichnet, da damit gleich
+umgegangen wird wie beim Poisson-Problem in Abbildung~\ref{skript:poisson:grid}.
+\label{skript:waerme:grid}}
+\end{figure}
 Die Wärmeleitungsgleichung
 \[
 \begin{aligned}
@@ -226,7 +263,7 @@ unter milden Anforderungen an $f(x)$ immer eine glatte Lösung.
 
 Für die numerische Lösung verwenden wir wieder ein Gitter, diesmal bestehend
 aus den Punkten $(x_i, t_j)=(ih_x, jh_t)$ mit $-n \le i \le n$ und
-$j\in\mathbb N$, mit $h_x=1/n$.
+$j\in\mathbb N$, mit $h_x=1/n$ (Abbildung~\ref{skript:waerme:grid}).
 Direkte Anwendung der Approximation der Ableitungen durch
 Differenzenquotienten liefert
 \begin{equation}

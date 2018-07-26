@@ -6,7 +6,7 @@
 BILDER = lorenz-definition.pdf lorenz-stabil.pdf drehmoment.pdf \
 	green-curves.pdf green-curve.pdf rotation.pdf konvektion.pdf \
 	upright.pdf downright.pdf pfad.pdf pfadc.pdf pfadx.pdf pfady.pdf \
-	burgfourier.pdf fe.pdf
+	burgfourier.pdf fe.pdf poisson.pdf wellengl.pdf waerme.pdf
 
 all:	$(BILDER)
 
@@ -63,3 +63,12 @@ burgfourier.pdf:	burgfourier.tex r.tex
 
 fe.pdf:	fe.tex
 	pdflatex fe.tex
+
+poisson.pdf:	poisson.tex
+	pdflatex poisson.tex
+
+wellengl.pdf:	wellengl.tex
+	pdflatex wellengl.tex
+
+waerme.pdf:	waerme.tex
+	pdflatex waerme.tex
