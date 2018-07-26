@@ -10,7 +10,7 @@ hold off;
 ylim([-2,2])
 xlim([-1.2,1.2])
 xlabel('x')
-ylabel('y')
+ylabel('f(x)')
 grid
 
 saveas(fig,'figures/limiter', 'epsc')
