@@ -10,19 +10,21 @@ function dydt = fun_dydt(t,y)
     H   = y(2);
     C   = y(3); 
     
-    S = CONST.sigma * CONST.T_sun^4 * (CONST.R_sun / PLANET.A)^2;
-    P = pi* PLANET.R^2 * S;
-    S_absorption = P / (4* pi * PLANET.R^2); %W/m^2
+    S_solar = CONST.sigma * CONST.T_sun^4 * (CONST.R_sun / PLANET.A)^2;
+    P_solar = S_solar * pi* PLANET.R^2;
     
-    P = 4* pi * PLANET.R^2 * CONST.sigma * T_s.^4;
-    S_blackbody  = P / (4* pi * PLANET.R^2); %W/m^2
+    P_blackbody = 4* pi * PLANET.R^2 * CONST.sigma * T_s.^4;
     
-    P_in  = S_absorption * (1 - (((PARAM.alpha_max - PARAM.alpha_s) * C) + PARAM.alpha_s) );
-    P_out = S_blackbody  * (1 - ( PARAM.xi8 * H)         );
+    alpha = ((PARAM.alpha_max - PARAM.alpha_min) * C) + PARAM.alpha_min;
+    beta =  PARAM.xi8 * H;
+    
+    P_in  = P_solar * (1 - alpha);
+    P_out = P_blackbody  * (1 - beta);
+    A = (4* pi * PLANET.R^2);
     
     T_grad = PARAM.xi3 * 1./(C * T_s); 
     
-    d_T_s  = PARAM.xi1 * (P_in - P_out)                                                    ;
+    d_T_s  = PARAM.xi1 * (P_in - P_out)/A                                                  ;
     d_H    = PARAM.xi2 * T_s    - PARAM.xi3 * (H^9 + H) * T_grad                           ;    
     d_C    =                      PARAM.xi3 * (H^9 + H) * T_grad   - PARAM.xi4 * (C^5 + C) ;
    
