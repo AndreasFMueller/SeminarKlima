@@ -16,13 +16,13 @@ function dydt = fun_dydt(t,y)
     P_blackbody = 4* pi * PLANET.R^2 * CONST.sigma * T_s.^4;
     
     alpha = ((PARAM.alpha_max - PARAM.alpha_min) * C) + PARAM.alpha_min;
-    beta =  PARAM.xi8 * H;
+    beta =  PARAM.beta_max * H;
     
     P_in  = P_solar * (1 - alpha);
     P_out = P_blackbody  * (1 - beta);
     A = (4* pi * PLANET.R^2);
     
-    T_grad = PARAM.xi3 * 1./(C * T_s); 
+    T_grad = PARAM.xi3 * 1./(C);  % * T_s); 
     
     d_T_s  = PARAM.xi1 * (P_in - P_out)/A                                                  ;
     d_H    = PARAM.xi2 * T_s    - PARAM.xi3 * (H^9 + H) * T_grad                           ;    

@@ -73,12 +73,24 @@ SIM.C_0 = EARTH.cloud_cover;
 
 global PARAM
 PARAM.xi1 = 1;       %dT factor     
-PARAM.xi2 = 5e-5;    %vaporisation
-PARAM.xi3 = 0.24e1;  %condesation     1.9e-2; 
-PARAM.xi4 = 6e-2;    %precipitation
-PARAM.xi8 = 0.4;     %greenhouse effect
+PARAM.xi2 = 16e-3;    %vaporisation
+PARAM.xi3 = 0.26e1;  %condesation     1.9e-2; 
+PARAM.xi4 = 5e-0;    %precipitation
+PARAM.beta_max = 0.5;     %greenhouse effect
 PARAM.alpha_min = 0.15;
-PARAM.alpha_max = 0.65;
+PARAM.alpha_max = 0.55;
+
+
+
+
+% with temp gradient depandant on Temperature
+% PARAM.xi1 = 1;       %dT factor     
+% PARAM.xi2 = 10e-5;    %vaporisation
+% PARAM.xi3 = 0.26e1;  %condesation     1.9e-2; 
+% PARAM.xi4 = 5e-2;    %precipitation
+% PARAM.beta_max = 0.6;     %greenhouse effect
+% PARAM.alpha_min = 0.15;
+% PARAM.alpha_max = 0.65;
 
 planets = {EARTH, MARS, VENUS, MERCURY};
 
@@ -89,7 +101,7 @@ for i = 1:4
 	PLANET = p{1};
 
     %% Solve diff equation
-    tspan = [0 40];
+    tspan = [0 10];
     y0 = [SIM.T_s_0; SIM.H_0; SIM.C_0];
 
     [t,y] = ode45(@(t,y) fun_dydt(t, y), tspan, y0);
