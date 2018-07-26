@@ -3,5 +3,44 @@
 %
 % (c) 2018 Prof Dr Andreas Müller, Hochschule Rapperswil
 %
-\chapter{Datenassimilation}
-\lhead{Datenassimilation}
+\chapter{Datenassimilation\label{chapter:assimilation}}
+\lhead{Kapitel 8: Datenassimilation}
+In den vorangegangenen Kapiteln wurden Methoden vorgestellt
+und Modelle entwickelt, mit denen sich die Klimaentwicklung auf der
+Erde untersuchen lässt.
+Diese Modelle enthalten eine Anzahl von Parametern, zum Beispiel
+Naturkonstanten oder Eigenschaften des Planeten, die erst bestimmt
+werden müssen, bevor das Modell verwendet werden kann.
+Ausserdem werden Anfangs- oder Randbedingungen benötigt, um die
+Differentialgleichungen überhaupt lösen zu können.
+
+Gerade die Bestimmung der Anfangsbedingungen kann sehr schwierig sein.
+Wie soll man den Zustand der gesamten Atmosphäre im Detail ermitteln.
+Das Lorenz-Modell (Abschnitt~\ref{section:lorenz-modell}) zeigt, dass
+ungenaue Anfangsbedingungen sehr schnell zu unbrauchbaren Vorhersagen
+des Modells führen können.
+Dies bedeutet natürlich auch, dass nur Modelle verwendet werden sollen,
+die nicht empfindlich sind auf die Anfangsbedingungen und vernünftige
+Aussagen ermöglichen, auch wenn die Anfangsbedingungen nicht sehr genau 
+sind.
+Aber auch ein solches Modell kann bei ungenauen Anfangsbedingungen 
+nicht lang zuverlässige Vorhersagen machen.
+Wir müssen also das Problem lösen, die unzulänglichen Anfangsdaten 
+später zu korrigieren.
+Dieses Problem wird vom Kalman-Filter dadurch gelöst, dass spätere
+Messungen den aktuellen Zustand korrigieren.
+Dieser Spezialfall wird in Abschnitt~\ref{section:kalman-filter}
+vorgestellt.
+Dies ist jedoch nicht ausrechend, denn in er Klimaforschung sind wir
+manchmal mit der Situation konfrontiert, dass wir zusätzliche
+Daten über frühere Zustände erhalten oder Informationen über Zustandsvariablen,
+die früher nicht gemessen werden konnten.
+Dieses erweiterte sogenannte Datenassimilations-Problem wird in
+Abschnitt~\ref{section:assimilationsproblem} untersucht.
+
+\input{chapters/8/kalmanfilter.tex}
+
+\input{chapters/8/assimilation.tex}
+
+\input{chapters/8/bayesianfilter.tex}
+

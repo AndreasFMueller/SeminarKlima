@@ -1,0 +1,199 @@
+%
+% lin.tex
+%
+% (c) 2018 Prof Dr Andreas Müller, Hochschule Rappreswil
+%
+\section{Linearisierung und Stabilität\label{section:linearisierung}}
+\rhead{Linarisierung und Stabilität}
+Die Technik der Phasendiagramme hat es sehr einfach gemacht, auf graphische
+Art zwischen stabilen und instabilen Gleichgewichten zu unterscheiden.
+Tatsächlich kann sie weiterentwickelt werden, in \cite{skript:mathsem-dgl}
+wird gezeigt, wie man Gleichgewichtslösungen auch zweidimensionaler
+Systeme ganz ähnlich graphisch analysieren kann.
+In diesem Abschnitt soll aber nur gezeigt werden, wie auch mit relativ
+bescheidenem Aufwand auch auf algebraischem oder analytischem Weg
+Aussagen über die Stabilität von Gleichgewichtslösungen gefunden werden
+können.
+
+\subsection{Lineare Differentialgleichungen}
+Eine lineare Differentialgleichung
+\begin{equation}
+\frac{dx}{dt}
+=
+Ax
+\label{skript:lin:dgl}
+\end{equation}
+kann mit der Matrix-Exponentialfunktion
+\begin{equation}
+x(t) = e^{At} x(0)
+=
+\biggl(
+\sum_{k=0}^\infty \frac{t^k}{k!}A^k
+\biggr) x(0)
+=
+\biggl(
+1+ At + \frac{A^2t^2}{2!} +\frac{A^3t^3}{3!}+\dots
+\biggl)\cdot x(0)
+\label{skript:lin:potenzreihe}
+\end{equation}
+gelöst werden.
+
+Für eine diagonalisierbare Matrix $A$ ist die Berechnung der
+Potenzreihe~\eqref{skript:lin:potenzreihe} sehr viel einfacher, da
+gilt
+\begin{equation}
+A^k
+=
+\begin{pmatrix}
+\lambda_1&\dots &0        \\
+\vdots   &\ddots&\vdots   \\
+0        &\dots &\lambda_n
+\end{pmatrix}^k
+=
+\begin{pmatrix}
+\lambda_1^k&\dots &0        \\
+\vdots     &\ddots&\vdots   \\
+0          &\dots &\lambda_n^k
+\end{pmatrix}
+\qquad\Rightarrow\qquad
+e^{tA}
+=
+\begin{pmatrix}
+e^{\lambda_1 t} & \dots  & 0             \\
+\vdots          & \ddots &\vdots         \\
+0               & \dots  &e^{\lambda_n t}
+\end{pmatrix}.
+\label{skript:lin:expreihe}
+\end{equation}
+Insbesondere lässt sich damit sehr einfach entscheiden, ob wie Lösungen
+für zunehmendes $t$ anwachsen oder gegen $0$ konvergieren.
+Ist $\lambda_j = a_j + ib_j$ die Aufteilung in Real- und Imaginärteil,
+dann ist
+\[
+e^{\lambda_jt} = e^{a_jt}(\cos b_jt +i\sin b_jt)
+\qquad\Rightarrow\qquad
+|e^{\lambda_j t}| = e^{a_jt}.
+\]
+Ist $a_j < 0$, dann konvergiert $e^{\lambda_jt}$ gegen $0$.
+Da die $0$-Lösung eine Gleichgewichtslösung von~\eqref{skript:lin:dgl}
+ist, kann gefolgert werden, dass diese Lösung genau dann stabil ist, 
+wenn alle Eigenwerte von $A$ negativen Realteil haben.
+
+Natürlich lässt sich nicht jede Matrix diagonalisieren, aber man kann
+mindestens eine Basis finden, in der $A$ Jordan-Normalform hat, also aus
+\index{Jordan-Normalform}%
+Blöcken der Form
+\[
+A_{\lambda}
+=
+\begin{pmatrix}
+\lambda&   1   &       &       &       \\
+       &\lambda&   1   &       &       \\
+       &       &\lambda&\ddots &       \\
+       &       &       &\ddots &    1  \\
+       &       &       &       &\lambda
+\end{pmatrix}
+=
+\begin{pmatrix}
+\lambda&       &       &       \\
+       &\lambda&       &       \\
+       &       &\ddots &       \\
+       &       &       &\lambda
+\end{pmatrix}
++
+\begin{pmatrix}
+   0   &   1   &       &       \\
+       &   0   &\ddots &       \\
+       &       &\ddots &   1   \\
+       &       &       &   0
+\end{pmatrix}
+=
+\lambda E + N.
+\]
+Die Matrizen $\lambda E$ und $N$ vertauschen, so dass die
+Produkteigenschaft der Exponentialfunktion verwendet werden kann,
+es gilt
+\begin{equation}
+e^{A_\lambda t}
+=
+e^{\lambda tE}\cdot e^{Nt}
+=
+e^{\lambda t} e^{Nt}.
+\label{skript:lin:faktorisierung}
+\end{equation}
+Bezeichnet man mit $N_i$ die Matrix, die in der $i$-ten Nebendiagonale
+Einsen enthält und sonst nur Nullen, dann ist $N=N_1$.
+Die Potenzen von $N$ können dann sofort in der Form $N^k=N_k$ ausgedrückt
+werden, und damit kann man auch
+\begin{equation}
+e^{Nt}
+=
+\begin{pmatrix}
+1&t&\frac{t^2}{2!}&\frac{t^3}{3!}& \dots & \frac{t^{n-1}}{(n-1)!}\\
+0&1&       t      &\frac{t^2}{2!}& \dots & \frac{t^{n-2}}{(n-2)!}\\
+      &\ddots&\ddots& \ddots     &       & \vdots                \\
+      &      &\ddots& \ddots     &\ddots & \vdots                \\
+      &      &      &         0  &    1  & t \\
+      &      &      &            &    0  & 1
+\end{pmatrix}
+\end{equation}
+sofort berechnen.
+Der Faktor $e^{Nt}$ von \eqref{skript:lin:faktorisierung}
+hängt nicht von $\lambda$ ab und wächste höchstens mit $t^{n-1}$ an.
+Dies bedeutet, dass das Stabilitätskriterium an die Eigenwerte von $A$
+weiterhin zutrifft: Die Gleichgewichtslösung $x=0$ ist genau dann stabil,
+wenn alle Eigenwerte von $A$ negativen Realteil haben.
+
+\subsection{Linearisierung\label{subsection:linearisierung}}
+Ist $x_0$ ein kritischer der Punkt der autonomen Differentialgleichung
+\[
+\frac{dx}{dt} = f(x),
+\]
+dann können wir mit Hilfe einer Koordinatentransformation
+\[
+x = x_0 + \tilde x
+\qquad
+\text{und}
+\qquad
+\tilde f(\tilde x) = f(x_0 + \tilde x)
+\]
+die Differentialgleichung in die Form
+\[
+\frac{d\tilde x}{dt}
+=
+\tilde f(\tilde x)
+\]
+bringen, welche $0$ als Gleichgewichtslösung hat.
+Im Folgenden schreiben wir wieder $f$ und $x$ für $\tilde f$ und $\tilde x$.
+
+Da $f(0)=0$ gilt, kann $f(x)$ in eine Potenzreihe der Form
+\[
+f(x) = Ax + O(|x|^2)
+\]
+entwickelt werden.
+Darin ist $A$ die Ableitungsmatrix
+\[
+A=(a_{ij})=Df
+\qquad\text{mit}\qquad
+(Df)_{ij}
+=
+\frac{\partial f_i(x)}{\partial x_j} = a_{ij}
+\]
+der Funktion $f$.
+Dies ist die {\em linearisierte} Version der
+Differentialgleichung~\eqref{skript:lin:dgl}.
+
+In unmittelbarer Nähe des Gleichgewichtspunktes $0$ sind analog wie
+bei der linearen Differentialgleichung~\eqref{skript:lin:dgl}
+wieder die Eigenwerte der Matrix $A=Df$ darüber entscheidend, ob der
+Gleichgewichtspunkt stabil ist.
+$x_0$ ist genau dann ein stabilier Gleichgewichtspunkt, wenn alle
+Eigenwerte der Ableitungsmatrix $Df$ negativ sind.
+
+
+
+
+
+
+
+

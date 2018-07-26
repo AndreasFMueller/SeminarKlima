@@ -1,0 +1,136 @@
+%
+% komplex.tex
+%
+% (c) 2018 Prof Dr Andreas Müller, Hochschule Rapperswil
+%
+\subsubsection{Komplexe Fouriertransformation}
+Bisher wurden alle Rechnungen nur mit reellen Zahlen durchgeführt.
+Es stellt sich aber heraus, dass komplexe Zahlen für die Beschreibung
+der Fourier-Transformation sehr viel praktischer sind.
+Der Grund dafür ist die Eulersche Beziehung
+\[
+e^{it} = \cos t + i \sin t.
+\]
+und die Rechenregel
+\[
+e^{a+b}=e^a\cdot e^b
+\qquad\Rightarrow\qquad
+e^{ikt}=\cos kt+i\sin kt = (\cos t + i \sin t)^k
+\]
+für die Exponentialfunktion.
+Für die Fourier-Koeffizienten werden die Summen
+\[
+a_0
+=
+\frac{1}{N}\sum_{j=1}^N y_j,\qquad
+a_l
+=
+\frac{2}{N}\sum_{j=1}^N y_j \cos lt_j,
+\qquad\text{und}\qquad
+b_l
+=
+\frac{2}{N}\sum_{j=1}^N y_j \sin lt_j
+\]
+benötigt.
+
+Fassen wir $a_l$ und $b_l$ als Real- und Imaginärteil einer komplexen
+Zahl auf, dann können wir 
+\begin{align*}
+c_l
+=
+\frac12(a_l-ib_l)
+&=
+\frac{1}{N} \sum_{j=1}^N y_j (\cos lt_j - i \sin lt_j)
+=
+\frac1{N} \sum_{j=1}^N y_j e^{-lt_j}
+=
+\frac{1}{N} \sum_{j=1}^N y_j e^{-2\pi ilj/N}
+\label{skript:complex:cl}
+\end{align*}
+berechnen.
+Für $l=0$ und $l=n$ gibt es keine $b$-Koeffizienten, man setzt daher
+$c_0 = a_0$ und $c_n=a_n/2$.
+
+Für reelle Werte $y_j$ haben die Koeffizienten $c_l$ zusätzliche
+Symmetrieeigenschaften.
+Die komplex konjugierte $\bar c_l$ ist
+\[
+\bar c_l
+=
+\overline{\sum_{j=0}^{N-1} y_j e^{2\pi ijl/N}}
+=
+\sum_{j=0}^{N-1} y_j e^{-2\pi i jl/N}
+=
+c_{-l}.
+\]
+Daraus liest man zum Beispiel ab, dass $c_0\in\mathbb R$ ist, nämlich
+\[
+c_0 = \frac{1}{N} \sum_{j=0}^{N-1} y_j = a_0.
+\]
+Für die anderen Koeffizienten gilt zunächst
+\begin{align*}
+c_l
+&=
+\frac{1}{N}\sum_{j=0}^{N-1} y_j e^{-2\pi ilj/N}
+=
+\frac{1}{N}\sum_{j=0}^{N-1} y_j \biggl(\cos \frac{2\pi lj}{N} + i \sin\frac{2\pi lj}{N}\biggr)
+\\
+&=
+\frac{1}{N}\sum_{j=0}^{N-1} y_j
+\cos lt_j
++
+i
+\frac{1}{N}\sum_{j=0}^{N-1} y_j
+\sin lt_j
+\\
+&=
+\frac12(a_l + ib_l)
+\end{align*}
+Zusammen mit der Beziehung $\bar c_l=c_{-l}$, können wir die reellen
+Fourier-Koeffizienten auch verwenden, um die reellen Koeffizienten
+\begin{align*}
+a_l
+&=
+c_l + c_{-l}
+&&\text{und}&
+b_l
+&=
+\frac1{i}
+(c_l - c_{-l})
+\end{align*}
+durch die komplexen Koeffizienten auszudrücken.
+
+Auch die Rekonstruktion~\eqref{skript:fourier:rekonstruktion} ist
+mit komplexen Zahlen darstellbar.
+Dazu verwendet man 
+\[
+\cos x = \operatorname{Re} e^{ix} = \frac{e^{ix}+e^{-ix}}{2}
+\qquad\text{und}\qquad
+\sin x = \operatorname{Im} e^{ix} = \frac{e^{ix}-e^{-ix}}{2i}.
+\]
+Damit wird das trigonometrische Polynom
+\begin{align*}
+f(t)
+&=
+a_0
++\sum_{k=1}^{n-1} (a_k \cos kt + b_k \sin kt)
++a_n \cos nt
+\\
+&=
+a_0
++\sum_{k=1}^{n-1} (a_k \operatorname{Re} e^{ikt} + b_k\operatorname{Im}e^{ikt})
++ a_n \cos nt
+\\
+&=
+\operatorname{Re} \sum_{k=0}^{n} (a_k-ib_k) e^{ikt}
+\intertext{Zusammen mit den Koeffizienten $c_{-l}$ folgt}
+=
+\sum_{l=0}^{N-1} c_k e^{ikt}.
+\end{align*}
+Damit sieht die Rekonstruktionsformel bis auf das Vorzeichen
+im Exponenten gleich aus wie die
+Transformationsformel~\eqref{skript:complex:cl}.
+Diese Eigenschaft kann dazu verwendet werden, die Rücktransformation
+im Wesentlichen mit demselben Code zu berechnen wie die Transformation.
+
+

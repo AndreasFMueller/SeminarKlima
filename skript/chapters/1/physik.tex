@@ -15,13 +15,14 @@ Veränderung dieser Grössen werden wir erst später eingehen.
 
 \subsection{Wärme, Konvektion, Kondensation}
 Die wohl wichtigste Klima-Grösse ist die Temperatur.
-Sie drückt aus, wieviel Energie in Form von Wärme ein Körper enthält.
+Sie drückt aus, wieviel Energie in Form von Wärme ein Körper oder eine
+Komponente des Klimasystems enthält.
 
 \subsubsection{Wärmekapazität}
-Die spezifische Wärme $C$ gibt an, wie die innere Energie sich bei
+Die spezifische Wärme $C$ gibt an, wie die innere Energie $U$ sich bei
 einer Temperaturänderung $\Delta T$ verändert:
 \[
-\Delta E = C\cdot\Delta T.
+\Delta U = C\cdot\Delta T.
 \]
 Der Körper speichert Energie in Form der thermischen Bewegung der
 einzelnen Atome.
@@ -31,11 +32,11 @@ Stoffe mit grösserer Dichte können mehr Atome und damit auch mehr
 Wärmeenergie in einem kleineren Volumen unterbringen.
 Die spezifische Wärmekapazität $c$ gibt an, welche Wärmekapazität
 ein Kilogramm eines Stoffes hat.
-Ein Körper der Masse $m$ hat also die Wärmekapazität $C=cm$.
+Ein Körper der Masse $m$ hat also die Wärmekapazität $C=c\cdot m$.
 
 \subsubsection{Wärmeleitung}
 Herrschen in einem Körper Temperaturunterschiede, ist $T$ nicht mehr
-nur eine konstante, sondern eine Funktion der Koordinaten und auch der
+nur eine Konstante, sondern eine Funktion der Koordinaten und auch der
 Zeit.
 Temperaturunterschiede werden sich ausgleichen, indem Energie von
 wärmeren zu kälteren Teilen des Körpers fliegt.
@@ -89,6 +90,14 @@ Die Wärmeleitungsgleichung erhält damit die Form
 \label{skript:waermeleitung2}
 \end{equation}
 
+\subsubsection{Randbedingungen}
+Die partielle Differentialgleichung~\eqref{skript:waermeleitung2}
+alleine legt die Temperaturverteilung noch nicht fest.
+Vielmehr muss man ausserdem die Temperatur zur willkürlich als $t=0$
+gewählten Anfangszeit kennen, und die Temperatur am Rand des
+Definitionsgebietes.
+Erst zusammen mit diesen Randbedingungen ist die Lösung eindeutig festgelegt.
+
 \subsubsection{Konvektion}
 Wärmeleitung kann Wärmeenergie nur vergleichsweise langsam transportieren.
 Das einleitende Beispiel des Kochtopfs zeigt auch, wie ein effizienterer
@@ -110,7 +119,7 @@ Nach der Zeit $\Delta t$ befindet sich derjenige Teil des Mediums
 befand.
 Die Temperatur zur Zeit $t+\Delta t$ ist daher
 $T(P,t+\Delta t)=T(P-\Delta t,t)$.
-Die Temperaturänderung
+Die Temperaturänderung ist
 \begin{align*}
 T(P,t+\Delta t)
 &=
@@ -118,6 +127,7 @@ T(P,t) + (T(P,t+\Delta t)-T(P,t))
 =
 T(P,t) + T(P-\vec v\Delta t, t)-T(P,t)
 \\
+\intertext{und damit die Temperaturänderung pro Zeiteinheit}
 \frac{
 T(P,t+\Delta t)
 -
@@ -173,8 +183,13 @@ Der Vektor
 \operatorname{grad} f
 \]
 heisst der {\em Gradient} von $f$.
+Das Skalarprodukt $\nabla\cdot\vec{v}$ ist ein Skalar, die
+{\em Divergenz}
+eines Vektorfeldes $\vec{v}$, sie wird manchmal auch
+$\operatorname{div}\vec{v}$ geschrieben.
 \end{definition}
 \index{Gradient}%
+\index{Divergenz}%
 \index{Nabla-Operator}%
 
 Die Temperaturänderung in Folge der Strömung 
@@ -204,6 +219,7 @@ Wärmeaustausches in den Ozeanen.
 \subsubsection{Phasenübergänge}
 Um ein Kilogramm Wasser bei $20^\circ\text{C}$ zu verdunsten, ist eine
 latente Wärme von $2480\,\text{kJ}$ nötig.
+\index{latente Wärme}%
 Um ein Kilogramm Luft um ein Grad zu erwärmen, sind dagegen nur
 $1.005\,\text{kJ}$ notwendig.
 Anders herum bedeutet dies, dass eine mit Wasserdampf angereicherte Atmosphäre
@@ -219,6 +235,7 @@ Andererseits kann Wasser an der Oberfläche verdampft werden damit die
 latente Wärme in die Atmosphäre übergehen.
 Man nennt diese Mechanismen auch turbulente Flüsse
 \cite[S.~70]{skript:wiefunktioniertdas}.
+\index{turbulente Flüsse}%
 
 Der Wassergehalt der Luft kann höchstens einige wenige Prozente betragen.
 Zwar ist die Wärmespeicherung durch Verdunstung über 2000 mal effizienter,
@@ -241,6 +258,8 @@ eindrücklich demonstrieren können.
 Damit ein Klimamodell Aussagen machen kann über das Auftreten von
 extremen Wetterphänomenen muss es also den Wassergehalt der
 Atmosphäre modellieren.
+In Kapitel~\ref{chapter:planeten} wird gezeigt, wie man hierzu vorgehen
+könnte.
 
 \subsection{Strahlung\label{skript:grundlagen:strahlung}}
 Der bedeutendste Energietransportmechanismus in der Atmosphäre ist
@@ -253,7 +272,7 @@ studieren die Strahlungsbilanz der Atmosphären.
 Die Strahlung der Sonne wie auch der Erde kann als Strahlung eines
 schwarzen Körpers modelliert werden.
 Ein schwarzer Körper ist ein idealisierter Körper, der alle auftretende
-Strahlung absorbieren kann.
+Strahlung absorbieren kann \cite{skript:schwarzerkoerper}.
 Er befindet sich im thermischen Gleichgewicht mit dem Strahlungsfeld,
 seine Strahlung hängt daher nur von der Temperatur ab.
 
@@ -272,6 +291,13 @@ P=\sigma AT^4
 \sigma=5.670367\cdot10^{-8}\frac{\text{W}}{\text{m}^2\text{K}^4}.
 \label{skript:stefon-boltzmann}
 \end{equation}
+
+\subsubsection{Sonne}
+Wir wenden das Stefan-Boltzmann-Gesetz auf die Strahlung der Sonne an.
+A priori ist nicht klar, dass das Strahlungsspektrum der Sonne tatsächlich
+als das eines schwarzen Körpers modelliert werden kann, doch die
+Abbildung~\ref{skript:strahlungsspektrum} zeigt, dass das Schwarzkörperspektrum
+mindestens eine sehr gute Approximation des tatsächlichen Spektrums ist.
 
 Die Strahlung der Sonne nimmt dem Quadrat der Entfernung ab.
 Von der Strahlungsleistung $\sigma T^4$ pro Flächeneinheit der
@@ -353,7 +379,7 @@ verwendet wird.
 Bei grossen Wellenlängen (``rechts'') wird die Kurve also in Wahrheit
 viel stärker ausgedehnt.
 Will man die Flächeninhalte unter den Kurven vergleichen, muss man
-die vertikale Achse mit dem Faktor $\lambda$ skalieren.
+$E(\lambda,T)$ mit dem Faktor $\lambda$ skalieren.
 
 \subsubsection{Einstrahlungswinkel}
 Warum ist es in den Tropen wärmer als in gemässigten Breiten oder
@@ -405,9 +431,10 @@ Mond           &0.11 \\
 (aus \cite{skript:albedo})
 \label{skript:albedotabelle}}
 \end{table}
-Die Strahlung der Erde ist nicht allein die Schwarzkörperstrahlung
-der Erde.
-Sie ist überlagert von der Strahlung, die vom Erdboden oder von
+Die Erde ist noch weniger perfekter schwarzer Strahler als die Sonne.
+Die Ausstrahlung enthält zwar die Strahlung eines schwarzen Körpers mit
+der Mitteltemperatur,
+sie ist aber überlagert von der Strahlung, die vom Erdboden oder von
 Wolken reflektiert wird.
 Die {\em Albedo} ist der Anteil der reflektierten Strahlung, also ein
 Wert zwischen $0$ und $1$.
@@ -454,14 +481,12 @@ Offenbar halten sich Einstrahlung und Ausstrahlung die Waage.
 
 Die Einstrahlung kann sich zum Beispiel dann verändern, wenn 
 mehr Strahlung reflektiert wird.
-Die Ausstrahlung verändert sich, wenn die Atmosphäre für infrarote
-Strahlung grösser wird.
-Wir die Atmosphäre durch erhöhte $\text{CO}_2$-Konzentration für
-infrarote Strahlung undurchsichtiger, dann sinkt die Ausstrahlung
-der Erde.
+Die Ausstrahlung vergrössert sich, wenn die Atmosphäre für infrarote
+Strahlung durchsichtiger wird, wie dies zum Beispiel durch
+erhöhte $\text{H}_2\text{O}$- oder $\text{CO}_2$-Konzentration geschehen kann.
 Damit wieder ein Gleichgewicht entsteht, muss die Temperatur der
 Erde sich erhöhen, damit die Ausstrahlung ebenfalls höher wird
-(obere hellblaue Kurve).
+(obere hellblaue Kurve in Abbildung~\ref{skript:strahlung-sonne-erde}).
 Sinkt der Gehalt an Treibhausgasen, wird die Atmosphäre transparenter
 für Wärmestrahlung.
 Ein Gleichgewicht ist möglich bei tieferer Temperatur (untere
@@ -486,17 +511,20 @@ Absorbtionsbänder verantwortlich ist, während im sichtbaren bereich
 die Absorbtion sehr gleichmässig ist.
 
 \subsection{Erdrotation und atmosphärische Zirkulation\label{skript:section:zirkulation}}
-Die Einstrahlung ist naturgemäss am grössten am Äquator, während an
-den Polen die Ausstrahlung überwiegt.
+Die Einstrahlung ist wegen des grösseren Einstrahlungswinkels
+am grössten am Äquator, während an den Polen die Ausstrahlung überwiegt.
 Dies führt dazu, dass die Temperatur an den Polen tiefer ist.
-Der Temperaturunterschied bedeutet aber auch, dass Prozesse in
+Da sich die Erde im Gleichgewicht befindet, bedeutet dieser
+Temperaturunterschied aber auch, dass Prozesse in
 der Atmosphäre Energie aus niedrigen Breiten zu den Polen
-transportieren.
+transportieren müssen.
 Die Temperaturunterschiede sind jedoch zu klein dafür, dass Wärmeleitung
 den Transport bewerkstelligen könnte.
 Die Energie muss daher durch Advektion (S.~\pageref{skript:advektion})
 unterstützt von latenter Wärme transportiert werden.
 Um den Energiehaushalt des globalen Klimasystems zu verstehen, muss
+\index{globale Zirkulation}%
+\index{Zirkulation, globale}%
 man daher die globalen Strömungen in der Atmosphäre aber auch in
 den Ozeanen verstehen.
 
@@ -520,9 +548,9 @@ Atmosphäre.
 Die warme Luft hat geringere Dichte und steigt daher auf.
 Damit nimmt die Kraft ab, die die Luft auf darunterliegenden
 Schichten ausüben kann, es entsteht ein Unterdruck.
-Man nennt eine Luftströmung, die nur durch Druckunterschiede
-unter Vernachlässigung von Coriolskraft, Zentrifugalkraft und
-Reibung entsteht den {\em Euler-Wind}.
+Man nennt eine Luftströmung, die nur durch Druck\-unterschiede
+unter Vernachlässigung von Corioliskraft, Zentrifugalkraft und
+Reibung entsteht, den {\em Euler-Wind}.
 \index{Euler-Wind}
 Lokale Wind-Systeme wie Land-See-Wind oder Berg-Tal-Wind sind von
 dieser Art.
@@ -531,7 +559,7 @@ dieser Art.
 \index{Coriolis-Kraft}%
 \index{Coriolis-Effekt}%
 Die Erde dreht sich in 23 Stunden 56 Minuten und 4.091 Sekunden
-einmal um sich selber.
+einmal um sich selbst (siderische Rotationsperiode).
 Die Drehung kann mit dem Winkelgeschwindigkeitsvektor
 $\vec{\Omega}$
 beschrieben werden, der die Richtung der Erdachse vom Süd- zum Nordpol
@@ -545,7 +573,7 @@ hat und als Länge die Winkelgeschwindigkeit
 \]
 Ein Körper, der sich relativ zu einem mit der Erde verbundenen
 Koordinatensystem mit der Geschwindigkeit $\vec{v}$ bewegt,
-erlebt eine durch die Drehung verursachte Beschleunigung
+erlebt eine durch die Drehung verursachte Coriolis-Beschleunigung
 \[
 \vec{a} = -2\vec{\Omega}\times\vec{v}.
 \]
@@ -602,17 +630,19 @@ die Komponente $(-2\vec{\Omega}\times\vec{v})_{\|}$ parallel
 zur Tangentialebene.
 \label{skript:betaplane}}
 \end{figure}
-Die grossräumige Strömung in der Erdoberfläche ist im Wesentlichen 
+Die grossräumige Strömung in der Erdoberfläche verläuft im Wesentlichen 
 parallel zur Erdoberfläche.
 Daher interessiert für die Beschreibung der Wirkung des Coriolis-Effekts
-vor allem die Komponente der Beschleunigung parallel zur Erdoberfläche 
-interessant.
+vor allem die Komponente der Beschleunigung parallel zur Erdoberfläche.
 In einem Punkt $B$ der Erdoberfläche verwenden wir daher ein
 Koordinatensystem in der Tangentialebene so, dass die $x$-Achse tangential
 zum Breitenkreis in $B$ ist und die $y$-Achse tangential zum Längenkreis
 (Abbildung~\ref{skript:betaplane}).
 Die tangentiale Geschwindigkeit wird in diesem Koordinatensystem durch die
 Komponenten $u$ in $U$-Richtung und $v$ in $V$-Richtung beschrieben.
+Dieses Koordinatensystem in der Tangentialebene im Punkt $B$ heisst auch
+die {\em $\beta$-Ebene}.
+\index{$\beta$-Ebene}
 
 Wir berechnen die Coriolis-Beschleunigung in diesem Koordinatensystem.
 Für einen Geschwindigkeitsvektor $\vec{v}$ parallel zu $V$ hat das
@@ -625,7 +655,7 @@ Die Coriolis-Beschleunigung ist daher $2\omega \sin(\alpha)u\cdot V$.
 Für einen Geschwindigkeitsvektor $\vec{v}$ parallel zu $U$ steht
 das Vektorprodukt $-2\vec{\Omega}\times\vec{v}$ senkrecht auf 
 der Erdachse.
-Da $U$ und $\vec{\Omega}$ senkrecht stehen ist der Betrag der 
+Da $U$ und $\vec{\Omega}$ senkrecht stehen, ist der Betrag der 
 Coriolis-Beschleunigung
 \[
 |\text{$-2\vec{\Omega}\times\vec{v}$}|
@@ -682,16 +712,13 @@ v\\
 ist.
 Die Coriolis-Beschleunigung ist proportional zu $f=2\omega\sin\alpha$, auch
 bekannt als der {\em Coriolis-Parameter}.
-\index{Coriolis-Parameter}
-Das Koordinatensystem in der Tangentialebene im Punkt $B$ heisst auch
-die {\em $\beta$-Ebene}.
-\index{$\beta$-Ebene}
+\index{Coriolis-Parameter}%
 
 \subsubsection{Globale Zirkulation}
-Die bisher besprochenen Prinzipien sollten uns ermöglichen, die
+Die bisher besprochenen Prinzipien ermöglichen uns, die
 global Zirkulation qualitativ zu beschreiben.
-Veränderungen der globalen Zirkulation erfolgen erst über mehrere Tage.
-Es ist daher gerechtfertigt, die täglichen Schwankungen der
+Veränderungen der globalen Zirkulation sind langsam,
+es ist daher gerechtfertigt, die täglichen Schwankungen der
 Einstrahlung infolge der Erdrotation durch eine mittlere
 Einstrahlung zu ersetzen.
 Die Bedingungen für die globale Zirkulation sind daher rotationssymmetrisch
@@ -864,15 +891,16 @@ Die keplerschen Gesetze der Planetenbahnen können aus dem Newtonschen
 Gravitationsgesetz hergeleitet werden
 \cite[\S 6]{skript:joos}.
 \index{Bahnelemente}%
-\index{Keplersche Gesetze}
+\index{Keplersche Gesetze}%
 Die Bahnelemente beschreiben die Ebene, in der sich der Planet bewegt,
 die Richtung und der Zeitpunkt der grössten Annäherung an die Sonne und
 die Exzentrizität der Ellipse.
 \index{Exzentrizität}%
-
+%
 Es trifft exakt jedoch nur dann zu, wenn keine anderen Kräfte auf den
 Planeten wirken als die Anziehungskraft der Sonne.
-Newtons Gravitationsgesetzt besagt jedoch, dass auch alle anderen
+Newtons Gravitationsgesetz besagt nämlich, dass auch alle anderen
+\index{Gravitationsgesetz}%
 Planeten durch ihre Schwerkraft auf die Erde einwirken.
 Dies äussert sich darin, dass die Bahnelemente, sich mit der Zeit
 ändern.
@@ -904,4 +932,11 @@ Klima-Modelle mit der Klimageschichte der Erde zu vergleichung und
 damit zu validieren.
 In Kapitel~\ref{chapter:fourier} wird gezeigt, wie periodische Einflüsse
 modelliert und mit Hilfe der Fourier-Theorie analysiert werden können.
+Und in Kapitel~\ref{chapter:neigung} wird gezeigt, wie die periodischen
+Störungen der Erdbahnneigung zu dramatischen Veränderungen des Klimas
+führen können.
+
+
+
+
 

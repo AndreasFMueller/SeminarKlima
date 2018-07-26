@@ -25,14 +25,13 @@ dargestellt werden. Dadurch ist der Albedo symmetrisch um 265 K und kann maximal
 %ABBILDUNG1
 \begin{figure}
 	\centering
-	\includegraphics[width= 0.8\textwidth]{Strahlung_1.png}
+	\includegraphics[width= 0.8\textwidth]{neigung/Strahlung_1.png}
 	\caption[Gleichgewichtstemperatur]{Gleichgewichtstemperatur}
 	\label{fig:abb1}
 \end{figure}
 %
 Die Neigung der Erdachse bewirkt die Jahreszeiten. Der genaue Zusammenhang wird in Abschnitt \ref{sec:winkel} und \ref{sec:neigung} erläutert. Je grösser der Neigungswinkel, desto extremer sind die Jahreszeiten. Durch die Jahreszeiten kommt es zu Schwankungen der Gleichgewichtstemperatur. Dies wird in Kapitel \ref{sec:bi} anhand einer Simulation gezeigt. Starke Schwankungen können dazu führen, dass das Erdklima vom warmen ins kalte Gleichgewicht wechselt und eine Eiszeit entsteht. Da die Jahreszeiten auf der Nordhalbkugel und Südhalbkugel jeweils entgegengesetzt zueinander auftreten wird der Fokus auf eine Halbkugel gelegt (ohne Energieaustausch). In Abschnitt \ref{sec:math} wird eine Halbkugel mathematisch modelliert und das Klima wird unter verschiedenen Erdachsenneigungen prognostiziert. Abschnitt\ref{sec:schluss} fasst die wichtigsten Erkenntnisse nochmals zusammen und gibt einen Ausblick für weitere Erweiterungen des Modells.
 
-\newpage
 \subsection{Milankovi\'c Zyklen}\label{sec:mil} \rhead{Milankovi\'c Zyklen}
 In diesem Abschnitt wird eine kurze empirisch bestätigter Ausblick über das Verhalten der Erde gegeben. Der serbische Mathematiker Milutin Milankovi\'c hat Mitte des 20. Jahrhunderts folgende Entdeckung gemacht: Die Erde bewegt sich in verschiedenen Zyklen auf ihrer Umlaufbahn. Zudem führen die Planeten wie Saturn dazu, dass es zu Schwankungen der Achsenneigung kommen kann. Milakovi\'c unterteilt die Effekte in drei Zyklen. Die Milankovi\'c Zyklen wurden empirisch bestätigt.
 
@@ -42,7 +41,7 @@ Der erste Zyklus wird Präzession genannt und hat eine länge von 23'000 Jahren.
 %ABBILDUNG2
 \begin{figure}
 	\centering
-	\includegraphics[width= 0.3\textwidth]{Precession.png}
+	\includegraphics[width= 0.3\textwidth]{neigung/Precession.png}
 	\caption[Präzession]{Präzession}
 	\label{fig:abb}
 \end{figure}
@@ -53,7 +52,8 @@ Der zweite Zyklus ist die Exzentrizität und hat eine Dauer von 100'000 Jahren. 
 %ABBILDUNG2
 \begin{figure}
 	\centering
-	\includegraphics[width= 0.8\textwidth]{Eccentricity.png}
+	%\includegraphics[width= 0.8\textwidth]{neigung/Eccentricity.png}
+	\includegraphics[width= 0.8\textwidth]{neigung/erdbahn.pdf}
 	\caption[Exzentrizität]{Exzentrizität}
 	\label{fig:abb2}
 \end{figure}
@@ -64,12 +64,11 @@ Der letzte Zyklus ist die Ekliptikschiefe und hat einen Rythmus von 41'000 Jahre
 %ABBILDUNG3
 \begin{figure}
 	\centering
-	\includegraphics[width= 0.3\textwidth]{Obliquity.png}
+	\includegraphics[width= 0.3\textwidth]{neigung/Obliquity.png}
 	\caption[Ekliptikschiefe]{Ekliptikschiefe}
 	\label{fig:abb3}
 \end{figure}
 %
-\newpage
 
 \section{Einstrahlungswinkel}\label{sec:winkel} \rhead{Einstrahlungswinkel}
 Da die Erde einen sehr grossen Abstand und nur eine geringe relative Grösse zur Sonne hat, mit 1:109, wird vereinfacht angenommen, dass alle Sonnenstrahlen im rechten Winkel auf die Erdkugel treffen. Nehmen wir zudem vereinfacht an, dass der Neigungswinkel der Erde $0^\circ$ . Dies bedeutet, dass die Sonnenstrahlen am Äquator mit einem Winkel von $90^\circ$ auf die Erdoberfläche treffen. Durch die Kugelform der Erde nimmt der Einstrahlungswinkel mit der Distanz zum Äquator ab. Dies ist in Abbildung \ref{fig:abb5} schematisch dargestellt. 
@@ -77,13 +76,12 @@ Da die Erde einen sehr grossen Abstand und nur eine geringe relative Grösse zur
 %ABBILDUNG5
 \begin{figure}
 	\centering
-	\includegraphics[width= 0.8\textwidth]{Schatten.png}
+	\includegraphics[width= 0.8\textwidth]{neigung/Schatten.png}
 	\caption[Einstrahlungswinkel]{Einstrahlungswinkel}
 	\label{fig:abb5}
 \end{figure}
 In der Abbildung kommen die Sonnenstrahlen von der linken Seite. Beispielsweise ist die angestrahlte Fläche 1$m^2$, zweidimensional dargestellt als 1$m$ in Abbildung \ref{fig:abb5}. Nahe den Polen wird die selbe Flächengrösse von weniger Energie bestrahlt, während am Äquator eine viel grössere Menge an Energie auf die selbe Fläche trifft. Die eingestrahlte Energiemenge kann als Schattenfläche aufgefasst werden. In Abbildung \ref{fig:abb5} ist ersichtlich, dass die Energiemenge pro Fläche am Äquator deshlab erheblich grösser ist als an den Polen. Der Einstrahlungswinkel beeinflusst somit wieviel Energie auftrifft und somit aufgenommen wird. Daraus folgt, dass es am Äquator wärmer ist als an den Polen. 
 In diesem Gedankenexperiment wird somit der Äquator konstant in einem Winkel von $90^\circ$ bestrahlt, während die Pole direkte Strahlung empfangen. Im Verlaufe eines Jahres legt die Erde eine Umkreisung der Sonne zurück. Vereinfacht wird eine Kreisbahn angenommen. Mit einem Neigungswinkel von $0^\circ$ ist die Einstrahlung entlang der Umlaufbahn konstant für jeden Punkt auf der Erde. Im folgenden Kapitel wird die Annahme des Neigungswinkel mit $0^\circ$ gelockert und erläutert wie dadurch die Jahreszeiten entstehen.
-\newpage
 
 \section{Achsenneigung}\label{sec:neigung} \rhead{Achsenneigung}
 Durch die Neigung der Erdachse kommt es zu der Entstehung der Jahreszeiten. Dies wird anhand der Abbildung \ref{fig:abb6} intuitiv erklärt. 
@@ -91,14 +89,13 @@ Durch die Neigung der Erdachse kommt es zu der Entstehung der Jahreszeiten. Dies
 %ABBILDUNG6
 \begin{figure}
 	\centering
-	\includegraphics[width= 0.8\textwidth]{tagundnacht.png}
+	\includegraphics[width= 0.8\textwidth]{neigung/tagundnacht.png}
 	\caption[Achsenneigung]{Achsenneigung}
 	\label{fig:abb6}
 \end{figure}
 %
 Die linke Erdkugel in Abbildung \ref{fig:abb6} zeigt die Situation mit einem Neigungswinkel von $0^\circ$. Die Mittlere Linie entspricht der Breitengrade des Äquators. Wie in Kapitel \ref{sec:winkel} erläutert ist somit die Einstrahlung am grössten am Äquator, da die Sonnenstrahlen in einem Winkel von $90^\circ$ auf die Erdoberfläche auftreffen. Die rechte Erdkugel illustriert nun einen Neigungswinkel. Dadurch wird ersichtlich, dass der Äquator nicht länger der Breitengrad ist, in dem die Sonnenstrahlen in einem Winkel von $90^\circ$ eintreffen. In der Abbildung \ref{fig:abb6} entspricht dies nun der Linie des Wendekreises. In der Abbildung kommen die Sonnenstrahlen von der rechten Seite, somit entsprich die gelbe Fläche der angestrahlten Fläche der Erdkugel. Es ist ersichtlich, dass am Nordpol dadurch Sonnenstrahlen ankommen, während der Südpol nicht bestrahlt wird. Im Verlaufe eines Tages dreht sich die Erde einmal um die eigene Achse. In der rechten Abbildung bedeutet das, dass am Nordpol keine Nacht stattfindet, während am Südpol ewige Nacht herrscht. Am Äquator dauert ein Tag genau 12 Stunden, während auf der Nordhalbkugel die Tage länger sind als auf der Südhalbkugel. Dies entsprich der Situation Sommer auf der Nordhalbkugel, respektive Winter auf der Südhalbkugel. Die Abbildung stammt aus \cite{fa}.
 Auf ihrer Umlaufbahn um die Sonne bleibt die Erdachse konstant geneigt. Dies bedeutet, dass im Nordwinter, die Situation entsteht, in der in Abbildung \ref{fig:abb6} die gelbe Fläche bestrahlt wird während die blaue Fläche nicht bestrahlt wird. Somit am Nordpol ewige Nacht herrscht und am Südpol die Sonne nie untergeht. Im Frühling und im Herbst ist die Strahlungssituation in der linken Seite abgebildet. Diese kontinuierlichen Übergänge von heissem Sommer zu kaltem Winter werden im nächsten Kapitel \ref{sec:math} mathematisch modelliert. Dabei wird der Fokus auf eine Halbkugel gelegt, da die Jahreszeiten halbkugelspezifisch auftreten. 
-\newpage
 
 \section{Mathematischer Zusammenhang}\label{sec:math} \rhead{Mathematischer Zusammenhang}
 Motiviert durch die vorhergegangenen zwei Kapitel wird das Energiehaushaltsmodell aus Kapitel \ref{sec:einf} erweitert. Im folgenden wird zuerst in Kapitel \ref{sec:einst} erläutert, wie die zyklisch ändernde Einstrahlung mathematisch modelliert wird, abhängig von der Achsenneigung. In Kapitel \ref{sec:bi} werden die Gleichgewichte als Bifurkation zusammengefasst. Kapitel \ref{sec:sim1} wird eine Simulation gerechnet und präsentiert. Da die Simulation zeigt, dass dadurch keine Eiszeit entstehen kann, wird in Kapitel \ref{sec:co} die Coalbedo nicht linear transformiert. Die Simulation wird mit verändertet Coalbedo nochmals gerechnet in Kapitel \ref{sim2}. Dadurch wird gezeigt, dass es zu einer Eiszeit kommen kann. 
@@ -120,7 +117,7 @@ Anstelle der Solarkonstanten $Q$ stehet in Gleichung \eqref{eq2} nun die Zeit un
 %ABBILDUNG7
 \begin{figure}
 	\centering
-	\includegraphics[width= 0.8\textwidth]{Strahlung_2.png}
+	\includegraphics[width= 0.8\textwidth]{neigung/Strahlung_2.png}
 	\caption[Gleichgewichtstemperatur]{Gleichgewichtstemperatur}
 	\label{fig:abb7}
 \end{figure}
@@ -133,7 +130,7 @@ Die Bifurkation zeigt wie sich die Lösungen einer Differentialgleichung veränd
 %ABBILDUNG8
 \begin{figure}
 	\centering
-	\includegraphics[width= 0.8\textwidth]{Bifurkation.png}
+	\includegraphics[width= 0.8\textwidth]{neigung/Bifurkation.png}
 	\caption[Bifurkation]{Bifurkation}
 	\label{fig:abb8}
 \end{figure}
@@ -149,7 +146,7 @@ Durch die Änderung des Neigungswinkels gemäss den Milankovi\'c Zyklen kann es 
 %ABBILDUNG9
 \begin{figure}
 	\centering
-	\includegraphics[width= 0.8\textwidth]{Zeitachse_0.png}
+	\includegraphics[width= 0.8\textwidth]{neigung/Zeitachse_0.png}
 	\caption[Simulation I]{Simulation I}
 	\label{fig:abb9}
 \end{figure}
@@ -169,7 +166,7 @@ Input $x$ in der Funktion ist die ursprüngliche symmetrische Coalbedo $1-\alpha
 %ABBILDUNG10
 \begin{figure}
 	\centering
-	\includegraphics[width= 0.8\textwidth]{Funktion.png}
+	\includegraphics[width= 0.8\textwidth]{neigung/Funktion.png}
 	\caption[Asymmetrie in der Coalbedo]{Asymmetrie in der Coalbedo}
 	\label{fig:abb10}
 \end{figure}
@@ -189,7 +186,7 @@ Wiederum wird die Gleichgewichtstemperatur ermittelt indem sich die Temperatur �
 %ABBILDUNG11
 \begin{figure}
 	\centering
-	\includegraphics[width= 0.8\textwidth]{Strahlung_3.png}
+	\includegraphics[width= 0.8\textwidth]{neigung/Strahlung_3.png}
 	\caption[Gleichgewichtstemperatur]{Gleichgewichtstemperatur}
 	\label{fig:abb11}
 \end{figure}
@@ -201,7 +198,7 @@ In diesem Kapitel wird erneut eine Simulation gerechnet, welche nun im Vergleich
 %ABBILDUNG12
 \begin{figure}
 	\centering
-	\includegraphics[width= 0.8\textwidth]{Zeitachse_1.png}
+	\includegraphics[width= 0.8\textwidth]{neigung/Zeitachse_1.png}
 	\caption[Simulation II a]{Simulation II a}
 	\label{fig:abb12}
 \end{figure}
@@ -217,7 +214,7 @@ In Abbildung \ref{fig:abb13} und \ref{fig:abb14} ist ersichtlich, wie eine stär
 %ABBILDUNG13
 \begin{figure}
 	\centering
-	\includegraphics[width= 0.8\textwidth]{Zeitachse_2.png}
+	\includegraphics[width= 0.8\textwidth]{neigung/Zeitachse_2.png}
 	\caption[Simulation II b]{Simulation II b}
 	\label{fig:abb13}
 \end{figure}
@@ -226,12 +223,11 @@ In Abbildung \ref{fig:abb13} und \ref{fig:abb14} ist ersichtlich, wie eine stär
 %ABBILDUNG14
 \begin{figure}
 	\centering
-	\includegraphics[width= 0.8\textwidth]{Zeitachse_3.png}
+	\includegraphics[width= 0.8\textwidth]{neigung/Zeitachse_3.png}
 	\caption[Simulation II c]{Simulation II c}
 	\label{fig:abb14}
 \end{figure}
 %
-\newpage
 
 \section{Schlussfolgerung} \label{sec:schluss} \rhead{Schlussfolgerung}
 Die Neigung der Erdachse bewirkt die Jahreszeiten. Je stärker die Erdachse geneigt ist, desto extremer Fallen diese aus. In dieser Arbeit wurde gezeigt, wie dies mathematisch für eine Halbkugel modelliert werden kann. Zudem wurde gezeigt, dass für die Erde zwei Gleichgewichtstemperaturen bestehen. Durch einen extrem kalten Winter kann es dazu kommen, dass die Erde von der warmen Gleichgewichtstemperatur in die kalte Gleichgewichtstemperatur wechselt. Dies würde zu einer Eiszeit führen. Um aus dieser Eiszeit zu entkommen, wäre eine extreme Erwärmung der Erde notwendig, wie sie möglicherweise durch Vulkanausbrüche stattfinden könnte. 

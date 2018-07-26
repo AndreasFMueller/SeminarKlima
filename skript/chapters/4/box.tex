@@ -13,7 +13,7 @@ Dann werden Gleichungen aufgestellt, die den Austausch von Salz und
 Wärme zwischen den Teilgebieten beschreiben.
 Die Lösung dieser Gleichungen wird uns das Ausmass der Zirkulation zeigen
 und erlauben abzuschätzen, wie sich die Zirkulation ändert, wenn sich
-die äusseren Bedinungen verschieben.
+die äusseren Bedingungen verschieben.
 
 \subsection{Ein einfaches Box-Modell}
 Um einen ersten Eindruck von der Dynamik der thermohalinen Zirkulation
@@ -25,14 +25,14 @@ In jedem dieser Gebiet modellieren wir nur das Wasser, welches tatsächlich
 von der Zirkulation umgewälzt wird.
 Wir nehmen an, dass es sich durch die zwei Parameter Temperatur und
 Salinität beschreiben lässt.
-Wir nennen die Variablen im Gebiet $i$ $T_i$ und $S_i$.
+Wir bezeichnen die Variablen im Gebiet $i$ mit $T_i$ und $S_i$.
 
 Das Wasser welches an der Zirkulation teilnimmt ist umgeben von einem
 viel grösseren Wasserreservoir, welches mit dem strömenden Wasser 
 im Wärme- und Salzaustausch steht.
 Wir bezeichnen die konstanten Parameter dieses Reservoirs mit
 $T_i^*$ und $S_i^*$.
-In Abbildung~\ref{skript:boxmodell-blid} sind die beiden Gebiete
+In Abbildung~\ref{skript:boxmodell-bild} sind die beiden Gebiete
 grau dargestellt, das in Zirkulation befindliche Wasser hellblau.
 \begin{figure}
 \centering
@@ -69,7 +69,8 @@ transportiert wie Wasser mit Temperatur $T_2$ ins Gebiet $1$.
 Das Vorzeichen von $q$ spielt dabei keine Rolle, denn ändert das
 Vorzeichen von $q$, fliesst das Wasser mit Temperatur $T_1$ einfach
 durch den anderen Kanal.
-Die Temperaturänderung von $T_1$ ist also propoertional zu $|q|(T_2-T_1)$.
+Die Temperaturänderung von $T_1$ ist also propoertional zu $|q|(T_2-T_1)$,
+dies legt auch die Masseinheit von $q$ fest.
 
 Der Wärmeaustausch mit dem umgebenden Wasser ist proportional zur
 Temperaturdifferenz, wir bezeichnen den Proportionalitätsfaktor mit $c$.
@@ -124,7 +125,7 @@ gekoppelt sind, da der Fluss $q$ angetrieben wird vom Dichteunterschied,
 der wiederum von Temperatur und Salinität abhängt.
 
 \subsection{Antrieb der Zirkulation}
-Die Zirkulation wird wie gesagt vom Dichteunterschied angetrieben.
+Die Zirkulation wird vom Dichteunterschied angetrieben.
 Es gibt also einen Proportionalitätsfaktor $k$ derart, dass
 \[
 q = k\frac{\varrho_1 - \varrho_2}{\varrho_0}.
@@ -190,6 +191,8 @@ wobei $T_0^* = \frac12(T_1^*+T_2^*)$ und $S_0^* = \frac12(S_1^*+S_2^*)$.
 Die Differentialgleichungen~\ref{skript:thc:mittelgleichungen} 
 besagen, dass die mittlere Temperatur des zirkulierenden Wassers
 gegen die mittlere Temperatur des umliegenden Meeresbeckens strebt.
+Die Faktoren $c$ und $d$ beschreiben, wie schnell der Temperaturausgleich
+stattfindet, wie in Abschnitt~\ref{section:zeitkonstanten} ausgeführt wird.
 
 Da die Mitteltemperatur langfristig gegen die Mitteltemperatur der
 umliegenden Meeresbecken strebt liegt es nahe, Temperatur und
@@ -333,7 +336,7 @@ Die linken Gleichungen beschreiben die Zeitentwicklung der Differenz
 der Anomalien.
 Man beachte, dass $q$ ebenfalls von den Anomalie-Differenzen abhängt.
 
-\subsection{Zeitkonstanten}
+\subsection{Zeitkonstanten\label{section:zeitkonstanten}}
 \label{skript:thc:zeitkonstanten}
 Der Koeffizienten $c$ beschreibt, wie schnell der Temperaturausgleich
 durch Wärmeleitung oder turbulente Durchmischung erfolgt.
@@ -371,7 +374,7 @@ sich die Temperaturdifferenzen sehr viel schneller ausgleichen als die
 Salinitätsdifferenzen.
 Für die langfristige Entwicklung der Zirkulation ist in diesem Fall
 die Salinitätsentwicklung ausschlaggebend, die Temperaturfunktionen
-können durch kosntante ersetzt werden.
+können durch Konstanten ersetzt werden.
 
 
 

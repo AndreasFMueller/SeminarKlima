@@ -85,6 +85,7 @@ trigonometrisches Polynom
 f(t)
 =
 a_0 + \sum_{k=1}^n \bigl(a_k \cos kt + b_k\sin kt).
+\label{skript:fourier:rekonstruktion}
 \end{equation}
 Die Funktion soll die Werte $y_j$ in den äquidistanten $t$-Werten 
 $t_j=2\pi j/N$ mit $0\le j<N$ möglichst gut wiedergeben.
@@ -103,6 +104,14 @@ Sie können daher höchstens endlich viele Koeffizienten $a_k$ und $b_k$
 bestimmen.
 Dieses Problem wird im nächsten Abschnitt gelöst.
 
-
-
-
+Da $f(t)$ eine $2\pi$-periodische Funktion ist, folgt
+\[
+y_j = f(t_j) = f(t_j+2\pi) = f(t_{j+N}).
+\]
+Wir erweitern daher die Notation für $y$ und setzen
+\[
+y_j = y_{r(j)},
+\]
+wobei $r(j)$ der Rest von $j$ bei Teilung durch $N$ steht.
+Insbesondere ist $y_0=y_N$, die Folge $y_j$ ist $N$-periodisch als
+Folge von reellen Zahlen.
