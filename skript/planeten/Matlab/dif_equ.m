@@ -73,12 +73,24 @@ SIM.C_0 = EARTH.cloud_cover;
 
 global PARAM
 PARAM.xi1 = 1;       %dT factor     
-PARAM.xi2 = 5e-5;  %vaporisation
-PARAM.xi3 = 0.24e1;  %condesation     1.9e-2; 
-PARAM.xi4 = 6e-2;    %precipitation
-PARAM.xi8 = 0.4;     %greenhouse effect
-PARAM.alpha_s = 0.15;
-PARAM.alpha_max = 0.65;
+PARAM.xi2 = 16e-3;    %vaporisation
+PARAM.xi3 = 0.26e1;  %condesation     1.9e-2; 
+PARAM.xi4 = 5e-0;    %precipitation
+PARAM.beta_max = 0.5;     %greenhouse effect
+PARAM.alpha_min = 0.15;
+PARAM.alpha_max = 0.55;
+
+
+
+
+% with temp gradient depandant on Temperature
+% PARAM.xi1 = 1;       %dT factor     
+% PARAM.xi2 = 10e-5;    %vaporisation
+% PARAM.xi3 = 0.26e1;  %condesation     1.9e-2; 
+% PARAM.xi4 = 5e-2;    %precipitation
+% PARAM.beta_max = 0.6;     %greenhouse effect
+% PARAM.alpha_min = 0.15;
+% PARAM.alpha_max = 0.65;
 
 planets = {EARTH, MARS, VENUS, MERCURY};
 
@@ -89,7 +101,7 @@ for i = 1:4
 	PLANET = p{1};
 
     %% Solve diff equation
-    tspan = [0 40];
+    tspan = [0 10];
     y0 = [SIM.T_s_0; SIM.H_0; SIM.C_0];
 
     [t,y] = ode45(@(t,y) fun_dydt(t, y), tspan, y0);
@@ -120,7 +132,7 @@ for i = 1:4
     
 %     planets{i}.y.P_in = P_in;
 %     planets{i}.y.P_out = P_in;
-    planets{i}.y.albedo     = ((PARAM.alpha_max - PARAM.alpha_s) * C) + PARAM.alpha_s;
+    planets{i}.y.albedo     = ((PARAM.alpha_max - PARAM.alpha_min) * C) + PARAM.alpha_min;
     planets{i}.y.greenhouse = ( PARAM.xi8 * H);
     
     
@@ -137,7 +149,7 @@ for i = 1:4
 
         subplot(4,1,1);
         plot(t, T_s, '-', 'color', colors{1}); hold on;
-        plot(t, ones(1,length(t)) * PLANET.T_blackbody, '-.', 'color', colors{1}); hold on;
+        plot(t, ones(1,length(t)) * PLANET.T_mean, '-.', 'color', colors{1}); hold on;
         plot(t, T_t, '-', 'color', colors{2}); hold off
         title([ PLANET.name ' Temperature']);
         ylabel('Temperature / K');
@@ -202,13 +214,13 @@ if (latexplots == 1)
     end
     for i = 1:4
         o = ones(1, length(planets{i}.t));
-        plot(planets{i}.t, o*planets{i}.T_blackbody, '-.', 'color', colors{i});
+        plot(planets{i}.t, o*planets{i}.T_mean, '-.', 'color', colors{i});
     end
     hold off;
     title('Surface temperature');
     ylabel('Temperature / K');
     xlabel('Time');
-    ylim([0, 700])
+    ylim([0, 800])
     legend({planets{1}.name, planets{2}.name, planets{3}.name, planets{4}.name});
     grid
 
