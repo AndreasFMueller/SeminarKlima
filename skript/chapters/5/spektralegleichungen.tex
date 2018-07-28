@@ -3,5 +3,93 @@
 %
 % (c) 2018 Prof Dr Andreas Müller, Hochschule Rapperswil
 %
-\subsection{Spektrale Gleichungen}
+\subsection{Spektrale Gleichungen\label{subsection:spektrale gleichungen}}
+Mit den Kugelfunktionen steht jetzt eine Basis für Funktionen auf der
+Kugeloberfläche oder auch für eine Kugelschicht wie die Atmosphäre zur
+Verfügung.
+Um die zeitliche Entwicklung zu verstehen, wie sie zum Beispiel vom
+Modell~\eqref{skript:psidgl} beschrieben wird, müssen diese Gleichungen
+umformuliert werden als Gleichungen für die Koeffizienten einer Darstellung
+der Lösungsfunktion als Linearkombination 
+
+Um das Prinzip zu veranschaulichen, wird dies für die Wärmeleitungsgleichung
+\[
+\frac{\partial T}{\partial t}
+=
+\kappa \Delta T
+\]
+auf der Kugeloberfläche gezeigt.
+Die Temperatur kann also als Linearkombination
+\begin{equation}
+T(t, \vartheta, \varphi)
+=
+\sum_{l=0}^\infty \sum_{m=-l}^{l} a_{lm}(t) Y^m_l(\vartheta,\varphi)
+\label{skript:spektral:ansatz}
+\end{equation}
+geschrieben werden.
+Die Funtionen $Y^m_l(\vartheta,\varphi)$ sind nach Konstruktion
+Eigenfunktionen des Laplace-Operators, der zugehörige Eigenwert soll
+mit $\lambda^m_l$ abgekürzt werden.
+
+Setzt man \eqref{skript:spektral:ansatz} in die Differentialgleichung
+ein, wird sie zu
+\begin{align*}
+\frac{\partial T}{\partial t}
+&=
+\sum_{l=0}^\infty \sum_{m=-l}^{l} \frac{\partial a_{lm}(t)}{\partial t} Y^m_l(\vartheta,\varphi)
+=
+\sum_{l=0}^\infty \sum_{m=-l}^{l} \dot a_{lm}(t) Y^m_l(\vartheta,\varphi)
+\\
+\kappa\Delta T
+&=
+\kappa
+\sum_{l=0}^\infty \sum_{m=-l}^{l} a_{lm}(t) \Delta Y^m_l(\vartheta,\varphi)
+=
+\kappa
+\sum_{l=0}^\infty \sum_{m=-l}^{l} a_{lm}(t) \lambda^m_l Y^m_l(\vartheta,\varphi)
+\end{align*}
+Mittels Koeffizientenvergleich folgen die gewöhnlichen
+Differentialgleichungen
+\[
+\dot a_{lm}(t)
+=
+\kappa\lambda^m_l
+a_{lm},
+\]
+deren Lösungen man sofort angeben kann, sie sind
+\[
+a_{lm}(t)
+=
+a_{lm}(0) e^{\kappa\lambda^m_l t}.
+\]
+Damit kann man die Lösung der Wärmeleitungsgleichung sofort hinschreiben,
+sie ist
+\begin{equation}
+T(t,\vartheta,\varphi)
+=
+\sum_{l=0}^\infty \sum_{m=-l}^{l}
+a_{lm}(0) e^{\kappa\lambda^m_l t}
+Y^m_l(\vartheta,\varphi).
+\end{equation}
+Die Verwendung der Basis der Kugelfunktionen hat also zu einer besonders 
+einfachen Lösung geführt.
+
+Die Gleichung~\eqref{skript:psidgl} ist nicht linear, die Lösung
+der Gleichung wird nicht mehr so einfach sein wie im Fall der
+Wärmeleitungsgleichung.
+Da aber die Kugelfunktionen eine Basis bilden, müssen sich auch
+Produkte von Kugelfunktionen oder Ableitungen von Kugelfunktionen
+als Linearkombinationen von Kugelfunktionen ausdrücken lassen,
+wie das im Beispiel auf Seite~\pageref{subsubsection:komplexeres}
+für die nichtlineare Gleichung von Burgers und die Basis der
+Exponentialfunktionen vorgeführt wurde.
+Auch auf der Kugeloberfläche lässt sich daher ein System von gewöhnlichen
+Differentialgleichungen für die Koeffizienten $a_{lm}(t)$ aufstellen,
+mit dem Unterschied, dass sie nicht mehr linear sein werden.
+
+
+
+
+
+
 

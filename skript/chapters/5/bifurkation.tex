@@ -47,9 +47,15 @@
 	({2*((\Q / ((0.015431 * \x)^4) * (0.5 + 0.2*tanh((\x-265)/10))-0.3)},{\x/100-2.2})
 	--cycle;
 
+\begin{scope}
+
+\clip (0,0) rectangle (1,1);
+
 \draw[color=black,line width=1.4pt] 
-	plot[domain=220:320,samples=100]
+	plot[domain=219:321,samples=100]
 	({2*((\Q / ((0.015431 * \x)^4) * (0.5 + 0.2*tanh((\x-265)/10))-0.3)},{\x/100-2.2});
+
+\end{scope}
 
 \draw ({2*(0.6-0.3)},0)--({2*(0.6-0.3)},1);
 
@@ -90,8 +96,8 @@
 \node[color=black] at ({2*(\epszwei-0.3)},{\Tzweioben/100-2.2})
 	[right] {$\varepsilon_2$};
 
-\node at 
-	({2*(\epszwei-0.3)},{\Tzweiunten/100-2.2}) [above right] {Snowball Earth};
+%\node at 
+%	({2*(\epszwei-0.3)},{\Tzweiunten/100-2.2}) [above right] {Snowball Earth?};
 
 \fill ({2*(0.6-0.3)},{\Tdrei/100-2.2}) circle[radius=0.008];
 \node at ({2*(0.6-0.3)},{\Tdrei/100-2.2}) [above right] {$T_3^*$};
@@ -102,6 +108,7 @@
 
 \fill ({2*(0.6-0.3)},{\Teins/100-2.2}) circle[radius=0.008];
 \node at ({2*(0.6-0.3)},{\Teins/100-2.2}) [above right] {$T_1^*$};
+\node at ({2*(0.6-0.3)},{\Teins/100-2.2}) [below left] {Snowball Earth?};
 
 \draw[->] (-0.01,0)--(1.04,0) coordinate[label={$\varepsilon$}];
 \draw[->] (0,-0.01)--(0,1.03) coordinate[label={right:$T\,[\text{K}]$}];

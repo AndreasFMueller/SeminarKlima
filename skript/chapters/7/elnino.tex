@@ -1,0 +1,155 @@
+%
+% elnino.tex
+%
+% (c) 2018 Prof Dr Andreas Müller, Hochschule Rapperswil
+%
+\section{El Niño\label{section:elnino}}
+\rhead{El Niño}
+El Niño oder genauer die El Niño-Southern Oscillation (ENSO) ist ein
+quasiperiodisches Klimaphänomen mit einer Periode von drei bis sieben
+Jahren, welches im Pazifik in Äquatornähe beobachtet werden kann.
+
+\subsection{Ablauf eines El Niño-Ereignisses\label{subsection:elnino:ablauf}}
+Unter normalen Bedingungen treiben die vorherschenden Winde Wasser vom
+Ostpazifik vor der Küste von Südamerika in Richtung des zentralen Pazifik.
+Dadurch senkt sich die Thermokline im Westpazifik ab, während im 
+Ostpazifik kaltes Tiefenwasser aufsteigt.
+Da dieses Wasser nährstoffreich ist, äussert sich dieser Normalzustand
+in grossem Fischreichtum, daher war dieses Phänomen seit Jahrhunderten
+bei Fischern in Peru bekannt.
+
+Während eines El Niño-Ereignisses bricht der Antrieb dieses Ungleichgewichts
+zusammen.
+In der Folge sinkt die Thermokline im Ostpazifik ab, das kalte nährstoffreiche
+Wasser bleibt aus.
+Im Westpazifik steigt die Thermokline daher an.
+Der Wegfall der atmosphärischen Strömung bedeutet auch, dass in der Nähe
+von Südamerika vermehrt Niederschläge auftreten, was zu Überschwemmungen
+und Missernten führen kann.
+Die stark veränderten Strömungsverhältnisse können aber auch weiter entfernte
+Auswirkungen haben.
+Man kann zeigen, dass sich El Niño-Ereignisse auf der ganzen Welt auswirken
+können und es wird vermutet, dass ein besonders starkes Ereignis zwischen
+1789 und 1793 an Missernten in Europa mitschuldig war und dazu beigetragen
+hat, die französische Revolution auszulösen.
+
+\subsection{Modellierung mit einer Differentialgleichung%
+\label{subsection:elnino:modellierung}}
+Wie in Abschnitt~\ref{subsection:elnino:ablauf} dargestellt, bedingen sich
+bei der ENSO die Thermoklinen-Anomalien im Ost- und Westpazifik und die
+entsprechenden Temperatur-Anomalien gegenseitig.
+Wir verwenden daher die folgenden Variablen:
+\[
+\begin{aligned}
+T_E&&&\text{Temperaturanomalie im Ostpazifik}\\
+T&&&\text{Temperaturanomalie im Westpazifik}\\
+h_E&&&\text{Termoklinentiefenanomalie im Ostpazifik}\\
+h_W&&&\text{Termoklinentiefenanomalie im Westpazifik}\\
+S&&&\text{Windkräfte im westlichen und zentralen Pazifik}\\
+S_E&&&\text{Windkräfte im Ostpazifik}\\
+\end{aligned}
+\]
+Wir müssen jetzt Gleichungen herleiten, die diese Grössen und ihre
+Änderungsraten miteinander verbinden.
+
+Die Windkräfte $S$ führen im Normalfall dazu, dass die Thermoklinentiefe
+im Ostpazifik kleiner wird, während sie im Westpazifik ansteigt.
+Fällt $S$ weg, gleichen sich die Thermoklinentiefen an.
+Man darf daher eine Gleichgewichtsbedingung der Form
+\begin{equation}
+h_E = h_W + S
+\label{skript:elnino:gleichgewicht}
+\end{equation}
+annehmen.
+Durch die Gleichung~\ref{skript:elnino:gleichgewicht} legt auch
+das Vorzeichen sowie die Masseinheit von $S$ fest.
+Im Normalzustand ist $S$ negativ.
+
+Die Thermoklinenanomalie $h_W$ im Westpazifik würde ohne die Wirkung
+von $S$ langsam verschwinden, was man mit einer Differentialgleichung
+der Form
+\[
+\frac{dh_W}{dt} = -rh_W
+\]
+beschrieben werden kann.
+Dazu kommt jetzt aber die Windkraft $S$.
+Je grösser der Betrag von $S$ ist, desto schneller sinkt $h_W$ ab.
+Dies können wir mit der Differentialgleichung
+\begin{equation}
+\frac{dh_W}{dt}
+=
+-rh_W -\alpha S
+\end{equation}
+modelliert werden kann.
+
+Auf der anderen Seite des Pazifik betrachten wir die Temperaturanomalie
+$T_E$.
+Ohne irgendwelche Einflüsse verschwindet die Temperaturanomlie mit der
+Zeit, also
+\[
+\frac{dT_E}{dt} = -cT_E.
+\]
+Je grösser die Thermoklinenanomalie $h_E$ im Ostpazifik ist, desto weiter
+weg ist das kalte Wasser von der Oberfläche, die Temperaturanomalie an
+der Oberfläche nimmt also langsamer ab, was die Differntialgleichung
+\begin{equation}
+\frac{dT_E}{dt} = -cT_E + \gamma h_E
+\end{equation}
+ergibt.
+
+Die bisher gefundenen Gleichungen reichen nicht aus, die vielen Variablen
+zu bestimmen.
+Wir brauchen daher zusätzliche Bedingungen, die die Variablen koppeln.
+Es kann davon ausgegangen werden, dass eine höhere Temperaturanomalie
+im Ostpazifik zu erhöhter Windströmung führt, dass es also eine
+Proportionalität 
+\begin{equation}
+S=bT_E
+\label{skript:elnino:sbte}
+\end{equation}
+gibt.
+
+Mit \eqref{skript:elnino:gleichgewicht} können wir $h_E$ eliminieren,
+mit \eqref{skript:elnino:sbte} die Grösse $S$.
+Dies führt auf $h_E=h_W+S=h_W+bT_E$.
+Das verbleibende Gleichungssystem ist
+\begin{align*}
+\frac{dT_E}{dt}
+&=
+-cT_E + \gamma(h_W+bT_E)
+=
+(-c+\gamma b)T_E
++
+\gamma h_W
+\\
+\frac{dh_W}{dt}
+&=
+-rh_W - \alpha b T_E.
+\end{align*}
+Mit einigermassen plausiblen Werten der Parameter ergibt sich eine
+Oszillation mit einer Periode von etwa $3.4$ Jahren, was ungefähr der
+für ENSO bekannten Periodizität entspricht.
+Die Analyse ist in \cite{skript:kaperengler} im Detail durchgeführt.
+
+
+\subsection{Mängel des Modells\label{subsection:maengel des modells}}
+Die Modellierung des El Niño illustriert ein weiteres Problem, nämlich
+die Tatsache, dass Grössen miteinander über grosse Distanzen gekoppelt
+sind.
+Eine Änderung der Meereshöhe im Westpazifik kann nicht ohne Zeitverzögerung
+mit einer Thermoklinen-Anomalie im Ostpazifik gekoppelt sein.
+Ein einfaches Modell wie bei der relativ langsam ablaufenden thermohalinen
+Zirkulation kann daher kaum erfolgreich sein.
+Vielmehr muss in diesem Modell die Zeit berücksichtigt werden, die ein
+Signal braucht, um sich durch den Pazifik zu bewegen.
+
+Solche Mechanismen sind bekannt und können mit relativ einfachen
+Mitteln modelliert werden.
+Es sind die Kelvin-Wellen, die in Abschnitt~\ref{section:elnino:kelvin}
+behandelt werden und die Rossby-Wellen, beschrieben in
+Abschnitt~\ref{section:elnino:rossby}.
+Daraus lässt sich ein Modell mit Hilfe einer verzögerten Differentialgleichung
+bauen (Abschnitt~\ref{section:dde-nino}), welches auch in
+Kapitel~\ref{chapter:verzoegert} vertieft studiert wird.
+
+

@@ -51,10 +51,11 @@ $x_0(p)$ erweitert werden kann, derart dass $x_0(p)$ jeweils ein
 kritischer Punkt von $f$ ist für die Parameterwerte $p$, also
 $f(x_0(p),p)=0$.
 Diese Theorie ist für allerdings nicht besonders nützlich, denn
-sie sagt uns nur, dass sich kritische stetig in Abhängigkeit vom
+sie sagt uns nur, dass sich kritische Punkte stetig in Abhängigkeit vom
 Parametervektor bewegen.
 Besonders interessant für die Diskussion des Klimawandels sind
-Fälle, wo Gleichgewichtslösungen sich sprunghaft ändern.
+Fälle, wo Gleichgewichtslösungen sich sprunghaft ändern, wie in
+Abschnitt~\ref{subsection:budyko}.
 
 \subsection{Stabilität}
 Wir betrachten eine Gleichgewichtslösung $x(t)=x_0$ der Differentialgleichung
@@ -173,6 +174,14 @@ immer linear in $\lambda$ sein soll.
 Ist dies nämlich nicht der Fall, ist also der führende Term in 
 $\lambda$ von der Form $\lambda^\alpha$, ersetzen wir den
 Parameter einfach durch $\tau=\lambda^\alpha$.
+
+In den folgenden Beispielen und Abschnitten wird der Parameter $\lambda$
+entlang der horizontalen Achse aufgezeichnet, die Position $x$
+entlang der vertikalen Achse.
+Positive Werte Werte von $f(x,\lambda)$ führen dazu, dass sich mit zunehmender
+Zeit die Lösung $x(t)$ nach oben bewegt, solche Punkte werden in den
+Diagrammen rot eingefärbt, ausserdem wird mit Pfeilen die Bewegungsrichtung
+der Punkte angedeutet.
 
 \begin{beispiel}
 \begin{figure}
@@ -304,13 +313,14 @@ Gleichgewichtslösung $-\lambda$ hingegen instabil.
 Beim Übergang zu $\lambda>0$ wird die Gleichgewichtslösung $0$ instabil
 und die Gleichgewichtslösung $-\lambda$ wird instabil.
 
-\subsection{Ein Beispiel zur globalen Mitteltemperatur}
+\subsection{Ein Beispiel zur globalen Mitteltemperatur\label{subsection:budyko}}
 \begin{figure}
 \includegraphics{chapters/3/kubisch.pdf}
 \caption{Phasendiagramm der Differentialgleichung~\eqref{skript:dgl:kubisch}.
 \label{skript:dgl:kubischfig}}
 \end{figure}
-Das Budyko-Modell versucht, die globale Mittelemperatur in Abhängigkeit
+Das in Abschnitt~\ref{subsection:modell von budyko} beschriebene
+Budyko-Modell versucht, die globale Mittelemperatur in Abhängigkeit
 von der Einstrahlung und der Albedo zu modellieren.
 Mehr zu diesen Ansätzen wird in Kapitel~5 dargestellt.
 
@@ -335,7 +345,7 @@ Funktionswerten $\pm2\sqrt{3}$.
 Daher gibt es im Interval $(-2\sqrt{3},2\sqrt{3})$ drei 
 Gleichgewichtslösungen, ausserhalb jedoch jeweils nur eine.
 
-Das zugehörige Phasendiargramm ist in Abbildung~\ref{skript:dgl:kubischfig}
+Das zugehörige Phasendiagramm ist in Abbildung~\ref{skript:dgl:kubischfig}
 dargestellt.
 Die Gleichgewichslösungen oben und unten auf der S-Kurve sind instabil,
 nur der Ast zwischen den beiden lokalen Extrema von $f(x)$ besteht

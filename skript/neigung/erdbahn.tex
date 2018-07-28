@@ -1,0 +1,43 @@
+%
+% erdbahn.tex
+%
+% (c) 2018 Prof Dr Andreas Müller, Hochschule Rapperswil
+%
+\documentclass[tikz]{standalone}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage[utf8]{inputenc}
+\usepackage{graphics}
+\usepackage{ifthen}
+\usepackage{color}
+\usetikzlibrary{arrows,intersections}
+\usetikzlibrary{math}
+\begin{document}
+
+\definecolor{darkyellow}{rgb}{1,0.8,0}
+
+\begin{tikzpicture}[>=latex,thick]
+
+\fill[color=darkyellow] (0,0) circle[radius=0.3];
+\draw (0,0) circle[radius=0.3];
+
+\def\a{5}
+
+\foreach \e in {0.4,0.6,0.8,0.9,0.95,0.99,0.999}{
+	\node at ({\a * (-1 - sqrt(1-\e*\e))},{0.8*\a})
+		[right,rotate=90] {$\varepsilon={\e}$};
+	\draw[color=black,line width=0.2]
+		({\a * (-1 - sqrt(1-\e*\e))},{0.8*\a})--
+		({\a * (-1 - sqrt(1-\e*\e))},0);
+}
+\foreach \e in {0.4,0.6,0.8,0.9,0.95,0.99,0.999}{
+	\draw[color=red] plot[domain=0:360,samples=400]
+		({\a * (cos(\x) - sqrt(1-\e*\e))},{\a * \e * sin(\x)});
+}
+
+\draw[color=blue]
+	plot[domain=0:360,samples=400] ({\a * cos(\x)},{\a * sin(\x)});
+
+\end{tikzpicture}
+
+\end{document}

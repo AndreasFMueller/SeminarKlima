@@ -4,8 +4,7 @@
 # (c) 2018 Prof Dr Andreas Müller, Hochschule Rapperswil
 #
 global N;
-N = 41;
-
+N = 81;
 
 function cdot = f(c, t)
 	global N;
@@ -27,15 +26,28 @@ function cdot = f(c, t)
 		end
 		cdot(k+n+1) = s;
 	end
+	cdot = -cdot;
 endfunction
 
 c = zeros(1, N)
-c(1, (N-1)/2) = -0.5;
-c(1, 2 + (N-1)/2) =  0.5;
+c(1, (N-1)/2 - 1) = -0.5;
+c(1, 2 + (N-1)/2 + 1) =  0.5;
 
 c
 
-t = 0:1;
+steps = 20;
+t = zeros(1,steps);
+for j = (1:4)
+	t(1,1+j) = j * 0.1;
+end
+for j = (1:10)
+	t(1,5+j) = 0.4 + 0.02 * j;
+end
+for j = (1:steps-15)
+	t(1,15+j) = j;
+end
+
+t
 
 C = lsode(@f, c, t)
 
@@ -48,13 +60,16 @@ k = (-n:n);
 F = exp(i * x' * k);
 size(F)
 
-y = real((F * C(1,:)') / i)
+y = real((F * C') / i)
 
-fid = fprintf("r.tex", "w");
-fprintf(fid, "\\draw (%.4f,%.4f)\n", x(1), y(1));
-for i = 2:201
-	fprintf(fid, "--(%.4f,%.4f)\n", x(i), y(i));
+fid = fopen("r.tex", "w");
+for j = 1:steps
+	fprintf(fid, "\\def\\pfad%c{\n", 'a' + j - 1);
+	fprintf(fid, "\\draw[color=red] (%.4f,%.4f)\n", x(1), y(1,j));
+	for i = 2:201
+		fprintf(fid, "--(%.4f,%.4f)\n", x(i), y(i,j));
+	end
+	fprintf(fid, ";}\n");
 end
-fprintf(fid, ";\n");
 fclose(fid);
 
