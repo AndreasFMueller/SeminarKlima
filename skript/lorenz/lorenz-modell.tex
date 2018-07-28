@@ -49,7 +49,7 @@ Wir wählten für die Diskretisierung das \textit{Euler-Verfahren} zur Annäheru
 
 Das Euler-Verfahren ist ein Algorithmus der Familie der Einschritt-Verfahren. Diese Verfahren rechnen iterativ in einer Schleife die Werte von einem bekannten Startwert aus. Als nächster Ausgangspunkt wird dann das Ergebnis der vorherigen Iteration genommen und mithilfe der Differentialgleichung die Änderung bestimmt. 
 
-Einschritt-Verfahren brauchen einen Startwert, von wessen sie die nächsten Ausgangspunkte ausrechnen können. Wir haben im Rahmen dieses Berichtes keine Optimierung des Startwertes durchführen können, sondern einfach eine sinnvolle Annahme getroffen. Dieser Anfangswert war konstant und fester Teil des Algorithmus, den wir modeliert haben.
+Einschritt-Verfahren brauchen einen Startwert, von wessen sie die nächsten Ausgangspunkte ausrechnen können. Wir haben im Rahmen dieses Berichtes keine Optimierung des Startwertes durchführen können, sondern einfach eine sinnvolle Annahme getroffen. Dieser Anfangswert war konstant und fester Teil des Algorithmus, den wir modelliert haben.
 
 Wir begannen zuerst mit dem Startwert $ P(0, 0, 0) $. In den anschliessenden Untersuchungen des Algorithmus zeigte sich, dass dieser Startwert zugleich eine Lösung des Lorenz-Systems ist. Aus diesem Grund hat sich das Model auf den Ursprung stabilisiert. Wir entschieden uns den Startwert auf $ P(0.1, 0.1, 0.1) $ zu verschieben, dieser Wert ist keine Lösung des Lorenz-Systems und das Modell stabilisierte sich nicht mehr.
 
