@@ -37,15 +37,15 @@ Das $ \beta $ entspricht der \textit{Wärmeausdehnung}. Dabei handelt es sich um
 
 
 \subsection{Numerische Lösungen}
-Es gibt für das Lösen von Differentialgleichungen zwei Ansätze. Zum einen der analytische Ansatz, der eine allgmeingültige Lösung sucht. Es handelt sich bei den drei Lorenz-Gleichungen um nicht-lineare Differentialgleichungen, welche analytisch nicht lösbar sind. Aus diesem Grund fällt dieser Lösungsweg weg. 
+Es gibt für das Lösen von Differentialgleichungen zwei Ansätze. Zum einen der analytische Ansatz, der eine allgemeingültige Lösung sucht. Es handelt sich bei den drei Lorenz-Gleichungen um nicht-lineare Differentialgleichungen, welche analytisch nicht lösbar sind. Aus diesem Grund fällt dieser Lösungsweg weg. 
 
 Der zweite Ansatz ist, eine \textit{Diskretisierung} vorzunehmen und den Computer für jeden definierten Zeitpunkt die Resultate der Gleichungen \textit{numerisch} ausrechnen zu lassen. Dies ist auch der in dieser Arbeit gewählte Weg, der im Folgenden bis zur tatsächlichen Visualisierung genauer beschrieben wird.
 
-Differentialgleichungen beschreiben die Änderungsrate der Variablen $ X, Y, Z $. Sie sagen nichts über die X-Achsen-Verschiebung der Werte aus. Aus diesem Grund kennt man die absolute Werte nicht und kann auch keine andere Werte davon ableiten. Der numerische Algorithmen können lediglich die anderen Werte ausrechnen von einem definierten Startwert. Im Abschnitt \ref{euler-verfahren} Euler-Verfahren werden wir weiter auf die Wahl des Startwertes eingehen.
+Die Differentialgleichungen beschreiben die Änderungsrate der Variablen $ X, Y, Z $. Sie sagen nichts über die X-Achsen-Verschiebung der Werte aus. Aus diesem Grund kennt man die absolute Werte nicht und man kann auch keine anderen Werte davon ableiten. Der numerische Algorithmen können lediglich die anderen Werte ausrechnen von einem definierten Startwert. Im Abschnitt \ref{euler-verfahren} Euler-Verfahren werden wir weiter auf die Wahl des Startwertes eingehen.
 
 \subsubsection{Euler-Verfahren} \label{euler-verfahren}
 
-Wir wählten für die Diskretisierung das \textit{Euler-Verfahren} zur Annäherung der Werte des Lorenz-Modells. Das resultierende Gleichungssystem besteht aus einfachen Arithmetik-Operationen und ist für einen Computer einfach berechenbar. Dies erlaubt auch \textit{Smartphones} die Visualisierung effizient zu berechnen und flüssig anzuzeigen.
+Wir wählten für die Diskretisierung das \textit{Euler-Verfahren} zur Annäherung der Werte des Lorenz-Modells. Das resultierende Gleichungssystem besteht aus einfachen Arithmetik-Operationen und ist für einen Computer einfach berechenbar. Dies erlaubt auch Smartphones die Visualisierung effizient zu berechnen und flüssig anzuzeigen.
 
 Das Euler-Verfahren ist ein Algorithmus der Familie der Einschritt-Verfahren. Diese Verfahren rechnen iterativ in einer Schleife die Werte von einem bekannten Startwert aus. Als nächster Ausgangspunkt wird dann das Ergebnis der vorherigen Iteration genommen und mithilfe der Differentialgleichung die Änderung bestimmt. 
 
