@@ -55,14 +55,14 @@ Länge $h=x/N$ durchgeführt werden, oder
 y(x) = y_0(1-ah)^N =
 y_0
 \biggl(
-1-\frac{a}{N}
+1-\frac{ax}{N}
 \biggr)^N.
 \]
 Erhöht man die Zahl der Schritte, erwartet man, dass das Resultat genauer
 wird.
 Tatsächlich ist der Grenzwert für $N\to\infty$
 \[
-\lim_{N\to\infty} a_0\biggl(1-\frac{a}{N}\biggr)^N
+\lim_{N\to\infty} a_0\biggl(1-\frac{ax}{N}\biggr)^N
 =
 y_0
 e^{-ax},
@@ -99,15 +99,15 @@ x(t) + \frac{d x(t) }{dt}\cdot \Delta t
 \notag
 \end{align}
 Der Fehler in jedem Einzelschritt ist also von der Grössenordnung $1/N^2$.
-Nach $n$ Schritten verbleibt ein Fehler in der Grössenordnung von $1/N$,
+Nach $N$ Schritten verbleibt ein Fehler in der Grössenordnung von $1/N$,
 \[
 x_N = x(1) + O(1/N).
 \]
 Um eine zusätzliche Stelle Genauigkeit zu erreichen, um den Fehler um
-den Faktor 10 zu reduzieren, muss die die Zahl der Schritte also zehnmal 
+den Faktor 10 zu reduzieren, muss die Zahl der Schritte also zehnmal 
 grösser werden.
 Der Rechenaufwand für eine Steigerung der Genauigkeit um den Faktor
-$a$ steigt also um den Faktor $1/a$, man sagt, das Euler-Verfahren ist
+$s$ steigt also um den Faktor $1/s$, man sagt, das Euler-Verfahren ist
 ein lineares Verfahren.
 
 \subsubsection{Verfahren höherer Ordnung}

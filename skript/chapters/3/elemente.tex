@@ -27,7 +27,7 @@ durch Interpolation gefunden werden, wir nennen diese interpolierte
 Funktion $\tilde{x}(t)$.
 Für einen Punkt $t$ zwischen $t_k$ und $t_{k+1}$ ist dann
 \[
-\tilde{x}(t) = x(t_k) + (t-t_k) f(x_k, t_k).
+\tilde{x}(t) = x(t_k) + (t-t_k)\cdot f(x_k, t_k).
 \]
 Dies kann man auch als Linearkombination von Funktionen
 schreiben.
@@ -38,7 +38,7 @@ z_k(t)
 \begin{cases}
 0&\qquad t < t_k\\
 t-t_k&\qquad t_k \le t < t_{k+1}\\
-h&\qquad t_{k+1} < t,
+h&\qquad t_{k+1} \le t,
 \end{cases}
 \]
 wie sie in Abbildung~\ref{skript:elemente:slopes} rot dargestellt sind.
