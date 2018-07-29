@@ -1,0 +1,210 @@
+%
+% euler.tex -- Euler Verfahren
+%
+% (c) 2018 Prof Dr Andreas Müller, Hochschule Rapperswil
+%
+\subsection{Das Euler-Verfahren\label{subsection:euler}}
+Es ist also eine Differentialgleichung der Form
+\[
+\frac{dx}{dt} = f(x),\qquad x\in\mathbb R^n
+\]
+mit der Anfangsbedingung $x(0)=x_0$ numerisch zu lösen.
+Die Ableitung ist definiert als der Grenzwert des Differenzenquotienten
+\[
+\frac{dx(t)}{dt}
+=
+\lim_{\Delta t\to 0}
+\frac{x(t+\Delta t)-x(t)}{\Delta t}.
+\]
+Für genügend kleines $\Delta t$ ist der Differenzenquotient daher eine
+(hoffentlich) ausreichend genaue Approximation für die Ableitung,
+also
+\begin{equation}
+\frac{x(t+\Delta t)-x(t)}{\Delta t} = f(x(t))
+\qquad\Rightarrow\qquad
+x(t+\Delta t) = x(t) + f(x(t))\cdot \Delta t.
+\label{skript:euler:differenzenquotient}
+\end{equation}
+Diese Formel erlaubt, die Werte $x(t)$ zu berechnen für diejenigen
+Zeitpunkte $t$, die Vielfache von $\Delta t$ sind.
+Schreibt man $x_k = x(k\cdot \Delta t)$, dann gilt
+\begin{align*}
+x(0) &= x_0\\
+x_k &= x_{k-1} + \Delta t \cdot f(x_{k-1}).
+\end{align*}
+Dieses Verfahren heisst das {\em Euler-Verfahren}.
+\index{Euler-Verfahren}%
+
+\subsubsection{Beispiel: $y'=-ay$}
+Die lineare Differentialgleichung $y'=-ay$ mit der Anfangsbedingung 
+$y(0)=y_0 > 0$ kann mit dem Euler-Verfahren mit Schritten der Länge $\Delta x=h$
+wie folgt gelöst werden:
+\begin{align*}
+y(0)&=y_0\\
+y_1&=y(h) = y_0 + h\cdot y'(0) = y_0  -ah y(0) = y_0(1 - ah)
+\\
+y_2&=y(2h) = y_1 + h\cdot y'(h) = y_1  -ah y_1 = y_1(1-ah)
+\\
+&\;\;\vdots
+\\
+y_k&= (1-ah)^k y_0.
+\end{align*}
+Um den Funktionswert $x=Nh$ zu errechnen, müssen also $N$ Schritte der
+Länge $h=x/N$ durchgeführt werden, oder
+\[
+y(x) = y_0(1-ah)^N =
+y_0
+\biggl(
+1-\frac{a}{N}
+\biggr)^N.
+\]
+Erhöht man die Zahl der Schritte, erwartet man, dass das Resultat genauer
+wird.
+Tatsächlich ist der Grenzwert für $N\to\infty$
+\[
+\lim_{N\to\infty} a_0\biggl(1-\frac{a}{N}\biggr)^N
+=
+y_0
+e^{-ax},
+\]
+was natürlich die bekannte exakte Lösung der Differentialgleichung ist.
+Das Eulerverfahren reproduziert also für genügend kleine Schritte 
+die exakte Lösung der Differentialgleichung beliebig genau.
+
+Das Beispiel zeigt aber auch, dass für zu grosse Schrittweite das
+Verfahren unsinnige Resultate liefert.
+Wenn nämlich $ah>1$ ist, dann folgt, dass
+$y_k=(1-ah)^k y_0  <0$ für ungerade $k$ und $y_k < 0$ für gerade $k$.
+Die numersiche Lösung liefert also negative und positive Werte,
+während die exakte Lösung $y_0e^{-ax}$ nie negativ wird.
+
+\subsubsection{Genauigkeit}
+Die Genauigkeit des Euler-Verfahrens ist ziemlich beschränkt.
+Um $x(1)$ in $N$ Schritten zu berechnen, muss man Zeitschritte der
+Länge $\Delta t=1/N$ verwenden.
+Die Approximation \eqref{skript:euler:differenzenquotient} kann mit
+Hilfe der Taylor-Reihe noch etwas verbessert werden, es gilt
+\begin{align}
+x(t+\Delta t)
+&=
+x(t) + \frac{d x(t) }{dt}\cdot \Delta t
++ \frac{1}{2!}\frac{d^2x(t)}{dt^2}\cdot \Delta t^2
++ \frac{1}{3!}\frac{d^3x(t)}{dt^3}\cdot \Delta t^3
++\dots
+\label{skript:euler:taylor}
+\\
+&=
+x(t) + \frac{d x(t) }{dt}\cdot \Delta t
++ O(1/N^2).
+\notag
+\end{align}
+Der Fehler in jedem Einzelschritt ist also von der Grössenordnung $1/N^2$.
+Nach $n$ Schritten verbleibt ein Fehler in der Grössenordnung von $1/N$,
+\[
+x_N = x(1) + O(1/N).
+\]
+Um eine zusätzliche Stelle Genauigkeit zu erreichen, um den Fehler um
+den Faktor 10 zu reduzieren, muss die die Zahl der Schritte also zehnmal 
+grösser werden.
+Der Rechenaufwand für eine Steigerung der Genauigkeit um den Faktor
+$a$ steigt also um den Faktor $1/a$, man sagt, das Euler-Verfahren ist
+ein lineares Verfahren.
+
+\subsubsection{Verfahren höherer Ordnung}
+Die Genauigkeit des Euler-Verfahrens könnte dadurch gesteigert
+werden, dass man nicht nur den ersten Term in der
+Entwicklung~\eqref{skript:euler:taylor} verwendet, sondern auch
+noch höhere Ableitungen berücksichtig.
+Zum Beispiel könnte man die zweite Ableitung verwenden.
+Diese lässt sich aus der Differentialgleichung mit Hilfe von
+\[
+\frac{d^2x}{dt^2}
+=
+\frac{d}{dt} \frac{dx(t)}{dt}
+=
+\frac{d}{dt} f(x(t))
+=
+Df(x(t))\cdot \frac{dx(t)}{dt}
+=
+Df(x(t))\cdot f(x(t))
+\]
+berechnen.
+Allerdings ist es meistens ziemlich aufwendig die Ableitung $Df$ von $f$ zu
+berechnen.
+
+Wir untersuchen den Genauigkeitsgewinn an Hand des Beispiels $y'=-ay$.
+Die Funktion $f(y) = -ay$ hat als Ableitung die Konstante $-a$ und
+die zweite Ableitung von $y$ ist
+\[
+y''(x) = \frac{d}{dx} y'(x) = \frac{d}{dx} (-ay(x)) = -ay'(x)=a^2 y(x)
+\]
+Die Taylor-Entwicklung \eqref{skript:euler:taylor} für die Schrittweite
+$h=\Delta x$ wird daher
+\begin{align}
+y(x+h)
+&=
+y(x) + y'(x)h + \frac12y''(x)h^2
+\notag
+\\
+&= y(x) - ay(x)\Delta t + \frac12 a^2 y(x)
+\notag
+\\
+&= y(x)\cdot \biggl(1-ah+\frac12 a^2h^2\biggr)
+\notag
+\\
+\Rightarrow\qquad\qquad
+y_k&=y_0\biggl(1-ah+\frac12 a^2h^2\biggr)^k
+\label{skript:euler:beschleunigt}
+\end{align}
+Wir erwarten, dass dieses Verfahren deutlich genauere Resultate liefert,
+und zwar erwarten wir, dass der Fehler von der Grössenordnung $1/N^2$ ist.
+Man nennt dies ein {\em quadratisches} Verfahren.
+
+\begin{table}
+\setlength{\tabcolsep}{5pt}
+\centering
+\begin{tabular}{>{$}c<{$}>{$}c<{$}|>{$}c<{$}>{$}c<{$}>{$}c<{$}|>{$}c<{$}>{$}c<{$}>{$}c<{$}}
+x&e^{-x}&\multicolumn{3}{c|}{Euler-Verfahren}&\multicolumn{3}{c}{beschleunigtes Verfahren \eqref{skript:euler:beschleunigt}}\\
+&&h=0.1&h=0.01&h=0.001&h=0.1&h=0.01&h=0.001\\
+\hline
+0.0&1.00000000&1.000000&1.000000&1.000000&1.00000000&1.00000000&1.00000000\\
+0.1&0.90483741&0.\underline{90}0000&0.\underline{90}4382&0.\underline{904}792&0.\underline{90}500000&0.\underline{90483}893&0.\underline{9048374}3\\
+0.2&0.81873075&0.\underline{81}0000&0.\underline{81}7906&0.\underline{818}648&0.\underline{81}902500&0.\underline{81873}350&0.\underline{8187307}8\\
+0.3&0.74081822&0.\underline{7}29000&0.\underline{7}39700&0.\underline{740}707&0.\underline{74}121762&0.\underline{7408}2195&0.\underline{7408182}5\\
+0.4&0.67032004&0.\underline{6}56100&0.\underline{6}68971&0.\underline{670}185&0.\underline{670}80195&0.\underline{6703}2454&0.\underline{6703200}9\\
+0.5&0.60653065&0.\underline{5}90490&0.\underline{60}5006&0.\underline{606}378&0.\underline{60}707576&0.\underline{60653}575&0.\underline{606530}71\\
+0.6&0.54881163&0.\underline{5}31441&0.\underline{54}7156&0.\underline{548}646&0.\underline{54}940356&0.\underline{54881}716&0.\underline{5488116}9\\
+0.7&0.49658530&0.\underline{4}78296&0.\underline{49}4838&0.\underline{496}411&0.\underline{49}721022&0.\underline{4965}9114&0.\underline{4965853}6\\
+0.8&0.44932896&0.\underline{4}30467&0.\underline{44}7523&0.\underline{449}149&0.\underline{449}97525&0.\underline{4493}3500&0.\underline{449329}02\\
+0.9&0.40656965&            0.387420&0.\underline{40}4731&0.\underline{406}386&0.\underline{40}722760&0.\underline{4065}7580&0.\underline{406569}72\\
+1.0&0.36787944&0.\underline{3}48678&0.\underline{36}6032&0.\underline{367}695&0.\underline{36}854098&0.\underline{3678}8561&0.\underline{367879}50\\
+\hline
+\end{tabular}
+\caption{Numerische Lösungen der Differentialgleichung $y'=-y$
+mit dem Eulerverfahren und dem beschleunigten Verfahren 
+\eqref{skript:euler:beschleunigt}.
+Der Fehler im Eulerverfahren ist von der gleichen Grössenordnung wie $h$,
+während er im beschleunigten Verfahren von der Grössenordnung von $h^2$ ist.
+Korrekte Stellen unterstrichen.
+\label{skript:euler:numerik}}
+\end{table}
+In Tabelle~\ref{skript:euler:numerik} sind die Resultate der numerischen
+Rechnung mit beiden Verfahren mit verschiedenen Schrittweiten $h$
+zusammengestellt.
+Es sind nur die Werte von $y$ für ganzzahlige Vielfache von $0.1$
+für $x$ gelistet.
+Die korrekten Stellen sind jeweils unterstrichen und bestätigen, dass
+beim Euler-Verfahren der Fehler von der Grössenordnung $h$, während
+er beim beschleunigten Verfahren von der Grössenordnung $h^2$ ist.
+
+Leider ist die praktische Durchführung dieses Verfahrens erschwert durch
+die Notwendigkeit der Berechnung der Matrix $Df(x)$.
+Es sind jedoch Verfahren gefunden worden, mit denen die Fehlerordnung
+vergrössert werden kann, ohne dass es notwendig wird, die Ableitungen
+von $f$ zu berechnen.
+Das wohl bekannteste solche Verfahren ist das {\em Runge-Kutta-Verfahren},
+welches von vierter Ordnung ist.
+Es wird im Detail vorgeführt in \cite{skript:mathsem-dgl}.
+
+
+

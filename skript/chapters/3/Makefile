@@ -4,7 +4,7 @@
 # (c) 2018 Prof Dr Andreas Müller, Hochschule Rapperswil
 #
 BILDER = pitchfork.pdf saddle-node.pdf lin1.pdf trans.pdf kubisch.pdf \
-	 grad4.pdf
+	 grad4.pdf slopes.pdf
 
 all:	$(BILDER)
 
@@ -27,3 +27,7 @@ kubisch.pdf:	kubisch.tex
 
 grad4.pdf:	grad4.tex
 	pdflatex grad4.tex
+
+slopes.pdf:	slopes.tex
+	pdflatex slopes.tex
+

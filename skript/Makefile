@@ -41,6 +41,10 @@ CHAPTERS = 								\
 	chapters/3/crit.tex						\
 	chapters/3/dgl.tex						\
 	chapters/3/lin.tex						\
+	chapters/3/numerik.tex						\
+	chapters/3/euler.tex						\
+	chapters/3/octave.tex						\
+	chapters/3/elemente.tex						\
 	chapters/3/aufgabe1.tex						\
 	chapters/4/salinitaet.tex					\
 	chapters/4/box.tex						\
