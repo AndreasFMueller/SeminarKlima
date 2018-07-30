@@ -1,0 +1,136 @@
+\documentclass{book}
+\usepackage{etex}
+\usepackage{geometry}
+\geometry{papersize={170mm,240mm},total={140mm,200mm},top=21mm,bindingoffset=10mm}
+\usepackage[english,ngerman]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{cancel}
+\usepackage{times}
+\usepackage{amsmath,amscd}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\usepackage{textcomp}
+\usepackage{txfonts}
+%\usepackage{alltt} 
+\newcommand\hmmax{0}
+\newcommand\bmmax{0}
+\usepackage{bm}
+\usepackage{verbatim}
+\usepackage{paralist}
+\usepackage{makeidx}
+\usepackage{array}
+%\usepackage[colorlinks=true]{hyperref}
+\usepackage{hyperref}
+\usepackage{subfigure}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{pgfplotstable}
+\usepackage{pdftexcmds}
+\usepackage{pgfmath}
+%\usepackage{placeins}
+%\usepackage{subfigure}
+\usepackage[autostyle=false,english=american]{csquotes}
+%\usepackage{float}
+%\usepackage{enumitem}
+\usepackage{wasysym}
+\usepackage{environ}
+%\usepackage{pifont}
+%\usepackage{feynmp}
+\usepackage{appendix}
+\usetikzlibrary{calc,intersections,through,backgrounds,graphs,positioning,shapes,arrows,fit}
+\usetikzlibrary{patterns,decorations.pathreplacing}
+\usetikzlibrary{decorations.pathreplacing}
+\usetikzlibrary{external}
+\usetikzlibrary{datavisualization}
+\usepackage[europeanvoltages,
+europeancurrents,
+europeanresistors,   % rectangular shape
+americaninductors,   % "4-bumbs" shape
+europeanports,       % rectangular logic ports
+siunitx,             % #1<#2>
+emptydiodes,
+noarrowmos,
+smartlabels]         % lables are rotated in a smart way
+{circuitikz}          %
+\usepackage{siunitx}
+\usepackage{tabularx}
+\usetikzlibrary{arrows}
+\usepackage{algpseudocode}
+\usepackage{algorithm}
+\usepackage{gensymb}
+\usepackage{mathtools}
+
+
+
+\tikzstyle{inputNode}=[draw,circle,minimum size=10pt,inner sep=0pt]
+\tikzstyle{stateTransition}=[-stealth, thick]
+
+
+\begin{document}
+
+\begin{figure}
+	\centering
+	\begin{tikzpicture}
+	\node[inputNode, thick] (i1) at (6, 1) {};
+	\node[inputNode, thick] (i2) at (6, 0) {};
+	\node[inputNode, thick] (i3) at (6, -1) {};
+	
+	\node[inputNode, thick] (h_pre) at (8, 2) {};
+	
+	\node[inputNode, thick] (h1) at (10, 1) {};
+	\node[inputNode, thick] (h2) at (10, 0) {};
+	\node[inputNode, thick] (h3) at (10, -1) {};
+	
+	
+	\node[inputNode, thick] (o1) at (12, 0.0) {};
+	
+	
+	\draw[stateTransition] (5, 1) -- node[above] {$I_1$} (i1);
+	\draw[stateTransition] (5, 0) -- node[above] {$I_2$} (i2);
+	\draw[stateTransition] (5, -1) -- node[above] {$I_3$} (i3);
+	
+	
+	
+	%\draw[stateTransition] (i1) -- (h1);
+	%\draw[stateTransition] (i1) -- (h2);
+	%\draw[stateTransition] (i1) -- (h3);
+	\draw[stateTransition] (i1) -- (h_pre);
+	
+	\draw[stateTransition] (i2) -- (h1);
+	\draw[stateTransition] (i2) -- (h2);
+	\draw[stateTransition] (i2) -- (h3);
+	\draw[stateTransition] (i2) -- (h_pre);
+	
+	
+	%\draw[stateTransition] (i3) -- (h1);
+	%\draw[stateTransition] (i3) -- (h2);
+	%\draw[stateTransition] (i3) -- (h3);
+	\draw[stateTransition] (i3) -- (h_pre);
+	
+	\draw[stateTransition] (h_pre) -- (h1);
+	\draw[stateTransition] (h_pre) -- (h2);
+	\draw[stateTransition] (h_pre) -- (h3);
+	
+	
+	\draw[stateTransition] (h1) -- (o1);
+	\draw[stateTransition] (h2) -- (o1);
+	\draw[stateTransition] (h3) -- (o1);
+	
+	\node[above=of i1, align=center] (l1) {Input \\ layer};
+	\node[right=1.1em of l1, align=center] (l2) {Multiplication \\ layer};
+	\node[right=0.7em of l2, align=center] (l3) {Derivative \\ layer};
+	
+	\node[right=1.1em of l3, align=center] (l4) {Output \\ layer};
+	
+	
+	\draw[stateTransition] (o1) -- node[above] {$O_1$} (13, 0);
+	\end{tikzpicture}
+	\label{fig:mst_variable_hidden_layer}
+	\caption{Die vorgeschlagene Topologie des KNN zur Lösung der Burgersgleichung}
+\end{figure}
+
+\end{document}
