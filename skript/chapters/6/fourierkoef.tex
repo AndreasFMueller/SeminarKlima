@@ -535,6 +535,32 @@ verwendet werden.
 \centering
 \includegraphics{chapters/6/dreieck.pdf}
 \caption{Dreiecksfunktion approximiert mit trigonometrischen Polynomen 
-mit verschiedenen Werten von $N$
+mit verschiedenen Werten von $N$.
 \label{skript:fourier:beispiel}}
 \end{figure}
+Als Beispiel untersuchen wir die Approximation der Dreiecksfunktion
+\begin{equation}
+f(t)
+=
+\begin{cases}
+\displaystyle t\cdot\frac{2}{\pi}    &\displaystyle \qquad 0\le t < \frac{\pi}2\\
+\displaystyle 2-t\cdot\frac{2}{\pi}  &\displaystyle \qquad \frac{\pi}2\le t < \frac{3\pi}2\\
+\displaystyle t\cdot\frac{2}{\pi} - 4&\displaystyle \qquad \frac{3\pi}2\le t <2\pi.
+\end{cases}
+\end{equation}
+In Abbildung~\ref{skript:fourier:beispiel} ist die Dreiecksfunktion
+hellblau dargestellt.
+Weil die Funktion antisymmetrisch ist, verschwinden alle $a_k$-Koeffizienten.
+Da die Funktion ausserdem symmetrisch ist bezüglich $\frac{\pi}2$ verschwinden
+alle geraden $b_k$-Koeffizienten.
+Für $N=4$ besteht $y$ nur aus vier Werten: $1$, $0$, $-1$ und $0$,
+in diesem Fall muss die Funktion mit nur einem einzigen Term darstellbar
+sein.
+Tatsächlich ist $f(t) = \sin t$ an den stellen $t_j=2\pi j/4$, $j=1,\dots,4$,
+dies wird in Abbildung~\ref{skript:fourier:beispiel} ganz oben gezeigt.
+Erhöht man $N$, wird die Approximation immer besser, dies zeigen die
+weiteren Graphiken in Abbildung~\ref{skript:fourier:beispiel}
+
+
+
+
