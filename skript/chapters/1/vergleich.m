@@ -49,6 +49,7 @@ global fid = fopen("vplot.tex", "w")
 x = lambdaa;
 y = m * solar(x) * (x/lambdaa)
 
+fprintf(fid, "\\def\\sonnenkurve{\n");
 fprintf(fid, "\\draw[color=red] (%.3f, %.3f)\n", x, y);
 for i = 1:steps
 	x = x * f;
@@ -56,7 +57,20 @@ for i = 1:steps
 	fprintf(fid, "--(%.3f, %.3f)\n", log10(x) + 7, y);
 endfor
 
-fprintf(fid, ";\n")
+fprintf(fid, ";\n");
+fprintf(fid, "}\n");
+
+x = lambdaa;
+
+fprintf(fid, "\\def\\sonnenflaeche{\n");
+fprintf(fid, "\\fill[color=red!10] (%.3f, %.3f)\n", x, y);
+for i = 1:steps
+	x = x * f;
+	y = m * solar(x) * (x/lambdaa);
+	fprintf(fid, "--(%.3f, %.3f)\n", log10(x) + 7, y);
+endfor
+fprintf(fid, "--cycle;\n");
+fprintf(fid, "}\n");
 
 #
 # Temperatur der Erde
@@ -80,9 +94,23 @@ function	erdkurve(T, farbe)
 	fprintf(fid, ";\n")
 end
 
-erdkurve(Tearth + 5, "blue!30")
-erdkurve(Tearth - 5, "blue!30")
-erdkurve(Tearth, "blue")
+fprintf(fid, "\\def\\erdkurven{\n");
+erdkurve(Tearth + 5, "blue!30");
+erdkurve(Tearth - 5, "blue!30");
+erdkurve(Tearth, "blue");
+fprintf(fid, "}\n");
+
+fprintf(fid, "\\def\\erdflaeche{\n");
+	x = lambdaa;
+	y = m * earth(x, Tearth) * (x / lambdaa)
+	fprintf(fid, "\\fill[color=blue!10] (%.3f, %.3f)\n", x, y);
+	for i = 1:steps
+		x = x * f;
+		y = m * earth(x, Tearth) * (x/lambdaa);
+		fprintf(fid, "--(%.3f, %.3f)\n", log10(x) + 7, y);
+	endfor
+	fprintf(fid, "--(3,0)--(0,0)--cycle;\n")
+fprintf(fid, "}\n");
 
 fclose(fid);
 
