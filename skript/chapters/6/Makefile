@@ -3,7 +3,7 @@
 #
 # (c) 2018 Prof Dr Andreas Müller, Hochschule Rapperswil
 #
-all:	zeitgl.pdf dreieck.pdf
+all:	zeitgl.pdf dreieck.pdf trigosum.pdf
 
 zeitgl.pdf:	zeitgl.tex
 	pdflatex zeitgl.tex
@@ -13,3 +13,6 @@ dreieck.pdf:	dreieck.tex triangle.tex
 
 triangle.tex:	beispiel.m
 	octave beispiel.m
+
+trigosum.pdf:	trigosum.tex
+	pdflatex trigosum.tex

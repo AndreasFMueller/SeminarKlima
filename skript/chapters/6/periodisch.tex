@@ -4,13 +4,13 @@
 % (c) 2018 Prof Dr Andreas Müller, Hochschule Rapperswil
 %
 \section{Periodische Funktionen}
-Das ursprüngliche Budyko-Modell modelliert die Jahresmittel-Temperatur,
-ignoriert also die Temperatur-Entwicklung der Temperatur im Laufe des
+Das ursprüngliche Budyko-Modell modelliert die Jahresmitteltemperatur,
+ignoriert also die Temperaturentwicklung der Temperatur im Laufe des
 Jahres.
 Damit ist es aber zum Beispiel nicht möglich, das Einsetzen von
 Eiszeiten zu modellieren.
 Wie in Kapitel~\ref{chapter:neigung} gezeigt wird, ist die jährlich
-auf die Erde eingetrahlte Leistung unabhängig von der Neigung der
+auf die Erde eingetrahlte Energie unabhängig von der Neigung der
 Erdachse.
 Ein Modell, welches den Zusammenhang zwischen Eiszeiten und der
 Achsneigung modellieren soll muss also die periodischen Schwankungen
@@ -21,10 +21,12 @@ rechten Seite der Differentialgleichung
 \[
 \frac{dx}{dt} = f(x,t)
 \]
-muss man berücksichtigen, dass $f(x,t)$ nun auch von der Zeit $t$ abhängt
+eine Funktion $f(x,t)$ haben, die nun auch von der Zeit $t$ abhängt
 und periodisch in $t$ mit Periode $T$ ist.
 Dies bedeutet $f(x,t+T)=f(x,t)$ für beliebige Vektoren $x$ und 
 Zeiten $t$.
+Die Periode muss nicht unbedingt genau ein Jahr sein, es sind auch
+Vielfache eines Jahres denkbar.
 
 Man kann natürlich nicht mehr erwarten, dass es eine zeitunabhängige
 Gleichgewichtslösung gibt.
@@ -35,8 +37,8 @@ $x(t+T)=x(t)$.
 \subsection{Fourierreihen}
 Die Funktionen
 \begin{equation}
-1,
-\cos \frac{2\pi kt}{T},
+1,\quad
+\cos \frac{2\pi kt}{T},\quad
 \sin \frac{2\pi kt}{T},\qquad k\in \mathbb N
 \label{skript:periodisch:fourierbasis}
 \end{equation}
@@ -47,22 +49,27 @@ f(t)
 =
 a_0  +\sum_{k=1}^\infty\biggl(
 a_k \cos \frac{2\pi kt}{T} + b_k\sin\frac{2\pi kt}{T}
-\biggr)
+\biggr),
 \label{skript:periodisch:fourierreihe}
 \end{equation}
-hat diese Eigenschaft.
+ein sogenanntes trigonometrisches Polynom, hat diese Eigenschaft.
+Damit lässt sich eine grosse Vielfalt von $2\pi$-periodischen
+Funktionen wiedergeben.
 
-Es war eine bedeutende Erkenntnis von Joseph Fourier, dass bis auf ein
+Es war die bedeutende Erkenntnis von Joseph Fourier, dass bis auf ein
 paar technische Bedingungen, welche die Konvergenz der Funktionenreihe
+\eqref{skript:periodisch:fourierreihe}
 sicherstellen sollen, jede periodische Funktion $f(t)$ 
 als Reihe von Vielfachen der Funktionen
 \eqref{skript:periodisch:fourierbasis}
 in der Form
 \eqref{skript:periodisch:fourierreihe}
 dargestellt werden kann.
+Diese Bedingungen sind für stetige Funktionen immer erfüllt.
 Die Berechnung der Koeffizienten $a_0,a_1,a_2,\dots$ und $b_1,b_2,b_3,\dots$
 erfolgt mit Hilfe von Fourier-Integralen, deren Theorie wir hier weiter
-nicht entwickeln wollen.
+nicht entwickeln wollen, wir kommen darauf in
+Abschnitt~\ref{subsection:fourier:stetig} zurück.
 
 Für unsere Zwecke ist die vollständige Theorie der Fourier-Reihen nicht
 notwendig, denn die Daten, an die wir unsere Klimamodelle anpassen
@@ -71,26 +78,49 @@ Funktionen dar.
 Wir müssen die allgemeine Fourier-Theorie daher spezialisieren auf diese
 diskrete Situation.
 
-\subsection{Diskrete Fourierreihen: trigonometrische Polynome}
+\subsection{Diskrete Fourierreihen}
 Wir wollen im Folgenden periodische diskrete Funktionen möglichst gut
 approximieren.
-Da für diskrete Funktionen die Skala des Argumentes nicht so wichtig ist,
-verwenden wir als Basis die Funktionen 
+Die Diskretisation wird im folgenden charakterisiert durch die Anzahl
+$N$ der bekannten Werte im Periodeninterval $[0,2\pi)$.
+
+\subsubsection{Diskretisation}
+Gegeben sind also die Werte $y_j$ einer $2\pi$-periodischen Funktion
+$f(t)$ an den äquidistanten Stellen $t_j=2\pi j/N$ mit
+$1\le j \le N$.
+Da $f(t)$ eine $2\pi$-periodische Funktion ist, folgt
+\[
+y_j = f(t_j) = f(t_j+2\pi) = f(t_{j+N}).
+\]
+Wir erweitern daher die Notation für $y$ und setzen
+\[
+y_j = y_{r(j)},
+\]
+wobei $r(j)$ der Rest von $j$ bei Teilung durch $N$ steht.
+Insbesondere ist $y_0=y_N$, die Folge $y_j$ ist $N$-periodisch als
+Folge von reellen Zahlen.
+
+\subsubsection{Trigonometrische Polynome}
+Als Basis für die Darstellung der Funktion $f(t)$ verwenden die bekanntermassen
+$2\pi$-periodischen Funktionen 
 \begin{equation}
-1,\cos kt\quad\text{und}\quad \sin kt,\quad k\in\mathbb N.
+1,\quad \cos kt\quad\text{und}\quad \sin kt,\qquad k\in\mathbb N.
 \end{equation}
 Die Funktion $f(t)$ soll also geschrieben werden als sogenanntes 
-trigonometrisches Polynom
+{\em trigonometrisches Polynom}
+\index{trigonometrisches Polynom}%
 \begin{equation}
 f(t)
 =
 a_0 + \sum_{k=1}^n \bigl(a_k \cos kt + b_k\sin kt).
 \label{skript:fourier:rekonstruktion}
 \end{equation}
-Die Funktion soll die Werte $y_j$ in den äquidistanten $t$-Werten 
-$t_j=2\pi j/N$ mit $0\le j<N$ möglichst gut wiedergeben.
+Ein Koeffizient $b_0$ ist nicht sinnvoll, weil die dazugehörige Basisfunktion
+$\sin 0t =0$ ist.
+Die Funktion $f(t)$ soll die Werte $y_j$
+möglichst gut wiedergeben, es soll also wenn möglich $f(t_j) = y_j$ sein.
 
-Zur Bestimmung der Koeffizienten $a_0$, $a_k$ und $b_k$ stehen also nur
+Zur Bestimmung der Koeffizienten $a_0$, $a_k$ und $b_k$ stehen genau
 die $N$ Bedingungen
 \begin{equation}
 f(t_j)=y_j
@@ -104,14 +134,3 @@ Sie können daher höchstens endlich viele Koeffizienten $a_k$ und $b_k$
 bestimmen.
 Dieses Problem wird im nächsten Abschnitt gelöst.
 
-Da $f(t)$ eine $2\pi$-periodische Funktion ist, folgt
-\[
-y_j = f(t_j) = f(t_j+2\pi) = f(t_{j+N}).
-\]
-Wir erweitern daher die Notation für $y$ und setzen
-\[
-y_j = y_{r(j)},
-\]
-wobei $r(j)$ der Rest von $j$ bei Teilung durch $N$ steht.
-Insbesondere ist $y_0=y_N$, die Folge $y_j$ ist $N$-periodisch als
-Folge von reellen Zahlen.
