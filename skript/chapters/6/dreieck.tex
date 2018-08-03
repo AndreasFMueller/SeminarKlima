@@ -38,10 +38,10 @@
 \node at (0,-1) [left] {$-1$};
 
 \draw[color=blue!40,line width=1.4pt] (0,0)--({\pizahl/2},1)--({\pizahl},0)--({1.5*\pizahl},-1)--({2*\pizahl},0);
-\fill[color=blue] (0,0) circle[radius=0.03];
 
 \csname#2\endcsname
 
+\fill[color=blue] (0,0) circle[radius=0.03];
 \foreach \x in {1,...,#1}{
 	\pgfmathparse{\x*\pizahl/(2*#1)}
 	\xdef\argument{\pgfmathresult}

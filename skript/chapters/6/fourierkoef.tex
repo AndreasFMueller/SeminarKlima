@@ -538,29 +538,67 @@ verwendet werden.
 mit verschiedenen Werten von $N$.
 \label{skript:fourier:beispiel}}
 \end{figure}
-Als Beispiel untersuchen wir die Approximation der Dreiecksfunktion
+\begin{table}
+\centering
+\setlength{\tabcolsep}{5pt}
+\begin{tabular}{>{$}l<{$}>{$}r<{$}>{$}r<{$}>{$}r<{$}>{$}r<{$}>{$}r<{$}>{$}r<{$}>{$}r<{$}>{$}r<{$}}
+&N=4&N=8&N=12&N=16&N=20&N=24&\dots&N=\infty\\
+\hline
+b_1&1& 0.85355& 0.82934& 0.82107& 0.81727& 0.81522&& 0.8105695\\
+b_3& &-0.14645&-0.11111&-0.10124&-0.09704&-0.09484&&-0.0900633\\
+b_5& &        & 0.05954& 0.04520& 0.04000& 0.03748&& 0.0324228\\
+b_7& &        &        &-0.03249&-0.02519&-0.02207&&-0.0165422\\
+b_9& &        &        &        & 0.02050& 0.01627&& 0.0100070\\
+b_{11}&&      &        &        &        &-0.01413&&-0.0066989\\
+%\hline
+\end{tabular}
+\caption{Nicht verschwindende Fourier-Koeffizienten der
+Dreiecksfunktion~\eqref{skript:fourier:dreieck}
+für verschiedene Werte von $N$.
+In der Spalte ganz rechts unter $N=\infty$ die Werte für die
+Fourierkoeffizienten der stetigen Fourier-Reihe
+nach \eqref{fourier:normalekoeffizienten}.
+\label{skript:fourier:dreieckkoef}}
+\end{table}
+Als Beispiel untersuchen wir die Approximation der
+$2\pi$-periodischen Dreiecksfunktion, die auf dem Interval $[0,2\pi)$
+durch
 \begin{equation}
 f(t)
 =
 \begin{cases}
 \displaystyle t\cdot\frac{2}{\pi}    &\displaystyle \qquad 0\le t < \frac{\pi}2\\
 \displaystyle 2-t\cdot\frac{2}{\pi}  &\displaystyle \qquad \frac{\pi}2\le t < \frac{3\pi}2\\
-\displaystyle t\cdot\frac{2}{\pi} - 4&\displaystyle \qquad \frac{3\pi}2\le t <2\pi.
+\displaystyle t\cdot\frac{2}{\pi} - 4&\displaystyle \qquad \frac{3\pi}2\le t <2\pi
 \end{cases}
+\label{skript:fourier:dreieck}
 \end{equation}
+gegeben ist,
+mit Hilfe eines trigonometrischen Polynoms.
 In Abbildung~\ref{skript:fourier:beispiel} ist die Dreiecksfunktion
 hellblau dargestellt.
+
 Weil die Funktion antisymmetrisch ist, verschwinden alle $a_k$-Koeffizienten.
 Da die Funktion ausserdem symmetrisch ist bezüglich $\frac{\pi}2$ verschwinden
 alle geraden $b_k$-Koeffizienten.
 Für $N=4$ besteht $y$ nur aus vier Werten: $1$, $0$, $-1$ und $0$,
-in diesem Fall muss die Funktion mit nur einem einzigen Term darstellbar
-sein.
-Tatsächlich ist $f(t) = \sin t$ an den stellen $t_j=2\pi j/4$, $j=1,\dots,4$,
+in diesem Fall muss die Funktion mit nur einem einzigen $\sin$-Term
+mit dem Fourier-Koeffizienten $b_1$ darstellbar sein.
+Tatsächlich ist $f(t) = \sin t$ an den Stellen $t_j=2\pi j/4$, $j=1,\dots,4$
+(blau in Abbildung~\ref{skript:fourier:beispiel}),
 dies wird in Abbildung~\ref{skript:fourier:beispiel} ganz oben gezeigt.
 Erhöht man $N$, wird die Approximation immer besser, dies zeigen die
-weiteren Graphiken in Abbildung~\ref{skript:fourier:beispiel}
+weiteren Graphiken in Abbildung~\ref{skript:fourier:beispiel}.
 
-
-
+Die Berechnung der Fourier-Koeffizienten mit den Integralformeln
+\eqref{fourier:normalekoeffizienten}
+liefert für die Dreiecksfunktion~\eqref{skript:fourier:dreieck}
+die Formel
+\[
+b_k = (-1)^{(k-1)/2}\frac{8}{\pi^2k^2}
+\]
+für ungereade Werte von $k$.
+Diese Werte sind in der letzten Spalte unter $N=\infty$ dargestellt.
+Für zunehmendes $N$ konvergieren die diskreten Koeffizienten $b_k$ gegen 
+diese stetigen Werte.
 
