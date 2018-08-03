@@ -8,9 +8,9 @@ Die komplexe Darstellung der diskreten Fourier-Transformation ermöglicht
 eine Formulierung, in der die Berechnung der Koeffizienten wie auch die
 Auswertung des trigonometrischen Polynoms sehr viel schneller erfolgen
 kann, wenigstens wenn $N$ gerade ist.
-Für die Bestimmung der $c_l$ verlangt die Berechnung der Produkte
+Die Bestimmung der $c_l$ verlangt die Berechnung der Produkte
 $y_j e^{lt_j}$ für alle $j$ und $l$.
-Ausserdem ist $t_j=2\pi j/n=lt_1$, die Exponentialfaktoren sind daher
+Ausserdem ist $t_j=2\pi j/N=lt_1$, die Exponentialfaktoren sind daher
 $e^{lt_j}=(e^{t_1})^{lj}$.
 Die Details dieses Algorithmus sollen hier nicht entwickelt werden,
 es soll nur der reduzierte Rechenaufwand abgeschätzt werden.
@@ -22,20 +22,20 @@ Da $N$ gerade ist, kann man die Summe zur Berechnung der Koeffizienten
 \begin{align*}
 c_l
 &=
-\sum_{j=0}^{N-1} y_j e^{ilt_j}
+\sum_{j=0}^{N-1} y_j e^{-ilt_j}
 \intertext{aufteilen in gerade und ungerade Terme}
 &=
-\sum_{j=0}^{N/2-1} y_{2j} e^{ilt_{2j}}
+\sum_{j=0}^{N/2-1} y_{2j} e^{-ilt_{2j}}
 +
-\sum_{j=0}^{N/2-1} y_{2j+1} e^{ilt_{2j+1}}
+\sum_{j=0}^{N/2-1} y_{2j+1} e^{-ilt_{2j+1}}
 \\
 &=
-\sum_{j=0}^{N/2-1} y_{2j} e^{ilj t_{2}}
+\sum_{j=0}^{N/2-1} y_{2j} e^{-ilj t_{2}}
 +
 e^{ilt_1}
-\sum_{j=0}^{N/2-1} y_{2j+1} e^{ilj t_{2}},
+\sum_{j=0}^{N/2-1} y_{2j+1} e^{-ilj t_{2}}.
 \end{align*}
-ist zu erkennen, dass jeder Summand eine Fourier-Transformation
+Es ist zu erkennen, dass jeder Summand eine Fourier-Transformation
 mit der halben Anzahl von Datenpunkten und der doppelten Schrittweite
 $t_2$ statt $t_1$ ist.
 Der Aufwand für die Berechnung der Koeffizienten $c_l$ ist
