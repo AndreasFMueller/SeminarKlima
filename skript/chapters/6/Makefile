@@ -3,7 +3,7 @@
 #
 # (c) 2018 Prof Dr Andreas Müller, Hochschule Rapperswil
 #
-all:	zeitgl.pdf dreieck.pdf trigosum.pdf dreieck2.pdf
+all:	zeitgl.pdf dreieck.pdf trigosum.pdf dreieck2.pdf spektrum.pdf
 
 zeitgl.pdf:	zeitgl.tex
 	pdflatex zeitgl.tex
@@ -19,3 +19,9 @@ trigosum.pdf:	trigosum.tex
 
 dreieck2.pdf:	dreieck2.tex
 	pdflatex dreieck2.tex
+
+sp.tex:	spektrum.m
+	octave spektrum.m
+
+spektrum.pdf:	spektrum.tex sp.tex
+	pdflatex spektrum.tex
