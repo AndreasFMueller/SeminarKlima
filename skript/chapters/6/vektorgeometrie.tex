@@ -432,7 +432,7 @@ Als Basisfunktionen kann man die Funktionen
 \end{equation}
 verwenden.
 Das Skalarprodukt $\langle f,g\rangle$ muss linear in $f$ und $g$ sein.
-Eine naheliegende Wahl ist
+Eine naheliegende Wahl für das Skalarprodukt ist
 \[
 \langle f, g\rangle
 =
@@ -568,13 +568,22 @@ und die Fourier-Reihe ist
 \end{equation}
 
 \subsubsection{Beispiel: Dreiecksfunktion}
+\begin{figure}
+\centering
+\includegraphics{chapters/6/dreieck2.pdf}
+\caption{Dreiecksfunktion und Approximation durch die Fourierreihe
+\eqref{skript:fourier:dreieckreihe}
+für verschiedene Werte von $n$.
+\label{skript:fourier:stetigdreieck}}
+\end{figure}
 Wir berechnen die Fourier-Koeffizienten für die Dreiecksfunktion
 \eqref{skript:fourier:dreieck}, für die wir die diskreten Fourier-Koeffizienten
 bereits in Abschnitt~\ref{subsection:fourier:dreiecksfunktion}
 berechnet haben.
 Wie im diskreten Fall folgt aus den Symmetrieeigenschaften, dass $a_k=0$
 ist für alle $k$ und $b_k=0$ für alle geraden $k$.
-Es bleibt also nur noch, die $b_k$ für ungerades $k$ zu bestimmen.
+Es bleibt also nur noch, für ungerades $k$
+die Koeffizienten
 \begin{align}
 b_k
 &=
@@ -611,12 +620,20 @@ b_k
 (-1)^{(k-1)/2} - k\frac{\pi}2\underbrace{\cos k\frac{\pi}2}_{\displaystyle=0}
 \biggr)
 =
-\frac{8}{\pi^2k^2}(-1)^{(k-1)/2}.
+\frac{8}{\pi^2k^2}(-1)^{(k-1)/2}
 \label{skript:fourier:bkstetig}
 \end{align}
+zu bestimmen.
 In Tabelle~\ref{skript:fourier:beispiel} werden die diskreten
 Fourierkoeffizienten den hier gefundenen stetigen Koeffizienten
 gegenübergestellt.
+Die zugehörige Fourierreihe
+\begin{equation}
+p_{2n}(t) = \frac{8}{\pi^2} \sum_{i=1}^n \frac{(-1)^i}{(2i-1)^2}\sin(2i-1)t
+\label{skript:fourier:dreieckreihe}
+\end{equation}
+ist in Abbildung~\ref{skript:fourier:stetigdreieck} dargestellt.
+Die Anzahl der berücksichtigten nicht verschwindenden Terme ist $n$.
 
 \subsection{Diskrete Fourier-Transformation}
 Die Fourier-Koeffizienten $a_k$ und $b_k$ hängen linear von den

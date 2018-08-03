@@ -3,7 +3,7 @@
 #
 # (c) 2018 Prof Dr Andreas Müller, Hochschule Rapperswil
 #
-all:	zeitgl.pdf dreieck.pdf trigosum.pdf
+all:	zeitgl.pdf dreieck.pdf trigosum.pdf dreieck2.pdf
 
 zeitgl.pdf:	zeitgl.tex
 	pdflatex zeitgl.tex
@@ -16,3 +16,6 @@ triangle.tex:	beispiel.m
 
 trigosum.pdf:	trigosum.tex
 	pdflatex trigosum.tex
+
+dreieck2.pdf:	dreieck2.tex
+	pdflatex dreieck2.tex
