@@ -19,7 +19,7 @@ Im Kalman-Filter ist jedoch sehr viel mehr über den stochastischen
 Prozess bekannt.
 Bis auf den Systemfehler sind die Übergänge durch lineare Abbildungen,
 die Matrizen $\varphi_k$, gegeben und der Messprozess, beschrieben durch
-die Matrize $H_k$, ist ebenfalls linear.
+die Matrix $H_k$, ist ebenfalls linear.
 Die Verteilungen sind jeweils Normalverteilungen, daher sollten
 alle Integrale leicht zu berechnen sein und es sollten sich als Lösung
 des Filterproblems der Formelsatz des Kalman-Filters und insbesondere
@@ -69,7 +69,7 @@ Kovarianzmatrix $P=E(XX^t)$ von $X$.
 
 Die Zufallsvariable $Y|X$ beschreibt die Messwerte von $Y$, die im
 Systemzustand $X$ zu erwarten sind.
-Die Messmatrix $H$ ermittelt bis auf ebenfalls normalverteilten
+Die Messmatrix $H$ ermittelt bis auf den ebenfalls normalverteilten
 Messfehler die Messwerte, $Y|X$ ist also normalverteilt mit
 Erwartungswert $E(HX)=H\mu$.
 Die Wahrscheinlichkeitsdichte von $Y|X$ ist daher
@@ -155,15 +155,13 @@ die nur von $y$ abhängen darf, übereinstimmen:
 Wir multiplizieren beide Seiten aus und verwenden dabei, dass die
 Kovarianzmatrizen und ihre Inversen symmetrisch sind.
 Die linke Seite ergibt:
-\[
+\begin{align*}
 \text{LHS}
-=
+&=
 x^t{P^*}^{-1}x
 -2{\mu^*}^t {P^*}^{-1}x
 +{\mu^*}^t{P^*}^{-1}\mu^*.
-\]
-Die rechte Seite ist:
-\begin{align*}
+\intertext{Die rechte Seite ist:}
 \text{RHS}
 &=
 x^tP^{-1}x-2\mu^tP^{-1}x+\mu^tP^{-1}\mu+
@@ -231,7 +229,7 @@ Damit ist gezeigt, dass sich die Wahrscheinlichkeitsdichte von $X|Y$
 tatsächlich als Normalverteilung schreiben lässt, und dass der Erwartungswert
 $\mu^*$ von $X|Y$ in der Form \eqref{mustern} geschrieben werden kann.
 
-Jetzt muss nur noch gezeig werden, dass für $P^*$ und $K$ die im Lemma
+Jetzt muss nur noch gezeigt werden, dass für $P^*$ und $K$ die im Lemma
 genannten Formeln gelten.
 Wir rechnen zuerst nach, dass die Formel für die $K$ im Lemma gleichbedeutend
 ist mit der Formel~\eqref{kalman-gain}.

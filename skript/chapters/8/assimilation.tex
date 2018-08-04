@@ -55,16 +55,18 @@ Verfügung, so bezeichnen wir mit $X(i:j)$ die Folge
 X(i),X(i+1),\dots,X(j-1),X(j).
 \]
 Damit ist $X(0:n)$ die Klimageschichte bis zur Zeit $n$, und $X(n:N)$ die
-Zukunft.
+Zukunft\footnote{Die Notation $X(i:j)$ ist motiviert durch die 
+von Matlab oder Octave verwendete Notation \texttt{i:j} für die
+Folge der Zahlen von $i$ bis $j$.}.
 
 Das Assimilationsproblem besteht darin, dass Messwerte $Y(k)$ zur Verfügung
-gestellt werden, mit denen sich die Wahrscheinlichkeitsidichte von $X(k)$
+gestellt werden, mit denen sich die Wahrscheinlichkeitsdichte von $X(k)$
 ``genauer'' bestimmen lässt.
 Um den Formalismus herauszuarbeiten seien $X$ und $Y$ Zufallsvariablen,
 es soll die Frage beantwortet werden, wie sich die Verteilung von $X$
 ändert, wenn $Y$ den Wert von $y$  annimmt.
 Die Wahrscheinlichkeitsdichte von $(X,Y)$ sei $f_{X,Y}(x,y)$, sie kann
-sich daher auf zwei verschiedene Arten als Produkt
+auf zwei verschiedene Arten als Produkt
 \begin{equation}
 f_{X,Y}(x,y)
 = 
@@ -73,25 +75,27 @@ f_{X|y}(x)\,f_Y(y)
 f_{Y|x}(y)\,f_X(x)
 \label{skript:bedpdf}
 \end{equation}
-beschrieben werden.
+geschrieben werden.
 \index{Satz von Bayes}%
 Der {\em Satz von Bayes} für die {\em bedingten Wahrscheinlichkeitsdichten}
-wird 
+\index{bedingte Wahrscheinlichkeit}
 \begin{equation}
 f_{X|y}(x)
 =
 \frac{f_X(x)}{f_Y(y)}\,f_{Y|x}(y).
 \label{assim:bayes}
 \end{equation}
+stellt en Zusammenhang zwischen den bedingten Wahrscheinlichkeiten her.
+
 Wenn die Zufallsvariablen $X$ und $Y$ unabhängig sind, dann hat der
-Werte von $y$ keinen Einfluss auf die Wahrscheinlichkeitsdichte von $X$,
+Wert von $y$ keinen Einfluss auf die Wahrscheinlichkeitsdichte von $X$,
 es ist also
 \[
 f_{X|y}(x)
 =
 f_X(x)\quad\forall y.
 \]
-Gegeben $f_{X|y}(x)$ lässt sich auch Wahrscheinlichkeitsdichte
+Gegeben $f_{X|y}(x)$ lässt sich auch die Wahrscheinlichkeitsdichte
 $f_X$ berechnen, es gilt
 \begin{align}
 f_X(x)
@@ -127,13 +131,13 @@ f_{X(n:N)|x(n-1)}(x(n:N)).
 Ein solcher stochastischer Prozess heiss {\em Markov-Kette}.
 \end{definition}
 Die Definition besagt, dass die Verteilung von $X(n:N)$ sich nicht
-ändert, wenn ausser den Werten $x(n-1)$ auch noch die früheren
+ändert, wenn man ausser den Werten $x(n-1)$ auch noch die früheren
 Werte $x(0:n-2)$ kennt.
 
 Die Markov-Eigenschaft eines stochastischen Prozesses bedeutet,
 dass für Vorhersagen von $X(n:N)$ nur die Verteilung von $X(n-1)$
 bekannt sein muss.
-Weiteres Wissen über weiter zurück liegende Werte $X(0:n-2)$ hat
+Weiteres Wissen über weiter zurück liegende Werte $X(0:n-2)$
 liefert keine Verbesserung der Vorhersage von $X(n)$.
 Durch wiederholte Anwendung von \eqref{skript:bedpdf} erhält man
 daraus
@@ -173,6 +177,9 @@ Reanalyse: Schätze $X(n)$ aus den Werten von $Y(1:N)$.
 \end{enumerate}
 Man beachte, dass bei der Reanalyse auch die späteren Werte zur
 Verfügung stehen.
+Reanalyse liegt zum Beispiel vor, wenn aktuelle Klimaentwicklungen dazu
+verwendet werden, die Klimageschichte der letzten Jahrzehnte genauer 
+zu rekonstruieren.
 
 Um eines dieser Probleme zu lösen, muss der Zusammenhang zwischen den
 Zustandsvariablen $X(k)$ und den Messgrössen $Y(j)$ bekannt sein.
@@ -180,7 +187,7 @@ Die Messgrösse $Y(k)$ soll nur vom Zustand zur Zeit $k$ abhängen,
 nicht von früheren oder späteren Zeitpunkten.
 Die Zufallsvariablen $Y(j)$ und $X(k)$ mit $j\ne k$ müssen daher
 unabhängig sein.
-Dies bedeutet, dass sich die Wahrscheinlichkeitsdichten als Produkt
+Dies bedeutet, dass sich die Wahrscheinlichkeitsdichte als Produkt
 \begin{align*}
 f_{Y(1:n)|x(0:n)} (y(1:n))
 &=
@@ -242,7 +249,8 @@ eine Wahrscheinlichkeitsdichte entsteht.
 
 \begin{proof}[Beweis]
 Die Formeln von Schritt~1 sind nichts anderes als der Satz von
-Bayes~\eqref{assim:bayes}.
+der totalen Wahrscheinlichkeit für \eqref{assim:bayesstep1} und
+der Satz von Bayes~\eqref{assim:bayes} für \eqref{bayesstep2}.
 
 Für den Beweis der Formeln für den zweiten Schritt verwenden wir 
 vollständig Induktion.
@@ -253,8 +261,8 @@ f_{X(2)|y(1)}(x(2))
 &=
 \int f_{X(2)|x(1)}(x(2))  f_{X(1)}(x(1))\, dx(1).
 \end{align*}
-und erhalten damit die Formel~\eqref{assim:totalstep1}.
-Die zweite Formel~\eqref{assim:bayesstep1} ergibt sich aus dem Satz
+und erhalten damit die Formel~\eqref{assim:totalstep2} für $i=2$.
+Die zweite Formel~\eqref{assim:bayesstep2} ergibt sich aus dem Satz
 von Bayes~\eqref{assim:bayes}.
 
 Für den Induktionsschritt verwenden wir wieder zuerst den Satz von der
