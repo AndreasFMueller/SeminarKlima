@@ -6,13 +6,15 @@
 \section{El Niño\label{section:elnino}}
 \rhead{El Niño}
 El Niño oder genauer die El Niño-Southern Oscillation (ENSO) ist ein
-quasiperiodisches Klimaphänomen mit einer Periode von drei bis sieben
+quasiperiodisches Klima\-phänomen mit einer Periode von drei bis sieben
 Jahren, welches im Pazifik in Äquatornähe beobachtet werden kann.
 
 \subsection{Ablauf eines El Niño-Ereignisses\label{subsection:elnino:ablauf}}
 Unter normalen Bedingungen treiben die vorherschenden Winde Wasser vom
 Ostpazifik vor der Küste von Südamerika in Richtung des zentralen Pazifik.
-Dadurch senkt sich die Thermokline im Westpazifik ab, während im 
+Dadurch senkt sich die Thermokline
+(siehe Abschnitt~\ref{section:thc:schichtung})
+im Westpazifik ab, während im 
 Ostpazifik kaltes Tiefenwasser aufsteigt.
 Da dieses Wasser nährstoffreich ist, äussert sich dieser Normalzustand
 in grossem Fischreichtum, daher war dieses Phänomen seit Jahrhunderten
@@ -20,9 +22,10 @@ bei Fischern in Peru bekannt.
 
 Während eines El Niño-Ereignisses bricht der Antrieb dieses Ungleichgewichts
 zusammen.
-In der Folge sinkt die Thermokline im Ostpazifik ab, das kalte nährstoffreiche
+In der Folge sinkt die Thermokline im Ostpazifik ab,
+das kalte nährstoffreiche
 Wasser bleibt aus.
-Im Westpazifik steigt die Thermokline daher an.
+Im Westpazifik steigt die Thermokline dagegen an.
 Der Wegfall der atmosphärischen Strömung bedeutet auch, dass in der Nähe
 von Südamerika vermehrt Niederschläge auftreten, was zu Überschwemmungen
 und Missernten führen kann.
@@ -50,7 +53,7 @@ S_E&&&\text{Windkräfte im Ostpazifik}\\
 \end{aligned}
 \]
 Wir müssen jetzt Gleichungen herleiten, die diese Grössen und ihre
-Änderungsraten miteinander verbinden.
+Änderungsraten, also ihre zeitlichen Ableitungen, miteinander verbinden.
 
 Die Windkräfte $S$ führen im Normalfall dazu, dass die Thermoklinentiefe
 im Ostpazifik kleiner wird, während sie im Westpazifik ansteigt.
@@ -72,7 +75,7 @@ der Form
 \frac{dh_W}{dt} = -rh_W
 \]
 beschrieben werden kann.
-Dazu kommt jetzt aber die Windkraft $S$.
+Die Windkraft $S$ wirkt dem entgegen.
 Je grösser der Betrag von $S$ ist, desto schneller sinkt $h_W$ ab.
 Dies können wir mit der Differentialgleichung
 \begin{equation}
@@ -82,7 +85,8 @@ Dies können wir mit der Differentialgleichung
 \end{equation}
 modelliert werden kann.
 
-Auf der anderen Seite des Pazifik betrachten wir die Temperaturanomalie
+Auf der anderen Seite des Pazifik vor der Küste Südamerikas
+betrachten wir die Temperaturanomalie
 $T_E$.
 Ohne irgendwelche Einflüsse verschwindet die Temperaturanomlie mit der
 Zeit, also
@@ -91,7 +95,7 @@ Zeit, also
 \]
 Je grösser die Thermoklinenanomalie $h_E$ im Ostpazifik ist, desto weiter
 weg ist das kalte Wasser von der Oberfläche, die Temperaturanomalie an
-der Oberfläche nimmt also langsamer ab, was die Differntialgleichung
+der Oberfläche nimmt also langsamer ab, was die Differentialgleichung
 \begin{equation}
 \frac{dT_E}{dt} = -cT_E + \gamma h_E
 \end{equation}
@@ -141,15 +145,16 @@ mit einer Thermoklinen-Anomalie im Ostpazifik gekoppelt sein.
 Ein einfaches Modell wie bei der relativ langsam ablaufenden thermohalinen
 Zirkulation kann daher kaum erfolgreich sein.
 Vielmehr muss in diesem Modell die Zeit berücksichtigt werden, die ein
-Signal braucht, um sich durch den Pazifik zu bewegen.
+Signal benötigt, um sich durch den Pazifik zu bewegen.
 
 Solche Mechanismen sind bekannt und können mit relativ einfachen
 Mitteln modelliert werden.
-Es sind die Kelvin-Wellen, die in Abschnitt~\ref{section:elnino:kelvin}
+Es sind die Kelvin-Wellen, die weiter unten in
+Abschnitt~\ref{section:elnino:kelvin}
 behandelt werden und die Rossby-Wellen, beschrieben in
 Abschnitt~\ref{section:elnino:rossby}.
 Daraus lässt sich ein Modell mit Hilfe einer verzögerten Differentialgleichung
-bauen (Abschnitt~\ref{section:dde-nino}), welches auch in
+bauen (Abschnitt~\ref{section:dde-nino}), welches in
 Kapitel~\ref{chapter:verzoegert} vertieft studiert wird.
 
 
