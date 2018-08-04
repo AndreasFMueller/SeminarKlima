@@ -1,0 +1,234 @@
+% !TeX root = ../skript.tex
+% !TeX spellcheck = de_DE
+
+\section{Anhang: Source Code}
+
+\begin{lstlisting}[style=C, language=Java, caption=App.js]
+// 3D-Visualisierung mit whsJS.
+
+/* eslint-disable */
+
+import * as WHS from 'whs';
+import * as THREE from 'three';
+
+export class WHSApp {
+
+	constructor() {
+		this.app = null;
+		this.lorenzPoints = [];
+		this.viewPoints = [];
+		this.running = false;
+	}
+
+	render(element, rho = 28, sigma = 10, beta = 8 / 3) {
+		// Prepare stage
+		let scene = new WHS.SceneModule();
+		
+		this.app = new WHS.App([
+			new WHS.ElementModule(element),
+			scene,
+			new WHS.CameraModule({
+				position: {
+					y: 10,
+					z: 50
+				}
+			}),
+			//0xCDCDCD
+			new WHS.RenderingModule({
+				bgColor:  0x4A555C,
+				
+				renderer: {
+					antialias: true,
+					shadowmap: {
+						type: THREE.PCFSoftShadowMap
+					}
+				}
+			}, {shadow: true}),
+			new WHS.OrbitControlsModule(),
+			new WHS.ResizeModule()
+		]);
+		
+		// Calculate Positions
+		this.lorenzPoints = WHSApp.calculate(rho, sigma, beta);
+		
+		// Create Visual Element for each position
+		for (let i = 0; i < this.lorenzPoints.length; i++) {
+			let sphere = new WHS.Sphere({
+				geometry: {
+				radius: 0.2,
+				widthSegments: 5,
+				heightSegments: 5
+				},
+				
+				material: new THREE.MeshPhongMaterial({
+					color: new THREE.Color(
+						(this.lorenzPoints[i].x + 10) / 20, 
+						(this.lorenzPoints[i].y + 10) / 20, 
+						this.lorenzPoints[i].z) / 30
+				}),
+				
+				
+				position: this.lorenzPoints[i],
+			});
+			
+			this.viewPoints[i] = sphere;
+			this.viewPoints[i].addTo(this.app);
+		}
+		
+		// Create Light
+		new WHS.AmbientLight({
+			light: {
+				intensity: 0.4
+			}
+		}).addTo(this.app);
+		
+		// Display Coordinates
+		
+		const axis = new THREE.AxisHelper(30);
+		this.app.get('scene').add(axis);
+		
+		
+		// Start the app
+		this.app.start();
+		this.running = true;
+	};
+	
+	rerender(rho, sigma, beta) {
+		this.lorenzPoints = WHSApp.calculate(rho, sigma, beta);
+		for (let i = 0; i < this.viewPoints.length; i++) {
+			this.viewPoints[i].position = this.lorenzPoints[i];
+			this.viewPoints[i].material.color.r = (this.lorenzPoints[i].x+10)/20;
+			this.viewPoints[i].material.color.g = (this.lorenzPoints[i].y+10)/20;
+			this.viewPoints[i].material.color.b = this.lorenzPoints[i].z/30;
+		}
+	
+	}
+	
+	destruct() {
+		if (this.running) {
+			this.app.render = false;
+			this.app.stop();
+			this.app.disposeModules();
+			this.app = null;
+		}
+	}
+	
+	static calculate(rho = 28, sigma = 10, beta = 8 / 3) {
+		const it = 2500;
+		
+		let x = 0.1;
+		let y = 0.1;
+		let z = 0.1;
+		const delta = 0.01;
+		
+		const arr = [];
+		arr.push(new THREE.Vector3(x, y, z));
+		
+		for (let i = 0; i < it; i += 1) {
+			/* eslint-disable no-mixed-operators */
+			x = pos[i].x + ((sigma * pos[i].y) - (sigma * pos[i].x)) * delta;
+			y = pos[i].y + ((-pos[i].x * pos[i].z) + (rho * pos[i].x) - pos[i].y) * delta;
+			z = pos[i].z + ((pos[i].x * pos[i].y) - (beta * pos[i].z)) * delta;
+			pos.push(new THREE.Vector3(x, y, z));
+		}
+		
+		return arr;
+	};
+}
+\end{lstlisting}
+
+\begin{lstlisting}[style=C, language=Java, caption=Visualize.vue]
+// VueJS-Adapter um die Visualsierung in die Gesammtseite einzufuegen
+// Der VueJS-Code laesst Visualisierung neu zeichnen bei Parameteraenderungen
+<template>
+<div class="WHS-Container">
+	<form id="input-form">
+		<div class="form-group row">
+			<label for="rho-input">rho</label>
+			<input
+			id="rho-input"
+			v-model="rho"
+			:readonly="disabled"
+			:class="{'form-control-plaintext': disabled, 'form-control': !disabled}"
+			type="number">
+		</div>
+		<div class="form-group row">
+			<label for="sigma-input">sigma</label>
+			<input
+			id="sigma-input"
+			v-model="sigma"
+			:readonly="disabled"
+			:class="{'form-control-plaintext': disabled, 'form-control': !disabled}"
+			type="number">
+		</div>
+		<div class="form-group row">
+			<label for="beta-input">beta</label>
+			<input
+			id="beta-input"
+			v-model="beta"
+			:readonly="disabled"
+			:class="{'form-control-plaintext': disabled, 'form-control': !disabled}"
+			type="number">
+		</div>
+	</form>
+	<div id="WHS-Playground"/>
+	<div id="caption">
+		<p>
+			<label id="x-axis" style="color:red;">X-Achse:</label>
+			<label> Durchschn. Windgeschwindigkeit</label>
+		</p>
+		<p>
+			<label id="y-axis" style="color:green;">Y-Achse:</label>
+			<label>Temperatur</label>
+		</p>
+		<p>
+			<label id="z-axis" style="color:blue;">Z-Achse:</label>
+			<label>Temperaturgradient</label>
+		</p>
+	</div>
+</div>
+</template>
+
+<script>
+import * as WHS from '../../whs/App';
+
+const app = new WHS.WHSApp();
+
+export default {
+	name: 'Visualize',
+	props: {
+		rho: {
+			type: Number,
+			required: true,
+		},
+		sigma: {
+			type: Number,
+			required: true,
+		},
+		beta: {
+			type: Number,
+			required: true,
+		},
+		disabled: {
+			type: Boolean,
+			default: true,
+		},
+	},
+
+	/* eslint-disable */
+	mounted: function() {
+		app.render(document.getElementById('WHS-Playground'), this.rho, this.sigma, this.beta);
+	},
+	
+	beforeDestroy() {
+		app.destruct();
+	},
+	
+	watch: {
+		rho() { app.rerender(this.rho, this.sigma, this.beta); },
+		sigma() { app.rerender(this.rho, this.sigma, this.beta); },
+		beta() { app.rerender(this.rho, this.sigma, this.beta); },
+	}
+};
+</script>
+\end{lstlisting}
