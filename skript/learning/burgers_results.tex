@@ -1,0 +1,18 @@
+\subsection{Resultate}
+
+Es ist an dieser Stelle schwierig eine abschliessende Aussage zu machen. Das Netzwerk wurde mit den Hermitepolynomen als Startparameter für die Burgersgleichung trainiert. Zur Validierung der Resultate können natürlich keine Hermite-Polynome verwendet werden, da der 'Lernerfolg' nicht wirklich ersichtlich ist, wir möchten wissen wie sich das neuronale Netzwerk auf neuem und noch nie gesehenem verhält. Dies wird in Abbildung \ref{fig:mst_burgers_predict_1} verdeutlicht.
+
+\begin{figure}
+	\centering
+	\begin{tabular}{ccc}
+		\includegraphics[scale=0.27]{learning/img/burger_predict0.png} &
+		\includegraphics[scale=0.27]{learning/img/burger_predict10.png} &
+		\includegraphics[scale=0.27]{learning/img/burger_predict20.png}
+	\end{tabular}
+	\label{fig:mst_burgers_predict_1}
+	\caption{Das vorhersagen des nächsten Zeitschrittes scheint gut zu funktionieren. Blau repräsentiert den aktuellen Zustand $i$, rot den berechneten Zustand $i+1$ und grün den vom neuronalen Netzwerk vorhergesagten Zustand $i+1$. }
+\end{figure}
+
+Das Experiment scheint soweit sehr gut ausgegangen zu sein, jedoch ist dieser Teil der Burgersgleichung numerisch stabil und kann gut berechent werden.
+
+Auch hier ist zu sehen, dass keine numerischen instabilitäten entstehen. Das neuronale Netzwerk liefert ebenfals Resutlate welche zwischen 0 und 1 liegen, was weiter aufzeigt, dass dieses Verfahren nicht den numerischen instabilitäten unterliegt wie andere Methoden. Es ist interessant zu sehen, wie anhand eines sehr einfachen Netzwerks ein Problem trainiert werden kann welches mit numerischen Verfahren nicht so einfach zu lernen ist. Es zeigt ganz klar die Stärke von neuronalen Netzwerken eine gute Abstraktion zu 'erlernen'.
