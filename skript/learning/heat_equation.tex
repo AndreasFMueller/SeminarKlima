@@ -38,9 +38,9 @@ Dies lässt sich auch als Skalarprodukt für 3 Punkte des Stabes $S(x_0, \dots, 
 T(x,t) \rightarrow T(x,t+1) : \begin{pmatrix} x_{k-1} & x_{k} & x_{k+1} \end{pmatrix} \cdot \underbrace{\frac{\kappa}{h^2} \begin{pmatrix} 1 \\ -2 \\ 1 \end{pmatrix}}_{\vec{w}} =  \frac{\kappa}{h^2} \cdot \left( 1 \cdot x_{k-1} - 2 \cdot x_{k} + 1 \cdot x_{k+1} \right)
 \label{eq:sumvec}
 \end{equation}
-Der Vektor $\vec{w}$ in Gleichung \ref{eq:sumvec} hat die L1-Norm ($\|w\|_{1}:=\sum _{{i=1}}^{n}|w_{i}|$) von $1$. Dies ist zu begründen dadurch, dass keine Temperaturzunahme oder Temperaturabnahme im gesammten System über einen Zeitschritt stattfinden kann! Die Temperaturänderung passiert lokal abhänig von der umliegenden Temperatur. Sie kann lokal wachsen oder fallen, nicht aber im gesammten System einen Trend entwickeln.
+Der Vektor $\vec{w}$ in Gleichung \ref{eq:sumvec} hat die L1-Norm ($\|w\|_{1}:=\sum _{{i=1}}^{n}|w_{i}|$) von $1$. Dies ist zu begründen dadurch, dass keine Temperaturzunahme oder Temperaturabnahme im gesammten System über einen Zeitschritt stattfinden kann! Die Temperaturänderung geschieht lokal abhänig von der umliegenden Temperatur. Sie kann lokal wachsen oder fallen, nicht aber im gesammten System einen Trend entwickeln.
 
-Es ist nun erklärt wie die Wärmeleitungsgleichung in einem 1 dimensionalen Stab mathematisch funktioniert. Dies Verfahren wird später verwendet um Trainingsdaten für ein neuroneales Netzwerk zu erzeugen.
+Es ist nun erklärt wie die Wärmeleitungsgleichung in einem 1 dimensionalen Stab mathematisch funktioniert. Dies Verfahren wird später verwendet um Trainingsdaten für ein neuronales Netzwerk zu erzeugen.
 
 
 \subsection{Neuronales Netzwerk}
@@ -96,11 +96,11 @@ Die Trainingsphase des neuronalen Netzwerks besteht im Grunde aus 3 einfachen Sc
 	\item {\textbf{Fehler Berechnung:} Der Fehler zwischen dem berechneten Output $O'_{tn}$ und dem erwarteten Output $O_{tn}$ wird berechnet. Für die Fehlerberechnung wird eine sogenante loss-Funktion $l$ verwendet. Oft wird an dieser Stelle die mittlere quadratische Abweichung (mean-squared error) verwendet.}
 	\item{ \textbf{ Fehlerrückführung:} In diesem Schritt wird mittels Gradientenabstiegsverfahren (oder ähnlich) versucht $l$ zu minimieren. Dafür werden die inneren Parameter des Netzes angepasst.}
 \end{enumerate}
-Das Ziel des Trainings ist es so lange zu trainieren und diese Schritte zu wiederholen bis der Wert von $l$ so klein wie möglich ist. Im Allgemeinen sollte der Wert nicht gegen 0 konvergieren, dies ist ein Indiz dafür, dass das Netz für das gegebene Problem zu gross ist, oder das Problem für die Netzgrösse zu klein. In unserem Beispiel kann aber später davon ausgeganen werden, dass die loss-Funktion 0 werden kann, da wir alle Trainingsdaten künstlich generierten haben und weder Ausreisser noch Rauschen in den Trainingsdaten vorhanden ist.
+Das Ziel des Trainings ist es so lange zu trainieren und diese Schritte zu wiederholen bis der Wert von $l$ so klein wie möglich ist. Im Allgemeinen sollte der Wert nicht gegen 0 konvergieren, dies ist ein Indiz dafür, dass das Netz für das gegebene Problem zu gross ist, oder das Problem für die Netzgrösse zu klein. In unserem Beispiel kann aber später davon ausgeganen werden, dass die loss-Funktion den Wert 0 annehmen kann, da wir alle Trainingsdaten künstlich generierten haben und weder Ausreisser noch Rauschen in den Trainingsdaten vorhanden ist.
 
 \subsection{Netzwerk Design \& Erwartung}
 
-Ein KNN muss zuerst entworfen werden und einige Entscheidungen bezüglich Meta-Parametern getroffen wernde. Normalerweise stehen an dieser Stelle viele Fragen im Raum unter anderem die Anzahl Neuronen und die Anzahl Hidden Layers umfasst. In dem gewählten Beispiel der Wärmeleitungsgleichung ist die Antwort jedoch sehr naheliegend. Der Schritt $T \rightarrow T+1$ ist sehr gut dokumentiert und verstanden. Es wird ein Input Vektor der Länge 3 und ein skalrer Output benötigt. Es ist bekannt, dass mittels einer Linearen Abbildung der Output $O_n$ aus dem Input $I_n$ erzeugt werden kann. Folglich ergibt sich eine Netzwerkstruktur analog zu Abbildung \ref{fig:mst_neuronalnetworkdemo}.
+Ein KNN muss zuerst entworfen werden und einige Entscheidungen bezüglich Meta-Parametern getroffen werden. Normalerweise stehen an dieser Stelle viele Fragen im Raum unter anderem die Anzahl Neuronen und die Anzahl Hidden Layers umfasst. In dem gewählten Beispiel der Wärmeleitungsgleichung ist die Antwort jedoch sehr naheliegend. Der Schritt $T \rightarrow T+1$ ist sehr gut dokumentiert und verstanden. Es wird ein Input Vektor der Länge 3 und ein skalarer Output benötigt. Es ist bekannt, dass mittels einer linearen Abbildung der Output $O_n$ aus dem Input $I_n$ erzeugt werden kann. Folglich ergibt sich eine Netzwerkstruktur analog zu Abbildung \ref{fig:mst_neuronalnetworkdemo}.
 
 \begin{figure}
 	\centering
@@ -131,7 +131,7 @@ Zusätzlich können einigen Restriktionen eingebaut werden:
 Das Netz hat somit 3 Parameter $w_0, w_1, w_2$ welche erlernt werden müssen. Aus der mathematischen Herleitung ist zu erwarten, dass der Gewichtsvektor $w_{0,1,2}$ die Lösungsform $w = \xi \cdot (1, -2, 1)$ annimmt. $\xi$ ist an dieser Stelle ein Platzhalter für $\xi = \frac{\kappa}{h^{2}}$ welche einfach zusammen gefasst werden können.
 
 \subsection{Trainingsdaten und 'faire' Kurven}
-Mit dem Verständnis für neuronale Netzwerke müssen nun die Daten erschaffen werden um das Netzwerk zu trainieren. Als Grundlage zum erlernen der Wärmeleitungsgleichung wird logischerweise die selbe Funktion verwendet um den Input $I_{t}$ und Output $O_{t}$ zu generieren. Da das Netzwerk dazu neigt 'Trivialitäten' zu lernen, muss bei der Datengenerierung geachtet werden, dass kein Muster in den Daten vorhanden ist, welche nicht mit der Wärmeleitungsgleichung zusammenhängen. Beispielsweise kann davon ausgegangen werden, dass wenn nur monoton steigende Funktionen im Training verwendet werden, das Netzwerk vermutlich Mühe haben eine akkurate Vorhergsage für eine monoton fallende Funktion zu treffen. Aus diesem Grunde werden 'faire' Kurven verwendet, welche unterschiedlichste Verschiebungen, Krümmungen und Wendepunkte aufweisen. So kann sichergestellt werden, dass das Netz als einziges Muster die tatsächliche Wärmeleitungsgleichung erlernt. Als besonders hilfreich haben sich hier die Hermite-Polynome erwiesen.
+Mit dem Verständnis für neuronale Netzwerke müssen nun die Daten erschaffen werden um das Netzwerk zu trainieren. Als Grundlage zum erlernen der Wärmeleitungsgleichung wird logischerweise die selbe Funktion verwendet um den Input $I_{t}$ und Output $O_{t}$ zu generieren. Da das Netzwerk dazu neigt 'Trivialitäten' zu lernen, muss bei der Datengenerierung geachtet werden, dass kein Muster in den Daten vorhanden ist, welche nicht mit der Wärmeleitungsgleichung zusammenhängen. Beispielsweise kann davon ausgegangen werden, dass wenn nur monoton steigende Funktionen im Training verwendet werden, das Netzwerk vermutlich Mühe habt eine akkurate Vorhergsage für eine monoton fallende Funktion zu treffen. Aus diesem Grunde werden 'faire' Kurven verwendet, welche unterschiedlichste Verschiebungen, Krümmungen und Wendepunkte aufweisen. So kann sichergestellt werden, dass das Netz als einziges Muster die tatsächliche Wärmeleitungsgleichung erlernt. Als besonders hilfreich haben sich hier die Hermite-Polynome erwiesen.
 
 \begin{align}
 H_{n}(x) &=(-1)^{n}e^{x^{2}}{\frac {d^{n}}{d x^{n}}}e^{-x^{2}} \\
@@ -148,7 +148,7 @@ H_{3}(x) &= 8x^{3}-12x\\
 H_{4}(x) &= 16x^{4}-48x^{2}-12
 \end{align}
 
-Zur Generierung der Daten wurde ein Vektor $v=(H_0, \dots ,H_9)$ gwählt. Jedes Element in diesem Vektor representiert ein Hermite Polynom n-ten Grades. Dies wird benötigt um kleine Hermite Polynome zu verwenden und mittels linearkombination verscheidene Kurven zu generieren. Es soll vermieden werden, dass zu grosse Werte entstehen oder zu extreme Krümmunen entstehen daher wurde auf ein Grad über 10 abgesehen. Das Polynom 10ten Grades hat als dominanten Faktor $1024 \cdot x^{10}$ was zeigt wie schnell die Kurven gegen den Rand ansteigen, dies wird in Abbildung \ref{fig:mst_hermite_big} nocheinmal verdeutlicht.
+Zur Generierung der Daten wurde ein Vektor $v=(H_0, \dots ,H_9)$ gwählt. Jedes Element in diesem Vektor representiert ein Hermite Polynom n-ten Grades. Dies wird benötigt um kleine Hermite Polynome zu verwenden und mittels Linearkombination verscheidene Kurven zu generieren. Es soll vermieden werden, dass zu grosse Werte entstehen oder zu extreme Krümmunen entstehen daher wurde auf ein Grad über 10 abgesehen. Das Polynom 10ten Grades hat als dominanten Faktor $1024 \cdot x^{10}$ was zeigt wie schnell die Kurven gegen den Rand ansteigen, dies wird in Abbildung \ref{fig:mst_hermite_big} nocheinmal verdeutlicht.
 
 \begin{figure}[h]
 	\centering
@@ -175,7 +175,7 @@ Zur Generierung der Daten wurde ein Vektor $v=(H_0, \dots ,H_9)$ gwählt. Jedes 
 	\caption{Einige Beispiele von Kurven die Mittels Hermite-Polynom erzeugt wurden.}
 \end{figure}
 
-Aus den generierten Kurven werden mithilfe eines ODE-Solvers die Input und Output Daten erzeugt. Die Kurven werden diskretisiert und aus Form-Gründen in die Vektoren $I_n$ und $O_n$ aufgeteilt. Es werden pro Kurve mehrere Vektorpaare gebildet um die Daten so gut wie möglich auszunutzen. Mihilfe dieser Daten wird nun das Neuronale Netzwerk trainiert.
+Aus den generierten Kurven werden mithilfe eines ODE-Solvers die Input und Output Daten erzeugt. Die Kurven werden diskretisiert und aus Form-Gründen in die Vektoren $I_n$ und $O_n$ aufgeteilt. Die Diskretisierung erfolt auf dem Interval [-2.05, 2) mit einem Abstand von 0.05, dies resultiert in 80 Punkten, welche zu Input Vektoren konvertiert werden. Es werden pro Kurve mehrere Vektorpaare gebildet um die Daten so gut wie möglich auszunutzen. Mihilfe dieser Daten wird nun das Neuronale Netzwerk trainiert.
 
 \subsection{Resultate}
 Nach zahlreichen Trainingsanläufen mit unzähligen Iterationen kann festgehalten werden, dass die mathematische Herleitung genau dem erlernten des Neuronalen Netzwerks entspricht (vgl. Tabelle \ref{tbl:result_heat}) Das Tabelle enthält nur ein Beispiel welches aus dem Training hergeleitet werden konnte. Die Resutlate sind nicht deterministisch, da die Generierung der Daten randomisiert stattgefunden hat. Wichtig ist aber, dass die Lösungsform ($w = \xi \cdot (1, -2, 1)$) stets erfüllt wurde und die L1-Norm von $w$ jederzeit sehr nahe bei $1$ war.
