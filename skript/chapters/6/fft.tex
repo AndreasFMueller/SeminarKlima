@@ -8,9 +8,9 @@ Die komplexe Darstellung der diskreten Fourier-Transformation ermöglicht
 eine Formulierung, in der die Berechnung der Koeffizienten wie auch die
 Auswertung des trigonometrischen Polynoms sehr viel schneller erfolgen
 kann, wenigstens wenn $N$ gerade ist.
-Für die Bestimmung der $c_l$ verlangt die Berechnung der Produkte
+Die Bestimmung der $c_l$ verlangt die Berechnung der Produkte
 $y_j e^{lt_j}$ für alle $j$ und $l$.
-Ausserdem ist $t_j=2\pi j/n=lt_1$, die Exponentialfaktoren sind daher
+Ausserdem ist $t_j=2\pi j/N=lt_1$, die Exponentialfaktoren sind daher
 $e^{lt_j}=(e^{t_1})^{lj}$.
 Die Details dieses Algorithmus sollen hier nicht entwickelt werden,
 es soll nur der reduzierte Rechenaufwand abgeschätzt werden.
@@ -19,53 +19,90 @@ daher soll $g(N)$ die Anzahl der Multiplikationen für eine
 Fourier-Transformation mit $N$ Termen bezeichnen.
 
 Da $N$ gerade ist, kann man die Summe zur Berechnung der Koeffizienten
-\begin{align*}
+\begin{align}
 c_l
 &=
-\sum_{j=0}^{N-1} y_j e^{ilt_j}
+\sum_{j=0}^{N-1} y_j e^{-ilt_j}
 \intertext{aufteilen in gerade und ungerade Terme}
 &=
-\sum_{j=0}^{N/2-1} y_{2j} e^{ilt_{2j}}
+\sum_{j=0}^{N/2-1} y_{2j} e^{-ilt_{2j}}
 +
-\sum_{j=0}^{N/2-1} y_{2j+1} e^{ilt_{2j+1}}
+\sum_{j=0}^{N/2-1} y_{2j+1} e^{-ilt_{2j+1}}
+\notag
 \\
 &=
-\sum_{j=0}^{N/2-1} y_{2j} e^{ilj t_{2}}
+\sum_{j=0}^{N/2-1} y_{2j} e^{-ilj t_{2}}
 +
-e^{ilt_1}
-\sum_{j=0}^{N/2-1} y_{2j+1} e^{ilj t_{2}},
-\end{align*}
-ist zu erkennen, dass jeder Summand eine Fourier-Transformation
+e^{-ilt_1}
+\sum_{j=0}^{N/2-1} y_{2j+1} e^{-ilj t_{2}}.
+\label{skript:fft:split}
+\end{align}
+Es ist zu erkennen, dass jeder Summand eine Fourier-Transformation
 mit der halben Anzahl von Datenpunkten und der doppelten Schrittweite
 $t_2$ statt $t_1$ ist.
-Der Aufwand für die Berechnung der Koeffizienten $c_l$ ist
-also mit $g(N)=N/2 + g(N/2)$ Operationen möglich.
-Wenn $N$ sogar eine Zweierpotenz ist, dann $2^m$, dann lässt sich dies
-Idee iterieren, und die Summe aufteilen
-\begin{align*}
-g(N)
-&=
-g(2^m)
-=
-2^{m-1}
-+
-g(2^{m-1})
-=
-2^{m-1}
-+
-2^{m-2}
-+
-g(2^{m-2})
-=
-\dots
+Schreiben wir 
+\[
+\begin{aligned}
+y'_j
+&= 
+y_{2j}&j&=0,\dots,\frac{N}2
 \\
+y''_j
 &=
-2^m+2^{m-1}+2^{m-2}+\dots + 1 + g(1)
+y_{2j+1}&j&=0,\dots,\frac{N}2
+\end{aligned}
+\]
+für die geraden bzw.~ungeraden Elemente, dann ist er erste Summand in
+\eqref{skript:fft:split} die Fouriertransformation von $y'$, der zweite
+Summand enthält die Fouriertransformation von $y''$, es ist also
+\[
+c_l = c'_l + e^{-ilt_1} c''_l.
+\]
+Der zusätzliche Aufwand für die Berechnung von $c_l$ aus $c'_l$ und $c''_l$
+ist also nur gerade eine Multiplikation mit einer Einheitswurzel.
+
+Der Aufwand für die Berechnung der Koeffizienten $c_l$ setzt sich also
+zusammen aus dem Aufwand für zwei Fourier-Transformationen mit Länge $N/2$
+und $N$ Multiplikationen, eine für jeden der Koeffizienten $c_l$.
+Dies führt auf die Rekursionsformel
+\begin{equation}
+g(N) = 2g(N/2) + N.
+\label{skript:fft:rekursion}
+\end{equation}
+Wenn $N=2^m$ sogar eine Zweierpotenz ist, dann lässt sich diese
+Idee iterieren und damit $g(2^m)$ iterativ aus $g(2)$ berechnen.
+
+Die Rekursionsformel
+\eqref{skript:fft:rekursion}
+hat die Lösung $g(N) = N\log_2 N$, wie man durch Einsetzen in die
+rechte Seite von
+\eqref{skript:fft:rekursion}
+prüfen kann:
+\[
+2g(N/2) + N
 =
-O(Nm)
+2\cdot\frac{N}2\log_2\frac{N}2 + N
 =
-O(N\log(N)).
-\end{align*}
+N(\log_2 N - 1) + N
+=
+N\log_2 n
+=
+g(N).
+\]
+Wir schliessen daraus, dass der Aufwand für die Berechnung der
+Fourier-Transformation mit diesem Algorithmus von der Grössenordnung
+$O(N\log N)$ ist, also deutlich schneller als die naive Berechnung
+mit der Summenformel, die Aufwand $O(N^2)$ verlangt.
+\begin{figure}
+\centering
+\includegraphics{chapters/6/fftaufwand.pdf}
+\caption{Aufwand für die komplexe Fouriertransformation ({\color{blue}blau})
+im Vergleich mit
+dem Aufwand für die schnelle Fourier-Transformation ({\color{red}rot}).
+\label{skript:fft:aufwandgraph}}
+\end{figure}
+In Abbildung~\ref{skript:fft:aufwandgraph} sind die beiden Aufandkurven im 
+Vergleich dargestellt.
 
 Diese schnelle Variante der Fourier-Transformation wurde von Cooley 
 und Tukey 1965 veröffentlicht.

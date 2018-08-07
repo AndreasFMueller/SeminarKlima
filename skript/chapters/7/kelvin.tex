@@ -6,10 +6,10 @@
 \section{Kelvin-Wellen\label{section:elnino:kelvin}}
 \rhead{Rossby- und Kelvin-Wellen}
 In diesem Abschnitt soll die Ausbreitung von Anomalien in der Höhe
-der Meeresoberfläche in der Höhe des Äquators studiert werden.
+der Meeresoberfläche in der Nähe des Äquators studiert werden.
 
 \subsection{Kelvin-Wellen\label{subsection:kelvin}}
-Ein der einfachsten Form führt ein Tiefdruckgebiet über dem zentralen
+In der einfachsten Form führt ein Tiefdruckgebiet über dem zentralen
 Pazifik dazu, dass die Meeresoberfläche über die Normalhöhe ansteigt.
 Wenn sich das Tiefdruckgebiet auffüllt und die Druckkraft zur Aufrechterhaltung
 dieser Anomalie wegfällt, wird dieser ``Wasserberg'' zerfallen.
@@ -17,7 +17,7 @@ Mit Hilfe der Gleichungen der Strömungsdynamik sollte sich die Ausbreitung
 dieser Wellen beschreiben lassen.
 
 Da die Anfangsbedingungen symmetrisch bezüglich einer Spiegelung an
-der Äquatorebenen sind, dürfen wir annehmen, dass auch die resultierende
+der Äquatorebene sind, dürfen wir annehmen, dass auch die resultierende
 Strömung diese Symmetrie hat.
 In unmittelbarer Nähe des Äquators brauchen wir die Krümmung der
 Erdoberfläche nicht zu berücksichtigen, und können daher mit einem
@@ -31,10 +31,10 @@ Die Anomalie der Höhe der Meeresoberfläche bezeichnen wir mit $h(x,y)$.
 Die zeitliche Änderung der Geschwindigkeit, also die Beschleunigung,
 ist nach dem zweiten Newtonschen Gesetz proportional zu den Kräften.
 Die Schwerkraft versucht, den Wasserberg abzubauen.
-Wasser wird in die Richtung beschleunigt, in die die Höhe $h(x,y)$
+Wasser wird in diejenige Richtung beschleunigt, in die die Höhe $h(x,y)$
 abnimmt.
 Ausserdem wirkt die Coriolis-Kraft, die die Strömung auf der Nordhalbkugel
-nach rechts ablenkt, und auf der Südhalbkugel nach links.
+nach rechts ablenkt und auf der Südhalbkugel nach links.
 \begin{equation}
 \begin{aligned}
 \frac{\partial u}{\partial t}
@@ -54,7 +54,7 @@ noch eine weitere Gleichung nötig, damit das Problem überhaupt gelöst
 werden kann.
 
 Abfliessendes Wasser reduziert die Höhenanomalie.
-Die Kontinuitätsgleichung
+Die Kontinuitätsgleichung~\eqref{skript:kontinuitaetsgleichung}
 besagt, dass die Abnahme der der Höhenanomalie proportional ist zur
 Divergenz des Geschwindigkeitsfeldes ist.
 Die fehlende Differentialgleichung ist daher
@@ -94,6 +94,13 @@ vereinfachen sich damit zu
 \frac{\partial u}{\partial x}
 \label{kelvin:naeherung:3}
 \end{align}
+Wir suchen nach einem Wellenphänomen entlang des Äquators, dafür
+brauchen wir eine Wellengleichung in den Variablen $t$ und $x$,
+die in den Gleichungen \eqref{kelvin:naeherung:1} nach
+\eqref{kelvin:naeherung:3} vorkommen.
+Aus diesen beiden Gleichungen sollte sich eine Wellengleichung
+gewinnen lassen.
+
 Indem wir \eqref{kelvin:naeherung:1} nach $x$ und 
 \eqref{kelvin:naeherung:3} nach $t$ ableiten, erhalten wir
 \begin{equation}
@@ -117,8 +124,9 @@ Indem wir \eqref{kelvin:naeherung:1} nach $x$ und
 gH\frac{\partial^2 h}{\partial x^2}
 \label{kelvin:wellengleichung}
 \end{equation}
-Dies ist eine Wellengleichung für eine Welle mit Ausbreitungsgeschwindigkeit
-$c=\sqrt{gH}$.
+Dies ist die gesuchte Wellengleichung für eine Welle mit
+Ausbreitungsgeschwindigkeit $c=\sqrt{gH}$.
+Im nächsten Abschnitt bestimmen wir ihre Lösungen.
 
 \subsection{Approximative Lösung der Wellengleichung}
 Bis jetzt wurde die zweite Gleichung~\eqref{kelvin:naeherung:2}
@@ -130,17 +138,37 @@ wir versuchen, auch die $y$-Abhängigkeit zu modellieren.
 
 \subsubsection{Dispersionsrelation}
 Eine in $x$-Richtung laufende Welle mit Wellenzahl $k$ kann beschrieben werden
-als
-$
-\sin(kx-\omega t).
-$
+als $\cos(kx-\omega t)$.
 Die Wellenzahl $k$ ist positiv für eine nach Osten laufende Welle und negativ
 für eine nach Westen laufende Welle.
+Überall dort, wo $kx-\omega t=0$ ist, befindet sich ein Wellenberg,
+die Position dieses Maximums ist also
+\[
+x=\frac{\omega}{k}\cdot t,
+\]
+es bewegt sich also mit der Geschwindigkeit $c=\omega/k$.
+Dies ist die sogenannte {\em Phasengeschwindigkeit}.
+\index{Phasengeschwindigkeit}%
+
+Wir dürfen allerdings nicht davon ausgehen, dass das Verhältnis $\omega/k$
+konstant ist, Wellen mit verschiedenen Frequenzen können sich durchaus
+mit verschiedenen Geschwindigkeiten ausbreiten.
+Ein Glasprisma ist in der Lage, Licht in seine verschiedene Farben
+mit verschiedenen Ausbreitungsgeschwindigkeiten im Glas aufzufächern. 
+Dieses Phänomen heisst {\em Dispersion} und äussert sich in einem
+\index{Dispersion}%
+funktionalen Zusammenhang
+\[
+\omega = \omega(k)
+\]
+zwischen Wellenzahl $k$ und Frequenz $\omega$, einer {\em Dispersionsrelation}.
+\index{Dispersionsrelation}%
+
 Wir suchen also eine Lösung des Gleichungssystems
 \eqref{kelvin:naeherung:1}--\eqref{kelvin:naeherung:3}
 in der Form
 \[
-h_k(t,x,y) = \gamma(y)\cdot \sin(kx-\omega t)
+h_k(t,x,y) = \gamma(y)\cdot \cos(kx-\omega t)
 \]
 zu finden.
 Die Funktion $\gamma(y)$ beschreibt das Profil des ``Wasserberges'' 
@@ -154,7 +182,7 @@ Gleichung~\eqref{kelvin:wellengleichung} liefert
 \begin{aligned}
 \frac{\partial^2 h_k}{\partial t^2}
 &=
-- \omega^2 \gamma(y) \sin(kx-\omega t)
+- \omega^2 \gamma(y) \cos(kx-\omega t)
 =
 -\omega^2 h_k(t,x,y)
 \\
@@ -163,14 +191,14 @@ Gleichung~\eqref{kelvin:wellengleichung} liefert
 -
 k^2
 \gamma(y)
-\sin (kx-\omega t)
+\cos (kx-\omega t)
 =
 -k^2 h_k(t,x,y)
 \end{aligned}
 \;\right\}
-\qquad
+\quad
 \Rightarrow
-\qquad
+\quad
 \omega^2=gHk^2
 \quad\text{oder}\quad
 \biggl|
@@ -263,7 +291,7 @@ Logarithmus ist:
 \end{equation}
 Das $y$-Profil der Welle ist also eine Gauss-Funktion.
 Die Zone, in der sich eine Kelvin-Welle ausbreiten kann, 
-wird breiter, wenn $\beta$ grösser wird, wenn also die 
+wird schmaler, wenn $\beta$ grösser wird, wenn also die 
 Rotationsgeschwindigkeit des Planeten grösser wird.
 Sie wird kleiner, wenn $c=\sqrt{gH}$ grösser wird, also
 bei grösserer Gravitation.

@@ -6,8 +6,8 @@
 \section{Verzögertes Oszillator-Modell\label{section:dde-nino}}
 \rhead{Verzögertes Oszillator-Modell}
 In den Kelvin- und Rossby-Wellen haben wir Mechanismen kennengelernt,
-mit dem Energietransport entlang des Äquators innerhalb der vorherrschenden
-Strömung sowohl in östlicher wie auch in westlicher Richtung möglich ist.
+die Energietransport entlang des Äquators innerhalb der vorherrschenden
+Strömung sowohl in östlicher wie auch in westlicher Richtung ermöglichen.
 Entscheidend für die Dynamik dieses Energietransports ist die Zeit,
 die eine Welle benötigt, um den Pazifik zu durchqueren.
 Sei $\tau_K$ die Zeit, die eine Kelvin-Welle braucht, um den Pazifik
@@ -25,10 +25,12 @@ der Form
 \]
 mit einer Konstanten $c$.
 
+\def\halb{\bgroup\textstyle\frac12\egroup}
+
 Die Diskussionen über die dem El~Niño-Phänomen zugrunde liegenden
 Mechanismen haben wir gesehen, dass die Thermoklinenanomalie im
-zentralen Pazifik eine Auswirkung auf Temperaturanomalie $T(t)$ haben.
-Eine Thermoklinenanomalie $h_0(t)$ auf dem Äquator wandert als
+zentralen Pazifik eine Auswirkung auf Temperatur\-anomalie $T(t)$ hat.
+Eine Thermoklinenanomalie $h_0(t)$ am Äquator wandert als
 Kelvin-Welle in der Zeit $\frac12\tau_K$ in den Ostpazifik.
 Eine Thermoklinenanomalie $h_1(t)$ nördlich oder südlich des Äquators
 kann als Rossby-Welle nach Westen wandern, am Westrand des Pazifik
@@ -38,7 +40,7 @@ Dies lässt sich mit der Differentialgleichung
 \begin{equation}
 \frac{d}{dt}T(t)
 =
--cT(t) + a_0h_0(t-\frac12\tau_K) + b_0h_1(t-(\frac12\tau_R+\tau_K))
+-cT(t) + a_0h_0(t-\halb\tau_K) + b_0h_1(t-(\halb\tau_R+\tau_K))
 \label{elninodde:1}
 \end{equation}
 erreichen.
@@ -48,26 +50,26 @@ im Ostpazifik und den Thermoklinenanomalien im zentralen Pazifik zu geben.
 Im einfachsten Fall kännen wir diesen Zusammenhang linear modellieren,
 also 
 \[
-h_0(t-\frac12\tau_K)
+h_0(t-\halb\tau_K)
 \sim
-T(t-\frac12\tau_K),
+T(t-\halb\tau_K),
 \qquad
 \text{und}
 \qquad
-h_1(t-(\frac12\tau_R+\tau_K))
+h_1(t-(\halb\tau_R+\tau_K))
 \sim
-T(t-(\frac12\tau_R+\tau_K)).
+T(t-(\halb\tau_R+\tau_K)).
 \]
 Eingesetzt in die Differentialgleichung~\eqref{elninodde:1} wird dabei zu
 \begin{equation}
 \frac{d}{dt}T(t)
 =
--cT(t) + aT(t-\frac12\tau_K) + bT(t-(\frac12\tau_R+\tau_K))
+-cT(t) + aT(t-\halb\tau_K) + bT(t-(\halb\tau_R+\tau_K))
 \label{elninodde:2}
 \end{equation}
 Die Ableitung $\dot T(t)$ hängt also nicht nur von der Temperaturanomalie
 zur Zeit $t$ ab, sondern auch von den Temperaturanomalien zu den
-früheren Zeitpunkten $t-\frac12\tau_K$ und $t-(\frac12\tau_R-\tau_K)$.
+früheren Zeitpunkten $t-\halb\tau_K$ und $t-(\halb\tau_R-\tau_K)$.
 Man nennt dies eine verzögerte Differentialgleichung.
 
 Die Theorie der linearen, verzögerten Differentialgleichungen wie 
@@ -84,7 +86,7 @@ Die verzögerte Differentialgleichung ist dann
 \begin{equation}
 \frac{d}{dt}T(t)
 =
--cT(t) + aT(t-\frac12\tau_K) + bT(t-(\frac12\tau_R+\tau_K))
+-cT(t) + aT(t-\halb\tau_K) + bT(t-(\halb\tau_R+\tau_K))
 -\varepsilon T(t)^3.
 \label{elninodde:3}
 \end{equation}

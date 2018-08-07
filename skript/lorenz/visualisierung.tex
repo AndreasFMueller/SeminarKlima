@@ -40,9 +40,9 @@ calculate(rho = 28, sigma = 10, beta = 8 / 3) {
   pos.push(new THREE.Vector3(x, y, z));
 
   for (let i = 0; i < it; i += 1) {
-	x = arr[i].x + ((sigma * arr[i].y) - (sigma * arr[i].x)) * delta;
-	y = arr[i].y + ((-arr[i].x * arr[i].z) + (rho * arr[i].x) - arr[i].y) * delta;
-	z = arr[i].z + ((arr[i].x * arr[i].y) - (beta * arr[i].z)) * delta;
+	x = pos[i].x + ((sigma * pos[i].y) - (sigma * pos[i].x)) * delta;
+	y = pos[i].y + ((-pos[i].x * pos[i].z) + (rho * pos[i].x) - pos[i].y) * delta;
+	z = pos[i].z + ((pos[i].x * pos[i].y) - (beta * pos[i].z)) * delta;
 	pos.push(new THREE.Vector3(x, y, z));
   }
 

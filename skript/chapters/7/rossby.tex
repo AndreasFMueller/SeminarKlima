@@ -7,33 +7,39 @@
 \section{Rossby-Wellen\label{section:elnino:rossby}}
 In der Untersuchung der Kelvin-Wellen haben wir angenommen, dass die
 Geschwindigkeit $v$ entlang der Längenkreise verschwindet.
-Die Strömung wird im allgemeinen nicht parallel zum Äquator sein.
+Die Strömung wird im Allgemeinen nicht parallel zum Äquator sein.
 Trotzdem beobachten wir zum Beispiel, dass die Westwindströmung 
 zwischen verschiedenen geographischen Breiten mäandriert.
 Woher kommt diese Wellenbewegung?
 
 \subsection{Zirkulation\label{subsection:rossby:zirkulation}}
-Aus der Diskussion der globalen Zirkulation wissen wir, dass die
-Strömung in Äquatornähe dominiert wird durch eine mittlere Strömung
+Aus der Diskussion der globalen Zirkulation in
+Kapitel~\ref{chapter:wetter und klima} wissen wir, dass die
+Strömung in Äquatornähe dominiert wird durch eine mittlere
 konstante Strömung mit Geschwindigkeit $U$ in Ost-West-Richtung.
 Wir suchen daher eine Beschreibung der Abweichungen von dieser
 mittleren Strömung.
 Unter Verwendung der gleichen Notation wie im
 Abschnitt~\ref{section:elnino:kelvin} schreiben wir daher
 \[
-u=U+u',\qquad v=U+v'\qquad\text{mit $u,v\ll U$}.
+u'=U+u,\qquad v'=v\qquad\text{mit $u,v\ll U$}.
 \]
+Die Geschwindigkeitskomponenten $u$ und $v$ sind die Anomalien relativ
+zur vorherrschenden mittleren Strömung.
 
-
-Wir nehmen im folgenden wieder an, dass die Strömung quellenfrei ist.
-Dann lässt sich wie früher gezeigt, dass die Strömung mit einer
+Wir nehmen im Folgenden wieder an, dass die Strömung quellenfrei ist.
+Dann lässt sich wie früher gezeigt die Strömung mit einer
 Strömungsfunktion $\psi$ als
-\[
+\begin{equation}
 u=-\frac{\partial \psi}{\partial y},\qquad
 v=\frac{\partial\psi}{\partial x}
-\]
-beschrieben werden kann.
+\label{skript:rossby:geschwindigkeit}
+\end{equation}
+beschreiben.
 
+Die gesuchten Wellen sollen Mäander-Form der Strömung erklären,
+also Änderungen der Strömungsrichtungen, die natürlich mit
+Änderungen des Drehimpulses einhergehen.
 Die Drehimpulsdichte in der Strömung ist gegeben durch die Zirkulation
 \[
 \zeta
@@ -50,13 +56,14 @@ die Corioliskraft $f$ und der mathematische Ausdruck der Drehimpulserhaltung
 ist die Erhaltung der Grösse $\zeta+f$.
 
 \subsection{Bewegungsgleichung\label{subsection:rossby:bewegungsgleichung}}
-Die Grösse $\zeta+f$ ist erhalten, ihre zeitliche Ableitung
+Die Grösse $\zeta+f$ ist erhalten, daher muss ihre zeitliche Ableitung
 \[
 \frac{d(\zeta f)}{dt}=0
 \]
-verschwindet also.
-$f$ hängt nur von $y$ ab, aber die Funktion $\zeta$ hängt von $t$,
-$x$ und $y$ ab.
+verschwinden.
+Die Coriolis-Kraft
+$f$ hängt nur von $y$ ab, aber die Funktion $\zeta$ hängt von allen
+drei Variablen $t$, $x$ und $y$ ab.
 Wir berechnen die Ableitung mit Hilfe der Kettenregel:
 \begin{align*}
 0
@@ -84,7 +91,8 @@ vernachlässigen.
 Schliesslich können wir wie in Abschnitt~\ref{section:elnino:kelvin}
 die $\beta$-Ebenen-Approximation verwenden, und $\partial f/\partial y$
 durch $\beta$ ersetzen.
-Schliesslich können wir wieder $v=\partial\psi/\partial x$ ersetzen.
+Schliesslich können wir wieder mit \eqref{skript:rossby:geschwindigkeit}
+$v$ als Ableitung von $\psi$ nach $x$ ausdrücken.
 Wir erhalten so
 \[
 0
@@ -118,7 +126,7 @@ Wir erwarten Wellenlösungen und schreiben sie daher in der Form
 \begin{equation}
 \psi_{kl}(t,x,y)
 =
-\sin(kx+ly-\omega t).
+\cos(kx+ly-\omega t).
 \label{rossby:ebenewelle}
 \end{equation}
 Die Ableitungen, die wir für die Bewegungsgleichung
@@ -126,36 +134,43 @@ Die Ableitungen, die wir für die Bewegungsgleichung
 \begin{align*}
 \frac{\partial}{\partial t} \psi_{kl}(t,x,y)
 &=
--\omega \cos(kx+ly-\omega t) = -\omega\psi_{kl}(t,x,y),
+\omega \sin(kx+ly-\omega t)
 \\
 \frac{\partial}{\partial x} \psi_{kl}(t,x,y)
 &=
-k
-\cos(kx+ly-\omega t) = k \psi_{kl}(t,x,y),
+-k
+\sin(kx+ly-\omega t)
 \\
 \Delta\psi_{kl}
 &=
 -(k^2+l^2)\cos(kx+ly-\omega t)=-(k^2+l^2)\psi_{kl}(t,x,y).
 \end{align*}
-Setzen wir dies in die Differentialgleichung ein, erhalten wir 
+Setzen wir dies in die Differentialgleichung
+\eqref{rossby:gleichung}
+ein, erhalten wir 
 \begin{align*}
 0
 &=
-\omega(k^2+l^2)\psi_{kl}(t,x,y)
 -
-Uk(k^2+l^2)\psi_{kl}(t,x,y)
+\omega(k^2+l^2) 
+\sin(kx+ly-\omega t)
 +
-\beta k\psi_{kl}(t,x,y)
+Uk(k^2+l^2)
+\sin(kx+ly-\omega t)
+-
+\beta k
+\sin(kx+ly-\omega t)
 \\
 &=
-\bigl((\omega-Uk)(k^2+l^2)+\beta k\bigr)\psi_{kl}(t,x,y)
+-\bigl((\omega-Uk)(k^2+l^2)+\beta k\bigr)
+\sin(kx+ly-\omega t)
 \end{align*}
 Für eine Lösung muss also die Dispersionsrelation
 \[
 (\omega -Uk)(k^2+l^2) +\beta k=0
 \]
 gelten.
-Aufgeläst nach $\omega$ ist dies
+Aufgelöst nach $\omega$ ist dies
 \begin{align}
 \omega(k^2+l^2)
 &=
@@ -184,7 +199,7 @@ Wellen können sich immer nur in West-Ost-Richtung ausbreiten.
 Die Phasengeschwindigkeit~\eqref{rossby:phasengeschwindigkeit}
 hilft uns nicht, die Dynamik des El Niño zu verstehen, da wir dazu
 den Transport von Energie verstehen müssen.
-Die ebenen Wellen der Form~\eqref{rossby:ebenewelle} beschreiben eine Welle
+Die ebenen Wellen der Form~\eqref{rossby:ebenewelle} beschreiben eine Welle,
 die überall die gleiche Amplitude hat, es findet also eigentlich gar
 kein Energietransport statt.
 Im Beispiel des ``Wasserberges'' in der Untersuchung zu den Kelvin-Wellen
@@ -195,11 +210,12 @@ ebenen Wellen formulieren und dann die zeitliche Entwicklung dieser
 Überlagerung studieren.
 
 \subsubsection{Überlagerungen}
-Wir gehen daher von einer eindimensionalen Situation aus und studieren
+Wir gehen von einer eindimensionalen Situation aus und studieren
 eine Überlagerung $u(x,t)$ von Wellen der Form $\cos(kx-\omega(k) t)$
 mit verschiedenen Wellenzahlen $k$.
-Mit der Wellenzahlabhängigen Amplitude $\hat f(k)$ lässt sich die
-Überlagurung als
+Mit der wellenzahlabhängigen Amplitude $\hat f(k)$, dem Spektrum
+wie in Kapitel~\ref{chapter:fourier} studiert, lässt sich die
+Überlagerung als
 \begin{equation}
 u(x,t)
 =
@@ -212,7 +228,7 @@ dadurch studieren, dass man die Bewegung des Maximums dieses
 Wellenpaketes verfolgt.
 
 Die Darstellung~\eqref{rossby:reelleueberlagerung} ist für diese
-Untersuchung sehr unhandlich, die Rechnung sind sehr umständlich.
+Untersuchung sehr unhandlich, die Rechnung sind zu umständlich.
 Wir schreiben die Wellen daher als Realteil einer komplexen
 Welle $e^{i(kx-\omega(k)t}$, also
 \begin{equation}
@@ -222,40 +238,10 @@ u(x,t)
 \int_{-\infty}^\infty \hat f(k)\,e^{i(kx-\omega(k)t)}\,dk.
 \label{rossby:komplexeueberlagerung}
 \end{equation}
+Dabei lassen wir auch zu, dass $\hat{f}(k)$ komplexe Werte annimmt.
 
 \subsubsection{Wellenpakete}
 \begin{figure}
-%\def\deltak{0.6}
-%\def\knull{12}
-%\def\ampli{0.25}
-%\begin{tikzpicture}[>=latex,thick]
-%\begin{scope}[xshift=-6cm]
-%\draw[->] (-0.1,0)--(5.1,0) coordinate[label={$k$}];
-%\draw[->] (0,-0.1)--(0,2.3) coordinate[label={right:$\hat f(k)$}];
-%\draw[color=red,line width=1.4pt] (-0.1,0)--({3-0.2},0);
-%\draw[color=red,line width=1.4pt] ({3+0.2},0)--(5.1,0);
-%\draw[color=red,line width=1.4pt] ({3-0.2},2)--({3+0.2},2);
-%\draw[color=red,line width=0.1pt] ({3-0.2},0)--({3-0.2},2);
-%\draw[color=red,line width=0.1pt] ({3+0.2},0)--({3+0.2},2);
-%\draw[line width=0.1pt] (0,2)--(5,2);
-%\draw (-0.1,2)--(0.1,2);
-%\draw (3,-0.1)--(3,0.1);
-%\draw ({3-0.2},-0.1)--({3-0.2},0.1);
-%\draw ({3+0.2},-0.1)--({3+0.2},0.1);
-%\node at (3,0) [below] {$k_0$};
-%\node at ({3-0.2},0) [above left] {$k_0-\Delta k$};
-%\node at ({3+0.2},0) [above right] {$k_0+\Delta k$};
-%\end{scope}
-%\begin{scope}[xshift=4cm,yshift=1cm]
-%\draw[->] (-3.1,0)--(3.1,0) coordinate[label={$x$}];
-%\draw[->] (-3,-1.1)--(-3,1.3) coordinate[label={right:$u(x,t)$}];
-%\draw[color=red] plot[domain=-3:3,samples=2400]
-%	({\x},{\ampli*cos(360*\knull*\x)*sin(360*\deltak*\x)/\x});
-%\draw[color=blue] plot[domain=-3:3,samples=400]
-%	({\x},{\ampli*sin(360*\deltak*\x)/\x});
-%\node at (0,-1) [below] {$x-ct$};
-%\end{scope}
-%\end{tikzpicture}
 \centering
 \includegraphics{chapters/7/wellenpaket.pdf}
 \caption{Berechnung eines Wellenpaketes aus Wellen mit Wellenzahlen
@@ -263,7 +249,7 @@ zwischen $k_0-\Delta k$ und $k_0+\Delta k$.
 \label{rossby:wellenpaket}}
 \end{figure}
 Wir betrachten ein Wellenpaket, welches als Überlagerung mit der
-Funktion
+Amplitudenfunktion
 \[
 \hat f(k)
 =
@@ -272,18 +258,22 @@ Funktion
 0&\qquad\text{sonst}
 \end{cases}
 \]
+wie in Abbildung~\ref{rossby:wellenpaket} entsteht.
 Die Überlagerung $u(x,t)$ gemäss~\eqref{rossby:komplexeueberlagerung}
 kann man jetzt vereinfachen:
 \[
 u(x,t)
 =
+\operatorname{Re}
 \int_{-\infty}^\infty \hat f(k)\,e^{i(kx-\omega(k)t)}\,dk
 =
+\operatorname{Re}
 \int_{k_0-\Delta k}^{k_0+\Delta k} e^{i(kx-\omega(k)t)}\,dk,
 \]
 allerdings muss dazu $\omega(k)$ bekannt sein.
 
-Falls $\omega(k)=ck$ gilt, falls also jede elementare Welle die gleiche
+Falls $\omega(k)=ck$ gilt, falls also jede der elementaren Wellen
+$\cos(kx-\omega t)$ die gleiche
 Ausbreitungsgeschwindigkeit $c$ hat, können wir $u(x,t)$ explizit
 ausrechnen:
 \begin{align*}
@@ -321,8 +311,8 @@ e^{ik_0(x-ct)}
 =
 2\cos k_0(x-ct) \frac{\sin \Delta k(x-ct)}{x-ct}
 \end{align*}
-Dies ist eine schnell schankende Funktion mit Wellenzahl $k_0$, rot
-dargestellt in Abbildung~\ref{rossby:wellenpakt} rechts, moduliert
+Dies ist eine schnell schwankende Funktion mit Wellenzahl $k_0$, rot
+dargestellt in Abbildung~\ref{rossby:wellenpaket} rechts, moduliert
 mit der langsam schwankenden Funktion $\sin\Delta k(x-ct)/(x-ct)$,
 dargestellt in der selben Abbildung in blau.
 Der Schwerpunkt des Paketes befindet sich bei der $x$-Koordinaten $x-ct$,
@@ -334,7 +324,7 @@ Bisher haben wir angenommen, dass die Frequenz und die Wellenzahl proportional
 sind, dass also $\omega(k)=ck$.
 Die Untersuchungen zu den Rossby-Wellen hat gezeigt, dass dies nicht
 zutreffen muss.
-Wir müssen die Rechnung also mit einem Modell wiederholen, wo die
+Wir müssen die Rechnung also mit einem Modell wiederholen, in dem die
 Frequenz $\omega(k)$ nicht einfach nur proportional zu $k$ ist.
 Für kleines $\Delta k$ genügt eine lineare Approximation der
 Abhängigkeit von $\omega(k)$ von $k$, wir setzen daher
@@ -417,7 +407,8 @@ schwankenden Funktion
 \frac{\sin\Delta k(x-\omega_1t)}{x-\omega_1 t}.
 \label{rossby:gruppe}
 \end{equation}
-Das Maximum der Funktion~\eqref{rossby:gruppe} wandert mit der
+Das Maximum der Funktion~\eqref{rossby:gruppe}
+befindet sich bei $x=\omega_1 t$, wandert also mit der
 Geschwindigkeit $\omega_1$ nach rechts.
 
 Die soeben durchgeführte Berechnung zeigt also, dass Wellenpakete
@@ -425,7 +416,8 @@ mit der Geschwindigkeit
 \[
 c_g=\frac{d\omega(k)}{dk},
 \]
-der sogenannten Gruppengeschwindigkeit, wandern.
+der sogenannten {\em Gruppengeschwindigkeit}, wandern.
+\index{Gruppengeschwindigkeit}%
 Der Energietransport durch Wellenpakete erfolgt offenbar nicht
 mit der Ausbreitungsgeschwindigkeit $c=\omega/k$, sondern mit der
 Gruppengeschwindigkeit.
@@ -450,7 +442,8 @@ U-\beta
 Je nach der relativen Grösse von $k$ und $l$ kann die
 Gruppengeschwindigkeit sowohl grösser als auch kleiner sein als die
 mittlere Geschwindigkeit $U$ in der Zone.
-
+Rossby-Wellen können also je nach Wellenzahl sowohl nach Westen wie
+auch nach Osten laufen.
 
 
 

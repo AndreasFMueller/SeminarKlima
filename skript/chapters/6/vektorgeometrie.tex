@@ -8,22 +8,23 @@
 Die bisherigen rein analytischen Betrachtungen verdecken den geometrischen
 Gehalt der bisher entwickelten Theorie.
 In diesem Abschnitt soll daher zunächst eine vektorielle Darstellung
-aufgebaut, die dann erlauben soll, einerseits die Formeln für die 
+aufgebaut werden, die dann erlauben soll, einerseits die Formeln für die 
 Fourierkoeffizienten geometrisch zu verstehen und andererseits auf
 komplexere Situationen zu verallgemeinern.
 
 \subsection{Vektoren}
 Die Operationen zur Bestimmung der Fourier-Koeffizienten können in 
 vektorieller Schreibweise etwas übersichtlicher dargestellt werden.
-Zunächst fassen wir die Funktionswerte $y_j$ in einem Vektor zusamen.
+Zunächst fassen wir die Funktionswerte $y_j$ in einem Vektor
 \begin{equation}
 y = \begin{pmatrix}y_1\\\vdots\\y_N\end{pmatrix}
 \end{equation}
+zusamen.
 Zur Berechnung der Fourier-Koeffizienten brauchen wir auch noch die
 Werte der trigonometrischen Funktionen zu den Zeiten $t_j$, die wir
 ebenfalls als Vektoren
 \begin{align*}
-c_0&=\begin{pmatrix}0\\\vdots\\0\end{pmatrix},
+c_0&=\begin{pmatrix}1\\\vdots\\1\end{pmatrix},
 &
 c_k&=\begin{pmatrix}\cos kt_1\\\vdots\\\cos kt_N\end{pmatrix},\;(k=1,\dots,n)
 &&\text{und}
@@ -31,18 +32,78 @@ c_k&=\begin{pmatrix}\cos kt_1\\\vdots\\\cos kt_N\end{pmatrix},\;(k=1,\dots,n)
 s_k&=\begin{pmatrix}\sin kt_1\\\vdots\\\sin kt_N\end{pmatrix},\;(k=1,\dots,n-1)
 \end{align*}
 schreiben.
+
+\subsubsection{Skalarprodukt und Norm}
+Die Fourier-Koeffizienten sind Summen von Produkten von Komponenten von $y$
+und Werten von trigonometrischen Funktionen, die wir ebenfalls als Komponenten
+der Vektoren $c_k$ und $s_k$ ansehen können.
+Dies sieht aus wie das Skalarprodukt zweier Vektoren.
+
+Wir verenden die folgende Notation.
+Das Skalarprodukt zweier Vektoren $x$ mit Komponenten $x_j$ und $y$ mit
+Komponenten $y_j$ ist
+\begin{equation}
+x\cdot y
+=
+\sum_{j=1}^N x_jy_j
+=
+x^ty.
+\end{equation}
+Die Norm eines Vektors ist
+\begin{equation}
+\| x\| = \sqrt{x\cdot x} = \sqrt{\sum_{j=1}^N x_j^2}.
+\end{equation}
+Die Entfernung zwischen zwei Vektoren ist dann $\| x-y\|$.
+Die Fourier-Analyse löst das Problem, Koeffzienten $a_k$ und $b_k$
+zu finden, so dass der Vektor $y$ der Funktionswerte $y_j$ und
+der Vektor $p_n$ der Werte $p_n(t_j)$ des trigonometrischen Polynoms
+möglichst nahe beeinander sind.
+Genauer wurde 
+\begin{equation}
+L=L(a_0,a_1,\dots,a_n,b_1,\dots,b_{n-1})
+=
+\sum_{j=1}^N (y_j - p_n(t_j))^2
+=
+\| y - p_n\|^2
+\qquad\text{mit}\quad
+p_n=\begin{pmatrix}
+p_n(t_1)\\\vdots\\p_n(t_N)
+\end{pmatrix}
+\end{equation}
+als zu minimierendes Mass für den Abstand der beiden Vektoren
+definiert.
+
 Die Fourier-Koeffizienten können jetzt als Skalarprodukte geschrieben werden:
 \begin{align*}
-a_0 &=\frac1N c_0\cdot y,&
-a_k &=\frac2N c_k\cdot y,\;(k=1,\dots,n),&
-b_k &=\frac2N s_k\cdot y,\;(k=1,\dots,n-1).
+a_0
+&=
+\frac1N\sum_{j=1}^N y_j
+=
+\frac1N\sum_{j=1}^N 1\cdot y_j 
+=
+\frac1N c_0\cdot y,
+\\
+a_k
+&=
+\frac{2}{N}\sum_{j=1}^N
+\cos kt_j \cdot y_j
+=
+\frac2N c_k\cdot y,
+&k&=1,\dots n
+\\
+b_k
+&=
+\frac2N \sum_{j=1}^N \sin kt_j \cdot y_j
+=
+\frac2N s_k\cdot y,&k&=1,\dots,n-1
 \end{align*}
 
 \subsubsection{Rekonstruktion der Funktion}
 Auch die Darstellung der Funktion kann man wieder als Skalarprodukt schreiben.
 Dazu schreiben wir die Fourier-Koeffizienten und die Werte der
 trigonometrischen Funtionen also Vektoren
-\begin{align*}
+\[
+\begin{aligned}
 a
 &=
 \begin{pmatrix}
@@ -69,11 +130,125 @@ e(t)
 \sin(n-1)t\\
 \cos nt
 \end{pmatrix}.
-\end{align*}
-Damit wird 
-\[
-p(t) = a\cdot e(t)
+\end{aligned}
 \]
+Damit wird 
+\begin{align*}
+p_n(t)
+&=
+a_0 + a_1\cos t + b_1\sin t + a_2\cos2t+b_2\sin2t+\dots+a_n\cos nt
+\\
+&=
+\begin{pmatrix}
+a_0\mathstrut\\
+a_1\mathstrut\\
+b_1\mathstrut\\
+a_2\mathstrut\\
+b_2\mathstrut\\
+\vdots\\
+b_{n-1}\mathstrut\\
+a_n\mathstrut
+\end{pmatrix}
+\cdot
+\begin{pmatrix}
+1\\
+\cos t\\
+\sin t\\
+\cos2t\\
+\sin2t\\
+\vdots\\
+\sin(n-1)t\\
+\cos nt
+\end{pmatrix}
+=
+a\cdot e(t).
+\end{align*}
+Der Vektor $p_n$ besteht aus Funktionswerten $p_n(t_j)$, man kann dies
+auch als Linearkombination der Vektoren $c_0$, $c_k$ und $s_k$ schreiben:
+\begin{equation}
+p_n = a_0c_0 + \sum_{k=1}^n a_kc_k + \sum_{k=1}^{n-1} b_ks_k.
+\label{skript:fourier:pn}
+\end{equation}
+
+\subsubsection{Gleichungen für die Koeffizienten}
+Sogar die Herleitung der Gleichungen zur Bestimmung der Fourierkoeffizienten
+lässt sich in dieser vektoriellen Schreibweise kompakter durchführen.
+Die Ableitung von $L$ nach einem Koeffizienten ist
+\begin{align*}
+\frac{\partial L}{\partial a_0}
+&=
+\frac{\partial}{\partial a_0} (y-p_n)\cdot (y-p_n)
+=
+-2(y-p_n)\cdot \frac{\partial p_n}{\partial a_0}
+\\
+\frac{\partial L}{\partial a_k}
+&=
+\frac{\partial}{\partial a_k} (y-p_n)\cdot (y-p_n)
+=
+-2(y-p_n)\cdot \frac{\partial p_n}{\partial a_k}
+\\
+\frac{\partial L}{\partial b_k}
+&=
+\frac{\partial}{\partial b_k} (y-p_n)\cdot (y-p_n)
+=
+-2(y-p_n)\cdot \frac{\partial p_n}{\partial b_k}.
+\end{align*}
+Die Ableitungen des Vektors $p_n$ nach den Koeffizienten sind
+\begin{align*}
+\frac{\partial p_n}{\partial a_0}
+&=
+\begin{pmatrix}
+1\\
+\vdots\\
+1
+\end{pmatrix}
+=
+c_0,&
+\frac{\partial p_n}{\partial a_k}
+&=
+\begin{pmatrix}
+\cos kt_1\\\vdots\\\cos kt_N
+\end{pmatrix} = c_k,
+&
+\frac{\partial p_n}{\partial b_k}
+&=
+\begin{pmatrix}
+\sin kt_j\\\vdots\\\sin kt_N,
+\end{pmatrix}
+\end{align*}
+womit die Gleichungen zur Bestimmung der Fourierkoeffizienten zu
+\begin{align*}
+(y-p_n)\cdot c_0 &= 0&
+(y-p_n)\cdot c_k &= 0&
+(y-p_n)\cdot s_k &= 0
+\end{align*}
+werden.
+Die Darstellung~\eqref{skript:fourier:pn} des Vektors $p_n$ erlaubt,
+diese Gleichungen weiter zu vereinfachen, sie werden zu
+\begin{equation}
+\begin{aligned}
+(y-p_n)\cdot c_0&=0 
+&&\Rightarrow&
+y\cdot c_0
+&=
+\biggl(a_0c_0 + \sum_{k=1}^n a_kc_k +\sum_{k=1}^{n-1}b_ks_k\biggr)\cdot c_0
+\\
+(y-p_n)\cdot c_k&=0 
+&&\Rightarrow&
+y\cdot c_k
+&=
+\biggl(a_0c_0 + \sum_{k=1}^n a_kc_k +\sum_{k=1}^{n-1}b_ks_k\biggr)\cdot c_k
+\\
+(y-p_n)\cdot s_k&=0 
+&&\Rightarrow&
+y\cdot s_k
+&=
+\biggl(a_0c_0 + \sum_{k=1}^n a_kc_k +\sum_{k=1}^{n-1}b_ks_k\biggr)\cdot s_k
+\end{aligned}
+\label{skript:fourier:skalarprodgl}
+\end{equation}
+Die Summen auf der rechten Seite können ausgewertet werden, wenn man die
+die Skalarprodukte der Vektoren $c_k$ und $s_k$ kennt.
 
 \subsubsection{Orthogonalität}
 Die Aussagen von Satz~\ref{skript:fourier:orthogonalitaet1}
@@ -123,6 +298,26 @@ Umformulierung der Aussagen des
 Satzes~\ref{skript:fourier:orthogonalitaet1}.
 \end{proof}
 
+In den Gleichungen~\eqref{skript:fourier:skalarprodgl} können jetzt
+die Skalarprodukte berechnet werden.
+Es bleibt jeweils nur ein einziger Term übrig, nämlich
+\begin{equation*}
+\begin{aligned}
+y\cdot c_0 &= a_0 c_0\cdot c_0
+&&\Rightarrow&
+a_0 = \frac{1}{c_0\cdot c_0}c_0\cdot y = \frac1N c_0\cdot y
+\\
+y\cdot c_k &= a_k c_k\cdot c_k
+&&\Rightarrow&
+a_k = \frac{1}{c_k\cdot c_k}c_k\cdot y = \frac2N c_k\cdot y
+\\
+y\cdot s_k &= b_k s_k\cdot s_k
+&&\Rightarrow&
+b_k = \frac{1}{s_k\cdot s_k}s_k\cdot y = \frac2N s_k\cdot y,
+\end{aligned}
+\end{equation*}
+wie früher auch schon gefunden.
+
 \subsubsection{Die Identität von Parseval}
 Die Relationen von
 Satz~\ref{skript:fourier:orthogonalitaet1}
@@ -151,7 +346,7 @@ Na_0^2
 \sum_{k=1}^n a_k^2
 +
 \sum_{k=1}^{n-1} b_k^2
-\biggr)
+\biggr).
 \end{align*}
 Damit haben wir den folgenden Satz bewiesen:
 \begin{satz}[Parseval]
@@ -167,11 +362,22 @@ Damit haben wir den folgenden Satz bewiesen:
 \sum_{k=1}^n a_k^2
 +
 \sum_{k=1}^{n-1} b_k^2
-\biggr)
+\biggr).
 \]
 \end{satz}
+Die Parseval-Gleichung hat zur Konsequenz, dass eine Funktion mit nur
+kleinen Werten auch nur kleine Fourier-Koeffizienten haben kann.
+Sind zwei Funktionen $f$ und $g$ nahe beeinandern, dann unterscheiden
+sich die Fourier-Koefizienten nur wenig.
 
-\subsubsection{$2\pi$-Periodische Funktionen auf $\mathbb R$}
+Umgekehrt können wir auch schliessen, dass Terme mit kleine
+Fourier-Koeffizienten nur zu geringen Unterschieden der Funktionen
+führen.
+Indem wir Terme mit kleinen Fourier-Koeffizienten weglassen, 
+können wir die Approximation einer Funktion durch ein trigonometrisches
+Polynom vereinfachen, ohne dass ein grosser Fehler entsteht.
+
+\subsection{$2\pi$-Periodische Funktionen auf $\mathbb R$\label{subsection:fourier:stetig}}
 Die eben vektoriell dargestellte Analyse diskreter periodischer Funktionen 
 kann verallgemeinert werden auf die Analyse von Funktionen auf
 anderen Definitionsgebieten.
@@ -226,7 +432,7 @@ Als Basisfunktionen kann man die Funktionen
 \end{equation}
 verwenden.
 Das Skalarprodukt $\langle f,g\rangle$ muss linear in $f$ und $g$ sein.
-Eine naheliegende Wahl ist
+Eine naheliegende Wahl für das Skalarprodukt ist
 \[
 \langle f, g\rangle
 =
@@ -360,6 +566,74 @@ und die Fourier-Reihe ist
 +
 \sum_{k=1}^\infty (a_k\cos kx+b_k\sin kx).
 \end{equation}
+
+\subsubsection{Beispiel: Dreiecksfunktion}
+\begin{figure}
+\centering
+\includegraphics{chapters/6/dreieck2.pdf}
+\caption{Dreiecksfunktion und Approximation durch die Fourierreihe
+\eqref{skript:fourier:dreieckreihe}
+für verschiedene Werte von $n$.
+\label{skript:fourier:stetigdreieck}}
+\end{figure}
+Wir berechnen die Fourier-Koeffizienten für die Dreiecksfunktion
+\eqref{skript:fourier:dreieck}, für die wir die diskreten Fourier-Koeffizienten
+bereits in Abschnitt~\ref{subsection:fourier:dreiecksfunktion}
+berechnet haben.
+Wie im diskreten Fall folgt aus den Symmetrieeigenschaften, dass $a_k=0$
+ist für alle $k$ und $b_k=0$ für alle geraden $k$.
+Es bleibt also nur noch, für ungerades $k$
+die Koeffizienten
+\begin{align}
+b_k
+&=
+\frac{1}{\pi} \int_0^{2\pi} f(x) \sin kx\,dx
+\notag
+\\
+&=
+\frac{4}{\pi} \int_{0}^{\frac{\pi}2} f(x)\sin kx\,dx
+=
+\frac{4}{\pi} \int_{0}^{\frac{\pi}2} \frac2{\pi}x\sin kx\,dx
+=
+\frac{8}{\pi^2} \int_{0}^{\frac{\pi}2} x\sin kx\,dx
+\notag
+\\
+&=
+\frac{8}{\pi^2} \biggl(
+\biggl[-\frac{x}{k}\cos kx\biggr]_0^{\frac{\pi}2} + \int_{0}^{\frac{\pi}2}\frac{1}{k}\cos kx\,dx
+\biggr)
+=
+\frac{8}{\pi^2}
+\biggl[
+-\frac{x}{k}\cos kx +\frac{1}{k^2}\sin kx
+\biggr]_0^{\frac{\pi}2}
+\notag
+\\
+&=
+\frac{8}{\pi^2} \biggl[ \frac{\sin kx - kx\cos kx}{k^2}\biggr]_0^{\frac{\pi}2}
+=
+\frac{8}{\pi^2 k^2} \biggl[\sin kx - kx\cos kx\biggr]_0^{\frac{\pi}2}
+\notag
+\\
+&=
+\frac{8}{\pi^2k^2}\biggl(
+(-1)^{(k-1)/2} - k\frac{\pi}2\underbrace{\cos k\frac{\pi}2}_{\displaystyle=0}
+\biggr)
+=
+\frac{8}{\pi^2k^2}(-1)^{(k-1)/2}
+\label{skript:fourier:bkstetig}
+\end{align}
+zu bestimmen.
+In Tabelle~\ref{skript:fourier:beispiel} werden die diskreten
+Fourierkoeffizienten den hier gefundenen stetigen Koeffizienten
+gegenübergestellt.
+Die zugehörige Fourierreihe
+\begin{equation}
+p_{2n}(t) = \frac{8}{\pi^2} \sum_{i=1}^n \frac{(-1)^i}{(2i-1)^2}\sin(2i-1)t
+\label{skript:fourier:dreieckreihe}
+\end{equation}
+ist in Abbildung~\ref{skript:fourier:stetigdreieck} dargestellt.
+Die Anzahl der berücksichtigten nicht verschwindenden Terme ist $n$.
 
 \subsection{Diskrete Fourier-Transformation}
 Die Fourier-Koeffizienten $a_k$ und $b_k$ hängen linear von den

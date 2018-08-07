@@ -1,0 +1,56 @@
+%
+% spektrum.tex -- Spektrum
+%
+% (c) 2018 Prof Dr Andreas Müller, Hochschule Rapperswil
+%
+\documentclass[tikz]{standalone}
+\usepackage{times}
+\usepackage{amsmath}
+\usepackage{txfonts}
+\usepackage[utf8]{inputenc}
+\usepackage{graphics}
+\usepackage{color}
+\usetikzlibrary{arrows,intersections}
+\usepackage{pgfplots}
+\begin{document}
+\definecolor{darkgreen}{rgb}{0,0.6,0}
+\input{sp.tex}
+\begin{tikzpicture}[>=latex,thick,scale=2]
+
+\def\pizahl{3.14159}
+
+\draw[->] (-0.1,0)--(6.5,0) coordinate[label=$t$];
+\draw[->] (0,-1.05)--(0,1.15) coordinate[label={right:$y$}];
+
+\draw ({2*\pizahl/2},-0.02)--({2*\pizahl/2},0.02);
+\node at ({2*\pizahl/2},0) [below] {$\displaystyle\mathstrut \pi$};
+\draw ({4*\pizahl/2},-0.02)--({4*\pizahl/2},0.02);
+\node at ({4*\pizahl/2},0) [below] {$\displaystyle 2\pi$};
+
+\draw (-0.02,1)--(0.02,1);
+\node at (0,1) [left] {$1$};
+\draw (-0.02,-1)--(0.02,-1);
+\node at (0,-1) [left] {$-1$};
+
+\funk
+
+\begin{scope}[yshift = -2.4cm]
+
+\draw[->] (-0.1,0)--(6.5,0) coordinate[];
+\draw[->] (0,-0.02)--(0,1.15) coordinate[label={right:$|c|$}];
+
+\draw ({2*\pizahl/2},-0.02)--({2*\pizahl/2},0.02);
+\node at ({2*\pizahl/2},0) [below] {$\displaystyle\mathstrut n$};
+\draw ({4*\pizahl/2},-0.02)--({4*\pizahl/2},0.02);
+\node at ({4*\pizahl/2},0) [below] {$\displaystyle 2n$};
+\node at (0,0) [below] {$0$};
+
+\draw (-0.02,1)--(0.02,1);
+\node at (0,1) [left] {$c_{\text{max}}$};
+
+\spek
+
+\end{scope}
+
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,30 @@
+%
+% fftaufwand.tex -- Aufwand für die Berechnung der Fourier-Transformation
+%
+% (c) 2018 Prof Dr Andreas Müller, Hochschule Rapperswil
+%
+\documentclass[tikz]{standalone}
+\usepackage{times}
+\usepackage{amsmath}
+\usepackage{txfonts}
+\usepackage[utf8]{inputenc}
+\usepackage{graphics}
+\usepackage{color}
+\usetikzlibrary{arrows,intersections}
+\usepackage{pgfplots}
+\begin{document}
+\definecolor{darkgreen}{rgb}{0,0.6,0}
+\input{auf.tex}
+\begin{tikzpicture}[>=latex,thick,scale=0.25]
+
+\draw[->] (1.9,0)--(42.1,0) coordinate[label=$\log N$];
+\draw[->] (2,0)--(2,29.1) coordinate[label={right:$\log g(N)$}];
+
+\draw[color=blue] plot[domain=2:42,samples=2] ({\x},{2*\x/3});
+\node[color=blue] at (19,14) [above] {$O(N^2)$};
+
+\nlogn
+\node[color=red] at (26,9) [below] {$O(N\log_2N)$};
+
+\end{tikzpicture}
+\end{document}
