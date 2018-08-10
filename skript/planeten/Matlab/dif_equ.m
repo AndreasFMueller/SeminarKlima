@@ -1,7 +1,7 @@
 addpath('equations');
 
 latexplots = 1;
-saveplots = 0;
+saveplots = 1;
 
 %% static parameter
 global CONST;
@@ -35,7 +35,7 @@ EARTH.A = 1.499e11; %m
 EARTH.T_mean = 273+14;  %K WolframAlpha
 EARTH.T_blackbody = 275; %K claesjohnson
 EARTH.albedo = 0.367; % WolframAlpha
-EARTH.cloud_cover = 0.68; % ?
+EARTH.cloud_cover = 0.67; % https://earthobservatory.nasa.gov/images/85843/cloudy-earth
 EARTH.mean_h2o = 0.44;    % http://www.climate4you.com/ClimateAndClouds.htm
 
 MARS.name = 'Mars';
@@ -71,14 +71,26 @@ SIM.T_s_0    = EARTH.T_mean; %K
 SIM.H_0      = EARTH.mean_h2o;
 SIM.C_0 = EARTH.cloud_cover;
 
+
+
 global PARAM
 PARAM.xi1 = 1;       %dT factor     
 PARAM.xi2 = 16e-3;    %vaporisation
 PARAM.xi3 = 0.26e1;  %condesation     1.9e-2; 
 PARAM.xi4 = 5e-0;    %precipitation
-PARAM.beta_max = 0.5;     %greenhouse effect
+PARAM.beta_max = 0.9;     %greenhouse effect
 PARAM.alpha_min = 0.15;
-PARAM.alpha_max = 0.55;
+PARAM.alpha_max = 0.48;
+
+% albedo only has a small deviation
+% global PARAM
+% PARAM.xi1 = 1;       %dT factor     
+% PARAM.xi2 = 16e-3;    %vaporisation
+% PARAM.xi3 = 2.6e0;  %condesation     1.9e-2; 
+% PARAM.xi4 = 5e-0;    %precipitation
+% PARAM.beta_max = 0.5;     %greenhouse effect
+% PARAM.alpha_min = 0.15;
+% PARAM.alpha_max = 0.55;
 
 
 
@@ -133,7 +145,7 @@ for i = 1:4
 %     planets{i}.y.P_in = P_in;
 %     planets{i}.y.P_out = P_in;
     planets{i}.y.albedo     = ((PARAM.alpha_max - PARAM.alpha_min) * C) + PARAM.alpha_min;
-    planets{i}.y.greenhouse = ( PARAM.xi8 * H);
+    planets{i}.y.greenhouse = ( PARAM.beta_max * H);
     
     
     
@@ -255,6 +267,7 @@ if (latexplots == 1)
     hold off;
     title('Humidity');
     ylabel('%');
+    ylim([0 100])
     xlabel('Time');
     legend({planets{1}.name, planets{2}.name, planets{3}.name, planets{4}.name});
     grid

@@ -187,7 +187,7 @@ h_{\text{Wasserdampfbildung}} = \xi_2 T_S \text{ .}
 
 %\subsubsection{Wolkenbildung}
 Wolken entstehen, wenn feuchte Luft beim aufsteigen sich abkühlt und kondensiert. Näherungswiese entstehen mehr Wolken je grösser die Luftfeuchtigkeit $H$ ist und je schneller die Temperatur mit der Höhe abnimmt.
-Dabei nimmt die Wolkenbildung mit grösserer Luftfeuchtigkeit $H$ und grösserem Temperaturgradienten $\frac{dT}{dh}$ zu. Durch Multiplizieren mit einem wählbaren Freiheitsgrad $\xi_3$ kann die Wirkung des Prozesses justiert werden. Die Wolkenbildung ist somit
+Dabei nimmt die Wolkenbildung mit grösserer Luftfeuchtigkeit $H$ und grösserem Temperaturgradienten $\frac{dT}{dh}$ zu. Durch Multiplizieren mit einem wählbaren Parameter $\xi_3$ kann die Wirkung des Prozesses justiert werden. Die Wolkenbildung ist somit
 %Wolken bilden sich durch kondensieren des Wasserdampfs. Dieser Vorgang
 %feuchte Luft abgekühlt wird
 %bei grossem Temperaturgradienten
@@ -268,7 +268,7 @@ wobei $n$ ungerade ist und somit auch $f'(x)$ ungerade bleibt. Der Effekt von $f
 \begin{figure}[!h]
 	\center
 	\includegraphics[height=0.45\textheight]{planeten/Matlab/figures/limiter.eps}
-	\caption{Limitierung von Termen}
+	\caption{Limitierung von Termen mit $f(x) = x$ in blau und $f'(x) = x + x^7$ in rot.}
 	\label{planeten:limit_graph}
 \end{figure}
 Diese Art von Limitierung wird bei der Wolkenbildung, sowohl beim Wolkenabbau eingesetzt. Das fertige, angepasste Modell lautet somit:
@@ -294,7 +294,7 @@ C_0 = & 0.68
 \end{matrix}
 \end{equation}sind Jahresmittelwerte von Oberflächentemperatur, Relativer Luftfeuchtigkeit, und Wolkenabdeckung.
 %TODO shift xi values
-Die in Tabelle \ref{} ersichtlichen Freiheitsgrade $\xi_1$ bis $\xi_6$ sowie $\beta_{\text{max}}$ wurden empirisch gesetzt um für die Erde stabile Resultate zu erhalten.
+Die in Tabelle \ref{planeten:xiValues} ersichtlichen freien Parameter $\xi_1$ bis $\xi_6$ sowie $\beta_{\text{max}}$ wurden empirisch gesetzt um für die Erde stabile Resultate zu erhalten.
 %TODO why i picked those xi's, erklärung
 \begin{center}
 \begin{table}[!h]
@@ -303,12 +303,12 @@ Die in Tabelle \ref{} ersichtlichen Freiheitsgrade $\xi_1$ bis $\xi_6$ sowie $\b
         & Wert                  & Beschribung \\
   \hline
 $\xi_1$ & $1$					& Wirkung der Leistungsdifferenz auf die Oberflächentemperatur\\
-$\xi_2$ & $1.5 \cdot 10^{-3}$	& Koefffizient Wasserdampfbildung\\
-$\xi_3$ & $1.9 \cdot 10^{-2}$	& Koefffizient Wolkenbildung \\
-$\xi_4$ & $4   \cdot 10^{-1}$	& Koefffizient Wolkenabbau \\
-$\beta_{\text{max}}$ & $0.6$					& Maximaler Anteil der durch den Treibhauseffekt zurückgehalteten Leisung
+$\xi_2$ & $16 \cdot 10^{-3}$	& Koefffizient Wasserdampfbildung\\
+$\xi_3$ & $2.6 \cdot 10^{0}$	& Koefffizient Wolkenbildung \\
+$\xi_4$ & $5   \cdot 10^{0}$	& Koefffizient Wolkenabbau \\
+$\beta_{\text{max}}$ & $0.5$	& Maximaler Anteil der durch den Treibhauseffekt zurückgehalteten Leisung
 	\end{tabular}
-	\caption{Für die Simulation gesetzte Freiheitsgrade}
+	\caption{Für die Simulation gesetzte freien Parameter}
 	\label{planeten:xiValues}
 \end{table}
 \end{center}
