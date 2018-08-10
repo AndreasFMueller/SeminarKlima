@@ -9,11 +9,12 @@ vorgestellt und seine Fehlerordnung untersucht.
 Es wurde darauf hingewiesen, dass die lineare Fehlerordnung das Verfahren
 für praktische Zwecke ungeeignet macht, da der Rechenaufwand für jede
 zusätzliche Stelle Genauigkeit um einen Faktor 10 steigt.
-In Programmen zur Numerik findet man daher meistens nur Verfahren mit
-höherer Fehlerordnung wie zum Beispiel das Verfahren von Runge-Kutta.
+In Computer-Programmen zur Lösung numerischer Probleme findet man daher
+meistens nur Verfahren mit höherer Fehlerordnung wie zum Beispiel
+das Verfahren von Runge-Kutta.
 
 In {\em Octave} stellt die Funktion \texttt{lsode} die notwendige
-Funktionalität auf einer Art zur Verfügung, bei der sich der
+Funktionalität auf eine Art zur Verfügung, bei der sich der
 Benutzer kaum Gedanken über die im Hintergrund verwendeten
 numerischen Techniken machen muss.
 Tatsächlich verwendet \texttt{lsode} ein Mehrschrittverfahren, welches
@@ -75,7 +76,7 @@ Man beachte, dass am Ende des Intervalls eine Genauigkeit von
 8 Stellen erreicht wird, besser als mit dem beschleunigten
 Verfahren.
 Nicht aus der Tabelle ersichtlich ist die Anzahl der Aufrufe der
-Funktion $f$.
+Funktion \texttt{f}.
 Für das Eulerverfahren und das beschleunigte Verfahren sind bei
 der Schrittweite $h=0.001$ genau 1000 Aufrufe notwendig.
 Die Funktion \texttt{lsode} ruft dagegen die Funktion \texttt{f}
