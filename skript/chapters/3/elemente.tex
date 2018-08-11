@@ -8,8 +8,8 @@ Für eine lineare Differentialgleichung ist die Funktion $f(x)$ linear
 in $x$.
 Sind $x_1(t)$ und $x_2(t)$ Lösungen der Differentialgleichung
 für Anfangswerte $x_1(0)$ und $x_2(0)$, dann ist
-$x_1(t)+x_2(t)$ eine Lösung der Differentialgleichung für die
-Anfangsbedingung $x_1(0)+x_2(0)$.
+$c_1x_1(t)+c_2x_2(t)$ eine Lösung der Differentialgleichung für die
+Anfangsbedingung $c_1x_1(0)+c_2x_2(0)$.
 
 \begin{figure}
 \centering
@@ -61,8 +61,8 @@ Die Lösung $\tilde{x}(t)$ ist also eine Linearkombination
 der Funktionen $z_k(t)$ schrieben können.
 Wir brauchen nur eine Methode, mit der die Koeffizienten $a_k$ bestimmt
 werden können.
-Da die Funktionen $y_k$ linear sind, könnten wir $\tilde{x}(t)$ in die 
-Differentialgleichung einsetzen:
+Als Linearkombination von $z_k(t)$ könnten wir $\tilde{x}(t)$ in die 
+Differentialgleichung einsetzen und mit der Linearität von $f$ vereinfachen:
 \begin{equation}
 \sum_{k=0}^\infty
 a_k\frac{d\tilde{z}_k(t)}{dt}
@@ -116,7 +116,7 @@ Die Idee, die Funktion $x(t)$ als Linearkombination $\tilde{x}(t)$
 der Funktionen zu approximieren, führt also auf natürliche Weise
 auf das Euler-Verfahren.
 
-Diese Idee lässt sich auf auch auf nichtlineare Differentialgleichungen
+Diese Idee lässt sich auch auf nichtlineare Differentialgleichungen
 verallgemeinern.
 Die Tatsache, dass $f(x)$ linear ist in $x$ hat die Hemmschwelle etwas
 heruntergesetzt, die Lösung als Linearkombination anzusetzen.

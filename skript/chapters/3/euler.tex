@@ -4,7 +4,7 @@
 % (c) 2018 Prof Dr Andreas Müller, Hochschule Rapperswil
 %
 \subsection{Das Euler-Verfahren\label{subsection:euler}}
-Es ist also eine Differentialgleichung der Form
+Es ist also eine autonome Differentialgleichung der Form
 \[
 \frac{dx}{dt} = f(x),\qquad x\in\mathbb R^n
 \]
@@ -16,7 +16,7 @@ Die Ableitung ist definiert als der Grenzwert des Differenzenquotienten
 \lim_{\Delta t\to 0}
 \frac{x(t+\Delta t)-x(t)}{\Delta t}.
 \]
-Für genügend kleines $\Delta t$ ist der Differenzenquotient daher eine
+Für genügend kleines $\Delta t$ ist der Differenzenquotient eine
 (hoffentlich) ausreichend genaue Approximation für die Ableitung,
 also
 \begin{equation}
@@ -62,7 +62,7 @@ Erhöht man die Zahl der Schritte, erwartet man, dass das Resultat genauer
 wird.
 Tatsächlich ist der Grenzwert für $N\to\infty$
 \[
-\lim_{N\to\infty} a_0\biggl(1-\frac{ax}{N}\biggr)^N
+\lim_{N\to\infty} y_0\biggl(1-\frac{ax}{N}\biggr)^N
 =
 y_0
 e^{-ax},
@@ -103,7 +103,7 @@ Nach $N$ Schritten verbleibt ein Fehler in der Grössenordnung von $1/N$,
 \[
 x_N = x(1) + O(1/N).
 \]
-Um eine zusätzliche Stelle Genauigkeit zu erreichen, um den Fehler um
+Um eine zusätzliche Stelle Genauigkeit zu erzielen, um den Fehler um
 den Faktor 10 zu reduzieren, muss die Zahl der Schritte also zehnmal 
 grösser werden.
 Der Rechenaufwand für eine Steigerung der Genauigkeit um den Faktor
@@ -116,7 +116,8 @@ werden, dass man nicht nur den ersten Term in der
 Entwicklung~\eqref{skript:euler:taylor} verwendet, sondern auch
 noch höhere Ableitungen berücksichtig.
 Zum Beispiel könnte man die zweite Ableitung verwenden.
-Diese lässt sich aus der Differentialgleichung mit Hilfe von
+Diese lässt sich mit der Differentialgleichung und mit Hilfe der Kettenregel
+aus
 \[
 \frac{d^2x}{dt^2}
 =
@@ -129,7 +130,7 @@ Df(x(t))\cdot \frac{dx(t)}{dt}
 Df(x(t))\cdot f(x(t))
 \]
 berechnen.
-Allerdings ist es meistens ziemlich aufwendig die Ableitung $Df$ von $f$ zu
+Allerdings ist es meistens ziemlich aufwendig, die Ableitung $Df$ von $f$ zu
 berechnen.
 
 Wir untersuchen den Genauigkeitsgewinn an Hand des Beispiels $y'=-ay$.
@@ -156,8 +157,8 @@ y(x) + y'(x)h + \frac12y''(x)h^2
 y_k&=y_0\biggl(1-ah+\frac12 a^2h^2\biggr)^k
 \label{skript:euler:beschleunigt}
 \end{align}
-Wir erwarten, dass dieses Verfahren deutlich genauere Resultate liefert,
-und zwar erwarten wir, dass der Fehler von der Grössenordnung $1/N^2$ ist.
+Wir erwarten, dass dieses Verfahren deutlich genauere Resultate liefert.
+Die Fehler dürften von der Grössenordnung $1/N^2$ sein.
 Man nennt dies ein {\em quadratisches} Verfahren.
 
 \begin{table}
@@ -191,7 +192,7 @@ Korrekte Stellen unterstrichen.
 In Tabelle~\ref{skript:euler:numerik} sind die Resultate der numerischen
 Rechnung mit beiden Verfahren mit verschiedenen Schrittweiten $h$
 zusammengestellt.
-Es sind nur die Werte von $y$ für ganzzahlige Vielfache von $0.1$
+Es sind nur die Werte von $y(x)$ für ganzzahlige Vielfache von $0.1$
 für $x$ gelistet.
 Die korrekten Stellen sind jeweils unterstrichen und bestätigen, dass
 beim Euler-Verfahren der Fehler von der Grössenordnung $h$, während
