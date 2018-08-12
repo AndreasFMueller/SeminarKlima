@@ -28,9 +28,10 @@
 Die Erde ist aus heutiger Sicht der einzige Planet der Leben haltet. Trotz allen Einwirkungen über vier Milliarden Jahre sind wir in der glücklichen Lage auf der Erde ein mildes Klima vorzufinden, das das irdische Leben erhielt. 
 Der Astrobiologe David Grinspoon meint dazu folgendes:
 \begin{quote}
-\textit{“It may be that conditions for life’s origin aren’t rare, but the hard part is the persistence of habitable conditions.”} \\
-\rightline{--- David Grinspoon, Astrobiologe \cite{planeten:AstrobiologyMagazine}}
-%% https://www.space.com/21234-alien-planets-earth-climate-future.html
+\textit{“It may be that conditions for life’s origin aren’t rare, but the hard part is the persistence of habitable conditions.”}
+\begin{flushright}
+--- David Grinspoon, Astrobiologe \cite{planeten:AstrobiologyMagazine} %% https://www.space.com/21234-alien-planets-earth-climate-future.html
+\end{flushright}
 \end{quote}
 Es könnte also sein, dass auf den meisten Planeten im Sonnensystem einmal gute Voraussetzungen für leben bestanden. Aber nur die Erde konnte mit einem anhaltenden, lebensfreundlichen Klima das Leben aufrecht erhalten.
 
@@ -51,7 +52,7 @@ Alle anderen Planeten konnten offenbar kein freundliches Klima bewahren. Tabelle
 	%\hline
 \end{tabular}
 % (http://www.climate4you.com/ClimateAndClouds.htm) not used yet
-\caption{Planeten im Vergleich}
+\caption{Planeten im Vergleich \cite{planeten:temperatures}}
 \label{planeten_comparison}
 \end{table}
 \end{center}
@@ -151,8 +152,8 @@ Die minimale Albedo $\alpha_{\text{min}}$ tritt bei 0\% Wolkenabdeckung auf und 
 \end{equation}
 
 \subsection{Treibhauseffekt}
-% 60\%    % https://www.acs.org/content/acs/en/climatescience/climatesciencenarratives/its-water-vapor-not-the-co2.html 
-Wasserdampf ist ein sehr effektives Treibhausgas. Es wird angenommen, dass der atmosphärische Wasserdampf der Erde für 60\% des Treibhauseffekts sorgt.  
+% 60\%    % https://www.acs.org/content/acs/en/climatescience/climatesciencenarratives/its-water-vapor-not-the-co2.html [check]
+Wasserdampf ist ein sehr effektives Treibhausgas. Es wird angenommen, dass der atmosphärische Wasserdampf der Erde für 60\% des Treibhauseffekts sorgt. \cite{planeten:treibhauseffekt}  
 Im verwendeten Modell wirkt sich deren Konzentrazion $H$ linear auf den Teibhauseffekt 
 \begin{equation}
 \beta  = \beta_{\text{max}} \cdot H
@@ -300,29 +301,34 @@ Die in Tabelle \ref{planeten:xiValues} ersichtlichen freien Parameter $\xi_1$ bi
 \begin{table}[!h]
 	\center
 	\begin{tabular}{c|c|l}
-        & Wert                  & Beschribung \\
+        & Wert                  & Beschreibung \\
   \hline
 $\xi_1$ & $1$					& Wirkung der Leistungsdifferenz auf die Oberflächentemperatur\\
-$\xi_2$ & $16 \cdot 10^{-3}$	& Koefffizient Wasserdampfbildung\\
-$\xi_3$ & $2.6 \cdot 10^{0}$	& Koefffizient Wolkenbildung \\
-$\xi_4$ & $5   \cdot 10^{0}$	& Koefffizient Wolkenabbau \\
-$\beta_{\text{max}}$ & $0.5$	& Maximaler Anteil der durch den Treibhauseffekt zurückgehalteten Leisung
+$\xi_2$ & $16 \cdot 10^{-3}$	& Koeffizient Wasserdampfbildung\\
+$\xi_3$ & $2.6 \cdot 10^{0}$	& Koeffizient Wolkenbildung \\
+$\xi_4$ & $5   \cdot 10^{0}$	& Koeffizient Wolkenabbau \\
+$\beta_{\text{max}}$ & $0.5$	& Maximaler Anteil der durch den Treibhauseffekt zurückgehaltenen Leistung
 	\end{tabular}
 	\caption{Für die Simulation gesetzte freien Parameter}
 	\label{planeten:xiValues}
 \end{table}
 \end{center}
-In Tabelle \ref{planeten:planetValues} sind die für die Planeten eingesetzten Parametern $a_{\text{planet}}$ und $R_{\text{planet}}$ ersichtlich. Das System wurde bis zum stationären Zustand simuliert. Aus der Zeitachse können keine quantitative Schlüsse gezogen werden.
+In Tabelle \ref{planeten:planetValues} sind die für die Planeten eingesetzten Parametern $a_{\text{planet}}$ und $R_{\text{planet}}$ ersichtlich. Da der Orbit eines Planeten elliptisch sein kann, muss für $a_{\text{planet}}$ die mittlere Distanz zur Sonne über die Umlaufzeit gewählt werden. Diese kann aus den elliptischen Halbachsenparametern $a$ und $b$ berechnet werden \cite{planeten:umlaufbahn}:
+\begin{equation}
+a_{\text{planet}} = a \left(1+{\frac {e^{2}}{2}}\right) = \frac{3}{2}a - \frac{1}{2}b \text{ .}
+\end{equation}
+Dabei ist $e$ die Exzentrizität der Umlaufbahn.
+ist die Geschwindigkeitsanomalie das Gestirns miteinberechnet. Das System wurde bis zum stationären Zustand simuliert. Aus der Zeitachse können keine quantitative Schlüsse gezogen werden.
 \begin{center}
 \begin{table}[!h]
 	\center
 	\begin{tabular}{l|c c c c}
                         & Merkur                    & Venus                    & Erde                    & Mars     \\
   \hline
-  $a_{\text{planet}}$   & $2.353 \cdot 10^{11}$ m   & $1.076 \cdot 10^{11}$ m  & $1.499 \cdot 10^{11}$ m & $2.353 \cdot 10^{11}$ m \\
-  $R_{\text{planet}}$   & $3.3895 \cdot 10^{6}$ m   & $6.0519 \cdot 10^{6}$ m  & $6.371 \cdot 10^{6}$ m  & $3.3895 \cdot 10^{6}$ m 
+  $a_{\text{planet}}$   & $5.853 \cdot 10^{10}$ m   & $1.082 \cdot 10^{11}$ m  & $1.496 \cdot 10^{11}$ m & $2.284 \cdot 10^{11}$ m \\
+  $R_{\text{planet}}$   & $2.439 \cdot 10^{6}$ m   & $6.0519 \cdot 10^{6}$ m  & $6.371 \cdot 10^{6}$ m  & $3.3895 \cdot 10^{6}$ m 
 \end{tabular}
-\caption{Für die Planeten eingesetzte Werte aus WolframAlpha}
+\caption{Für die Planeten eingesetzte Werte \cite{planeten:radius} \cite{planeten:semiMinorAxis}}
 \label{planeten:planetValues}
 \end{table}
 \end{center}
