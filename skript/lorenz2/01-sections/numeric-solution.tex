@@ -2,18 +2,20 @@
 \rhead{Numerische L"osung}
 Mit den \cref{equation:lorenz2:dota,equation:lorenz2:dotb} aus 
 \cref{section:lorenz2:ho-model} haben wir Gleichungen gefunden, die wir mit 
-Hilfe eines Computers berechnen k"onnen. Dabei k"onnen wir nat"urlich 
+Hilfe eines Computers l"osen k"onnen. Dabei k"onnen wir nat"urlich 
 unterschiedlich vorgehen. Was wir sicher brauchen, ist ein Programm, 
 mit dessen Hilfe wir gew"ohnliche Differentialgleichungen l"osen k"onnen. In 
 unserem Fall traf die Wahl auf \texttt{octave}, nicht nur weil es auf allen 
 g"angigen Plattformen verf"ugbar und open-source ist, sondern auch weil es mit 
 \texttt{lsode} einen m"achtigen  ODE-Solver beinhaltet.
+\index{lsode}%
 
 Wie sich herausstellt, ist eine direkte Implementation unserer gefundenen 
 gew"ohnlichen Differentialgleichungen \cref{equation:lorenz2:dota} und 
 \cref{equation:lorenz2:dotb} in \texttt{octave} keine sonderlich effiziente 
-L"osung. Der Algorithmus braucht selbst f"ur kleine Grad $k$, auf dem 
-Testsystem mit einer Intel\textregistered Core\texttrademark\, i7-3930K CPU mit 
+\index{octave}%
+L"osung. Der Algorithmus braucht selbst f"ur kleine Grade $k$, auf dem 
+Testsystem mit einer Intel\textregistered{} Core\texttrademark\, i7-3930K CPU mit 
 3.20 GHz, sehr lange. So dauerte zum Beispiel das Berechnen von Grad $k = 7$ 
 mit der direkten Implementation fast $12$ Stunden, was verglichen mit den rund 
 $25$ Minuten der am Schluss verwendeten Implementation schon einiges "uber 
@@ -23,6 +25,7 @@ Um das ganze etwas zu optimieren, nehmen wir also am besten ein
 Computer-Algebra Programm, mit dessen die Gleichungen bereits soweit 
 vereinfachen k"onnen, dass nur noch ein Vektor mit einfachen Summen "ubrig 
 bleibt. Mit \texttt{maxima} haben wir dazu wieder ein open-source Programm, das 
+\index{maxima}%
 auf allen Plattformen zur Verf"ugung steht.
 
 Wir haben jetzt alles zusammen, um die Gleichungen mit \texttt{maxima} zu 
@@ -36,7 +39,7 @@ Tendenz zu sogar $\text{O}(k^6)$.
 
 Eine der Ursachen f"ur die stark wachsende Laufzeit kann die fehlende 
 Parallelisierung des Algorithmus sein, was dazu f"uhrt, dass f"ur jeden Grad 
-$k$ nur ein CPU Core verwendet wird. Das erlaubt es zwar die Berechnung 
+$k$ nur ein CPU Core verwendet wird. Das erlaubt zwar, die Berechnung 
 einzelner Grade $k$ gleichzeitig durchzuf"uhren, indem wir unterschiedliche 
 \texttt{octave}-Instanzen f"ur die jeweiligen $k$ starten, doch ist der Nutzen 
 aufgrund der rasant wachsenden Laufzeit nicht sonderlich gross. Zudem hat auch 
@@ -48,7 +51,7 @@ an Genauigkeit f"uhren w"urde.
 
 Noch gar nicht angesprochen wurden die gew"ahlten Anfangsbedingungen und 
 Parameterwerte. Bei den Anfangswerten setzen wir alles bis auf $b_{(0,2)}$ und 
-$b_{(1,1)}$ gleich $0$, dies da diese bereits f"ur Grad $k = 2$ Verf"ugbar 
+$b_{(1,1)}$ gleich $0$, dies da diese bereits f"ur Grad $k = 2$ verf"ugbar 
 sind. Die Parameter sind so gew"ahlt, dass sie chaotisches Verhalten f"ur ein 
 dreidimensionales Lorenzsystem, also eines mit Grad $2$, hervorrufen. 
 Experimentell konnten so die Werte f"ur
@@ -62,12 +65,29 @@ Experimentell konnten so die Werte f"ur
 \end{align*}
 bestimmt und die Lorenzsysteme mit Grad $k = \{2,3,\dots,22\}$ erfolgreich 
 berechnet werden.
+\begin{figure}
+	\centering
+	\includegraphics[width=0.49\linewidth]{lorenz2/03-images/timing_100}
+	\includegraphics[width=0.49\linewidth]{lorenz2/03-images/timing_40}
+	\caption{Laufzeit f"ur Berechnung von eines Lorenzsystems mit Grad $k$}
+	\label{figure:lorenz2:timings}
+\end{figure}
+\begin{figure}
+	\centering
+	\includegraphics[width=0.49\linewidth]{{lorenz2/03-images/ord2.X}.pdf}
+	\includegraphics[width=0.49\linewidth]{{lorenz2/03-images/ord2.butterfly}.pdf}
+	\caption{Lorenzssystem mit Grad 2}
+	\label{figure:lorenz2:systemdeg2}
+\end{figure}
+
+
 
 Die L"osungen f"uhren teilweise zu erstaunlichen Ergebnissen, wie 
 \cref{figure:lorenz2:systemdeg2,figure:lorenz2:systemdeg3,figure:lorenz2:systemdeg4,figure:lorenz2:systemdeg5,figure:lorenz2:systemdeg6,figure:lorenz2:systemdeg7,figure:lorenz2:systemdeg8,figure:lorenz2:systemdeg9,figure:lorenz2:systemdeg10,figure:lorenz2:systemdeg11,figure:lorenz2:systemdeg12,figure:lorenz2:systemdeg13,figure:lorenz2:systemdeg14,figure:lorenz2:systemdeg15,figure:lorenz2:systemdeg16,figure:lorenz2:systemdeg17,figure:lorenz2:systemdeg18,figure:lorenz2:systemdeg19,figure:lorenz2:systemdeg20,figure:lorenz2:systemdeg21-40,figure:lorenz2:systemdeg22-40}
 zeigen. Dabei ist auf der linken Seite jeweils ein Plot der verschiedenen
-$a_\gamma(t)$ und $b_\gamma(t)$ zu sehen und rechts davon eine 3D Abbildung von 
-$f(a_{(1,1)}, b_{(1,1)}) = b_{(0,2)}$. Eines der augenf"alligsten 
+$a_\gamma(t)$ und $b_\gamma(t)$ zu sehen und rechts davon eine 3D Abbildung
+der Kurve 
+$t\mapsto (a_{(1,1)}(t), b_{(1,1)}(t), b_{(0,2)}(t))$. Eines der augenf"alligsten 
 Ergebnisse ist, dass ab Grad $k = 4$ das chaotische Verhalten nicht mehr 
 aufzutreten scheint. Erkennbar ist dies daran, dass auf der linken Seite alle 
 Koeffizienten entweder konvergieren oder in eine stabile Schwingung "uber 
@@ -81,22 +101,6 @@ Anfangsbedingungs- und Parameterraum nicht untersucht haben und es eine
 m"ogliche Auswahl gibt, die wieder chaotisches Verhalten erzeugt. Es kann 
 aber nat"urlich auch sein, dass wir einfach noch gr"ossere Grade $k$ berechnen 
 m"ussen und die L"osung nach und nach wieder chaotisch wird.
-
-\begin{figure}
-	\centering
-	\includegraphics[width=0.49\linewidth]{lorenz2/03-images/timing_100}
-	\includegraphics[width=0.49\linewidth]{lorenz2/03-images/timing_40}
-	\caption{Laufzeit f"ur Berechnung von eines Lorenzsystems mit Grad $k$}
-	\label{figure:lorenz2:timings}
-\end{figure}
-
-\begin{figure}
-	\centering
-	\includegraphics[width=0.49\linewidth]{{lorenz2/03-images/ord2.X}.pdf}
-	\includegraphics[width=0.49\linewidth]{{lorenz2/03-images/ord2.butterfly}.pdf}
-	\caption{Lorenzssystem mit Grad 2}
-	\label{figure:lorenz2:systemdeg2}
-\end{figure}
 
 \begin{figure}
 	\centering

@@ -84,7 +84,7 @@ In Abbildung \ref{fig:chaos} sieht man das chaotische Verhalten bei einer Änder
 Dieses Verhalten ist unerwünscht, da wir die Ausgangslage nicht genau kennen und die Konstanten anpassen müssen.
 Um dieses chaotische Verhalten zu unterbinden, wird ein Limitierungsterm eingeführt.
 Dieser besteht aus $-\varepsilon T(t)^3$ und verhindert explodierende Lösungen.
-Bei zunehmendem Funktionswert nimmt der limitierungsterm mit der dritten Potenz zu und dämpft somit den Funktionswert.
+Bei zunehmendem Funktionswert nimmt der Limitierungsterm mit der dritten Potenz zu und dämpft somit den Funktionswert.
 Wir erhalten die Gleichung
 \begin{equation} \label{eldde_epsilon}
 \dot{T}(t)=-cT(t)+aT(t-\frac{1}{2}\tau_K)-bT(t-(\frac{1}{2}\tau_R+\tau_K))-\varepsilon T(t)^3.

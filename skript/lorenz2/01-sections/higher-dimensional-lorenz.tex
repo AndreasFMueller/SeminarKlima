@@ -1,7 +1,7 @@
 \section{H"oherdimensionales Lorenzsystem\label{section:lorenz2:ho-model}}
 \rhead{Lorenz-Modell h"oherer Ordnung}
-Nun nehmen wir die Grundgleichungen aus \cref{equation:lorenz2:base} und unsere 
-neuen Basisfunktionen aus \cref{equation:lorenz2:basic-functions} und bauen 
+Nun nehmen wir die Grundgleichungen aus \eqref{equation:lorenz2:base} und unsere 
+neuen Basisfunktionen aus \eqref{equation:lorenz2:basic-functions} und bauen 
 daraus ein h"oherdimensionales Lorenzsystem.
 
 Als ersten Schritt werden die in \cref{skript:psiansatz} und 
@@ -263,6 +263,8 @@ zusammenbauen k"onnen.
 
 Wie wir hier sehen, sind nicht nur die urspr"unglichen, sondern auch auch die 
 erweiterten Basisfunktionen nat"urlich wieder Eigenfunktionen des 
+\index{Eigenfunktion}%
+\index{Laplace-Operator}%
 Laplace-Operators. Es gilt dabei
 \begin{equation*}
 	\laplace^n f = \lambda^n f
@@ -276,7 +278,7 @@ Wem bei den Gleichungen f"ur die Laplace Operatoren aufgrund der Addition
 zweier unendlicher Summen etwas mulmig war, soll unbesorgt sein. Diese 
 Umformung sei uns erlaubt, da wir davon ausgehen m"ussen, dass die einzelnen 
 Reihen konvergent sind. Zudem h"alt uns nichts davon ab, die 
-Indices der beiden unabh"angigen Summen so umzubenennen, dass diese 
+Indizes der beiden unabh"angigen Summen so umzubenennen, dass diese 
 "ubereinstimmen. Damit ist klar, dass die gleichen Basisfunktionen generiert 
 werden und die Summen somit vereinfacht werden k"onnen.
 
@@ -285,7 +287,7 @@ in \cref{equation:lorenz2:base} einzusetzen. Einzig die Funktionaldeterminanten
 fehlen noch. Diese sind auch der haarige Teil des Gleichungssystems, denn es 
 sorgt f"ur die Kopplung der beiden Terme.
 
-Beginnen wir also damit die erste Funktionsdeterminante
+Beginnen wir also damit die erste Funktionaldeterminante
 \begin{align*}
 \frac{\partial(\psi, \laplace\psi)}{\partial(x,y)}
 &=
@@ -962,7 +964,7 @@ b_{\beta}(t)
 \bigg)
 \Bigg)
 \end{align*}
-als Gleichungen die es nun zu l"osen gilt.
+als Gleichungen, die es nun zu l"osen gilt.
 
 Da wir die $x$ und $y$ Komponenten loswerden wollen, damit nur noch $t$ "ubrig 
 bleibt, brauchen wir Gleichungen f"ur einzelne $\dot{a}_\gamma(t)$ f"ur 
@@ -1160,7 +1162,7 @@ f_\gamma(q, s)
 &=
 \begin{cases}
 \sgn(q)\sgn(s) & |q| = \gamma_1, |s| = \gamma_2 \\
-0 & \text{sonst}
+0 & \text{sonst,}
 \end{cases}
 \\
 g_\gamma(q, s)
