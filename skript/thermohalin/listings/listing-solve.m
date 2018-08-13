@@ -26,3 +26,4 @@ ds2 = H + d*(const(5)-y(5)) + abs(q1)*(y(4)-y(5)) + abs(q2)*(y(6)-y(5));
 ds3 = -H/2 + d*(const(6)-y(6)) + abs(q2)*(y(5)-y(6));
 
 dydt = [dt1; dt2; dt3; ds1; ds2; ds3];
+end

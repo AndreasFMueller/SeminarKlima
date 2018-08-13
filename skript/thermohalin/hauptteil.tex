@@ -4,7 +4,7 @@
 Der erste Schritt ist die Erstellung eines Modells.
 Das Ziel dieser Modelle ist es, den Golfstrom so genau wie möglich nachzubilden und Resultate zu erhalten, welche dem Golfstrom so gut wie möglich entsprechen. Die Simulation soll also, je nach Parameterwahl, genau wie der Golfstrom reagieren.
 Dazu wird der Golfstrom in drei Zonen aufgeteilt. Die jeweiligen Polarregionen und der Äquator werden je zu einer Zone. Diese Zonen werden dann je einer Box zugeordnet. Diese Boxen werden mittels Kanälen verbunden, um so den Strom zu modellieren. 
-Im Laufe des Seminars wurden zwei Modelle erstellt. Der erste Ansatz (siehe Abschnitt \ref{thermohalin:3b2f_title}) war sehr lehrreich, hatte aber schlussendlich nichts mit dem realen Golfstrom gemeinsam. Der zweite Ansatz (siehe Abschnitt \ref{thermohalin:3b1f_title}) war erfolgreicher und der Golfstrom kann mit diesem Modell qualitativ simuliert werden.
+Im Laufe dieser Arbeit wurden zwei Modelle erstellt. Der erste Ansatz (siehe Abschnitt \ref{thermohalin:3b2f_title}) war sehr lehrreich, hatte aber schlussendlich nichts mit dem realen Golfstrom gemeinsam. Der zweite Ansatz (siehe Abschnitt \ref{thermohalin:3b1f_title}) war erfolgreicher und der Golfstrom kann mit diesem Modell qualitativ simuliert werden.
 In den folgenden zwei Kapiteln werden diese zwei Modelle vorgestellt und die jeweiligen Resultate diskutiert.
 
 \subsection{Zwei-Fluss Modell( 1. Ansatz)}\label{thermohalin:3b2f_title}
@@ -22,30 +22,55 @@ Eine Darstellung des Modelles ist in Abbildung \ref{thermohalin:3b2f} zu finden.
 
 Aufgrund der Darstellung lassen sich für jede Box die zugehörigen Salinitäts- und Temperaturgleichungen aufstellen. Box $1$ und $3$ haben jeweils einen Fluss in der Gleichung. Im Gegensatz dazu wird Box $3$ jedoch von zwei Flüssen durchflossen. Daraus entstehen die Gleichungssysteme \ref{thermohalin:diffgl_3b2f_temp} und \ref{thermohalin:diffgl_3b2f_salinity}. 
 
-\begin{equation}\label{thermohalin:diffgl_3b2f_temp}
-\begin{aligned}
-\frac{dT_1}{dt} &= c(T_1^*-T_1)&+|q_1|(T_2-T_1)\phantom{+|q_2|(T_3-T_2)}
+%\begin{equation}\label{thermohalin:diffgl_3b2f_temp}
+%\begin{aligned}
+%\frac{dT_1}{dt} &= c(T_1^*-T_1)&+|q_1|(T_2-T_1)\phantom{+|q_2|(T_3-T_2)}
+%\\
+%\frac{dT_2}{dt} &= c(T_2^*-T_2)&+|q_1|(T_1-T_2)+|q_2|(T_3-T_2)
+%\\
+%\frac{dT_3}{dt} &= c(T_3^*-T_3)&+ \phantom{+|q_1|(T_1-T_2)}|q_2|(T_2-T_3)
+%\end{aligned}
+%\end{equation}
+%\begin{equation}\label{thermohalin:diffgl_3b2f_salinity}
+%\begin{aligned}
+%\frac{dS_1}{dt} &= -\frac{H}{2} &+ d(S_1^*-S_1)&+|q_1|(S_2-S_1)\phantom{+|q_2|(S_3-S_2)}
+%\\
+%\frac{dS_2}{dt} &= \phantom{-}H &+ d(S_2^*-S_2)&+|q_1|(S_1-S_2)+|q_2|(S_3-S_2)	
+%\\
+%\frac{dS_3}{dt} &= -\frac{H}{2} &+d(S_3^*-S_3)&+ \phantom{+|q_1|(S_1-S_2)}|q_2|(S_2-S_3)
+%\end{aligned}
+%\end{equation}	
+\begin{alignat}{4}
+\def\arraystretch{1.3}
+\displaystyle
+\frac{dT_1}{dt} &=&                           & &c(T_1^*-T_1) &+|q_1|(T_2-T_1)  &&
+\notag
 \\
-\frac{dT_2}{dt} &= c(T_2^*-T_2)&+|q_1|(T_1-T_2)+|q_2|(T_3-T_2)
+\displaystyle
+\frac{dT_2}{dt} &=&                           & &c(T_2^*-T_2) &+|q_1|(T_1-T_2)  &&+|q_2|(T_3-T_2)
+\label{thermohalin:diffgl_3b2f_temp}
 \\
-\frac{dT_3}{dt} &= c(T_3^*-T_3)&+ \phantom{+|q_1|(T_1-T_2)}|q_2|(T_2-T_3)
-\end{aligned}
-\end{equation}
-\begin{equation}\label{thermohalin:diffgl_3b2f_salinity}
-\begin{aligned}
-\frac{dS_1}{dt} &= -\frac{H}{2} &+ d(S_1^*-S_1)&+|q_1|(S_2-S_1)\phantom{+|q_2|(S_3-S_2)}
+\displaystyle
+\frac{dT_3}{dt} &=&                           & &c(T_3^*-T_3) &                 &&+|q_2|(T_2-T_3)
+\notag
+\\[10pt]
+\displaystyle
+\frac{dS_1}{dt} &=&\displaystyle \mathstrut-\frac{H}{2} &\mathstrut+\mathstrut&d(S_1^*-S_1) &+ |q_1|(S_2-S_1) && 
+\notag
 \\
-\frac{dS_2}{dt} &= \phantom{-}H &+ d(S_2^*-S_2)&+|q_1|(S_1-S_2)+|q_2|(S_3-S_2)	
+\displaystyle
+\frac{dS_2}{dt} &=&           H               &\mathstrut+\mathstrut&d(S_2^*-S_2) &+ |q_1|(S_1-S_2) &&+ |q_2|(S_3-S_2)	
+\label{thermohalin:diffgl_3b2f_salinity}
 \\
-\frac{dS_3}{dt} &= -\frac{H}{2} &+d(S_3^*-S_3)&+ \phantom{+|q_1|(S_1-S_2)}|q_2|(S_2-S_3)
-\end{aligned}
-\end{equation}	
+\displaystyle
+\frac{dS_3}{dt} &=&\displaystyle \mathstrut-\frac{H}{2} &\mathstrut+\mathstrut&d(S_3^*-S_3) &                &&+ |q_2|(S_2-S_3)
+\notag
+\end{alignat}
 Der erste Term auf der rechten Seite
-
 \begin{equation*}
 	c(T_i^*-T_i), \quad d(S_i^*-S_i)
 \end{equation*}
-stellt jeweils den Energie- und Salzaustausch mit dem umgebenden Reservoir dar. Das Reservoir soll die Umgebung der Box darstellen. Darin sind Einflüsse wie die der Kontinente, der einmündenden Flüsse und des Klimas enthalten. Diese Werten werden in der Simulation konstant gehalten, da sich diese Werte nur über längere Zeit ändern. Die Übertragungskonstante wird mit der Temperaturdifferenz zwischen Box und Reservoir multipliziert. Die anderen Terme auf der rechten Seite sind die Flüsse
+stellt jeweils den Energie- und Salzaustausch mit dem umgebenden Reservoir dar. Das Reservoir soll die Umgebung der Box darstellen. Darin sind Einflüsse wie die der Kontinente, der einmündenden Flüsse und des Klimas enthalten. Diese Werte werden in der Simulation konstant gehalten, da sich diese Werte nur über längere Zeit ändern. Die Übertragungskonstante wird mit der Temperaturdifferenz zwischen Box und Reservoir multipliziert. Die anderen Terme auf der rechten Seite sind die Flüsse
 
 \begin{equation*}
 	|q_x|(T_i-T_j),
@@ -63,7 +88,7 @@ und
 q_2 = k\frac{\varrho_2-\varrho_3}{\varrho_0}.
 \end{equation}
 
-Für $\varrho_i$ wird dann jeweils die Formel \ref{thermohalin:Dichte} eingesetzt, um die Dichte aus den jeweiligen Salinitäten und Temperaturen zu berechnen. Daraus folgt
+Für $\varrho_i$ wird dann jeweils die Formel \eqref{thermohalin:Dichte} eingesetzt, um die Dichte aus den jeweiligen Salinitäten und Temperaturen zu berechnen. Daraus folgt
 
 \begin{equation}
 q_1 = k\frac{\varrho_0[1-\alpha(T_1-T_0)+\beta(S_1-S_0)]-\varrho_0[1-\alpha(T_2-T_0)+\beta(S_2-S_0)]}{\varrho_0}
@@ -121,9 +146,7 @@ Da die Flüsse innerhalb der \texttt{ode45}-Funktion berechnet wurden, muss dies
 Die so entstandenen Figuren werden im folgenden Abschnitt ausgewertet und diskutiert. 
 
 \subsubsection{Resultate}
-
-
-Die ersten Durchläufe ergaben Resultate, welche tatsächlich dem Golfstrom zu ähneln schienen. Wenn jedoch die Temperaturen und Salinitäten der Reservoire ( $S_1^*, T_1^*,\dots$) verändert werden, treten plötzlich unmögliche Phänomene auf.
+Die ersten Durchläufe ergaben Resultate, welche tatsächlich dem Golfstrom zu ähneln schienen. Wenn jedoch die Temperaturen und Salinitäten der Reservoire ($S_1^*, T_1^*,\dots$) verändert werden, treten plötzlich unmögliche Phänomene auf.
 Einer der beiden Flüsse wird negativ und ändert seine Richtung. Das resultiert in zwei gegenläufigen Strömen, welche in keiner Weise mit dem Golfstrom übereinstimmen. Das führt dazu, dass am Äquator eine Absinkstelle entsteht. In der Realität ist klar zu erkennen, dass Absink- und Aufsteigstellen jeweils nur an den Polen vorhanden sind. 
 Ein Plot der Simulationsresultate findet sich in Abbildung \ref{thermohalin:simulationsresultate}.
 
@@ -191,25 +214,24 @@ für den Fluss ergibt.
 
 Die Gleichungen für die anderen Boxen lassen sich nach dem gleichen Schema erstellen. Nur müssen jeweils entsprechend der Flussrichtung andere Quellboxen verwendet werden. Mit den entwickelten Gleichungen 
 
-\begin{equation}
-\begin{aligned}
-\frac{dT_1}{dt} &= c(T_p-T_1)&+ \begin{cases} q(T_3-T_1) & \quad q>0 \\ |q|(T_2-T_1) & \quad q<0 \end{cases}
+\begin{alignat}{3}
+\frac{dT_1}{dt} &=&              &                     &c(T_p-T_1)&+\begin{cases} q(T_3-T_1) & \quad q>0 \\ |q|(T_2-T_1) & \quad q<0 \end{cases}
+\notag
 \\
-\frac{dT_2}{dt} &= c(T_p-T_2)&+\begin{cases} q(T_1-T_2) & \quad q>0 \\ |q|(T_3-T_2) & \quad q<0 \end{cases}
+\frac{dT_2}{dt} &=&              &                     &c(T_p-T_2)&+\begin{cases} q(T_1-T_2) & \quad q>0 \\ |q|(T_3-T_2) & \quad q<0 \end{cases}
 \\
-\frac{dT_3}{dt} &= c(T_e-T_3)&+\begin{cases} q(T_2-T_3) & \quad q>0 \\ |q|(T_1-T_3) & \quad q<0 \end{cases}
-\end{aligned}
-\end{equation}
-\begin{equation}
-\begin{aligned}
-\frac{dS_1}{dt} &= -H/2 &+ d(S_p-S_1)&+\begin{cases} q(S_3-S_1) & \quad q>0 \\ |q|(S_2-S_1) & \quad q<0 \end{cases}
+\frac{dT_3}{dt} &=&              &                     &c(T_e-T_3)&+\begin{cases} q(T_2-T_3) & \quad q>0 \\ |q|(T_1-T_3) & \quad q<0 \end{cases}
+\notag
 \\
-\frac{dS_2}{dt} &= \phantom{-}H &+ d(S_p-S_2)&+\begin{cases} q(S_1-S_2) & \quad q>0 \\ |q|(S_3-S_2) & \quad q<0 \end{cases}	
+\frac{dS_1}{dt} &=&\mathstrut -H/2         &\mathstrut+\mathstrut&d(S_p-S_1)&+\begin{cases} q(S_3-S_1) & \quad q>0 \\ |q|(S_2-S_1) & \quad q<0 \end{cases}
+\notag
 \\
-\frac{dS_3}{dt} &= -H/2 &+d(S_e-S_3)&+\begin{cases} q(S_2-S_3) & \quad q>0 \\ |q|(S_1-S_3) & \quad q<0 \end{cases}
-\end{aligned}
-\end{equation}
-
+\frac{dS_2}{dt} &=& \phantom{-}H &\mathstrut+\mathstrut&d(S_p-S_2)&+\begin{cases} q(S_1-S_2) & \quad q>0 \\ |q|(S_3-S_2) & \quad q<0 \end{cases}	
+\\
+\frac{dS_3}{dt} &=&\mathstrut -H/2         &\mathstrut+\mathstrut&d(S_e-S_3)&+\begin{cases} q(S_2-S_3) & \quad q>0 \\ |q|(S_1-S_3) & \quad q<0 \end{cases}
+\notag
+\end{alignat}
+und
 \begin{equation}
 q = k[\alpha\Delta T-\beta\Delta S],
 \end{equation}
@@ -225,7 +247,7 @@ Die Übergabe der Startwerte und Konstanten, der Aufruf des Differentialgleichun
 
 \subsubsection{Resultate} 
 
-Nach mehrfacher Simulation scheint es so, dass dieses Modell tatsächlich meinen Vorstellungen entsprechende Resultate erzeugt. Für Werte, welche realen Werten entsprechen, reagiert die Simulation wie der richtige Golfstrom. Der Golfstrom fliesst vom Süd- zum Nordpol, sinkt dort ab und fliesst am Meeresgrund wieder bis zum Südpol, wo er aufsteigt und so den Kreislauf schliesst. Ein Plot der Resultate ist in Abbildung \ref{thermohalin:3b1f-skript} dargestellt.
+Nach mehrfacher Simulation scheint es so, dass dieses Modell tatsächlich den Vorstellungen entsprechende Resultate erzeugt. Für Werte, welche realen Werten entsprechen, reagiert die Simulation wie der richtige Golfstrom. Der Golfstrom fliesst vom Süd- zum Nordpol, sinkt dort ab und fliesst am Meeresgrund wieder bis zum Südpol, wo er aufsteigt und so den Kreislauf schliesst. Ein Plot der Resultate ist in Abbildung \ref{thermohalin:3b1f-skript} dargestellt.
 
 Wie die Abbildung zeigt, bleiben die Temperaturen ungefähr konstant. Dies liegt daran, dass die Temperaturstartwerte schon den Reservoirwerten angepasst wurden, was bedeutet, dass diese Anpassung schon geschehen ist. Beim Salinitätsplot ist klar der Effekt des virtuellen Salzflusses zu sehen, welcher dazu führt, dass die Salinität in der Äquatorregion leicht steigt und in Polnähe dementsprechend abnimmt. Das Resultat stimmt und der Golfstrom fliesst in die uns bekannte Richtung.
 
@@ -238,13 +260,11 @@ Wie die Abbildung zeigt, bleiben die Temperaturen ungefähr konstant. Dies liegt
 
 Spannend wird es, wenn die Reservoirvariablen so angepasst werden, dass sie eine Klimaerwärmung und deren Folgen darstellen. Wie bereits in Abschnitt \ref{thermohalin:EinflussKlimawandel} erläutert, muss dazu die Salinität am Nordpol und die Temperatur am Äquator erhöht werden. Dies sollte dazu führen, dass der Golfstrom schwächer wird, anhält oder gar seine Richtung ändert. 
 Der Konstantenvektor, welcher die Temperaturen und Salinitäten der Reservoire enthält wird also angepasst.
-Die Werte von $S_1^*$ ( Salinität Nordpol) und $T_3^*$ (Temperatur Äquator) werden erhöht.
+Die Werte von $S_1^*$ (Salinität Nordpol) und $T_3^*$ (Temperatur Äquator) werden erhöht.
 
-\begin{equation*}
-\text{const} = \begin{pmatrix}T_{1}^{*} \\ T_{2}^{*} \\ T_{3}^{*} \\ S_{1}^{*} \\ S_{2}^{*} \\ S_{3}^{*}\end{pmatrix}
-\end{equation*}
-
-
+%\begin{equation*}
+%\text{const} = \begin{pmatrix}T_{1}^{*} \\ T_{2}^{*} \\ T_{3}^{*} \\ S_{1}^{*} \\ S_{2}^{*} \\ S_{3}^{*}\end{pmatrix}
+%\end{equation*}
 
 Bei einer kleinen Veränderung wird der Strom nur schwächer. Je grösser die Abweichungen jedoch sind, desto stärker wird der Effekt.
 Bis sich die Richtung des Stromes ändert.

@@ -33,3 +33,4 @@ elseif q < 0
     ds3 = -H/2 + d*(const(6)-y(6)) + abs(q)*(y(4)-y(6));
 end
 dydt = [dt1; dt2; dt3; ds1; ds2; ds3];
+end
