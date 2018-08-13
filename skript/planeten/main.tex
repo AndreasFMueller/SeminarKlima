@@ -47,12 +47,12 @@ Alle anderen Planeten konnten offenbar kein freundliches Klima bewahren. Tabelle
   Oberflächen Temperatur	& 452 K				& 733 K				& 287 K		& 226 K                 \\
   Wasser auf Oberfläche		& -					& -					& Ozeane	& Polares Eis			\\
   Wasser in Athmosphäre		& -					& $0.002\%$ 		& $0.4\%$	& Spuren				\\
-  Wolken					& -					& $\approx100\%$	& $68\%$  	& $<5\%$                \\
+  Wolken					& -					& $\approx100\%$	& $67\%$  	& $<5\%$                \\
   Atmosphäre				& $10^{-15}$ bar	& $92$ bar			& $1$ bar	& $6 \cdot 10^{-3}$ bar 
 	%\hline
 \end{tabular}
 % (http://www.climate4you.com/ClimateAndClouds.htm) not used yet
-\caption{Planeten im Vergleich \cite{planeten:temperatures}}
+\caption{Planeten im Vergleich \cite{planeten:temperatures} \cite{planeten:cloudcover}}
 \label{planeten_comparison}
 \end{table}
 \end{center}
@@ -62,7 +62,7 @@ Doch wie kommen diese extremen Konditionen zu Stande? Man könnte meinen, dass p
 %Wegen anderen parametern?
 Das Klima muss somit auch von anderen Parametern abhängig sein, wie zum Beispiel Durchmesser, Rotation, Vulkanismus, Magnetfeld und viele andere.
 %Aufgrund orbitalen parameter?
-In diesem Kapitel gehe ich der Frage nach, ob Venus und Mars alleine aufgrund ihrer orbitalen Eigenschaften nicht fähig waren, ein lebensfreundliches Klima zu generieren. Die Nullhypothese lautet somit, dass die genannten Planeten \textit{nicht} durch ihre Umlaufbahn oder Grösse benachteiligt sind, lebensfreundliche Klimabedingungen zu halten.
+In diesem Kapitel gehe ich der Frage nach, ob Venus und Mars alleine aufgrund ihrer orbitalen Eigenschaften nicht fähig waren, ein lebensfreundliches Klima zu generieren. Die Nullhypothese lautet somit, dass die genannten Planeten durch ihre Umlaufbahn oder Grösse \textit{nicht} benachteiligt sind, lebensfreundliche Klimabedingungen zu halten.
 
 %Könnte es der Erde in Zukunft auch gleichermassen ergehen?
 %Was führt zu wasserlosen Atmosphäre?
@@ -93,7 +93,6 @@ Durch eine Simulation des Modells im Zeitbereich sollte dann eine Aussage über 
 	
 Auf Grund der zum Teil starken Vereinfachungen müssen einzelne Parameter abgeschätzt werden. Durch diese freien Parametern kann das System getrimmt werden um überhaupt plausible Lösungen zu erreichen. Diese Parameter sind mit $\xi$'s gekennzeichnet.
 
-%TODO zu modellierende bestandteile [check]
 \begin{figure}
 	\centering
 	\includegraphics[width=0.8\textwidth]{planeten/Pictures/Model.eps}
@@ -111,8 +110,7 @@ Die Parameter $C$ und $H$ können näherungsweise als prozentuale Wolkenabdeckun
 Das Modell wird für die Planeten Merkur, Venus, Erde und Mars simuliert, wobei deren Mittlere Distanz $a_\text{planet}$ zur Sonne und Radius $R_\text{planet}$ eingesetzt werden.
 
 \subsection{Strahlungsbilanz}
-%TODO reference
-Die Strahlungsbilanz wird in Kapitel \ref{skript:grundlagen:strahlung} ausführlich beschrieben. Das hier verwendeten Modell baut direkt darauf auf.
+Die Strahlungsbilanz wird im Kapitel \ref{skript:subsection:strahlungsbilanz} ausführlich beschrieben. Das hier verwendeten Modell baut direkt darauf auf.
 
 Damit die Durchschnittstemperatur eines Planeten stabil ist, muss die Leistungsbilanz Null sein:
 \begin{equation}
@@ -123,7 +121,6 @@ Die Planeten sind jedoch nicht gleich gross. Damit die Auswirkung eines Strahlun
 \dot{T}_S = \xi_1 \frac{P_{\text{in}} - P_{\text{out}}}{A} = \xi_1 \frac{P_{\text{in}} - P_{\text{out}}}{4 \pi R_{\text{planet}}^2}\text{ .}
 \end{equation}
 
-%TODO anderer begriff für Aktives Planet-Inneres .. geothermie? (nur für erde)
 Wie in Kapitel \ref{skript:grundlagen:strahlung} beschrieben, wird die Solarkonstante
 \begin{equation}
 P_{\text{solar}} = \sigma T_{\astrosun}^4 \left( \frac{R_{\astrosun}}{a_{\text{planet}}} \right) ^2
@@ -144,15 +141,14 @@ P_{\text{out}} = P_{\text{blackbody}} (1 - \beta) = 4 \pi R_{\text{planet}}^2 \s
 \subsection{Albedo}
 Die Albedo $\alpha$ wird als Funktion der Wolkenabdeckung $C$ modelliert. Es wird ein linearer Zusammenhang erwartet. Sie ist begrenzt durch die zwei Werte
 \begin{equation}
-\alpha_{\text{min}} = 0.15 \text{ und } \alpha_{\text{max}} = 0.7 \text{ .}
+\alpha_{\text{min}} = 0.15 \text{ und } \alpha_{\text{max}} = 0.48 \text{ .}
 \end{equation}
-Die minimale Albedo $\alpha_{\text{min}}$ tritt bei 0\% Wolkenabdeckung auf und hat den Wert der Albedo des Mondes, der kleinsten in unserem Sonnensystem. Die maximale Albedo $\alpha_{\text{max}}$ tritt bei 100\% Wolkenabdeckung auf und wird etwas grösser als diejenige der Venus gesetzt. Somit ist
+Die minimale Albedo $\alpha_{\text{min}}$ tritt bei 0\% Wolkenabdeckung auf und hat den Wert der Albedo des Mondes, der kleinsten in unserem Sonnensystem. Die maximale Albedo $\alpha_{\text{max}}$ tritt bei 100\% Wolkenabdeckung auf und wird so gesetze, dass bei der Wolkenabdeckung der Erde die Erdalbedo resultiert. Somit ist
 \begin{equation}
 \alpha = \alpha_{\text{min}} + C(\alpha_{\text{max}} - \alpha_{\text{min}}) \text{ .}
 \end{equation}
 
 \subsection{Treibhauseffekt}
-% 60\%    % https://www.acs.org/content/acs/en/climatescience/climatesciencenarratives/its-water-vapor-not-the-co2.html [check]
 Wasserdampf ist ein sehr effektives Treibhausgas. Es wird angenommen, dass der atmosphärische Wasserdampf der Erde für 60\% des Treibhauseffekts sorgt. \cite{planeten:treibhauseffekt}  
 Im verwendeten Modell wirkt sich deren Konzentrazion $H$ linear auf den Teibhauseffekt 
 \begin{equation}
@@ -169,9 +165,7 @@ zusammengefasst werden.
 \subsection{Wasserkreislauf}
 Das Modell beinhaltet einen stark vereinfachten Wasserkreislauf.
 Dieser verknüpft die Parameter Clouds $C$ und Humidity $H$.
-%TODO ausformulieren
-Dazu kommt das auf der Planetenoberfläche vorhandene flüssige Wasser, welches als Quelle und Senke dient und zugleich unerschöpflich ist. Das Modell beachtet nicht, dass der atmosphärische Wasserdampf ins All entweichen kann und dadurch die Ozeane austrocknen können. Zwischen den Parametern gibt es die drei Flüsse $h_{\text{Wasserdampfbildung}}$, $h_{\text{Wolkenbildung}}$ und $h_{\text{Wolkenabbau}}$. Diese bilden das folgende Gleichungssystem: 
-%TODO text formulieren: Aufbau wasserkreislauf
+Dazu kommt das auf der Planetenoberfläche vorhandene flüssige Wasser, welches als Quelle und Senke dient und zugleich unerschöpflich ist. Das Modell beachtet nicht, dass der atmosphärische Wasserdampf ins All entweichen kann und dadurch die Ozeane austrocknen können. Zwischen den Parametern gibt es die drei Flüsse $h_{\text{Wasserdampfbildung}}$, $h_{\text{Wolkenbildung}}$ und $h_{\text{Wolkenabbau}}$. Diese bilden das folgende Gleichungssystem:
 \begin{equation}
 \begin{matrix}
 \dot{H}   = & h_{\text{Wasserdampfbildung}} & - h_{\text{Wolkenbildung}}   &                      \\
@@ -184,7 +178,7 @@ Wasserdampf bildet sich durch Verdunsten von der Ozeane. Der Durchsatz wird line
 \begin{equation}
 h_{\text{Wasserdampfbildung}} = \xi_2 T_S \text{ .}
 \end{equation}
-%TODO linear zur temperatur !! überall kontrollieren
+
 
 %\subsubsection{Wolkenbildung}
 Wolken entstehen, wenn feuchte Luft beim aufsteigen sich abkühlt und kondensiert. Näherungswiese entstehen mehr Wolken je grösser die Luftfeuchtigkeit $H$ ist und je schneller die Temperatur mit der Höhe abnimmt.
@@ -196,9 +190,10 @@ Dabei nimmt die Wolkenbildung mit grösserer Luftfeuchtigkeit $H$ und grösserem
 h_{\text{Wolkenbildung}} = \xi_3 H \frac{dT}{dh} \text{ .}
 \end{equation}
 
-Der Temperaturgradient existiert sowohl in vertikaler, sowie in horizontaler Ausrichtung. Einen grossen horizontalen Gradienten findet man zum Beispiel bei einer Wetterfront vor, wenn unterschiedlich warme Luftmassen aufeinander treffen. Im Modell wird nur der vertikale berücksichtigt, welcher auf der Erde ca. $1$ Kelvin pro $100$ Meter entspricht. Dieser ist bei ungesättigter Luft annähernd konstant. Sobald Wasserdampf kondensiert wird der Prozess feuchtadiabatisch. Dabei wird der Gradient kleiner und sinkt mit zunehmender Temperatur noch weiter. Linear approximiert ergibt sich dadurch
+%TODO Cite website
+Der Temperaturgradient existiert sowohl in vertikaler, sowie in horizontaler Ausrichtung. Einen grossen horizontalen Gradienten findet man zum Beispiel bei einer Wetterfront vor, wenn unterschiedlich warme Luftmassen aufeinander treffen. Im Modell wird nur der vertikale berücksichtigt, welcher auf der Erde ca. $1$ Kelvin pro $100$ Meter entspricht. Dieser ist bei ungesättigter Luft annähernd konstant. Sobald Wasserdampf kondensiert wird der Prozess feuchtadiabatisch und der Gradient wird kleiner. Linear approximiert ergibt sich dadurch
 \begin{equation}
-h_{\text{Wolkenbildung}} = \xi_3 H \frac{dT}{dh} = \xi_3 H \frac{1}{C T_S} \text{ .}
+h_{\text{Wolkenbildung}} = \xi_3 H \frac{dT}{dh} = \xi_3 H \frac{1}{C} \text{ .}
 \end{equation}
 
 %\subsubsection{Wolkenabbau}
@@ -257,8 +252,8 @@ Durch Zusammenfassen von Strahlungsbilanz und Wasserkreislauf erhält man folgen
 \begin{equation}
 \begin{matrix}
 \dot{T}_S = & \xi_1 \frac{\sigma T_{\astrosun}^4 R_{\astrosun}^2}{4 \pi R_{\text{planet}}^2 a_{\text{planet}}^2} (\alpha_{\text{min}} + C(\alpha_{\text{max}} - \alpha_{\text{min}})) && - \xi_1 \sigma T_{S}^4  (1 - \beta_{\text{max}} \cdot H)\\
-\dot{H}   = & \xi_2 T_S              & - \xi_3 H \frac{1}{C T_S}          & \\
-\dot{C}   = &                        &   \xi_3 H \frac{1}{C T_S}          & - \xi_4 C
+\dot{H}   = & \xi_2 T_S              & - \xi_3 H \frac{1}{C}          & \\
+\dot{C}   = &                        &   \xi_3 H \frac{1}{C}          & - \xi_4 C
 \end{matrix} \text{ .}
 \end{equation}
 Um zu verhindern, dass eine Luftfeuchtigkeit oder Wolkenabdeckung von über 100\% auftritt, werden zu gewissen linearen Termen noch den gleichen Term mit grosser Potenz dazu addiert. Eine Funktion
@@ -276,8 +271,8 @@ Diese Art von Limitierung wird bei der Wolkenbildung, sowohl beim Wolkenabbau ei
 \begin{equation}
 \begin{matrix}
 \dot{T}_S = & \xi_1 \frac{\sigma T_{\astrosun}^4 R_{\astrosun}^2}{4 \pi R_{\text{planet}}^2 a_{\text{planet}}^2} (\alpha_{\text{min}} + C(\alpha_{\text{max}} - \alpha_{\text{min}})) && - \xi_1 \sigma T_{S}^4  (1 - \beta_{\text{max}} \cdot H)\\
-\dot{H}   = & \xi_2 P_{\text{in}}(C) & - \xi_3 (H + H^9) \frac{1}{C T_S}   &                   \\
-\dot{C}   = &                        &   \xi_3 (H + H^9) \frac{1}{C T_S}   & - \xi_4 (C + C^5)
+\dot{H}   = & \xi_2 P_{\text{in}}(C) & - \xi_3 (H + H^9) \frac{1}{C}   &                   \\
+\dot{C}   = &                        &   \xi_3 (H + H^9) \frac{1}{C}   & - \xi_4 (C + C^5)
 \end{matrix} \text{ .}
 \end{equation}
 
@@ -285,18 +280,14 @@ Diese Art von Limitierung wird bei der Wolkenbildung, sowohl beim Wolkenabbau ei
 \rhead{Simulation}
 
 Das Modell wurde in MATLAB mittels Transientenanalyse simuliert. Dazu kam ein ODE45 Solver zum Einsatz. Die Anfangswerte wurden so gesetzt, dass sie Erdbedingungen unterstützen.
-%System anregen Erdähnliche Werte zu generieren.
-%TODO 0.44 durchschnittliche Luftfeuchtigkeit,  0.68 duchschnittliche Wolkenabdeckung
 \begin{equation}
 \begin{matrix}
 T_0 = & 287 \\
 H_0 = & 0.44 \\
-C_0 = & 0.68
+C_0 = & 0.67
 \end{matrix}
 \end{equation}sind Jahresmittelwerte von Oberflächentemperatur, Relativer Luftfeuchtigkeit, und Wolkenabdeckung.
-%TODO shift xi values
-Die in Tabelle \ref{planeten:xiValues} ersichtlichen freien Parameter $\xi_1$ bis $\xi_6$ sowie $\beta_{\text{max}}$ wurden empirisch gesetzt um für die Erde stabile Resultate zu erhalten.
-%TODO why i picked those xi's, erklärung
+Die in Tabelle \ref{planeten:xiValues} ersichtlichen freien Parameter $\xi_1$ bis $\xi_4$ sowie $\beta_{\text{max}}$ wurden empirisch gesetzt um für die Erde stabile Resultate zu erhalten.
 \begin{center}
 \begin{table}[!h]
 	\center
@@ -304,28 +295,28 @@ Die in Tabelle \ref{planeten:xiValues} ersichtlichen freien Parameter $\xi_1$ bi
         & Wert                  & Beschreibung \\
   \hline
 $\xi_1$ & $1$					& Wirkung der Leistungsdifferenz auf die Oberflächentemperatur\\
-$\xi_2$ & $16 \cdot 10^{-3}$	& Koeffizient Wasserdampfbildung\\
-$\xi_3$ & $2.6 \cdot 10^{0}$	& Koeffizient Wolkenbildung \\
-$\xi_4$ & $5   \cdot 10^{0}$	& Koeffizient Wolkenabbau \\
+$\xi_2$ & $1.7 \cdot 10^{-2}$	& Koeffizient Wasserdampfbildung\\
+$\xi_3$ & $2.8 \cdot 10^{0}$	& Koeffizient Wolkenbildung \\
+$\xi_4$ & $5.1 \cdot 10^{0}$	& Koeffizient Wolkenabbau \\
 $\beta_{\text{max}}$ & $0.5$	& Maximaler Anteil der durch den Treibhauseffekt zurückgehaltenen Leistung
 	\end{tabular}
 	\caption{Für die Simulation gesetzte freien Parameter}
 	\label{planeten:xiValues}
 \end{table}
 \end{center}
-In Tabelle \ref{planeten:planetValues} sind die für die Planeten eingesetzten Parametern $a_{\text{planet}}$ und $R_{\text{planet}}$ ersichtlich. Da der Orbit eines Planeten elliptisch sein kann, muss für $a_{\text{planet}}$ die mittlere Distanz zur Sonne über die Umlaufzeit gewählt werden. Diese kann aus den elliptischen Halbachsenparametern $a$ und $b$ berechnet werden \cite{planeten:umlaufbahn}:
+In Tabelle \ref{planeten:planetValues} sind die für die Planeten eingesetzten Parametern $a_{\text{planet}}$ und $R_{\text{planet}}$ ersichtlich. Da der Orbit eines Planeten elliptisch sein kann, muss für $a_{\text{planet}}$ die Distanz zur Sonne über die Umlaufzeit gemittelt werden. Dieser Mittelwert kann aus den elliptischen Halbachsenparametern $a$ und $b$ berechnet werden \cite{planeten:umlaufbahn}:
 \begin{equation}
-a_{\text{planet}} = a \left(1+{\frac {e^{2}}{2}}\right) = \frac{3}{2}a - \frac{1}{2}b \text{ .}
+a_{\text{planet}} = a \left(1+{\frac {e^{2}}{2}}\right) = \frac{3}{2}a - \frac{b^2}{2a} \text{ .}
 \end{equation}
 Dabei ist $e$ die Exzentrizität der Umlaufbahn.
-ist die Geschwindigkeitsanomalie das Gestirns miteinberechnet. Das System wurde bis zum stationären Zustand simuliert. Aus der Zeitachse können keine quantitative Schlüsse gezogen werden.
+Das System wurde bis zum stationären Zustand simuliert. Aus der Zeitachse können keine quantitative Schlüsse gezogen werden.
 \begin{center}
 \begin{table}[!h]
 	\center
 	\begin{tabular}{l|c c c c}
                         & Merkur                    & Venus                    & Erde                    & Mars     \\
   \hline
-  $a_{\text{planet}}$   & $5.853 \cdot 10^{10}$ m   & $1.082 \cdot 10^{11}$ m  & $1.496 \cdot 10^{11}$ m & $2.284 \cdot 10^{11}$ m \\
+  $a_{\text{planet}}$   & $5.913 \cdot 10^{10}$ m   & $1.082 \cdot 10^{11}$ m  & $1.496 \cdot 10^{11}$ m & $2.289 \cdot 10^{11}$ m \\
   $R_{\text{planet}}$   & $2.439 \cdot 10^{6}$ m   & $6.0519 \cdot 10^{6}$ m  & $6.371 \cdot 10^{6}$ m  & $3.3895 \cdot 10^{6}$ m 
 \end{tabular}
 \caption{Für die Planeten eingesetzte Werte \cite{planeten:radius} \cite{planeten:semiMinorAxis}}
@@ -335,7 +326,15 @@ ist die Geschwindigkeitsanomalie das Gestirns miteinberechnet. Das System wurde 
 
 \subsection{Ergebnisse}
 
-		Abbildungen \ref{planeten:figSurfaceTemperature} bis \ref{planeten:figAlbedo} zeigen die Simulationsergebnisse in durchgezogenen Linien. Die Strich-Punkt-Linie der entsprechenden Farben zeigt den heutigen Wert der Grössen.
+	Abbildungen \ref{planeten:figSurfaceTemperature} bis \ref{planeten:figAlbedo} zeigen die Simulationsergebnisse in durchgezogenen Linien. Die Strich-Punkt-Linie der entsprechenden Farben zeigt den heutigen Wert der Grössen.
+		
+	Das simulierte Klima auf der Erde hat nur geringe Abweichungen zu den real gemessenen Werten. Das Modell wurde auch explizit für das Erdklima ausgelegt.
+	
+	Die Temperatur auf dem Mars ist ähnlich kalt wie heute beobachtbar. Obwohl eine aktive Troposphäre simuliert wird, kann die durchschnittliche Temperatur nicht über den Gefrierpunkt von Wasser steigen. Vermutlich kompensiert das durch die Wolken höhere Albedo den Treibhauseffekt. Das entstehende Eis würde das Albedo noch stärker erhöhen, was für noch tiefere Temperaturen sorgt. In äquatorialen Gegenden könnte flüssiges Wasser durchaus bestehen.
+	
+	Die Venus ist mit zirka 100$^\circ$C viel kälter als heute beobachtet, aber immer noch viel zu heiss um Flüssiges Wasser auf längere Zeit zu halten. In polaren Regionen sind die Temperaturen vermutlich milder und lebensfreundlicher.
+	
+	Merkur ist dank dem Treibhauseffekt einiges heisser wie heute beobachtbar. Die vorhandene Atmosphäre mit hohem Wasserdampfanteil erhöht die Temperatur enorm. Da Merkur allerdings verhältnismässig leicht ist und an starkem Sonnenwind ausgesetzt ist, wird diese Athmosphäre nicht lange bestehen.
 
 		\begin{figure}
 			\center
@@ -368,7 +367,7 @@ ist die Geschwindigkeitsanomalie das Gestirns miteinberechnet. Das System wurde 
 \section{Schlussfolgerung}
 \rhead{Schlussfolgerung}
 
-Die Simulationsergebnisse tendieren zu den heutigen beobachtbaren Klimaverhältnisse. Die extremen Klimas von Mars und Venus sind somit vermutlich durch ihre Grösse und Umlaufbahn prädestiniert. Die Nullhypothese kann somit falsifiziert werden. Es können jedoch nur qualitative Schlüsse gezogen werden, da durch Verändern der freien Parameter ein ganz anderes Bild entsteht. Somit sind die Ergebnisse nur mit Vorsicht zu geniessen.
+Die Simulationsergebnisse tendieren zu den heute beobachtbaren Klimaverhältnissen. Die extremen Klimas von Mars und Venus sind somit vermutlich durch ihre Grösse und Umlaufbahn prädestiniert. Die Nullhypothese kann somit falsifiziert werden. Es können jedoch nur qualitative Schlüsse gezogen werden, da durch Verändern der freien Parameter ein ganz anderes Bild entsteht. Somit sind die Ergebnisse nur mit Vorsicht zu geniessen.
 
 Abweichungen sind durch diverse Fehlerquellen gerechtfertigt. Zum einen wurden diverse chemische und physikalische Vorgänge bei extremen Temperaturen und Sonneneinstrahlung nicht beachtet.
 Neben Wasser wurden Treibhausgase wie CO$_2$ vernachlässigt. Sie machen heute den grössten Anteil der Venus- und Marsatmosphäre aus.
