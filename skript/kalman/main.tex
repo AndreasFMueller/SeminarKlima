@@ -107,18 +107,18 @@ translatorischen Bewegungsgleichung mit dem Systemmodell
 s_{k+1|k} \\ 
 v_{k+1|k} \\ 
 a_{k+1|k}
-\end{pmatrix}}_{\hat{x}_{k+1}}
+\end{pmatrix}}_{\displaystyle\hat{x}_{k+1}}
 &=
 \underbrace{\begin{pmatrix}
  1 & \Delta t & \frac{1}{2}\Delta t^{2} \\ 
  0 & 1 & \Delta t \\ 
  0 & 0 & 1
- \end{pmatrix}}_{\varphi}
+ \end{pmatrix}}_{\displaystyle\varphi}
 \underbrace{\begin{pmatrix}
    s_{k} \\ 
    v_{k} \\ 
    a_{k}
-   \end{pmatrix}}_{\hat{x}_{k}}
+   \end{pmatrix}}_{\displaystyle\hat{x}_{k}}
 \label{kalman:Posbest}
 \end{align}
 zur Positionsbestimmung, wie sie beispielsweise bei autonomen Fahrzeugen
