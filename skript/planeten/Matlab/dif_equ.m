@@ -1,7 +1,7 @@
 addpath('equations');
 
 latexplots = 1;
-saveplots = 0;
+saveplots = 1;
 
 %% static parameter
 global CONST;
@@ -19,7 +19,7 @@ global PLANET;
 VENUS.name = 'Venus';
 VENUS.v_escape = 10.36e3;
 VENUS.R = 6.0519e6; %m
-VENUS.A = 1.076e11; %m
+VENUS.A = 1.082e11; %m
 VENUS.T_mean = 273+460; %K WolframAlpha   %465
 VENUS.T_blackbody = 312; %K claesjohnson
 VENUS.albedo = 0.65; % WolframAlpha
@@ -30,18 +30,18 @@ EARTH.g = 9.81;
 EARTH.name = 'Earth';
 EARTH.v_escape = 11.186e3;
 EARTH.R = 6.371e6; %m
-EARTH.A = 1.499e11; %m
+EARTH.A = 1.496e11; %m
 %EARTH.T0 = 273+10; %K
 EARTH.T_mean = 273+14;  %K WolframAlpha
 EARTH.T_blackbody = 275; %K claesjohnson
 EARTH.albedo = 0.367; % WolframAlpha
-EARTH.cloud_cover = 0.68; % ?
+EARTH.cloud_cover = 0.67; % https://earthobservatory.nasa.gov/images/85843/cloudy-earth
 EARTH.mean_h2o = 0.44;    % http://www.climate4you.com/ClimateAndClouds.htm
 
 MARS.name = 'Mars';
 MARS.v_escape = 5.03e3;
 MARS.R = 3.3895e6; %m
-MARS.A = 2.353e11; %meters
+MARS.A = 2.289e11; %meters
 MARS.T_mean = 273-47; %K WolframAlpha
 MARS.T_blackbody = 229; %K claesjohnson
 MARS.albedo = 0.15; % WolframAlpha
@@ -52,7 +52,7 @@ MARS.mean_h2o = NaN;
 MERCURY.name = 'Mercury';
 %MERCURY.v_escape = 5.03e3;
 MERCURY.R = 2.439e6; %m
-MERCURY.A = 5.9133e10; %meters
+MERCURY.A = 5.913e10; %meters
 MERCURY.T_mean = 273+179; %K WolframAlpha
 MERCURY.T_blackbody = 443; %K
 MERCURY.albedo = 0.106; % WolframAlpha
@@ -71,14 +71,26 @@ SIM.T_s_0    = EARTH.T_mean; %K
 SIM.H_0      = EARTH.mean_h2o;
 SIM.C_0 = EARTH.cloud_cover;
 
+
+
 global PARAM
 PARAM.xi1 = 1;       %dT factor     
-PARAM.xi2 = 16e-3;    %vaporisation
-PARAM.xi3 = 0.26e1;  %condesation     1.9e-2; 
-PARAM.xi4 = 5e-0;    %precipitation
-PARAM.beta_max = 0.5;     %greenhouse effect
+PARAM.xi2 = 1.7e-2;    %vaporisation
+PARAM.xi3 = 2.8e0;  %condesation     1.9e-2; 
+PARAM.xi4 = 5.1e-0;    %precipitation
+PARAM.beta_max = 0.9;     %greenhouse effect
 PARAM.alpha_min = 0.15;
-PARAM.alpha_max = 0.55;
+PARAM.alpha_max = 0.48;
+
+% albedo only has a small deviation
+% global PARAM
+% PARAM.xi1 = 1;       %dT factor     
+% PARAM.xi2 = 16e-3;    %vaporisation
+% PARAM.xi3 = 2.6e0;  %condesation     1.9e-2; 
+% PARAM.xi4 = 5e-0;    %precipitation
+% PARAM.beta_max = 0.5;     %greenhouse effect
+% PARAM.alpha_min = 0.15;
+% PARAM.alpha_max = 0.55;
 
 
 
@@ -133,7 +145,7 @@ for i = 1:4
 %     planets{i}.y.P_in = P_in;
 %     planets{i}.y.P_out = P_in;
     planets{i}.y.albedo     = ((PARAM.alpha_max - PARAM.alpha_min) * C) + PARAM.alpha_min;
-    planets{i}.y.greenhouse = ( PARAM.xi8 * H);
+    planets{i}.y.greenhouse = ( PARAM.beta_max * H);
     
     
     
@@ -255,6 +267,7 @@ if (latexplots == 1)
     hold off;
     title('Humidity');
     ylabel('%');
+    ylim([0 100])
     xlabel('Time');
     legend({planets{1}.name, planets{2}.name, planets{3}.name, planets{4}.name});
     grid
