@@ -1,16 +1,16 @@
 Wettervorhersagen basieren auf Modellen, welche eine Näherung der Realität darstellen. Diese Modelle versuchen mit einer beschränkten Parameter Anzahl die Natur möglichst gut zu abstrahieren. Je nach Anwendung liegt der Schwerpunkt der Modelle auf einer Genauigkeit über grosse Gebiete (Klimaforschung) oder auf einer hohen Genauigkeit in kleinen Regionen (lokaler Wetterdienst). Vor einigen Jahren haben Grover et al. \cite{grover:2015} versucht mittels neuronaler Netzwerke eine Wettervorhersage zu tätigen.
 
-Neuronale Netzwerke sind ein Teil der Forschung im Bereich des maschinellen Lernens (Machine Learning). Machine Learning (ML) als Domäne geht zurück bis in die frühen 60er Jahre und hatte den Ursprung in Mustererkennungsforschung und computergestützter Lerntheorie. Die konstante Geschwindigkeitssteigerung der Hardware-Branche bescherte dieser rechenintensiven Domäne einen neuen Frühling. Was vor einigen Jahren noch den weltstärksten Supercomputer beanspruchte, kann heute auf einem einzelnen starken Server in gleicher Zeit berechnet werden. Dieser extreme Leistungsschub der vergangenen Jahrzehnte ermöglich heute viele Probleme auf dem heimischen PC zu lösen, welche damals noch ganze Rechenzentren beansprucht haben.
+Neuronale Netzwerke sind ein Teil der Forschung im Bereich des maschinellen Lernens (Machine Learning). Machine Learning (ML) als Domäne geht zurück bis in die frühen 60er Jahre und hatte den Ursprung in Mustererkennungsforschung und computergestützter Lerntheorie. Die konstante Geschwindigkeitssteigerung der Hardware-Branche bescherte dieser rechenintensiven Domäne einen neuen Frühling. Was vor einigen Jahren noch den weltstärksten Supercomputer beanspruchte, kann heute auf einem einzelnen starken Server in gleicher Zeit berechnet werden. Dieser extreme Leistungsschub der vergangenen Jahrzehnte ermöglicht heute viele Probleme auf dem heimischen PC zu lösen, welche damals noch ganze Rechenzentren beansprucht haben.
 
 Im Gegensatz zur Wettervorhersage mit entwickelten Modellen ist es mittels künstlicher neuronaler Netzwerke (KNN) möglich ein Blackbox-Model zu trainieren. Die inneren Parameter und das Model selber in der Blackbox müssen nicht bekannt sein, diese werden im training 'erlernt' und später verwendet. Mit einer grosszügigen Datengrundlage ist das System im Stande viel bessere Lösungen zu approximieren als mit einfacheren Modellen möglich ist. Allein dieser Umstand ist ein treibender Faktor um anspruchsvolle Probleme mittels diser Methode zu lösen. Mit einer grossen Datengrundlage kann das System sehr gute Lösungen approximieren, dies kommt der Wettervorschung zu gute, da eine grosse Menge an Daten verfügbar ist.
 
-Für die Forschung sind grosse Modelle sehr interessant da man mit viel Daten auch sehr akkurate Vorhersagen treffen kann, ohne alle Prozesse komplett zu modelieren. Für ein tieferes Verständnis der Funktionsweise von neuronalen Netzwerken wurde hier ein Schwerpunkt auf sehr kleine Modelle gelegt. 
+Für die Forschung sind grosse Modelle sehr interessant, da man mit viel Daten auch sehr akkurate Vorhersagen treffen kann, ohne alle Prozesse komplett zu modelieren. Für ein tieferes Verständnis der Funktionsweise von neuronalen Netzwerken wurde hier ein Schwerpunkt auf sehr kleine Modelle gelegt. 
 
 \section{Die Wärmeleitungsgleichung als diskretes ML Problem}
 Als einfaches Beispiel möchten wir als erstes die Wärmeleitungsgleichung (gem. Kapitel \ref{subsection:heatconduction}) 
 \begin{equation}
 \frac{\partial T}{\partial t} = \kappa \frac{\partial^2}{\partial x^2} T
-\label{eq:waermeleitung-1d}
+%\label{eq:waermeleitung-1d}
 \end{equation}
 ist eine partielle Differential Gleichung welche für diesen Anwendungszweck in einer Dimension beschrieben werden kann.
 
@@ -35,9 +35,9 @@ Dies lässt sich auch als Skalarprodukt für 3 Punkte des Stabes $S(x_0, \dots, 
 T(x,t) \rightarrow T(x,t+1) : \begin{pmatrix} x_{k-1} & x_{k} & x_{k+1} \end{pmatrix} \cdot \underbrace{\frac{\kappa}{h^2} \begin{pmatrix} 1 \\ -2 \\ 1 \end{pmatrix}}_{\vec{w}} =  \frac{\kappa}{h^2} \cdot \left( 1 \cdot x_{k-1} - 2 \cdot x_{k} + 1 \cdot x_{k+1} \right)
 \label{eq:sumvec}
 \end{equation}
-Der Vektor $\vec{w}$ in Gleichung \eqref{eq:sumvec} hat die $L^1$-Norm ($\|w\|_{1}:=\sum _{{i=1}}^{n}|w_{i}|$) von $1$. Dies ist zu begründen dadurch, dass keine Temperaturzunahme oder Temperaturabnahme im gesammten System über einen Zeitschritt stattfinden kann. Die Temperaturänderung geschieht lokal abhänig von der umliegenden Temperatur. Sie kann lokal wachsen oder fallen, nicht aber im gesammten System einen Trend entwickeln.
+Der Vektor $\vec{w}$ in Gleichung \eqref{eq:sumvec} hat die $L^1$-Norm ($\|w\|_{1}:=\sum _{{i=1}}^{n}|w_{i}|$) von $1$. Dies ist zu begründen dadurch, dass keine Temperaturzunahme oder Temperaturabnahme im gesamten System über einen Zeitschritt stattfinden kann. Die Temperaturänderung geschieht lokal abhänig von der umliegenden Temperatur. Sie kann lokal wachsen oder fallen, nicht aber im gesamten System einen Trend entwickeln.
 
-Es ist nun erklärt wie die Wärmeleitungsgleichung in einem eindimensionalen Stab mathematisch funktioniert. Dies Verfahren wird später verwendet um Trainingsdaten für ein neuronales Netzwerk zu erzeugen.
+Es ist nun erklärt, wie die Wärmeleitungsgleichung in einem eindimensionalen Stab mathematisch funktioniert. Dies Verfahren wird später verwendet um Trainingsdaten für ein neuronales Netzwerk zu erzeugen.
 
 
 \subsection{Neuronales Netzwerk}
@@ -122,7 +122,7 @@ Ein KNN muss zuerst entworfen werden und es müssen einige Entscheidungen bezüg
 Zusätzlich können einigen Restriktionen eingebaut werden:
 \begin{itemize}
 	\item {\textbf{$\sigma$:} Als Aktivierungsfunktion wird eine lineare Funktion gewählt. In Abschnit xyz wurde gezeigt, dass die 2. Ableitung mittels linear Kombination erlernt werden kann.}
-	\item {\textbf{$b$: } Die Bias-Variable wird auf 0 gesetzt und während dem Training nicht verändert, es ist zu erwarten, dass $b=0$ sein muss!}
+	\item {\textbf{$b$: } Die Bias-Variable wird auf 0 gesetzt und während des Trainings nicht verändert, es ist zu erwarten, dass $b=0$ sein muss!}
 	\item {\textbf{$w_{0,1,2}$: } Die Parameter für das Gewicht werden trainiert, es könnte hier noch noch $w_0 = w_2$ in Erwägung gezogen werden, um die Symmetrie auszunutzen.}
 \end{itemize}
 Das Netz hat somit drei Parameter $w_0, w_1, w_2$ welche erlernt werden müssen. Aus der mathematischen Herleitung ist zu erwarten, dass der Gewichtsvektor  $w_0, w_1, w_2$ die Lösungsform $w = \xi \cdot (1, -2, 1)$ annimmt. $\xi$ ist an dieser Stelle ein Platzhalter für $\xi = \frac{\kappa}{h^{2}}$ welche einfach zusammen gefasst werden können.

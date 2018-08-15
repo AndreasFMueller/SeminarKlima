@@ -38,7 +38,7 @@ I_{1} \cdot I_{2} \; & \hat{=} \sum_{k=1}^{n} \sigma_{k} \left( \omega_{k1} I_1 
  
 Diese Gleichung lässt sich nun in ein neuronales Netzwerk mit einem hidden Layer übersetzten wie Abbildung \ref{fig:mst_variable_hidden_layer} zeigt. Es ist auch ersichtlich, dass die Aktivierungsfunktion des Outputlayers linear ist und dieser keine Bias-Variable $b_{out}$ besitzt. Der Einfachheit halber verwenden wir aber ein Gewicht $w_{2n}$ im Outputlayer für die Konstrution der Linearkombination.
 
-Mit steigender Anzahl Neuronen sollte somit der Fehler sich verringern. Um diese Hypothese zu bestätigen, wurde ein Netzwerk verwendet, welches gemäss der Abbildung \ref{fig:mst_variable_hidden_layer} implementiert wurde. Die Anzahl Neuronen im hidden Layer sind variabel zwischen zwei und vierzehn gewählt und das Interval für $I_1$ und $I_2$ umfasst $[0, 10)$. Die Daten wurden mit Hilfe von zwei zufällig initialisierten Arrays erstellt. Die Zahlen sind diskretisiert in $0.1$ Schritten. Es existieren somit theoretisch 10000 Kombinationen, davon wurden 5000 Datenpunkte verwendet um die Netze zu trainieren.
+Mit steigender Anzahl Neuronen sollte sich somit der Fehler sich minimieren. Um diese Hypothese zu bestätigen, wurde ein Netzwerk verwendet, welches gemäss der Abbildung \ref{fig:mst_variable_hidden_layer} implementiert wurde. Die Anzahl Neuronen im hidden Layer sind variabel zwischen zwei und vierzehn gewählt und das Interval für $I_1$ und $I_2$ umfasst $[0, 10)$. Die Daten wurden mit Hilfe von zwei zufällig initialisierten Arrays erstellt. Die Zahlen sind diskretisiert in $0.1$ Schritten. Es existieren somit theoretisch 10000 Kombinationen, davon wurden 5000 Datenpunkte verwendet um die Netze zu trainieren.
 
 \begin{figure}
 	\centering
@@ -85,7 +85,7 @@ Mit steigender Anzahl Neuronen sollte somit der Fehler sich verringern. Um diese
 	\caption{Topologie des neuronalen Netzwerks mit variablem hidden Layer zum Trainieren der Multiplikationsoperation.}
 \end{figure}
 
-Wie aus den Resultaten in Abbildung \ref{fig:mst_loss} unschwer zu erkennen ist, sinkt der Fehler ($L^1$) mit zunehmender Neuronen Anzahl. Ebenfalls fällt auf, dass ausserhalb des Intervals $[0, 10)$ der Fehler stark zu nimmt. Dies entsteht dadruch, dass nur auf dem Wertebereich trainiert wurde und die Funktion effektiv eine gewichtete Summe von tanh-Funktionen ist.
+Wie aus den Resultaten in Abbildung \ref{fig:mst_loss} unschwer zu erkennen ist, sinkt der Fehler ($L^1$) mit zunehmender Anzahl Neuronen. Ebenfalls fällt auf, dass ausserhalb des Intervals $[0, 10)$ der Fehler stark zu nimmt. Dies entsteht dadruch, dass nur auf dem Wertebereich trainiert wurde und die Funktion effektiv eine gewichtete Summe von tanh-Funktionen ist.
 \begin{figure}
 	\centering
 	\begin{tabular}{cc}
