@@ -6,7 +6,7 @@
 
 \section{Physikalische Eigenschaften des Klimasystems\label{section:physik}}
 In diesem Abschnitt stellen wir die physikalischen Eigenschaften
-aller wesentlicher Komponenten des Klimasystems zusammen.
+aller wesentlichen Komponenten des Klimasystems zusammen.
 Dabei geht es zunächst nur darum, die grundlegende Physik in 
 Erinnerung zu rufen und die Naturgesetze, die die Wechselwirkungen
 zwischen den Komponenten beschreiben.
@@ -36,8 +36,8 @@ Ein Körper der Masse $m$ hat also die Wärmekapazität $C=c\cdot m$.
 
 \subsubsection{Wärmeleitung\label{subsection:heatconduction}}
 Herrschen in einem Körper Temperaturunterschiede, ist $T$ nicht mehr
-nur eine Konstante, sondern eine Funktion der Koordinaten und auch der
-Zeit.
+nur eine Konstante sondern eine Funktion $T(x,y,z,t)$
+der Koordinaten und auch der Zeit.
 Temperaturunterschiede werden sich ausgleichen, indem Energie von
 wärmeren zu kälteren Teilen des Körpers fliegt.
 Dies geschieht umso schneller, je grösser die Unterschiede sind.
@@ -89,6 +89,14 @@ Die Wärmeleitungsgleichung erhält damit die Form
 \kappa\Delta T.
 \label{skript:waermeleitung2}
 \end{equation}
+In einer Dimension wird daraus
+\[
+\frac{\partial T}{\partial t} = \kappa \frac{\partial^2 T}{\partial x^2}.
+\]
+Die Änderung der Temperatur ist also umso grösser, je grösser
+die Krümmung der Temperaturkurve $x\mapsto T(x,t)$ ist.
+Die Wärmeleitungsgleichung beschreibt also, wie sich die Temperaturen
+ausgleichen, bis nur noch lineare Temperaturgradienten bestehen bleiben.
 
 \subsubsection{Randbedingungen}
 Die partielle Differentialgleichung~\eqref{skript:waermeleitung2}
@@ -109,6 +117,7 @@ als dies mit Wärmeleitung möglich wäre.
 Dieser Prozess heisst {\em Konvektion} \cite{skript:konvektion}.
 \index{Konvektion}%
 
+\subsubsection{Advektion}
 Wir wollen den Fall eines strömenden Mediums mathematisch etwas genauer
 ausarbeiten.
 Bewegt sich das Medium mit der Geschwindigkeit $\vec v$, dann ändert sich
@@ -118,14 +127,14 @@ Nach der Zeit $\Delta t$ befindet sich derjenige Teil des Mediums
 über dem Punkt $P$, der sich vorher über dem Punkt $P-\Delta t\cdot\vec v$
 befand.
 Die Temperatur zur Zeit $t+\Delta t$ ist daher
-$T(P,t+\Delta t)=T(P-\Delta t,t)$.
+$T(P,t+\Delta t)=T(P-\vec{v}\,\Delta t,t)$.
 Die Temperaturänderung ist
 \begin{align*}
 T(P,t+\Delta t)
 &=
 T(P,t) + (T(P,t+\Delta t)-T(P,t))
 =
-T(P,t) + T(P-\vec v\Delta t, t)-T(P,t)
+T(P,t) + T(P-\vec v\,\Delta t, t)-T(P,t)
 \\
 \intertext{und damit die Temperaturänderung pro Zeiteinheit}
 \frac{
@@ -135,7 +144,7 @@ T(P,t)
 }{\Delta t}
 &=
 \frac{
-T(P-\vec v\Delta t, t)-T(P,t)
+T(P-\vec{v}\,\Delta t, t)-T(P,t)
 }{\Delta t}.
 \end{align*}
 Beim Grenzübergang $\Delta t\to 0$ wird aus der linken Seite die
@@ -225,13 +234,14 @@ $1.005\,\text{kJ}$ notwendig.
 Anders herum bedeutet dies, dass eine mit Wasserdampf angereicherte Atmosphäre
 sehr viel mehr Energie in Form von latenter Wärme speichern kann, als
 allein durch die Wärmekapazität trockener Luft möglich wäre.
+\index{latente Wärme}%
 
 Wir haben damit zwei Mechanismen identifiziert, wie eingestrahlte
 und in der Erdkruste als Wärme gespeicherte Energie in die Atmosphäre 
 transportiert werden kann.
 Einerseits kann Luft über aufgewärmten Landmassen oder dem Meer erwärmt
 werden und als Konvektionsströmung aufsteigen.
-Andererseits kann Wasser an der Oberfläche verdampft werden damit die
+Andererseits kann Wasser an der Oberfläche verdampft werden und damit die
 latente Wärme in die Atmosphäre übergehen.
 Man nennt diese Mechanismen auch turbulente Flüsse
 \cite[S.~70]{skript:wiefunktioniertdas}.
@@ -299,7 +309,7 @@ als das eines schwarzen Körpers modelliert werden kann, doch die
 Abbildung~\ref{skript:strahlungsspektrum} zeigt, dass das Schwarzkörperspektrum
 mindestens eine sehr gute Approximation des tatsächlichen Spektrums ist.
 
-Die Strahlung der Sonne nimmt dem Quadrat der Entfernung ab.
+Die Strahlung der Sonne nimmt mit dem Quadrat der Entfernung ab.
 Von der Strahlungsleistung $\sigma T^4$ pro Flächeneinheit der
 Sonnenoberfläche bleibt in der Entfernung der Erde die Leistung
 \begin{equation}
@@ -346,14 +356,17 @@ hat dagegen ihr Maximum bei $\lambda_{\text{max}}=10\,\mu\text{m}$,
 also im Infrarotbereich.
 
 \subsubsection{Strahlung und Reflektion in der Atmosphäre}
-Die Intensität in Abhängigkeit von der Wellenlänge wird durch das Plancksche
-Strahlungsgesetz
+Die Strahlungsleistung eines schwarzen Körpers in Abhängigkeit
+von der Wellenlänge wird durch das Plancksche Strahlungsgesetz
 \begin{equation}
 E(\lambda,T)
 =
 \frac{2\pi hc^2}{\lambda^5}\frac{1}{e^{\frac{hc}{\lambda kT}}-1}
 \end{equation}
-pro Flächeneinheit des Strahlers und pro Wellenlängeneinheit.
+wiedergeben.
+$E(\lambda,T)$ ist die
+pro Flächeneinheit des Strahlers und pro Wellenlängeneinheit
+abgestrahlte Leistung.
 \begin{figure}
 \centering
 \includegraphics{chapters/1/planck.pdf}
@@ -383,8 +396,8 @@ $E(\lambda,T)$ mit dem Faktor $\lambda$ skalieren.
 
 \subsubsection{Einstrahlungswinkel}
 Warum ist es in den Tropen wärmer als in gemässigten Breiten oder
-an den Polen?
-Die Sonne strahlt doch überall mit der gleichen Intensität.
+an den Polen, wenn
+die Sonne doch überall mit der gleichen Intensität einstrahlt.
 
 Der Unterschied stammt natürlich vom Einstrahlungswinkel.
 Der Ausdruck \eqref{skript:solarkonstante} für $P_{\earth}$ 
@@ -397,7 +410,8 @@ Die einfallende Energie verteilt sich daher auf eine grössere
 Fläche.
 Ist $\alpha$ der Winkel zwischen der Vertikalen und der Strahlungsrichtung,
 dann ist die auf einer Erdoberfläche einfallende Strahlungsdichte nur
-noch $P_{\earth}\cdot\cos\alpha$.
+noch $P_{\earth}\cdot\cos\alpha$
+(siehe auch Abbildung~\ref{skript:einfallswinkel}).
 
 \begin{figure}
 \centering
@@ -433,7 +447,7 @@ Mond           &0.11 \\
 \end{table}
 Die Erde ist noch weniger perfekter schwarzer Strahler als die Sonne.
 Die Ausstrahlung enthält zwar die Strahlung eines schwarzen Körpers mit
-der Mitteltemperatur,
+der Mitteltemperatur als Temperatur $T$,
 sie ist aber überlagert von der Strahlung, die vom Erdboden oder von
 Wolken reflektiert wird.
 Die {\em Albedo} ist der Anteil der reflektierten Strahlung, also ein
@@ -461,7 +475,9 @@ das Maximum der Wärmestrahlung der Erde im Infraroten.
 \label{skript:strahlung-sonne-erde}}
 \end{figure}%
 In Abbildung~\ref{skript:strahlung-sonne-erde} sind die Planckschen
-Strahlungskurve für die Sonne und Erde dargestellt.
+Strahlungskurve für die Sonne und Erde derart skaliert dargestellt,
+dass die Flächen unter den Strahlungs direkt als Mass für die gesamte
+Strahlungsleistung dienen können.
 Die rote Kurve zeigt die spektrale Strahlungsleistung, die von der
 Sonne auf den Querschnitt $\pi R_{\earth}^2$ der Erde eingestrahlt wird,
 also
@@ -481,15 +497,15 @@ Offenbar halten sich Einstrahlung und Ausstrahlung die Waage.
 
 Die Einstrahlung kann sich zum Beispiel dann verändern, wenn 
 mehr Strahlung reflektiert wird.
-Die Ausstrahlung vergrössert sich, wenn die Atmosphäre für infrarote
-Strahlung durchsichtiger wird, wie dies zum Beispiel durch
+Die Ausstrahlung dagegen verringert sich, wenn die Atmosphäre für infrarote
+Strahlung undurchsichtiger wird, wie dies zum Beispiel durch
 erhöhte $\text{H}_2\text{O}$- oder $\text{CO}_2$-Konzentration geschehen kann.
-Damit wieder ein Gleichgewicht entsteht, muss die Temperatur der
-Erde sich erhöhen, damit die Ausstrahlung ebenfalls höher wird
+Damit sich wieder ein Gleichgewicht einstellt, muss sich die Temperatur der
+Erde erhöhen, damit die Ausstrahlung ebenfalls höher wird
 (obere hellblaue Kurve in Abbildung~\ref{skript:strahlung-sonne-erde}).
 Sinkt der Gehalt an Treibhausgasen, wird die Atmosphäre transparenter
-für Wärmestrahlung.
-Ein Gleichgewicht ist möglich bei tieferer Temperatur (untere
+für Wärmestrahlung,
+ein Gleichgewicht ist möglich bei tieferer Temperatur (untere
 hellblaue Kurve).
 Diese Abhängigkeit der Temperatur von der Transparenz der
 Atmosphäre für Wärmestrahlung ist bekannt als der {\em Treibhauseffekt}.
@@ -507,7 +523,8 @@ der Schwarzkörperstrahlung \cite{skript:sunlight}.
 In Abbildung~\ref{skript:strahlungsspektrum} ist das tatsächlich gemessene
 Strahlungsspektrum der Sonne dargestellt.
 Es fällt auf, dass Wasserdampf und $\text{CO}_2$  für bedeutende
-Absorbtionsbänder verantwortlich ist, während im sichtbaren bereich
+Absorbtionsbänder im Infraroten verantwortlich ist,
+während im sichtbaren bereich
 die Absorbtion sehr gleichmässig ist.
 
 \subsection{Erdrotation und atmosphärische Zirkulation\label{skript:section:zirkulation}}
@@ -531,7 +548,7 @@ den Ozeanen verstehen.
 In Kapitel~\ref{chapter:fluiddynamik} werden die Grundgleichungen
 der Fluiddynamik besprochen.
 In diesem Abschnitt beschränken wir uns auf eine qualitative
-Diskussion der global Zirkulation.
+Diskussion der globalen Zirkulation.
 Die globale Zirkulation unterscheidet sich von Strömungen, die 
 in technischen Anwendungen üblicherweise studiert werden dadurch,
 dass sie zwar im allgemeinen langsamer ist, dafür aber ein viel grössers
@@ -560,6 +577,7 @@ dieser Art.
 \index{Coriolis-Effekt}%
 Die Erde dreht sich in 23 Stunden 56 Minuten und 4.091 Sekunden
 einmal um sich selbst (siderische Rotationsperiode).
+\index{siderische Rotationsperiode}%
 Die Drehung kann mit dem Winkelgeschwindigkeitsvektor
 $\vec{\Omega}$
 beschrieben werden, der die Richtung der Erdachse vom Süd- zum Nordpol
@@ -646,7 +664,7 @@ die {\em $\beta$-Ebene}.
 
 Wir berechnen die Coriolis-Beschleunigung in diesem Koordinatensystem.
 Für einen Geschwindigkeitsvektor $\vec{v}$ parallel zu $V$ hat das
-Vektorprodukt $\vec{\Omega}\times V$ bereits die Richtung $U$,
+Vektorprodukt $\vec{\Omega}\times \vec{v}$ bereits die Richtung $U$,
 er muss also nicht mehr in die Tangentialebene projiziert werden.
 Der Winkel zwischen $\vec{\Omega}$ und $V$ ist die geographischen Breite
 $\alpha$.
@@ -762,7 +780,7 @@ Dies ist genau was man am Beispiel der globalen Strömung auf dem
 Jupiter in Abbildung~\ref{skript:jupiterzirkulation} beobachten kann.
 
 \subsubsection{Äquatorialzone}
-Nahe am Äquator ist die geographische Breite $\alpha$ klein und
+Nahe dem Äquator ist die geographische Breite $\alpha$ klein und
 damit auch der Coriolis-Parameter $f$.
 Die Strömung in Äquatornähe ist daher praktisch unbeeinflusst 
 vom Coriolis-Effekt.
@@ -902,7 +920,7 @@ Planeten wirken als die Anziehungskraft der Sonne.
 Newtons Gravitationsgesetz besagt nämlich, dass auch alle anderen
 \index{Gravitationsgesetz}%
 Planeten durch ihre Schwerkraft auf die Erde einwirken.
-Dies äussert sich darin, dass die Bahnelemente, sich mit der Zeit
+Dies äussert sich darin, dass sich die Bahnelemente mit der Zeit
 ändern.
 Diese langsame Veränderung der Bahnelemente war schon Newton bekannt,
 er hat daraus geschlossen, dass das Sonnensystem mit der Zeit völlig
