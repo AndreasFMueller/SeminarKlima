@@ -25,7 +25,7 @@
 
 %Betrachtet man die vier der Sonne am nächst stehenden Planeten Merkur, Venus, Erde und Mars, gibt es einige Dinge festzustellen.
 %Nur erde enthält leben
-Die Erde ist aus heutiger Sicht der einzige Planet der Leben ermöglicht. Trotz allen Einwirkungen über vier Milliarden Jahre sind wir in der glücklichen Lage auf der Erde ein mildes Klima vorzufinden, das das irdische Leben erhielt. 
+Die Erde ist aus heutiger Sicht der einzige Planet der Leben ermöglicht. Trotz allen Einwirkungen über vier Milliarden Jahre sind wir in der glücklichen Lage auf der Erde ein mildes Klima vorzufinden, dass das irdische Leben erhalten konnte. 
 Der Astrobiologe David Grinspoon meint dazu folgendes:
 \begin{quote}
 \textit{“It may be that conditions for life’s origin aren’t rare, but the hard part is the persistence of habitable conditions.”}
@@ -33,9 +33,9 @@ Der Astrobiologe David Grinspoon meint dazu folgendes:
 --- David Grinspoon, Astrobiologe \cite{planeten:AstrobiologyMagazine} %% https://www.space.com/21234-alien-planets-earth-climate-future.html
 \end{flushright}
 \end{quote}
-Es könnte also sein, dass auf den meisten Planeten im Sonnensystem einmal gute Voraussetzungen für Leben bestanden. Aber nur die Erde konnte mit einem anhaltenden, lebensfreundlichen Klima das Leben aufrecht erhalten.
+Es könnte also sein, dass auf den meisten Planeten im Sonnensystem einmal gute Voraussetzungen für Leben bestand. Aber nur die Erde konnte mit einem anhaltenden, lebensfreundlichen Klima das Leben aufrecht erhalten.
 
-Die für Leben wahrscheinlich wichtigsten Konditionen sind flüssiges Wasser und dadurch auch milde Temperaturen. Flüssiges Wasser ist nur noch auf der Erde in grossen Mengen auffindbar.
+Die für Lebewesen wahrscheinlich wichtigsten Konditionen sind flüssiges Wasser und dadurch auch milde Temperaturen zwischen 0 und 100$^\circ$C. Flüssiges Wasser ist nur noch auf der Erde in grossen Mengen auffindbar.
 %Andere Planeten andere entwicklung
 Alle anderen Planeten konnten offenbar kein freundliches Klima bewahren. Tabelle \ref{planeten_comparison} zeigt ein Vergleich der vier sonnennächsten Planeten.
 \begin{center}
@@ -70,7 +70,7 @@ In diesem Kapitel gehe ich der Frage nach, ob Venus und Mars alleine aufgrund ih
 \section{Ziel}
 Es soll ein Modell erstellt werden, welches das Klima von Planeten mit deren orbitalen Eigenschaften verknüpft.
 Betrachtet wird ein früher Zeitpunkt der Geschichte des Sonnensystems, als die Planeten ähnliche oder annähernd gleiche materielle und atmosphärische Bedingungen aufwiesen.
-Mit der Annahme, dass grosse Mengen an Wasser auf allen Planeten vorhanden war, besteht auf allen Planeten die gleichen Voraussetzungen für mögliches Leben.
+Mit der Annahme, dass grosse Mengen an Wasser auf allen Planeten vorhanden war, bestehen auf allen Planeten die gleichen Voraussetzungen für mögliches Leben.
 In das gleiche Modell werden für jeden Planeten deren unterschiedlichen orbitalen Parameter eingesetzt. Man kann sich das vorstellen, als nehme man zum Beispiel die Erde, skaliert sie auf Mars-Grösse und setzt sie in den Mars-Orbit. 
 Durch eine Simulation des Modells im Zeitbereich sollte dann eine Aussage über den Werdegang der Planeten gemacht werden.
 
@@ -88,10 +88,10 @@ Durch eine Simulation des Modells im Zeitbereich sollte dann eine Aussage über 
 	
 	
 	Das hier erarbeitete Modell muss für alle untersuchten Planeten gelten. Deshalb konzentriert es sich nur auf die Strahlungsbilanz und den Wasserkreislauf. Es wird davon ausgegangen, dass das Wasser wichtig für das Klima ist, da atmosphärischer Wasserdampf auf der Erde den grössten Anteil zum Treibhauseffekt beisteuert. Ausserdem befinden sich alle betrachteten Planeten in der habitablen Zone, auch bekannt als Goldilocks Zone. Diese beschreibt den Abstandsbereich um die Sonne, in dem flüssiges Wasser dauerhaft auftreten kann.
-	Andere klimabestimmenden atmosphärischen Gase wie $\text{CO}_\text{2}$ werden nicht simuliert, um das Modell im gegebenen Rahmen umzusetzen.
+	Andere klimabestimmende atmosphärische Gase wie $\text{CO}_\text{2}$ werden nicht simuliert, um das Modell im gegebenen Rahmen umzusetzen.
 	Das Modell sollte erdähnliche Bedingungen bewusst anstreben, um zu sehen ob diese auf den Planeten Mars und Venus auch bestehen können.
 	
-Auf Grund der zum Teil starken Vereinfachungen müssen einzelne Parameter abgeschätzt werden. Durch diese freien Parametern kann das System getrimmt werden um plausible Lösungen zu erreichen. Diese Parameter sind mit $\xi$'s gekennzeichnet.
+Auf Grund der zum Teil starken Vereinfachungen müssen einzelne Parameter abgeschätzt werden. Durch diese freien Parameter kann das System getrimmt werden, um plausible Lösungen zu erreichen. Diese Parameter sind mit $\xi$'s gekennzeichnet.
 
 \begin{figure}
 	\centering
@@ -111,13 +111,13 @@ Die Parameter $C$ und $H$ können näherungsweise als prozentuale Wolkenabdeckun
 Das Modell wird für die Planeten Merkur, Venus, Erde und Mars simuliert, wobei deren mittlere Distanz $a_\text{planet}$ zur Sonne und Radius $R_\text{planet}$ eingesetzt werden.
 
 \subsection{Strahlungsbilanz}
-Die Strahlungsbilanz wird im Kapitel \ref{skript:subsection:strahlungsbilanz} ausführlich beschrieben. Das hier verwendeten Modell baut direkt darauf auf.
+Die Strahlungsbilanz wird im Kapitel \ref{skript:subsection:strahlungsbilanz} ausführlich beschrieben. Das hier verwendete Modell baut direkt darauf auf.
 
 Damit die Durchschnittstemperatur eines Planeten stabil ist, muss die Leistungsbilanz Null sein:
 \begin{equation}
 \dot{T}_S \propto P_{\text{in}} - P_{\text{out}}\text{ .}
 \end{equation}
-Die Planeten sind jedoch nicht gleich gross. Damit die Auswirkung eines Strahlungsungleichgewicht für alle Planeten gleich ist, muss die Leistung auf eine Flächeneinheit normalisiert werden. Somit hat eine Stück Fläche mit der Atmosphäre darüber auf jedem Planeten die gleiche Wärmekapazität. Mit Normalisierung ist
+Die Planeten sind jedoch nicht gleich gross. Damit die Auswirkung eines Strahlungsungleichgewicht für alle Planeten gleich ist, muss die Leistung auf eine Flächeneinheit normalisiert werden. So hat eine Stück Fläche mit der Atmosphäre darüber auf jedem Planeten die gleiche Wärmekapazität. Mit Normalisierung ist
 \begin{equation}
 \dot{T}_S = \xi_1 \frac{P_{\text{in}} - P_{\text{out}}}{A} = \xi_1 \frac{P_{\text{in}} - P_{\text{out}}}{4 \pi R_{\text{planet}}^2}\text{ .}
 \end{equation}
@@ -131,7 +131,7 @@ P_{\text{in}} = P_{\text{solar}}  \pi R_{\text{planet}}^2 (1-\alpha) = \sigma T_
 \end{equation}
 Andere Energiequellen neben der Sonne wie Geothermie oder Gezeitenkräfte werden vernachlässigt.
 
-Aus dem Radius und Oberflächentemperatur $T_{S}$ eines Planeten wird deren Schwarzkörper-Strahlung \begin{equation}
+Aus dem Radius und der Oberflächentemperatur $T_{S}$ eines Planeten wird deren Schwarzkörper-Strahlung \begin{equation}
 P_{\text{blackbody}} = 4 \pi R_{\text{planet}}^2 \sigma T_{S}^4
 \end{equation}
 berechnet. Diese Leistung bleibt jedoch teilweise durch den Treibhauseffekt $\beta$ in der Atmosphäre gefangen. Der Anteil der durchdringenden Leistung ist
@@ -140,11 +140,11 @@ P_{\text{out}} = P_{\text{blackbody}} (1 - \beta) = 4 \pi R_{\text{planet}}^2 \s
 \end{equation}
 
 \subsection{Albedo}
-Die Albedo $\alpha$ wird als Funktion der Wolkenabdeckung $C$ modelliert. Es wird ein linearer Zusammenhang erwartet. Sie ist begrenzt durch die zwei Werte
+Die Albedo $\alpha$ wird als Funktion der Wolkenabdeckung $C$ modelliert. Es wird ein linearer Zusammenhang erwartet. Die Albedo ist begrenzt durch die zwei Werte
 \begin{equation}
 \alpha_{\text{min}} = 0.15 \text{ und } \alpha_{\text{max}} = 0.48 \text{ .}
 \end{equation}
-Die minimale Albedo $\alpha_{\text{min}}$ tritt bei 0\% Wolkenabdeckung auf und hat den Wert der Albedo des Mondes. Diese ist auch die kleinste in unserem Sonnensystem. Die maximale Albedo $\alpha_{\text{max}}$ tritt bei 100\% Wolkenabdeckung auf und wird so gesetzt, dass bei der Wolkenabdeckung der Erde die Erdalbedo resultiert. Somit ist
+Die minimale Albedo $\alpha_{\text{min}}$ tritt bei 0\% Wolkenabdeckung auf und hat den Wert der Albedo des Mondes. Diese ist auch die kleinste in unserem Sonnensystem. Die maximale Albedo $\alpha_{\text{max}}$ tritt bei 100\% Wolkenabdeckung auf und wird so gesetzt, dass bei der Wolkenabdeckung der Erde die Erdalbedo resultiert. Hiermit ergibt sich
 \begin{equation}
 \alpha = \alpha_{\text{min}} + C(\alpha_{\text{max}} - \alpha_{\text{min}}) \text{ .}
 \end{equation}
@@ -157,7 +157,7 @@ Im verwendeten Modell wirkt sich deren Konzentration $H$ linear auf den Treibhau
 \end{equation}
 aus. Die Wirkung wird mit $\beta_{\text{max}}$ beschränkt und kann vor der Simulation justiert werden.
 
-Die Strahlungsbilanz kann somit mit
+Die Strahlungsbilanz kann demnach mit
 \begin{equation}
 \dot{T}_S = \xi_1 \frac{\sigma T_{\astrosun}^4 R_{\astrosun}^2}{4 \pi R_{\text{planet}}^2 a_{\text{planet}}^2} (\alpha_{\text{min}} + C(\alpha_{\text{max}} - \alpha_{\text{min}})) - \xi_1 \sigma T_{S}^4  (1 - \beta_{\text{max}} \cdot H)
 \end{equation}
@@ -192,13 +192,13 @@ h_{\text{Wolkenbildung}} = \xi_3 H \frac{dT}{dh} \text{ .}
 \end{equation}
 
 %TODO Cite website
-Der Temperaturgradient existiert sowohl in vertikaler, sowie in horizontaler Ausrichtung. Einen grossen horizontalen Gradienten findet man zum Beispiel bei einer Wetterfront vor, wenn unterschiedlich warme Luftmassen aufeinander treffen. Im Modell wird nur der vertikale Gradient berücksichtigt, welcher auf der Erde ca. $1$ Kelvin pro $100$ Meter entspricht. Dieser ist bei ungesättigter Luft annähernd konstant. Sobald Wasserdampf kondensiert wird der Prozess feuchtadiabatisch und der Gradient wird kleiner. Linear approximiert ergibt sich dadurch
+Der Temperaturgradient existiert sowohl in vertikaler, sowie in horizontaler Ausrichtung. Einen grossen horizontalen Gradienten findet man zum Beispiel bei einer Wetterfront vor, wenn unterschiedlich warme Luftmassen aufeinander treffen. Im Modell wird nur der vertikale Gradient berücksichtigt, welcher auf der Erde zirka $1$ Kelvin pro $100$ Meter entspricht. Dieser ist bei ungesättigter Luft annähernd konstant. Sobald Wasserdampf kondensiert wird der Prozess feuchtadiabatisch und der Gradient wird kleiner. Linear approximiert ergibt sich dadurch
 \begin{equation}
 h_{\text{Wolkenbildung}} = \xi_3 H \frac{dT}{dh} = \xi_3 H \frac{1}{C} \text{ .}
 \end{equation}
 
 %\subsubsection{Wolkenabbau}
-Wolken regnen, wenn sich die mikroskopischen Wassertropfen oder Eiskristalle verbinden und nicht mehr getragen werden können. Im hier verwendeten Modell wird angenommen, dass sich die Regenbildung proportional zur Wolkenabdeckung $C$ verhält. Somit ist
+Wolken regnen, wenn sich die mikroskopischen Wassertropfen oder Eiskristalle verbinden und nicht mehr getragen werden können. Im hier verwendeten Modell wird angenommen, dass sich die Regenbildung proportional zur Wolkenabdeckung $C$ verhält. Demnach ist
 \begin{equation}
 h_{\text{Wolkenabbau}} = \xi_4 C \text{ .}
 \end{equation}
@@ -268,7 +268,7 @@ wobei $n$ ungerade ist und somit auch $f'(x)$ ungerade bleibt. Der Effekt von $f
 	\caption{Limitierung von Termen mit $f(x) = x$ in blau und $f'(x) = x + x^7$ in rot.}
 	\label{planeten:limit_graph}
 \end{figure}
-Diese Art von Limitierung wird bei der Wolkenbildung, sowohl beim Wolkenabbau eingesetzt. Das fertige, angepasste Modell lautet somit:
+Diese Art von Limitierung wird bei der Wolkenbildung und beim Wolkenabbau eingesetzt. Das fertige, angepasste Modell lautet somit:
 \begin{equation}
 \begin{matrix}
 \dot{T}_S = & \xi_1 \frac{\sigma T_{\astrosun}^4 R_{\astrosun}^2}{4 \pi R_{\text{planet}}^2 a_{\text{planet}}^2} (\alpha_{\text{min}} + C(\alpha_{\text{max}} - \alpha_{\text{min}})) && - \xi_1 \sigma T_{S}^4  (1 - \beta_{\text{max}} \cdot H)\\
@@ -289,7 +289,7 @@ C_0 = & 0.67
 \end{matrix}
 \end{equation}
 sind Jahresmittelwerte der Erde von Oberflächentemperatur, Relativer Luftfeuchtigkeit und Wolkenabdeckung. Sie wurden so gesetzt, dass sie Erdbedingungen unterstützen.
-Die in Tabelle \ref{planeten:xiValues} ersichtlichen freien Parameter $\xi_1$ bis $\xi_4$ sowie $\beta_{\text{max}}$ wurden empirisch gesetzt um für die Erde stabile Resultate zu erhalten.
+Die in Tabelle \ref{planeten:xiValues} ersichtlichen freien Parameter $\xi_1$ bis $\xi_4$ und $\beta_{\text{max}}$ wurden empirisch gesetzt um für die Erde stabile Resultate zu erhalten.
 \begin{center}
 \begin{table}[!h]
 	\center
@@ -368,7 +368,7 @@ Dabei ist $e$ die Exzentrizität der Umlaufbahn.
 \section{Schlussfolgerung}
 \rhead{Schlussfolgerung}
 
-Die Simulationsergebnisse tendieren zu den heute beobachtbaren Klimaverhältnissen. Die extremen Klimas von Mars und Venus sind somit vermutlich durch ihre Grösse und Umlaufbahn prädestiniert. Die Nullhypothese kann somit falsifiziert werden. Es können jedoch nur qualitative Schlüsse gezogen werden, da durch Verändern der freien Parameter ein ganz anderes Bild entsteht. Somit sind die Ergebnisse nur mit Vorsicht zu geniessen.
+Die Simulationsergebnisse tendieren zu den heute beobachtbaren Klimaverhältnissen. Die extremen Klimas von Mars und Venus sind daher vermutlich durch ihre Grösse und Umlaufbahn prädestiniert. Die Nullhypothese kann somit falsifiziert werden. Es können jedoch nur qualitative Schlüsse gezogen werden, da durch Verändern der freien Parameter ein ganz anderes Bild entsteht. Deshalb sind die Ergebnisse nur mit Vorsicht zu geniessen.
 
 Abweichungen sind durch mehrere Fehlerquellen gerechtfertigt. Zum einen wurden diverse chemische und physikalische Vorgänge bei extremen Temperaturen und Sonneneinstrahlung nicht berücksichtigt.
 Neben Wasser wurden Treibhausgase wie CO$_2$ vernachlässigt. Sie machen heute den grössten Anteil der Venus- und Marsatmosphäre aus.
