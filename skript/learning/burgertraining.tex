@@ -10,7 +10,7 @@ werden kann, müssen geeignete Trainingsdaten bereitgestellt werden.
 
 \subsubsection{Glatte Lösungen}
 Um das Verhalten für glatte Lösungen zu trainineren, generieren
-wir Lösungen mit Hilfe der Charakteristiken-Methode.
+wir Lösungen mit Hilfe der Cha\-rak\-te\-ris\-ti\-ken-Methode.
 Dazu müssen wie bei der Wärmeleitungsgleichungen `faire' Anfangsfunktionen 
 bereitgestellt werden, welche möglichst viele Steigungen und Funktionswerte,
 aber keine exotischen Fälle berücksichtigen.
@@ -21,11 +21,11 @@ Wir müssen aber sicherstellen, dass die Lösungen nur so lange verwendet
 werden, bis sich Sprungstellen entwickeln.
 Ist
 \begin{equation}
-u_{\text{max}} = \max \{ -u_0(x)\,|\, x\in\mathbb R\}
+s_{\text{max}} = \max \{ -u'_0(x)\,|\, x\in\mathbb R\}
 \label{burgers:zeit}
 \end{equation}
 die grösste negative Steigung der Anfangsfunktion, dann tritt die Sprungstelle
-für Zeiten $t> 1/u_{\text{max}}$ auf.
+für Zeiten $t> 1/s_{\text{max}}$ auf.
 Wir wählen daher das folgende Vorgehen.
 Zunächst wählen wir eine zufällige Anfangsfunktion.
 Dann bestimmen wir die Zeit
