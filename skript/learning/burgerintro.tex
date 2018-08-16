@@ -33,7 +33,7 @@ Die Gleichung von Burgers in der Form
 u(0,x) = u_0(x)
 \label{burgers:transport}
 \end{equation}
-modelliert ein nichtlneares Transportproblem.
+modelliert ein nichtlineares Transportproblem.
 Die Gleichung~\eqref{burgers:transport} ist eine quasilineare partielle
 Differentialgleichung erster Ordnung, die mit der Methode der
 Charakteristiken \cite{burgers:pde} gelöst werden kann.
@@ -45,7 +45,7 @@ x'(s)&=u
 \\
 u'(s)&=0
 \end{align*}
-Aus der ersten Gleichung leitet man ab, tdass $s=t$.
+Aus der ersten Gleichung leitet man ab, dass $s=t$.
 Die dritte Gleichung besagt, dass $u$ entlang einer Charakteristik konstant
 ist, also $u(s)=u_0$.
 Die zweite Gleichung besagt dann, dass die im Punkt $(0,x_0,u_0(x_0))$
@@ -100,7 +100,7 @@ einen Erhaltungssatz.
 Diese Betrachtungsweise erlaubt, die Bewegung von Sprungstellen besser
 zu verstehen.
 
-Die Differentialgleichung~\eqref{burgers:conservationlaw} kann auch
+Die Differentialgleichung~\eqref{burgers:conservationlaw} kann man auch
 in der Form
 \[
 \frac{\partial u}{\partial t}
@@ -120,7 +120,7 @@ in der Form
 \]
 schreiben.
 Darauf ist aber der Satz \ref{skript:wegunabhaengigkeit} anwendbar.
-Er besagt, dass Integrale
+Er besagt, dass die Integrale
 \begin{align}
 \oint_\gamma(
 F(u)\,dt
@@ -168,18 +168,20 @@ Die Formulierung als Erhaltungssatz in
 Abschnitt~\ref{subsection:erhaltungssatz} 
 soll uns jetzt erlauben, die Bewegung solcher Sprungstellen zu beschreiben.
 
-Sie also $u(t,x)$ eine Lösung fast überall der Gleichung von Burgers mit
+Sei also $u(t,x)$ fast überall eine Lösung der Gleichung von Burgers mit
 einer Sprungstelle, die sich entlangt der Kurve $x(t)$ bewegt.
 Dazu berechnen wir das Wegintegral \eqref{burgers:integral} über den Rand
-des Rechtecks mit den Ecken $(x,y)$ und $(x+\Delta x, y+\Delta y)$.
+des Rechtecks mit den Ecken $(x,y)$ und $(x+\Delta x, y+\Delta y)$ wie
+in Abbildung~\ref{burgers:hugoniot}.
 Wir benötigen die Grenzwerte
 \[
 \begin{aligned}
 u_l &= \lim_{\Delta t\to 0+} u(t+\Delta t,x)
 &&\text{und}&
-u_r &= \lim_{\Delta x\to 0+} u(t,x+\Delta x).
+u_r &= \lim_{\Delta x\to 0+} u(t,x+\Delta x)
 \end{aligned}
 \]
+im Punkt $P$.
 Damit können wir das Wegintegral approximieren als
 \begin{align}
 \int_{\partial R}(u\,dx -F(u)\,dt)
@@ -187,6 +189,7 @@ Damit können wir das Wegintegral approximieren als
 0
 \notag
 \\
+\Rightarrow\qquad
 u(t+\Delta t,x)
 \Delta x
 -
@@ -212,11 +215,12 @@ F(u(t,x+\Delta x))
 )
 \notag
 \\
-\intertext{Oder nach Grenzübergang $\Delta t\to 0$ und $\Delta x\to 0$}
+\intertext{oder nach Grenzübergang $\Delta t\to 0$ und $\Delta x\to 0$}
 \dot x(t)\, (u_l-u_r) &= F(u_l) - F(u_r).
 \label{burgers:hugoniot-rankine}
 \end{align}
-Die Geschwindigkeit, mit der sich die Sprungstelle bewegt, hängt also 
+Die Geschwindigkeit $\dot{x}(t)$, mit der sich die Sprungstelle bewegt,
+hängt also 
 von den Werten von $u(t,x)$ auf beiden Seiten der Sprungstelle ab.
 Dies sind die {\em Hugoniot-Rankine-Bedingungen}.
 Wir werden sie Abschnitt~\ref{burgers:training} verwenden, um Trainingsdaten
@@ -275,6 +279,17 @@ u_{i+1} = u_{i}.
 Diese besagt natürlich nichts anderes als dass wie erwartet
 die Lösungsfunktion konstant sein muss.
 
+\begin{figure}
+\centering
+\includegraphics{learning/leapfrog.pdf}
+\caption{Leapfrog-Verfahren und linear unabhängige Lösungen der 
+diskretisierten Gleichung $u'=0$.
+Die Leapfrog-Ableitungen ({\color{blue}blau})
+zwischen geraden bzw.~ungeraden Gitterpunkten
+verschwinden jeweils, aber die {\color{red}rote} Lösung ist nicht konstant.
+\label{burgers:leapfrogbild}}
+\end{figure}
+
 Das Problem dieses Beispiel ist jedoch, dass der Differenzenquotient
 \eqref{burgers:diffquot} gar nicht repräsentativ ist für eine Ableitung
 an der Stelle $x_i$, sondern eher für $u'(x_i+\frac12h)$.
@@ -284,14 +299,21 @@ u'(x_i)
 \simeq
 \frac{u_{i+1}-u_{i-1}}{x_{i+1}-x_{i-1}}=\frac{u_{i+1}-u_{i-1}}{2h}=0
 \]
-ist zutreffender, führt aber auf die Rekursionsgleichung
-\[
+ist zutreffender.
+Dies führt auf die Rekursionsgleichung
+\begin{equation}
 u_{i+1}=u_{i-1}.
-\]
-Diese hat zwei linear unabhängige Lösungen, die Gleichungen besagen
+\label{burgers:leapfrog}
+\end{equation}
+Da dabei jeweils ein Punkt übersprungen wird, nennt man dies auch das
+Leapfrog-Verfahren.
+
+Die Differenzengleichung
+\eqref{burgers:leapfrog}
+hat zwei linear unabhängige Lösungen, die Gleichungen besagen
 nämlich nur, dass alle geraden Werte $u_{2i}=u_0$ und alle ungeraden
 $u_{2i+1}=u_1$ sind, diese beiden Werte können aber durchaus verschieden
-sein.
+sein (Abbildung~\ref{burgers:leapfrogbild}).
 Der Versuch, den Differenzenquotienten genauer wiederzugeben hat 
 zusätzliche numerische Lösungen hervorgebracht, die nichts mit Lösungen
 der Differentialgleichung zu tun haben.
@@ -299,9 +321,9 @@ der Differentialgleichung zu tun haben.
 \subsubsection{Differentialgleichung für die Exponentialfunktion}
 Das Beispiel~\eqref{burgers:konstant} war insofern künstlich, als auf der
 rechten Seite die Werte von $u$ gar nicht gebraucht wurden und daher das
-Argument, der Differenzenquotient~\eqref{burges:diffquote} können nicht
+Argument, der Differenzenquotient~\eqref{burges:diffquote} könne nicht
 mit der rechten Seite verglichen werde, nicht wirklich stichhaltig ist.
-Dies ändert sich mit der Gleichung
+Dies ändert sich bei der Gleichung
 \begin{equation}
 \frac{du}{dx} = -u.
 \label{burgers:expo}
@@ -384,8 +406,8 @@ alternierender Fehler mit grösser werdendem $x$.
 
 Die zweite Lösung $\lambda_-$ ist negativ und $|\lambda_-|>1$ für $h$
 klein genug.
-Die Gleichung~\ref{burgers:diffgl} hat also eine zusätzliche Lösung
-$u_i=u_0\lambda_-^i$ mit alterniernden Vorzeichen, die sehr schnell anwächst.
+Die Gleichung~\eqref{burgers:diffgl} hat also eine zusätzliche Lösung
+$u_i=u_0\lambda_-^i$ mit alternierenden Vorzeichen, die sehr schnell anwächst.
 Wir können wie bei $\lambda_+$ auch den Grenzwert für beliebig feine
 Diskretisierung bestimmen.
 Da das Vorzeichen dieser Lösung mit jedem Schritt wechselt, untersuchen
@@ -411,7 +433,7 @@ Für fast alle Anfangswerte ist unvermeidbar, dass sich der
 Koeffizient $a_-$ als von $0$ verschieden herausstellt, auch
 wenn er sehr klein ist.
 Weil $\lambda_-^i$ exponentiell schnell anwächst wird der Summand
-$a_-\lambda_-^i$ immer früher oder später die numersiche Lösung dominieren,
+$a_-\lambda_-^i$ immer früher oder später die numerische Lösung dominieren,
 wie dies auch in Abbildung~\ref{burgers:compmod} dargestellt ist.
 
 Diese Lösung ist einzig entstanden durch den Versuch, mit Hilfe zusätzlicher
@@ -476,7 +498,7 @@ u_{ij}(u_{i,j+1}-u_{i,j-1}),
 \label{burgers:diffgleichung}
 \end{equation}
 die ebenfalls mindestens zweiter Ordnung ist.
-Auch sie zeigt den Computational Mode, wie man zum Beispiel auch
+Auch sie zeigt den Computational Mode, wie man zum Beispiel 
 in numerischen Experimenten sehen kann (Abbildung~\ref{burgers:burgerwave}).
 
 

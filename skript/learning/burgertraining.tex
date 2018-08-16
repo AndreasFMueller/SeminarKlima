@@ -8,20 +8,38 @@ Damit die Gleichung von Burgers mit einem Machine-Learning-Ansatz gelöst
 werden kann, müssen geeignete Trainingsdaten bereitgestellt werden.
 
 
-\subsubsection{Lösung mit Charakteristiken}
-Glatte Lösungen existieren nur für eine beschränkte Zeit.
+\subsubsection{Glatte Lösungen}
 Um das Verhalten für glatte Lösungen zu trainineren, generieren
 wir Lösungen mit Hilfe der Charakteristiken-Methode.
+Dazu müssen wie bei der Wärmeleitungsgleichungen `faire' Anfangsfunktionen 
+bereitgestellt werden, welche möglichst viele Steigungen und Funktionswerte,
+aber keine exotischen Fälle berücksichtigen.
+Die Hermite-Polynome eignen sich wieder ausgezeichnet für diesen Zweck.
+
+Glatte Lösungen der Burgers-Gleichung existieren nur für eine beschränkte Zeit.
 Wir müssen aber sicherstellen, dass die Lösungen nur so lange verwendet
 werden, bis sich Sprungstellen entwickeln.
+Ist
+\begin{equation}
+u_{\text{max}} = \max \{ -u_0(x)\,|\, x\in\mathbb R\}
+\label{burgers:zeit}
+\end{equation}
+die grösste negative Steigung der Anfangsfunktion, dann tritt die Sprungstelle
+für Zeiten $t> 1/u_{\text{max}}$ auf.
 Wir wählen daher das folgende Vorgehen.
 Zunächst wählen wir eine zufällige Anfangsfunktion.
-Dann bestimmen wir die Zeit, bis zu der die zu dieser Anfangsbedingungen
+Dann bestimmen wir die Zeit
+gemäss \eqref{burgers:zeit}, bis zu der die zu dieser Anfangsbedingungen
 gehörende Funktion keine Sprungstelle entwickelt.
 Für diese Zeit berechnen wir die Lösung mit der Charakteristiken-Methode.
 
 \subsubsection{Sprungstellen}
 Um das Verhalten bei Sprungstellen zu trainieren generieren wir
-einfache Lösungen mit genau einer Sprungstelle.
-Wir verwenden dazu die Hugoniot-Rankine-Bedingung \eqref{burgers:hugoniot-rankine}.
+stückweise konstante Lösungen mit genau einer Sprungstelle.
+Die Burgers-Gleichung besagt, dass sich die konstanten Abschnitte
+der Funktion nicht verändern werden, sondern dass sich nur die Sprungstelle
+verschieben wird.
+Hugoniot-Rankine-Bedingung \eqref{burgers:hugoniot-rankine} besagt,
+mit welcher Geschwindigkeit dies geschieht.
+Damit können Trainingsfunktionen für Sprungstellen erzeugt werden.
 

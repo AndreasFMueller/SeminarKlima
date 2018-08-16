@@ -5,7 +5,7 @@
 #
 all:	images
 
-images:	compmod.pdf burgerwave.pdf
+images:	compmod.pdf burgerwave.pdf leapfrog.pdf
 
 compmod.pdf:	compmod.tex
 	pdflatex compmod.tex
@@ -15,3 +15,6 @@ burgerwave.pdf:	burgerwave.tex bw.tex
 
 bw.tex:	expl.m
 	octave expl.m
+
+leapfrog.pdf:	leapfrog.tex
+	pdflatex leapfrog.tex
