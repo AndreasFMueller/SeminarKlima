@@ -27,7 +27,7 @@ Wir nehmen an, dass es sich durch die zwei Parameter Temperatur und
 Salinität beschreiben lässt.
 Wir bezeichnen die Variablen im Gebiet $i$ mit $T_i$ und $S_i$.
 
-Das Wasser welches an der Zirkulation teilnimmt ist umgeben von einem
+Das Wasser, welches an der Zirkulation teilnimmt, ist umgeben von einem
 viel grösseren Wasserreservoir, welches mit dem strömenden Wasser 
 im Wärme- und Salzaustausch steht.
 Wir bezeichnen die konstanten Parameter dieses Reservoirs mit
@@ -74,6 +74,8 @@ dies legt auch die Masseinheit von $q$ fest.
 
 Der Wärmeaustausch mit dem umgebenden Wasser ist proportional zur
 Temperaturdifferenz, wir bezeichnen den Proportionalitätsfaktor mit $c$.
+Zusammen mit dem Wärmeaustausch durch die Strömung erhalten wir
+die Differentialgleichungen
 \begin{equation}
 \begin{aligned}
 \frac{dT_1}{dt}
@@ -86,10 +88,11 @@ c(T_1^*-T_1)
 &=
 c(T_2^*-T_2)
 +
-|q|(T_1-T_2).
+|q|(T_1-T_2)
 \end{aligned}
 \label{skript:thc:temperaturgleichung}
 \end{equation}
+als Modell für die Temperaturentwicklung.
 
 Analoge Überlegungen müssen wir jetzt auch noch für die Salinität anstellen.
 Der Ausgleich der Salinität $S_i$ mit der Salinität $S_i^*$ des
@@ -188,14 +191,14 @@ d(S_0^*-S_0),
 \label{skript:thc:mittelgleichung}
 \end{equation}
 wobei $T_0^* = \frac12(T_1^*+T_2^*)$ und $S_0^* = \frac12(S_1^*+S_2^*)$.
-Die Differentialgleichungen~\ref{skript:thc:mittelgleichungen} 
+Die Differentialgleichungen~\eqref{skript:thc:mittelgleichungen} 
 besagen, dass die mittlere Temperatur des zirkulierenden Wassers
 gegen die mittlere Temperatur des umliegenden Meeresbeckens strebt.
 Die Faktoren $c$ und $d$ beschreiben, wie schnell der Temperaturausgleich
 stattfindet, wie in Abschnitt~\ref{section:zeitkonstanten} ausgeführt wird.
 
 Da die Mitteltemperatur langfristig gegen die Mitteltemperatur der
-umliegenden Meeresbecken strebt liegt es nahe, Temperatur und
+umliegenden Meeresbecken strebt, liegt es nahe, Temperatur und
 Salinität auf diese Mitteltemperatur zu beziehen.
 Wir ersetzen also
 \begin{equation}

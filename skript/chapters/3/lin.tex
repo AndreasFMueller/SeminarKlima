@@ -17,6 +17,7 @@ können.
 
 \subsection{Lineare Differentialgleichungen}
 Eine lineare Differentialgleichung
+\index{lineare Differentialgleichung}%
 \begin{equation}
 \frac{dx}{dt}
 =
@@ -29,11 +30,11 @@ x(t) = e^{At} x(0)
 =
 \biggl(
 \sum_{k=0}^\infty \frac{t^k}{k!}A^k
-\biggr) x(0)
+\biggr)\, x(0)
 =
 \biggl(
 1+ At + \frac{A^2t^2}{2!} +\frac{A^3t^3}{3!}+\dots
-\biggl)\cdot x(0)
+\biggl)\mathstrut\cdot x(0)
 \label{skript:lin:potenzreihe}
 \end{equation}
 gelöst werden.
@@ -136,6 +137,8 @@ e^{Nt}
       &      &      &         0  &    1  & t \\
       &      &      &            &    0  & 1
 \end{pmatrix}
+=
+\sum_{k=0}^{n-1} \frac{t^k}{k!}N_k
 \end{equation}
 sofort berechnen.
 Der Faktor $e^{Nt}$ von \eqref{skript:lin:faktorisierung}
@@ -181,6 +184,7 @@ A=(a_{ij})=Df
 \]
 der Funktion $f$.
 Dies ist die {\em linearisierte} Version der
+\index{linearisierte Differentialgleichung}%
 Differentialgleichung~\eqref{skript:lin:dgl}.
 
 In unmittelbarer Nähe des Gleichgewichtspunktes $0$ sind analog wie

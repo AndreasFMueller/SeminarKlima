@@ -49,7 +49,7 @@ y_2&=y(2h) = y_1 + h\cdot y'(h) = y_1  -ah y_1 = y_1(1-ah)
 \\
 y_k&= (1-ah)^k y_0.
 \end{align*}
-Um den Funktionswert $x=Nh$ zu errechnen, müssen also $N$ Schritte der
+Um den Funktionswert bei $x=Nh$ zu errechnen, müssen also $N$ Schritte der
 Länge $h=x/N$ durchgeführt werden, oder
 \[
 y(x) = y_0(1-ah)^N =
@@ -80,6 +80,7 @@ während die exakte Lösung $y_0e^{-ax}$ nie negativ wird.
 
 \subsubsection{Genauigkeit}
 Die Genauigkeit des Euler-Verfahrens ist ziemlich beschränkt.
+\index{Genauigkeit}%
 Um $x(1)$ in $N$ Schritten zu berechnen, muss man Zeitschritte der
 Länge $\Delta t=1/N$ verwenden.
 Die Approximation \eqref{skript:euler:differenzenquotient} kann mit
@@ -143,7 +144,7 @@ Die Taylor-Entwicklung \eqref{skript:euler:taylor} für die Schrittweite
 $h=\Delta x$ wird daher
 \begin{align}
 y(x+h)
-&=
+&\simeq
 y(x) + y'(x)h + \frac12y''(x)h^2
 \notag
 \\
@@ -160,6 +161,7 @@ y_k&=y_0\biggl(1-ah+\frac12 a^2h^2\biggr)^k
 Wir erwarten, dass dieses Verfahren deutlich genauere Resultate liefert.
 Die Fehler dürften von der Grössenordnung $1/N^2$ sein.
 Man nennt dies ein {\em quadratisches} Verfahren.
+\index{quadratisches Verfahren}%
 
 \begin{table}
 \setlength{\tabcolsep}{5pt}
@@ -195,7 +197,7 @@ zusammengestellt.
 Es sind nur die Werte von $y(x)$ für ganzzahlige Vielfache von $0.1$
 für $x$ gelistet.
 Die korrekten Stellen sind jeweils unterstrichen und bestätigen, dass
-beim Euler-Verfahren der Fehler von der Grössenordnung $h$, während
+beim Euler-Verfahren der Fehler von der Grössenordnung $h$ ist, während
 er beim beschleunigten Verfahren von der Grössenordnung $h^2$ ist.
 
 Leider ist die praktische Durchführung dieses Verfahrens erschwert durch
@@ -205,7 +207,7 @@ vergrössert werden kann, ohne dass es notwendig wird, die Ableitungen
 von $f$ zu berechnen.
 Das wohl bekannteste solche Verfahren ist das {\em Runge-Kutta-Verfahren},
 welches von vierter Ordnung ist.
+\index{Runge-Kutta-Verfahren}%
 Es wird im Detail vorgeführt in \cite{skript:mathsem-dgl}.
-
 
 

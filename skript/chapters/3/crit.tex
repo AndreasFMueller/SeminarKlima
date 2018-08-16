@@ -26,15 +26,17 @@ Differentialgleichung~\ref{skript:dgl:gleichung} ist.
 \index{Gleichgewichtslösung}
 \end{definition}
 
-Eine Gleichgewichtslösung ist daher eine Nullstelle der Funktion $f$,
+Eine Gleichgewichtslösung hat $\dot{x}(t)=0$ und ist daher eine
+Nullstelle der Funktion $f$,
 $f(x_0)=0$.
 \begin{definition}
 Eine Nullstelle von $f$ heisst {\em kritischer Punkt} der
 Differentialgleichung~\ref{skript:dgl:gleichung}.
 \end{definition}
+\index{kritischer Punkt}%
 
-Da $f$ ausserdem von den Parametern $p\in\mathbb R^m$ abhängt,
-wird die Menge der Nullstellen von $f$ von $p$ abhängen.
+Wenn $f$ ausserdem von den Parametern $p\in\mathbb R^m$ abhängt,
+wird auch die Menge der Nullstellen von $f$ von $p$ abhängen.
 Wir schreiben
 \[
 N(p) = \{x\in\mathbb R^n\;|\; f(x,p)\}
@@ -54,8 +56,8 @@ Diese Theorie ist für allerdings nicht besonders nützlich, denn
 sie sagt uns nur, dass sich kritische Punkte stetig in Abhängigkeit vom
 Parametervektor bewegen.
 Besonders interessant für die Diskussion des Klimawandels sind
-Fälle, wo Gleichgewichtslösungen sich sprunghaft ändern, wie in
-Abschnitt~\ref{subsection:budyko}.
+Fälle, wo Gleichgewichtslösungen sich sprunghaft ändern, wie wir in
+Abschnitt~\ref{subsection:budyko} diskutieren werden.
 
 \subsection{Stabilität}
 Wir betrachten eine Gleichgewichtslösung $x(t)=x_0$ der Differentialgleichung
@@ -66,6 +68,7 @@ einer Anfangsbedingung $\bar x_0$, die $|x_0-\bar x_0|<\varepsilon$
 erfüllt, für alle Zeiten nahe bei $x_0$ bleibt, also
 $|\bar x(t)- x_0|<\varepsilon$.
 \end{definition}
+\index{Stabilität}%
 
 \begin{beispiel}
 Wir betrachten die Differentialgleichung
@@ -92,6 +95,7 @@ diskutieren, wir tun dies im Rahmen der Diskussion der wichtigsten
 Bifurkationstypen in Abschnitt~\ref{section:bifurkation-eindim}.
 
 \subsection{Zeitumkehr}
+\index{Zeitumkehr}%
 Wir gehen wieder von der autonomen
 Differentialgleichung~\eqref{skript:dgl:gleichung}
 mit der Lösung $x(t)$ mit Anfangsbedingung $x_0$ aus.
@@ -153,6 +157,7 @@ Wir fragen nach den Gleichgewichtslösungen in Abhängigkeit vom
 Parameter $\lambda$.
 
 Die nachfolgenden prototypischen Bifurkationen können in vielen
+\index{Bifurkation}%
 weiteren Differentialgleichungen beobachtet werden. 
 Für alle Werte des Parameters ist $0$ ein kritischer Wert,
 es gilt also $f(0,\lambda)=0$.
@@ -178,7 +183,7 @@ Parameter einfach durch $\tau=\lambda^\alpha$.
 In den folgenden Beispielen und Abschnitten wird der Parameter $\lambda$
 entlang der horizontalen Achse aufgezeichnet, die Position $x$
 entlang der vertikalen Achse.
-Positive Werte Werte von $f(x,\lambda)$ führen dazu, dass sich mit zunehmender
+Positive Werte von $f(x,\lambda)$ führen dazu, dass sich mit zunehmender
 Zeit die Lösung $x(t)$ nach oben bewegt, solche Punkte werden in den
 Diagrammen rot eingefärbt, ausserdem wird mit Pfeilen die Bewegungsrichtung
 der Punkte angedeutet.
@@ -223,6 +228,7 @@ von $f$ von höherer als linearer Ordnung ist.
 
 
 \subsection{Sattel-Knoten-Bifurkation}
+\index{Sattel-Knoten-Bifurkation}%
 \begin{figure}
 \centering
 \includegraphics{chapters/3/saddle-node.pdf}
@@ -247,6 +253,7 @@ Daraus geht hervor, dass die Gleichgewichtslösung $q\sqrt{\lambda}$
 instabil ist, während $-\sqrt{\lambda}$ stabil ist.
 
 \subsection{Heugabel-Bifurkation}
+\index{Heugabel-Bifurkation}%
 \begin{figure}
 \centering
 \includegraphics{chapters/3/pitchfork.pdf}
@@ -290,6 +297,7 @@ Die Gleichgewichtslösungen $\pm\sqrt{\lambda}$ für $\lambda >0$
 sind stabil.
 
 \subsection{Transkritische Bifurkation}
+\index{transkritische Bifurkation}%
 \begin{figure}
 \centering
 \includegraphics{chapters/3/trans.pdf}
@@ -314,6 +322,7 @@ Beim Übergang zu $\lambda>0$ wird die Gleichgewichtslösung $0$ instabil
 und die Gleichgewichtslösung $-\lambda$ wird instabil.
 
 \subsection{Ein Beispiel zur globalen Mitteltemperatur\label{subsection:budyko}}
+\index{globale Mitteltemperatur}%
 \begin{figure}
 \includegraphics{chapters/3/kubisch.pdf}
 \caption{Phasendiagramm der Differentialgleichung~\eqref{skript:dgl:kubisch}.
@@ -323,6 +332,7 @@ Das in Abschnitt~\ref{subsection:modell von budyko} beschriebene
 Budyko-Modell versucht, die globale Mittelemperatur in Abhängigkeit
 von der Einstrahlung und der Albedo zu modellieren.
 Mehr zu diesen Ansätzen wird in Kapitel~5 dargestellt.
+\index{Budyko-Modell}
 
 Als Beispiel für die Diskussion eines solchen Modells betrachten wir
 die Differentialgleichung
@@ -347,14 +357,14 @@ Gleichgewichtslösungen, ausserhalb jedoch jeweils nur eine.
 
 Das zugehörige Phasendiagramm ist in Abbildung~\ref{skript:dgl:kubischfig}
 dargestellt.
-Die Gleichgewichslösungen oben und unten auf der S-Kurve sind instabil,
+Die Gleichgewichtslösungen oben und unten auf der S-Kurve sind instabil,
 nur der Ast zwischen den beiden lokalen Extrema von $f(x)$ besteht
 aus stabilen Gleichgewichtslösungen.
 
 Wächst der Parameter $\lambda$ über den kritischen Wert $2\sqrt{3}$
 hinaus, gibt es keinen stabilen Gleichgewichtszustand mehr, das System
 divergiert nach $-\infty$. 
-Analog strebt das System gegen $+\infty$ wenn der Parameter den Werte
+Analog strebt das System gegen $+\infty$ wenn der Parameter den Wert
 $-2\sqrt{3}$ unterschreitet.
 
 Die Differentialgleichung 
@@ -366,7 +376,8 @@ Die Differentialgleichung
 \end{equation}
 hat die gleichen Gleichgewichtslösungen wie \eqref{skript:dgl:kubisch},
 jedoch sind die stabilen Gleichgewichtslösungen von \eqref{skript:dgl:kubisch}
-instabile Gleichgewichtslösungen von \eqref{skript:dgl:kubisch2}.
+instabile Gleichgewichtslösungen von \eqref{skript:dgl:kubisch2}
+und umgekehrt.
 Beim Anstieg des Parameters $\lambda$ über den Wert $2\sqrt{3}$
 springt das System, falls es sich im unteren Gleichtszustand befand,
 in den oberen.

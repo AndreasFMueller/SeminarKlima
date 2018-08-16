@@ -22,7 +22,7 @@ Eine Funktion $x(t)$ heisst Lösung der Differentialgleichung
 \end{equation}
 zur Anfangsbedingung $x_0$, wenn gilt $x(0)=x_0$ und
 \[
-\frac{dx}{dt} = f(x(t),t)
+\frac{dx(t)}{dt} = f(x(t),t)
 \]
 für alle $t>0$.
 \end{definition}
@@ -52,8 +52,9 @@ geschrieben werden.
 
 Die Forderung, dass die Differentialgleichung autonom sein soll, ist
 allerdings auf triviale Art zu erfüllen, indem man zu einer neuen
-unabhängigen Variablen übergeht und die bisherige Zeitvariable 
-als letzte Komponente der Funktion $x(t)$ hinzufügt.
+unabhängigen Variablen $s$ übergeht und die bisherige Zeitvariable 
+als letzte Komponente der Vektorfunktion $x(t)$ hinzufügt.
+
 Wir schreiben die Lösungsfunktionen als
 \begin{align*}
 x(t)
