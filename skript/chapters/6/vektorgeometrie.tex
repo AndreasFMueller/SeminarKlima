@@ -41,6 +41,7 @@ Dies sieht aus wie das Skalarprodukt zweier Vektoren.
 
 Wir verenden die folgende Notation.
 Das Skalarprodukt zweier Vektoren $x$ mit Komponenten $x_j$ und $y$ mit
+\index{Skalarprodukt}%
 Komponenten $y_j$ ist
 \begin{equation}
 x\cdot y
@@ -50,6 +51,7 @@ x\cdot y
 x^ty.
 \end{equation}
 Die Norm eines Vektors ist
+\index{Norm}%
 \begin{equation}
 \| x\| = \sqrt{x\cdot x} = \sqrt{\sum_{j=1}^N x_j^2}.
 \end{equation}
@@ -247,7 +249,7 @@ y\cdot s_k
 \end{aligned}
 \label{skript:fourier:skalarprodgl}
 \end{equation}
-Die Summen auf der rechten Seite können ausgewertet werden, wenn man die
+Die Summen auf der rechten Seite können ausgewertet werden, wenn man
 die Skalarprodukte der Vektoren $c_k$ und $s_k$ kennt.
 
 \subsubsection{Orthogonalität}
@@ -365,6 +367,7 @@ Damit haben wir den folgenden Satz bewiesen:
 \biggr).
 \]
 \end{satz}
+\index{Parseval-Gleichung}%
 Die Parseval-Gleichung hat zur Konsequenz, dass eine Funktion mit nur
 kleinen Werten auch nur kleine Fourier-Koeffizienten haben kann.
 Sind zwei Funktionen $f$ und $g$ nahe beeinandern, dann unterscheiden
@@ -432,7 +435,7 @@ Als Basisfunktionen kann man die Funktionen
 \end{equation}
 verwenden.
 Das Skalarprodukt $\langle f,g\rangle$ muss linear in $f$ und $g$ sein.
-Eine naheliegende Wahl für das Skalarprodukt ist
+Eine naheliegende Wahl dafür ist
 \[
 \langle f, g\rangle
 =
@@ -534,13 +537,13 @@ ist natürlich wieder eine $2\pi$-periodische Funktion.
 
 Ist $f(x)$ eine Linearkombination von Funktionen~\eqref{fourier:basis},
 dann sind nur endlich viele der Koeffizienten $\bar{a}_0$, $a_k$ und $b_k$
-sind von $0$ verschieden und es gilt $f(x)=\tilde f(x)$, die Summe
-\eqref{fourier:reihe} rekonstriert die Funktion $f(x)$ also exakt..
+von $0$ verschieden und es gilt $f(x)=\tilde f(x)$, die Summe
+\eqref{fourier:reihe} rekonstruiert die Funktion $f(x)$ also exakt.
 
 Für eine beliebige $2\pi$-periodische Funktion $f(x)$ ist die Funktion
 $\tilde f(x)$ nach \eqref{fourier:reihe} im Allgemeinen eine unendliche
 Reihe.
-Die Reihe \eqref{fourier:reihe} heisst die Fourier-Reihe der Funktion 
+Sie heisst die Fourier-Reihe der Funktion 
 $f(x)$.
 \index{Fourier-Reihe}
 
@@ -773,7 +776,7 @@ DD^tAA^t
 E,
 \]
 wobei wir im letzten Schritt $D^t$ mit $AA^t$ vertauschen durften,
-weil beide Diagonalmatrizen sind und damit vertauschen.
+weil beide Diagonalmatrizen sind.
 Insbesondere erhält $\cal F$ das Skalarprodukt, womit wir natürlich
 nur die Parseval-Identität anders formuliert haben.
 

@@ -8,12 +8,12 @@ mit dessen Hilfe wir gew"ohnliche Differentialgleichungen l"osen k"onnen. In
 unserem Fall traf die Wahl auf \texttt{octave}, nicht nur weil es auf allen 
 g"angigen Plattformen verf"ugbar und open-source ist, sondern auch weil es mit 
 \texttt{lsode} einen m"achtigen  ODE-Solver beinhaltet.
-\index{lsode}%
+\index{lsode@\texttt{lsode}}%
 
 Wie sich herausstellt, ist eine direkte Implementation unserer gefundenen 
 gew"ohnlichen Differentialgleichungen \cref{equation:lorenz2:dota} und 
 \cref{equation:lorenz2:dotb} in \texttt{octave} keine sonderlich effiziente 
-\index{octave}%
+\index{Octave}%
 L"osung. Der Algorithmus braucht selbst f"ur kleine Grade $k$, auf dem 
 Testsystem mit einer Intel\textregistered{} Core\texttrademark\, i7-3930K CPU mit 
 3.20 GHz, sehr lange. So dauerte zum Beispiel das Berechnen von Grad $k = 7$ 
@@ -25,7 +25,7 @@ Um das ganze etwas zu optimieren, nehmen wir also am besten ein
 Computer-Algebra Programm, mit dessen die Gleichungen bereits soweit 
 vereinfachen k"onnen, dass nur noch ein Vektor mit einfachen Summen "ubrig 
 bleibt. Mit \texttt{maxima} haben wir dazu wieder ein open-source Programm, das 
-\index{maxima}%
+\index{maxima@\texttt{maxima}}%
 auf allen Plattformen zur Verf"ugung steht.
 
 Wir haben jetzt alles zusammen, um die Gleichungen mit \texttt{maxima} zu 
