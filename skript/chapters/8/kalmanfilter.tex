@@ -26,15 +26,15 @@ Wir gehen davon aus, dass das System, zum Beispiel das Klimasystem der Erde,
 mit einem Vektor $x\in\mathbb R^n$ von Zustandsvariablen beschrieben werden
 kann.
 Den detaillierten Zustand des Systems können wir nicht erfahren, die
-Grössen $x$ sind also bestenfalls teilweise bekannt sein.
+Grössen $x$ sind also bestenfalls teilweise bekannt.
 Die beschränkte Kenntnis des Systemzustand äussert sich darin, dass
 nur eine Schätzung $\hat x$ für $x$ gefunden werden kann.
 $\hat x$ stellt also das aktuelle Wissen über den Systemzustand dar.
 
 Durch direkte Messung können möglicherweise einzelne Systemvariablen
 bestimmt werden.
-Häufiger können diese Variablen aber nicht direkt gemessen werden.
-Das Modell braucht vielleicht Temperatur, aber gemessen werden kann nur
+Häufiger können viele der Variablen aber nicht direkt gemessen werden.
+Das Modell braucht vielleicht die Temperatur, aber gemessen werden kann nur
 die Strahlungsintensität.
 Die gemessenen Variablen $z\in\mathbb R^m$ sind also bestenfalls eine
 Funktion $z=f(x)$ der Zustandsvariablen $x$.
@@ -80,6 +80,8 @@ Andererseits brauchen wir eine Funktion
 mit der der Zustand korrigiert werden kann.
 Setzen wir dies wieder zusammen, folgt
 \[
+\hat{x}_k
+=
 F(\hat{x}_{k|k-1},z_k)
 =
 K(\Phi(\hat{x}_{k-1}),z_k).
@@ -95,7 +97,7 @@ erster Ordnung der Form
 \frac{dx}{dt} = f(x,t)
 \]
 beschrieben werden konnten.
-Für genügend kurze Zeitschritt $\Delta t$ können die Zustandsvariablen
+Für genügend kurze Zeitschritte $\Delta t$ können die Zustandsvariablen
 $x_k = x(k\Delta t)$ zu den Zeitpunkten $t_k=k\Delta t$
 durch lineare Approximation
 \[
@@ -196,6 +198,7 @@ P_{k|k-1} = \varphi_k P_{k-1} \varphi_k^t + Q_k
 bezeichnet werden soll.
 
 \subsection{Messprozess\label{subsection:messprozess}}
+\index{Messprozess}
 Früher wurde gezeigt, wie der Messprozess die Werte der Messgrössen $z_k$
 aus den Zustandsvariablen ableitet.
 Auch hier ist die Modellierung mit einer allgemeinen Funktion $z=f(x)$ 
@@ -215,8 +218,8 @@ z_k = H_kx_k + w_k,
 modelliert werden soll,
 dessen Komponenten normalverteile Zufallsvariable mit Erwartungswert $0$
 sind.
-Meist wird zudem angenommen, dass die einzelnen Messgrössen unabhängig
-sind, dass die Kovarianzen von $w_k$ also eine
+Meist wird zudem angenommen, dass die Fehler der einzelnen Messgrössen
+unabhängig sind, dass die Kovarianzen von $w_k$ also eine
 Diagonalmatrix
 \[
 R_k = E(w_kw_k^t) =
@@ -372,6 +375,7 @@ T_{k+1}\\c_{k+1}
 T_k\\c_k
 \end{pmatrix}
 \]
+ausdrücken.
 Wir nehmen an, dass wir nur die Temperaturanomalie $T_k$ messen können,
 die zugehörige Messmatrix ist
 \[

@@ -9,6 +9,7 @@ In diesem Abschnitt soll die Ausbreitung von Anomalien in der Höhe
 der Meeresoberfläche in der Nähe des Äquators studiert werden.
 
 \subsection{Kelvin-Wellen\label{subsection:kelvin}}
+\index{Kelvin-Wellen}
 In der einfachsten Form führt ein Tiefdruckgebiet über dem zentralen
 Pazifik dazu, dass die Meeresoberfläche über die Normalhöhe ansteigt.
 Wenn sich das Tiefdruckgebiet auffüllt und die Druckkraft zur Aufrechterhaltung
@@ -22,7 +23,10 @@ Strömung diese Symmetrie hat.
 In unmittelbarer Nähe des Äquators brauchen wir die Krümmung der
 Erdoberfläche nicht zu berücksichtigen, und können daher mit einem
 $x$-$y$-Koordinatensystem arbeiten, in dem $x$ die Richtung entlang des
-Äquators und $y$ die Richtung entlang der Längenkreise ist.
+Äquators und $y$ die Richtung entlang der Längenkreise ist (siehe auch
+die Beschreibung der $\beta$-Ebene auf
+Seite~\pageref{skript:betaplane:definition}).
+\index{$\beta$-Ebene}%
 Die Strömungsgeschwindigkeitskomponenten nennen wir $u$ entlang des
 Äquators und $v$ entlang der Längenkreise.
 Die Anomalie der Höhe der Meeresoberfläche bezeichnen wir mit $h(x,y)$.
@@ -35,6 +39,7 @@ Wasser wird in diejenige Richtung beschleunigt, in die die Höhe $h(x,y)$
 abnimmt.
 Ausserdem wirkt die Coriolis-Kraft, die die Strömung auf der Nordhalbkugel
 nach rechts ablenkt und auf der Südhalbkugel nach links.
+So erhalten wir die Bewegungsgleichungen
 \begin{equation}
 \begin{aligned}
 \frac{\partial u}{\partial t}
@@ -44,7 +49,7 @@ fv - g\frac{\partial h}{\partial x}
 \\
 \frac{\partial v}{\partial t}
 &=
--fu - g\frac{\partial h}{\partial y}
+-fu - g\frac{\partial h}{\partial y}.
 \end{aligned}
 \label{elnino:kelvin:newton}
 \end{equation}
@@ -55,8 +60,8 @@ werden kann.
 
 Abfliessendes Wasser reduziert die Höhenanomalie.
 Die Kontinuitätsgleichung~\eqref{skript:kontinuitaetsgleichung}
-besagt, dass die Abnahme der der Höhenanomalie proportional ist zur
-Divergenz des Geschwindigkeitsfeldes ist.
+besagt, dass die Abnahme der Höhenanomalie $h$ proportional ist zur
+Divergenz des Geschwindigkeitsfeldes.
 Die fehlende Differentialgleichung ist daher
 \begin{equation}
 \frac{\partial h}{\partial t}
@@ -74,7 +79,7 @@ Wir interessieren uns nur für eine Lösung in unmittelbarer Nähe des
 Äquators und dürfen daher annehmen, dass sich das Wasser nicht
 entlang der Längenkreise bewegt, dass also $v=0$ gilt.
 Die Differentialgleichungen
-\eqref{elnino:kelvin:newton} und \eqref{elnino:kelvin:kont}.
+\eqref{elnino:kelvin:newton} und \eqref{elnino:kelvin:kont}
 vereinfachen sich damit zu
 \begin{align}
 \frac{\partial u}{\partial t}
@@ -239,9 +244,9 @@ k \frac{g}{f}\gamma'(y) \cos(kx-\omega t)
 \gamma(y) \cos(kx-\omega t)
 =
 -H
-k \frac{g}{f}\gamma'(y) \cos(kx-\omega t)
+k \frac{g}{f}\gamma'(y) \cos(kx-\omega t).
 \end{equation}
-nach Kürzen gemeinsamer Faktoren und Umstellen folgt
+Nach Kürzen gemeinsamer Faktoren und Umstellen folgt
 \begin{equation}
 \gamma'(y)
 =
@@ -256,7 +261,7 @@ Wellenzahl $k$ ab, das obere Vorzeichen steht für eine nach Osten
 laufende Welle.
 
 Die Coriolis-Kraft $f$ verschwindet am Äquator, in erster Näherung
-ist sie proportional zur $y$, wir schreiben daher $f=\beta y$.
+ist sie proportional zu $y$, wir schreiben daher $f=\beta y$.
 Die Differentialgleichung~\eqref{kelvin:gamma:dgl1} wird damit zu
 \begin{equation}
 \gamma'(y)
@@ -271,7 +276,7 @@ Für zunehmende $y$ muss $\gamma$ abnehmen, es muss also $\gamma'(y)<0$ sein
 für genügend grosse $y$.
 Dies ist aber nur möglich für das negative Vorzeichen, und damit nur
 für eine nach Osten laufende Welle.
-Im folgenden konzentrieren wir uns daher auf das negative Zeichen
+Im Folgenden konzentrieren wir uns daher auf das negative Zeichen
 in \eqref{kelvin:gamma:dgl2}.
 
 Um eine Lösung von \eqref{kelvin:gamma:dgl2} zu finden, teilen wir

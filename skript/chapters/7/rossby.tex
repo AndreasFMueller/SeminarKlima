@@ -7,10 +7,11 @@
 \section{Rossby-Wellen\label{section:elnino:rossby}}
 In der Untersuchung der Kelvin-Wellen haben wir angenommen, dass die
 Geschwindigkeit $v$ entlang der Längenkreise verschwindet.
-Die Strömung wird im Allgemeinen nicht parallel zum Äquator sein.
+Die Strömung wird aber im Allgemeinen nicht parallel zum Äquator sein.
 Trotzdem beobachten wir zum Beispiel, dass die Westwindströmung 
 zwischen verschiedenen geographischen Breiten mäandriert.
 Woher kommt diese Wellenbewegung?
+\index{Rossby-Wellen}%
 
 \subsection{Zirkulation\label{subsection:rossby:zirkulation}}
 Aus der Diskussion der globalen Zirkulation in
@@ -49,7 +50,7 @@ Die Drehimpulsdichte in der Strömung ist gegeben durch die Zirkulation
 \Delta \psi.
 \]
 Da der Drehimpuls erhalten ist, muss die Zirkulation in einem
-Luftpacket abnehmen, wenn es sich auf der Nordhalbkubel nach Norden
+Luftpaket abnehmen, wenn es sich auf der Nordhalbkubel nach Norden
 bewegt.
 Die Quelle dieser Zirkulationsänderung ist die Erddrehung und damit
 die Corioliskraft $f$ und der mathematische Ausdruck der Drehimpulserhaltung
@@ -83,13 +84,13 @@ Wir berechnen die Ableitung mit Hilfe der Kettenregel:
 +
 v\biggl(\frac{\partial\zeta}{\partial y} + \frac{\partial f}{\partial y}\biggr).
 \end{align*}
-Da $u\ll U$ ist, kännen wir in erster Näherung $u$ im zweiten Term 
+Da $u\ll U$ ist, können wir in erster Näherung $u$ im zweiten Term 
 vernachlässigen.
 Und da $\partial\zeta/\partial y$ ebenfalls sehr klein ist, können
 wir dies im letzten Term im Vergleich zu $\partial f/\partial y$
 vernachlässigen.
 Schliesslich können wir wie in Abschnitt~\ref{section:elnino:kelvin}
-die $\beta$-Ebenen-Approximation verwenden, und $\partial f/\partial y$
+die $\beta$-Ebenen-Approximation verwenden und $\partial f/\partial y$
 durch $\beta$ ersetzen.
 Schliesslich können wir wieder mit \eqref{skript:rossby:geschwindigkeit}
 $v$ als Ableitung von $\psi$ nach $x$ ausdrücken.
@@ -200,8 +201,9 @@ Die Phasengeschwindigkeit~\eqref{rossby:phasengeschwindigkeit}
 hilft uns nicht, die Dynamik des El Niño zu verstehen, da wir dazu
 den Transport von Energie verstehen müssen.
 Die ebenen Wellen der Form~\eqref{rossby:ebenewelle} beschreiben eine Welle,
-die überall die gleiche Amplitude hat, es findet also eigentlich gar
-kein Energietransport statt.
+die überall die gleiche Amplitude hat.
+Ein Transport von potentieller Energie findet aber nur statt, wenn ein
+``Wellenberg'' sich an einen anderen Ort bewegt.
 Im Beispiel des ``Wasserberges'' in der Untersuchung zu den Kelvin-Wellen
 wird potentielle Energie dadurch transportiert, dass das Wasser des Berges
 abfliesst.
@@ -226,11 +228,12 @@ schreiben.
 Die Bewegung eines solchen Wellenpaketes kann man zum Beispiel
 dadurch studieren, dass man die Bewegung des Maximums dieses 
 Wellenpaketes verfolgt.
+\index{Wellenpaket}
 
 Die Darstellung~\eqref{rossby:reelleueberlagerung} ist für diese
 Untersuchung sehr unhandlich, die Rechnung sind zu umständlich.
 Wir schreiben die Wellen daher als Realteil einer komplexen
-Welle $e^{i(kx-\omega(k)t}$, also
+Welle $e^{i(kx-\omega(k)t)}$, also
 \begin{equation}
 u(x,t)
 =
@@ -281,7 +284,7 @@ u(x,t)
 &=
 \operatorname{Re}
 \int_{k_0-\Delta k}^{k_0+\Delta k}
-e^{i(kx-\omega(k)t}\,dk
+e^{i(kx-\omega(k)t)}\,dk
 =
 \operatorname{Re}
 \int_{k_0-\Delta k}^{k_0+\Delta k}
@@ -316,7 +319,7 @@ dargestellt in Abbildung~\ref{rossby:wellenpaket} rechts, moduliert
 mit der langsam schwankenden Funktion $\sin\Delta k(x-ct)/(x-ct)$,
 dargestellt in der selben Abbildung in blau.
 Der Schwerpunkt des Paketes befindet sich bei der $x$-Koordinaten $x-ct$,
-wandert also mit Geschwindigkeit $c$ nach rechts.
+er wandert also mit Geschwindigkeit $c$ nach rechts.
 
 \subsubsection{Gruppengeschwindigkeit}
 \index{Gruppengeschwindigkeit}%
@@ -425,7 +428,7 @@ Gruppengeschwindigkeit.
 \subsection{Energietransport durch Rossby-Wellen\label{rossby:transport}}
 Aus der Dispersionsrelation~\eqref{rossby:dispersion}
 für die Rossby-Wellen können wir jetzt die Gruppengeschwindigkeit
-für parallel zum Äquator sich bewegenden Wellenpaketen
+für parallel zum Äquator sich bewegende Wellenpakete
 durch Ableiten nach $k$ bestimmen.
 Die Gruppengeschwindigkeit ist
 \begin{equation}

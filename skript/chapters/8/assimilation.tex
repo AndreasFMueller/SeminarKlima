@@ -4,7 +4,8 @@
 % (c) 2018 Prof Dr Andreas Müller, Hochschule Rapperswil
 %
 \section{Das Assimilationsproblem\label{section:assimilationsproblem}}
-Der Kalman-Filter ist ein Beispiel dafür, wie laufend neue Messdaten und
+Der Kalman-Filter ist ein Beispiel dafür, wie laufend anfallende neue
+Messdaten und
 ein Modell des untersuchten System ermöglichen, selbst dann einigermassen
 vollständige Informationen über den Zustand des Systems zu erhalten, wenn
 nicht alle Zustandsgrössen direkt gemessen werden.
@@ -37,7 +38,7 @@ Filterproblem hat.
 Der Zustand des Klimasystems zu einem beliebigen Zeitpunkt kann mit einem
 Vektor $x\in\mathbb R^n$ von Variablen beschrieben werden, im einfachsten
 Fall bestehend allein aus der globalen Mitteltemperatur.
-Natürlich ist $x$ nicht bekannt, wir können bestenfalls $X$ ist eine
+Natürlich ist $x$ nicht bekannt, wir können bestenfalls $X$ als eine
 Zufallsvariable betrachten, die den Wert $x$ angenommen hat.
 
 Da die ganze Klimageschichte rekonstruiert werden soll, sind die Werte von
@@ -82,10 +83,10 @@ Der {\em Satz von Bayes} für die {\em bedingten Wahrscheinlichkeitsdichten}
 \begin{equation}
 f_{X|y}(x)
 =
-\frac{f_X(x)}{f_Y(y)}\,f_{Y|x}(y).
+\frac{f_X(x)}{f_Y(y)}\,f_{Y|x}(y)
 \label{assim:bayes}
 \end{equation}
-stellt en Zusammenhang zwischen den bedingten Wahrscheinlichkeiten her.
+stellt den Zusammenhang zwischen den bedingten Wahrscheinlichkeiten her.
 
 Wenn die Zufallsvariablen $X$ und $Y$ unabhängig sind, dann hat der
 Wert von $y$ keinen Einfluss auf die Wahrscheinlichkeitsdichte von $X$,
@@ -112,7 +113,7 @@ Da $X(k)$ Zufallsvariablen sind, muss sich diese Eigenschaft mit den
 Wahrscheinlichkeitsdichten für $X(k)$ ausdrücken lassen.
 
 Mit Ausnahme der verzögerten Differentialgleichung, die zur Modellierung
-des El~Niño-Phänomens in Kapitel~\ref{chapter:elnino} verwendet wurde,
+des El~Niño-Phä\-no\-mens in Kapitel~\ref{chapter:elnino} verwendet wurde,
 haben alle bisher studierten Modelle die Eigenschaft, dass der Zustand
 zur Zeit $k$ vollständig bestimmt ist durch den Zustand zur Zeit $k-1$.
 Frühere Zustände zu Zeiten $j < k-1$ müssen nicht berücksichtigt werden.
@@ -203,7 +204,7 @@ und auch lösen.
 
 \begin{satz}[Filter und Vorhersage]
 \label{satz:filter und vorhersage}
-Gegeben sei
+Gegeben seien
 \begin{enumerate}
 \item die Wahrscheinlichkeitsdichte $f_{X(0)}$ für den Anfangszustand,
 \item die Übergangswahrscheinlichkeiten $f_{X(j)|x(j-1)}$ der
@@ -229,7 +230,7 @@ f_{Y(1)|x(1)}(y(1))\, f_{X(1)}(x(1)),
 \end{align}
 wobei der Proportionalitätsfaktor so gewählt werden muss, dass tatsächlich
 eine Wahrscheinlichkeitsdichte entsteht.
-\item Schritt: für $i=2,\dots,N$
+\item Schritt: für $i=2,\dots,N$ gilt
 \begin{align}
 f_{X(i)|y(1:i-1)}(x(i))
 &=
@@ -241,7 +242,6 @@ f_{X(i)|y(1:i)}(x(i))
 f_{Y(i)|x(i)}(y(i))\, f_{X(i)|y(1:i-1)}(x(i)),
 \label{assim:bayesstep2}
 \end{align}
-liefert,
 wobei wiederum der Proportionalitätsfaktor so gewählt werden muss, dass
 eine Wahrscheinlichkeitsdichte entsteht.
 \end{enumerate}
@@ -250,7 +250,7 @@ eine Wahrscheinlichkeitsdichte entsteht.
 \begin{proof}[Beweis]
 Die Formeln von Schritt~1 sind nichts anderes als der Satz von
 der totalen Wahrscheinlichkeit für \eqref{assim:bayesstep1} und
-der Satz von Bayes~\eqref{assim:bayes} für \eqref{bayesstep2}.
+der Satz von Bayes~\eqref{assim:bayes} für \eqref{assim:bayesstep2}.
 
 Für den Beweis der Formeln für den zweiten Schritt verwenden wir 
 vollständig Induktion.
