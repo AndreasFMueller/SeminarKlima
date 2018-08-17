@@ -36,7 +36,6 @@ Somit lassen sich drei Punkte des Stabes $S(x_0, \dots, x_{N+1})$ auch als Skala
 T(x,t) \rightarrow T(x,t+1) : \begin{pmatrix} x_{k-1} & x_{k} & x_{k+1} \end{pmatrix} \cdot \underbrace{\frac{\kappa}{h^2} \begin{pmatrix} 1 \\ -2 \\ 1 \end{pmatrix}}_{\vec{w}} =  \frac{\kappa}{h^2} \cdot \left( 1 \cdot x_{k-1} - 2 \cdot x_{k} + 1 \cdot x_{k+1} \right)
 \label{eq:sumvec}
 \end{equation}
-
 Der Vektor $\vec{w}$ in Gleichung \eqref{eq:sumvec} hat die Form  $\frac{\kappa}{h^2} \cdot  \begin{pmatrix} 1 & -2 & 1 \end{pmatrix}^{T}$ wobei in Vorfaktor $\frac{\kappa}{h^2}$ auch die Schrittlänge enthalten ist. Dieser kann als $\xi$ zusammengefasst werden. Bei einer anderen Schrittweite als $t \rightarrow t+1$ ändert sich somit auch der Vorfaktor $\xi$ entsprechend. Wichtig ist jedoch, dass 
 \begin{equation}
 	\vec{w} = \begin{pmatrix} w_{0} \\ w_{1} \\ w_{2} \end{pmatrix} = \xi \begin{pmatrix} 1 \\ -2 \\ 1 \end{pmatrix}
@@ -61,7 +60,7 @@ Ein KNN besteht aus vielen einzelnen Neuronen, die zusammen das Netzwerk bilden,
 	\caption{Beispiel eines einfachen KNN mit drei Layern. Drei Parameter werden als Input benötigt, während zwei ausgegeben werden.}
 \end{figure}
 
-Das später verwendete künstliche neuronale Netzwerk (KNN) ist supervised. Supervised learning Methoden (vgl. Abbildung \ref{fig:mst_model_testing}) versuchen mittels Input $I_{t}$ und Output $O_{t}$ eine Abbildung $H$ zu finden, welche mit möglichst kleinem Fehler $I$ auf $O$ abbilden kann \cite{moohri:2012}. Dieser Schritt wird auch als Training bezeichnet. In einem zweiten Schritt der Prediction Phase wird versucht mittels der gelernten Abbildungsfunktion $H$ und neuen, unbekanntem Input $I_{p}$ einen Output $O_{p}$ vorherzusagen, ohne diesen bereits gekannt zu haben.
+Das später verwendete künstliche neuronale Netzwerk (KNN) ist supervised. Supervised learning Methoden (vgl. Abbildung \ref{fig:mst_model_testing}) versuchen mittels Input $I_{\text{train}}$ und Output $O_{\text{train}}$ eine Abbildung $H$ zu finden, welche mit möglichst kleinem Fehler $I$ auf $O$ abbilden kann \cite{moohri:2012}. Dieser Schritt wird auch als Training bezeichnet. In einem zweiten Schritt der Prediction Phase wird versucht mittels der gelernten Abbildungsfunktion $H$ und neuen, unbekanntem Input $I_{\text{predict}}$ einen Output $O_{\text{predict}}$ vorherzusagen, ohne diesen bereits gekannt zu haben.
 
 \begin{figure}
 	\tikzstyle{decision} = [diamond, draw, fill=white, 
@@ -74,8 +73,8 @@ Das später verwendete künstliche neuronale Netzwerk (KNN) ist supervised. Supe
 		\begin{tikzpicture}
 		\node[draw,thick,fill={rgb:black,1;white,5},minimum width=40pt,minimum height=40pt, inner sep=5pt] (H) at (0,0) {\LARGE $H(\dots)$};
 		
-		\node[inputNode,minimum size=30pt] (inp) at (-2.5, 0) {$I_{t}$};
-		\node[inputNode,minimum size=30pt] (outp) at (2.5, 0) {$O_{t}$};
+		\node[inputNode,minimum size=30pt] (inp) at (-2.5, 0) {$I_{\text{train}}$};
+		\node[inputNode,minimum size=30pt] (outp) at (2.5, 0) {$O_{\text{train}}$};
 		\draw[stateTransition] (inp) to[out=0,in=180] node [midway, sloped, above] {} (H);
 		\draw[stateTransition] (outp) to[out=180,in=0] node [midway, sloped, above] {} (H);
 		\end{tikzpicture}
@@ -83,29 +82,29 @@ Das später verwendete künstliche neuronale Netzwerk (KNN) ist supervised. Supe
 		\begin{tikzpicture}
 		\node[draw,thick,minimum width=40pt,minimum height=40pt, inner sep=5pt] (H) at (0,0) {\LARGE $H(\dots)$};
 		
-		\node[inputNode,minimum size=30pt] (inp) at (-2.5, 0) {$I_{p}$};
-		\node[inputNode,fill={rgb:black,1;white,5}, minimum size=30pt] (outp) at (2.5, 0) {$O_{p}$};
+		\node[inputNode,minimum size=30pt] (inp) at (-2.5, 0) {$I_{\text{predict}}$};
+		\node[inputNode,fill={rgb:black,1;white,5}, minimum size=30pt] (outp) at (2.5, 0) {$O_{\text{predict}}$};
 		\draw[stateTransition] (inp) to[out=0,in=180] node [midway, sloped, above] {} (H);
 		\draw[stateTransition] (H) to[out=0,in=180] node [midway, sloped, above] {} (outp);
 		\end{tikzpicture}
 	\end{tabular}
 	
-	\caption{\textbf{Links:} In der Trainingsphase wird die Abbildungsfunktion $H$ gelernt. \textbf{Rechts:} Die Predictionphase approximiert $O_{p}$ anhand der erlernten Funktion $H$.}
+	\caption{\textbf{Links:} In der Trainingsphase wird die Abbildungsfunktion $H$ gelernt. \textbf{Rechts:} Die Predictionphase approximiert $O_{\text{predict}}$ anhand der erlernten Funktion $H$.}
 	\label{fig:mst_model_testing}
 \end{figure}
 
 Die Trainingsphase des neuronalen Netzwerks besteht im Grunde aus drei einfachen Schritten und versucht den Fehler über viele Iterationen zu minimieren:
 \begin{enumerate}
-	\item {\textbf{Ausbreitung:} Für ein gegebenes $I_{tn}$ wird mittels der inneren Parameter $w_{i}, b_{i}$ ein Output $O'_{tn}$ berechnet. Sofern keine inneren Parameter gesetzt sind, so werden diese randomisiert oder mit einer 'intelligenten' Methode initialisiert.}
-	\item {\textbf{Fehler Berechnung:} Der Fehler zwischen dem berechneten Output $O'_{tn}$ und dem erwarteten Output $O_{tn}$ wird berechnet. Für die Fehlerberechnung wird eine sogenante loss-Funktion $l$ verwendet. Oft wird an dieser Stelle die mittlere quadratische Abweichung (mean-squared error) verwendet.}
-	\item{\textbf{ Fehlerrückführung:} In diesem Schritt wird mittels Gradientenabstiegsverfahren (oder ähnlich) versucht, $l$ zu minimieren. Dafür werden die inneren Parameter des Netzes angepasst.}
+	\item {\textbf{Ausbreitung:} Für ein gegebenes $I_{\text{train}}$ wird mittels der inneren Parameter $w_{i}, b_{i}$ ein Output $O'_{\text{train}}$ berechnet. Sofern keine inneren Parameter gesetzt sind, so werden diese randomisiert oder mit einer 'intelligenten' Methode initialisiert.}
+	\item {\textbf{Fehler Berechnung:} Der Fehler zwischen dem berechneten Output $O'_{\text{train}}$ und dem erwarteten Output $O_{\text{train}}$ wird berechnet. Für die Fehlerberechnung wird eine sogenante loss-Funktion $l$ verwendet. Oft wird an dieser Stelle die mittlere quadratische Abweichung (mean-squared error) verwendet.}
+	\item{\textbf{Fehlerrückführung:} In diesem Schritt wird mittels Gradientenabstiegsverfahren (oder ähnlich) versucht, $l$ zu minimieren. Dafür werden die inneren Parameter des Netzes angepasst.}
 \end{enumerate}
 Das Ziel des Trainings ist, so lange zu trainieren und diese Schritte zu wiederholen, bis der Wert von $l$ so klein wie möglich ist. 
 Im Allgemeinen sollte der Wert nicht gegen 0 konvergieren. Diese Konvergenz ist ein Indiz dafür, dass das Netz für das gegebene Problem zu gross ist, oder das Problem für die Netzgrösse zu klein. Das Netz kann dann quasi 'alles' lernen und nicht nur eine gute Abstraktion finden.
 In unserem Beispiel kann aber später davon ausgeganen werden, dass die loss-Funktion den Wert 0 annehmen kann, da wir alle Trainingsdaten künstlich generierten haben und weder Ausreisser noch Rauschen in den Trainingsdaten vorhanden ist.
 
 \subsection{Netzwerk Design und Erwartung}
-Ein KNN muss zuerst entworfen werden und es müssen einige Entscheidungen bezüglich der Topologie getroffen werden. Normalerweise stehen an dieser Stelle viele Fragen die sich unter anderem mit der Anzahl Neuronen und der Anzahl Hidden Layers befasst. In dem gewählten Beispiel der Wärmeleitungsgleichung ist die Antwort jedoch sehr naheliegend. Der Schritt $T \rightarrow T+1$ ist sehr gut dokumentiert und verstanden. Es wird ein Input Vektor der Länge 3 und ein skalarer Output benötigt. Es ist bekannt, dass mittels einer linearen Abbildung der Output $O_n$ aus dem Input $I_n$ erzeugt werden kann. Folglich ergibt sich eine Netzwerkstruktur analog zu Abbildung \ref{fig:mst_neuronalnetworkdemo}.
+Ein KNN muss zuerst entworfen werden und es müssen einige Entscheidungen bezüglich der Topologie getroffen werden. Normalerweise stehen an dieser Stelle viele Fragen die sich unter anderem mit der Anzahl Neuronen und der Anzahl Hidden Layers befasst. In dem gewählten Beispiel der Wärmeleitungsgleichung ist die Antwort jedoch sehr naheliegend. Der Schritt $T \rightarrow T+1$ ist sehr gut dokumentiert und verstanden. Es wird ein Input Vektor der Länge 3 und ein skalarer Output benötigt. Es ist bekannt, dass mittels einer linearen Abbildung der Output $O$ aus dem Input $I$ erzeugt werden kann. Folglich ergibt sich eine Netzwerkstruktur analog zu Abbildung \ref{fig:mst_neuronalnetworkdemo}.
 
 \begin{figure}
 	\centering
@@ -137,7 +136,7 @@ Das Netz hat somit drei Parameter $w_0, w_1, w_2$ welche erlernt werden müssen.
 
 \subsection{Trainingsdaten und `faire' Kurven}
 \subsubsection{Prinzip}
-Mit dem Verständnis für neuronale Netzwerke müssen nun die Daten erschaffen werden, um das Netzwerk zu trainieren. Als Grundlage zum Erlernen der Wärmeleitungsgleichung wird logischerweise die selbe Funktion verwendet, um den Input $I_{t}$ und Output $O_{t}$ zu generieren. Da das Netzwerk dazu neigt, `Trivialitäten' zu lernen, muss bei der Datengenerierung geachtet werden, dass kein Muster in den Daten vorhanden ist, welche nicht mit der Wärmeleitungsgleichung zusammenhängen. Beispielsweise kann davon ausgegangen werden, dass wenn nur monoton steigende Funktionen im Training verwendet werden, das Netzwerk vermutlich Mühe habt eine akkurate Vorhergsage für eine monoton fallende Funktion zu treffen. Aus diesem Grunde werden `faire' Kurven verwendet, welche unterschiedlichste Verschiebungen, Krümmungen und Wendepunkte aufweisen. So kann sichergestellt werden, dass das Netz als einziges Muster die tatsächliche Wärmeleitungsgleichung erlernt. Als besonders hilfreich haben sich hier die Hermite-Polynome
+Mit dem Verständnis für neuronale Netzwerke müssen nun die Daten erschaffen werden, um das Netzwerk zu trainieren. Als Grundlage zum Erlernen der Wärmeleitungsgleichung wird logischerweise die selbe Funktion verwendet, um den Input $I_{\text{train}}$ und Output $O_{\text{train}}$ zu generieren. Da das Netzwerk dazu neigt, `Trivialitäten' zu lernen, muss bei der Datengenerierung geachtet werden, dass kein Muster in den Daten vorhanden ist, welche nicht mit der Wärmeleitungsgleichung zusammenhängen. Beispielsweise kann davon ausgegangen werden, dass wenn nur monoton steigende Funktionen im Training verwendet werden, das Netzwerk vermutlich Mühe habt eine akkurate Vorhergsage für eine monoton fallende Funktion zu treffen. Aus diesem Grunde werden `faire' Kurven verwendet, welche unterschiedlichste Verschiebungen, Krümmungen und Wendepunkte aufweisen. So kann sichergestellt werden, dass das Netz als einziges Muster die tatsächliche Wärmeleitungsgleichung erlernt. Als besonders hilfreich haben sich hier die Hermite-Polynome
 \begin{align}
 	H_n(x) &=(-1)^{n}e^{x^{2}}{\frac {d^{n}}{d x^{n}}}e^{-x^{2}}
 	\\
@@ -155,7 +154,6 @@ H_{4}(x) &= 16x^{4}-48x^{2}-12
 \end{align}
 
 \subsubsection{Implementation}
-
 Zur Generierung der Daten wurde ein Vektor $v=(H_0, \dots ,H_9)$ gwählt. Jedes Element in diesem Vektor representiert ein Hermite Polynom $n$-ten Grades. Dies wird benötigt um kleine Hermite Polynome zu verwenden und mittels Linearkombination verscheidene Kurven zu generieren. Es soll vermieden werden, dass zu grosse Werte entstehen, oder zu extreme Krümmunen entstehen daher wurde von Graden über 10 abgesehen. Das Polynom 10-ten Grades hat als dominanten Faktor $1024 \cdot x^{10}$, was zeigt wie schnell die Kurven gegen den Rand ansteigen, dies wird in Abbildung \ref{fig:mst_hermite_big} noch einmal verdeutlicht.
 
 \begin{figure}
@@ -183,7 +181,7 @@ Zur Generierung der Daten wurde ein Vektor $v=(H_0, \dots ,H_9)$ gwählt. Jedes 
 	\caption{Einige Beispiele von Kurven die Mittels Hermite-Polynom erzeugt wurden.}
 \end{figure}
 
-Aus den generierten Kurven werden mithilfe eines ODE-Solvers die Input und Output Daten erzeugt. Die Kurven werden diskretisiert und aus Form-Gründen in die Vektoren $I_n$ und $O_n$ aufgeteilt. Die Diskretisierung erfolt auf dem Interval [-2.05, 2) mit einem Abstand von 0.05, dies resultiert in 80 Punkten, welche zu Input Vektoren konvertiert werden. Es werden pro Kurve mehrere Vektorpaare gebildet um die Daten so gut wie möglich auszunutzen. Mihilfe dieser Daten wird nun das Neuronale Netzwerk trainiert.
+Aus den generierten Kurven werden mithilfe eines ODE-Solvers die Input und Output Daten erzeugt. Die Kurven werden diskretisiert und aus Form-Gründen in die Vektoren $I_{\text{train}}$ und $O_{\text{train}}$ aufgeteilt. Die Diskretisierung erfolt auf dem Interval [-2.05, 2) mit einem Abstand von 0.05, dies resultiert in 80 Punkten, welche zu Input Vektoren konvertiert werden. Es werden pro Kurve mehrere Vektorpaare gebildet um die Daten so gut wie möglich auszunutzen. Mihilfe dieser Daten wird nun das Neuronale Netzwerk trainiert.
 
 \subsection{Resultate}
 Nach zahlreichen Trainingsanläufen mit unzähligen Iterationen kann festgehalten werden, dass die mathematische Herleitung genau dem Erlernten des Neuronalen Netzwerks entspricht (vgl. Tabelle \ref{tbl:result_heat}) Das Tabelle enthält nur ein Beispiel welches aus dem Training hergeleitet werden konnte. Die Resultate sind nicht deterministisch, da die Generierung der Daten randomisiert stattgefunden hat. Wichtig ist aber, dass die Lösungsform ($w = \xi \cdot (1, -2, 1)$) stets erfüllt wurde.
