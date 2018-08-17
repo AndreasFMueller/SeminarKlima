@@ -1,5 +1,11 @@
 \subsection{Netzwerk Topologie für die Gleichung von Burgers}
-Aus der Burgersgleichung wissen wir, dass das Netzwerk eine Ableitung und eine Multiplikation lernen können sollte. Aus den Erfahrungen mit der Wärmeleitungsgleichung und dem Multiplikator wissen wir, dass die Netzwerktopoloie diese zwei Operationen beinhalten muss. Gemäss der Abbilung \ref{fig:mst_burgers_topology} 'lernt' das Netzwerk aus dem Input die Abbleitung und multipliziert diesen dann mit $I_{2}$
+Aus der Burgersgleichung wissen wir, dass das Netzwerk eine Ableitung
+und eine Multiplikation lernen können sollte. Aus den Erfahrungen
+mit der Wärmeleitungsgleichung und dem Multiplikator wissen wir,
+dass die Netzwerktopoloie diese zwei Operationen beinhalten muss.
+Gemäss der Abbilung \ref{fig:mst_burgers_topology} 'lernt' das
+Netzwerk aus dem Input die Abbleitung und multipliziert diesen dann
+mit $I_{2}$
 \begin{figure}
 	\centering
 	\begin{tikzpicture}
@@ -57,6 +63,7 @@ Aus der Burgersgleichung wissen wir, dass das Netzwerk eine Ableitung und eine M
 	
 	\draw[stateTransition] (o1) -- node[above] {$O_1$} (16, 0);
 	\end{tikzpicture}
-	\label{fig:mst_burgers_topology}
-	\caption{Die vorgeschlagene Topologie des KNN zur Lösung der Burgersgleichung}
+	\caption{Die vorgeschlagene Topologie des KNN zur Lösung
+	der Burgersgleichung
+	\label{fig:mst_burgers_topology} }
 \end{figure}

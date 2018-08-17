@@ -322,7 +322,7 @@ der Differentialgleichung zu tun haben.
 \subsubsection{Differentialgleichung für die Exponentialfunktion}
 Das Beispiel~\eqref{burgers:konstant} war insofern künstlich, als auf der
 rechten Seite die Werte von $u$ gar nicht gebraucht wurden und daher das
-Argument, der Differenzenquotient~\eqref{burges:diffquote} könne nicht
+Argument, der Differenzenquotient~\eqref{burgers:diffquot} könne nicht
 mit der rechten Seite verglichen werde, nicht wirklich stichhaltig ist.
 Dies ändert sich bei der Gleichung
 \begin{equation}
@@ -377,7 +377,7 @@ Potenzansatz $u_i=\lambda^i$, dies ergibt die charakteristische Gleichung
 \[
 \lambda^2+2h\lambda-1=0,
 \]
-die die Lösungen
+mit den Lösungen
 \[
 \lambda = -h\pm\sqrt{h^2+1}.
 \]
@@ -437,8 +437,8 @@ Weil $\lambda_-^i$ exponentiell schnell anwächst wird der Summand
 $a_-\lambda_-^i$ immer früher oder später die numerische Lösung dominieren,
 wie dies auch in Abbildung~\ref{burgers:compmod} dargestellt ist.
 
-Diese Lösung ist einzig entstanden durch den Versuch, mit Hilfe zusätzlicher
-Funktionswerte das numerische Verfahren zu verbessern.
+Diese Lösung ist einzig entstanden durch den Versuch, mit der
+Leapfrog-Ableitung das numerische Verfahren zu verbessern.
 Dabei ist die Ordnung der Differenzengleichung grösser geworden und damit
 sind neue Lösungen entstanden.
 
