@@ -1,5 +1,5 @@
 \subsection{Der neuronale Multiplikator}
-Mit der Einführung der Burgersgleichung wird nun ersichtlich, dass das neuronale Netzwerk unter anderem eine Multiplikation 'erlernen' muss. Die Multiplikation zweier Zahlen ($a \cdot b$) ist für uns einfach, jedoch ist dies für ein neuronales Netzwerk nicht so einfach. Ein KNN ist nicht in der Lage eine Multiplikation exakt zu erlernen, im Gegensatz zur Ableitung 2. Ordnung. 
+Mit der Einführung der Burgersgleichung wird nun ersichtlich, dass das neuronale Netzwerk unter anderem eine Multiplikation 'erlernen' muss. Die Multiplikation zweier Zahlen ($a \cdot b$) ist für uns einfach, jedoch ist dies für ein neuronales Netzwerk nicht so einfach. Ein KNN ist nicht in der Lage eine Multiplikation exakt zu erlernen, im Gegensatz zur 2. Ableitung. 
 \begin{center}
 	\begin{tikzpicture}
 	\node[inputNode, thick] (i1) at (-1, 0.5) {};
@@ -28,17 +28,15 @@ I_{1} \cdot I_{2} \; \hat{=} \; \sigma \left( \omega_{1} I_1 + \omega_{2} I_2 + 
 
 Dies zeigt, dass mit $I_1 = I_2$ die Funktionsentwicklung einer quadratischen Funktion entspricht. Die Summe auf der rechten Seite ist ohne Aktivierungsfunktion linear. Selbst bei Verwendung von gängigen Aktivierungsfunktionen wie der Sigmoid- oder Tangens hyperbolicus Funktion kann keine gute Nähreung gefunden werden. 
 
-Der Satz von Stone-Weierstrass ist besagt, dass jede stetige Funktion durch einfachere Funktionen beliebig gut auf einem Interval $[a, b]$ aproximiert werden kann \cite{wiki:StoneWeierstrass}. Mit dieser Erkenntnis und dem Konzept der Neuronen kann man folgende Gleichung aufstellen:
-
+Der Satz von Stone-Weierstrass besagt, dass jede stetige Funktion durch geeignete einfachere Funktionen beliebig gut auf einem Interval $[a, b]$ aproximiert werden kann \cite{wiki:StoneWeierstrass}. Mit dieser Erkenntnis und dem Konzept der Neuronen kann man folgende Gleichung aufstellen:
 \begin{align}
 I_{1} \cdot I_{2} \; & \hat{=} \; \sigma_{1} \left( \omega_{11} I_1 + \omega_{12} I_2 + b_{1} \right) + \sigma_{2} \left( \omega_{21} I_1 + \omega_{22} I_2 + b_{2}  \right) + \dots  + \sigma_{n} \left( \omega_{n1} I_1 + \omega_{n2} I_2 + b_{n} \right) \\
 I_{1} \cdot I_{2} \; & \hat{=} \sum_{k=1}^{n} \sigma_{k} \left( \omega_{k1} I_1 + \omega_{k2} I_2 + b_{k} \right)
 \label{eq:mst_traivial_sum}
 \end{align}
- 
-Diese Gleichung lässt sich nun in ein neuronales Netzwerk mit einem hidden Layer übersetzten wie Abbildung \ref{fig:mst_variable_hidden_layer} zeigt. Es ist auch ersichtlich, dass die Aktivierungsfunktion des Outputlayers linear ist und dieser keine Bias-Variable $b_{out}$ besitzt. Der Einfachheit halber verwenden wir aber ein Gewicht $w_{2n}$ im Outputlayer für die Konstrution der Linearkombination.
-
-Mit steigender Anzahl Neuronen sollte sich somit der Fehler sich minimieren. Um diese Hypothese zu bestätigen, wurde ein Netzwerk verwendet, welches gemäss der Abbildung \ref{fig:mst_variable_hidden_layer} implementiert wurde. Die Anzahl Neuronen im hidden Layer sind variabel zwischen zwei und vierzehn gewählt und das Interval für $I_1$ und $I_2$ umfasst $[0, 10)$. Die Daten wurden mit Hilfe von zwei zufällig initialisierten Arrays erstellt. Die Zahlen sind diskretisiert in $0.1$ Schritten. Es existieren somit theoretisch 10000 Kombinationen, davon wurden 5000 Datenpunkte verwendet um die Netze zu trainieren.
+Diese Gleichung lässt sich nun in ein neuronales Netzwerk mit einem hidden Layer übersetzten wie Abbildung \ref{fig:mst_variable_hidden_layer} zeigt. Es ist auch ersichtlich, dass die Aktivierungsfunktion des Outputlayers linear ist und dieser keine Bias-Variable $b_{\text{out}}$ besitzt. Der Einfachheit halber verwenden wir aber ein Gewicht $w_{2n}$ im Outputlayer für die Konstrution der Linearkombination.
+%
+Mit steigender Anzahl Neuronen sollte sich somit der Fehler minimieren lassen. Um diese Hypothese zu überprüfen, wurde ein Netzwerk verwendet, welches gemäss der Abbildung \ref{fig:mst_variable_hidden_layer} implementiert wurde. Die Anzahl Neuronen im hidden Layer sind variabel zwischen zwei und vierzehn gewählt und das Interval für $I_1$ und $I_2$ umfasst $[0, 10)$. Die Daten wurden mit Hilfe von zwei zufällig initialisierten Arrays erstellt. Die Zahlen sind diskretisiert in $0.1$ Schritten. Es existieren somit theoretisch 10000 Kombinationen, davon wurden 5000 Datenpunkte verwendet um die Netze zu trainieren.
 
 \begin{figure}
 	\centering
@@ -95,7 +93,7 @@ Wie aus den Resultaten in Abbildung \ref{fig:mst_loss} unschwer zu erkennen ist,
 		\includegraphics[scale=0.4]{learning/img/abs_plot_14_clean.png} \\				
 	\end{tabular}
 	\label{fig:mst_multiplicator_error}
-	\caption{4 trainierte Neuronale Netzwerke mit 2 (\textit{oben links}), 6, 10 und 14 ( \textit{unten rechts}) Nodes im hidden Layer. Die blauen Punkte stellen sämtliche Kombinationen in X, Y auf dem Interval $[0,12)$ dar um zu verdeutlichen, wie sich der Fehler ausserhalb des trainierten Intervals $[0,10)$ entwickelt.}
+	\caption{Vier trainierte Neuronale Netzwerke mit 2 (\textit{oben links}), 6, 10 und 14 ( \textit{unten rechts}) Nodes im hidden Layer. Die blauen Punkte stellen sämtliche Kombinationen in $X$, $Y$ auf dem Interval $[0,12)$ dar um zu verdeutlichen, wie sich der Fehler ausserhalb des trainierten Intervals $[0,10)$ entwickelt.}
 \end{figure}
 
 \begin{figure}
