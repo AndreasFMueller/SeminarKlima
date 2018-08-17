@@ -156,7 +156,7 @@ Das Integral über den ersten Summanden ist
 \int_{x_1}^{x_2} f(\xi,y_2(\xi))\,d\xi.
 \\
 &=
-\oint_\gamma f(x,y)\,dx
+\oint_\gamma f(x,y)\,dx.
 \\
 \intertext{Analog finden wir}
 \int_D
@@ -175,7 +175,7 @@ g(x_2(\eta),\eta) - g(x_1(\eta),\eta)
 \,d\eta
 \\
 &=
-\oint_\gamma g(x,y)\,dy
+\oint_\gamma g(x,y)\,dy.
 \end{align*}
 Zusammen sind ergeben diese
 \[
@@ -431,7 +431,7 @@ Vektor $\nabla\psi$.
 Die Matrix $J$ ist eine Drehmatrix, sie dreht Vektoren um $90^\circ$ 
 im Gegenuhrzeigersinn.
 Die Vektoren $J\nabla\psi$ sind also tangential an die Niveaulinien,
-die Niveaulinien sind also gleichzeitig die Stromlinien der Strömung.
+die Niveaulinien sind gleichzeitig die Stromlinien der Strömung.
 Ist die Strömung auf ein kompaktes Gebiet beschränkt, dann ist der
 Rand des Gebietes eine Stromlinie, also eine Niveaulinie von $\psi$.
 Da $\psi$ nur bis auf eine Konstante festgelegt ist, kann man $\psi$
@@ -539,6 +539,8 @@ Bei gegebener Vorticity $\zeta$ ist daher $\psi$ die Lösung der
 partiellen Differentialgleichung
 \begin{equation}
 \Delta \psi = -\zeta\quad\text{in $\Omega$}
+\qquad
+\text{und}
 \qquad
 \psi = 0\quad\text{auf $\partial\Omega$}.
 \label{skript:zetapsielliptisch}
@@ -695,8 +697,8 @@ die
 {\em Funktionaldeterminante} oder {\em Jacobische Determinante} von
 $f$ und $g$.
 \end{definition}
-\index{Funktionaldeterminante}
-\index{Jacobi-Determinante}
+\index{Funktionaldeterminante}%
+\index{Jacobi-Determinante}%
 Mit dieser Definition wird die Bewegungsgleichung
 \begin{equation}
 \frac{\partial \Delta \psi}{\partial t}

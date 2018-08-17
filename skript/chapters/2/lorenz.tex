@@ -109,7 +109,7 @@ instabil, der Wärmetransport wird zusätzlich von Konvektion übernommen.
 Die entstehenden Konvektionszellen können wegen der Translationssymmetrie
 entlang der $x$-Achse an jeder beliebigen Stelle entstehen, es gibt also
 unendlich viele Lösungen, von denen eine gewählt werden muss.
-In der Realität würden kleine Temperaturfluktionen als Auslöser der 
+In der Realität würden kleine Temperaturfluktuationen als Auslöser der 
 Konvektion dienen.
 Kleine Unterschiede in den Anfangsbedingungen führen also zu völlig
 verschiedenen Strömungen.
@@ -124,7 +124,9 @@ vorliegende Situation spezialisiert werden.
 Mit Hilfe eines geeigneten Ansatzes soll dann die partielle
 Differentialgleichung weiter auf ein System von gewöhnlichen 
 Differentialgleichungen reduziert werden.
-In numerischen Simulationen soll schliesslich gezeigt werden, dass die 
+In numerischen Simulationen in den Kapiteln
+\ref{chapter:lorenz} und \ref{chapter:kalman}
+wird schliesslich gezeigt, dass die 
 Lorenz-Gleichungen tatsächlich chaotische Lösungen haben.
 
 \subsubsection{Temperaturgleichung}
@@ -157,7 +159,8 @@ T_0\biggl(1-\frac{y}{\pi}\biggr)
 und setzen dies in die Gleichung \eqref{skript:waermeleitungadvektion}
 ein.
 Wir erhalten
-\begin{align*}
+\[
+\begin{aligned}
 \frac{\partial\vartheta}{\partial t}
 &=
 \frac{\partial T}{\partial t}
@@ -169,7 +172,7 @@ Wir erhalten
 -\vec{v}\cdot\nabla T
 &=
 -\vec{v}\cdot\nabla\vartheta
-+v_y\frac{T_0}{\pi}.
++v_y\frac{T_0}{\pi}
 \\
 \Rightarrow
 \qquad
@@ -179,7 +182,8 @@ Wir erhalten
 +v_y\frac{T_0}{\pi}
 +
 \kappa\Delta \vartheta.
-\end{align*}
+\end{aligned}
+\]
 Die Geschwindigkeit kann mit Hilfe von $\vec{v}=-\nabla \psi$ wieder
 durch die Stromfunktion ausgedrückt werden.
 \begin{equation}
@@ -207,7 +211,7 @@ in $\psi$ und $\vartheta$ ist.
 Die Bewegungsgleichung haben wir in
 \eqref{skript:psidgl2}
 bereits in die für ein zweidimensionales inkompressibles Fluid
-geignete Form gebracht.
+geeignete Form gebracht.
 Da die Schwerkraft konstant ist, fällt der Terme $\nabla\times\vec{b}$
 weg.
 
@@ -342,7 +346,7 @@ Au+Nu
 \label{skript:allgemeinesmodell}
 \end{equation}
 mit den linearen Operatoren $D$ und $A$ und dem nichtlinearen Operator
-$N$ schreiben.
+$N$ geschrieben.
 
 Die allgemeine Form \eqref{skript:allgemeinesmodell} eines Klimamodells
 ermöglicht uns, das Klimavorhersageproblem in dem etwas allgemeineren
@@ -361,8 +365,8 @@ Das Klimamodell wird also zu einer nichtlinearen gewöhnlichen
 Differentialgleichung in einem endlichdimensionalen Raum.
 Solche Differentialgleichungen sind im Detail studiert worden und ihre
 Eigenschaften sind sehr gut verstanden.
-In Kapitel~\ref{chapter:dgl} werden wir einen Teil der gut ausgebauten
-Theorie zusammenfassen.
+In Kapitel~\ref{chapter:dgl} ist ein Teil der gut ausgebauten
+Theorie zusammengefasst.
 Den Weg von \eqref{skript:allgemeinesmodell} zu einer gewöhnlichen
 Differentialgleichung in nur drei Dimensionen soll im folgenden 
 Abschnitt~\ref{subsection:umwandlung} vorgeführt werden.
@@ -442,7 +446,7 @@ Wir müssen jetzt also die Lösungsansätze
 und
 \eqref{skript:thetaansatz}
 in die Differentialgleichungen
-\eqref{skript:lorenzausgangsgleichungen}
+\eqref{skript:lorenzausgangsgleichung}
 einsetzen.
 Die linke Seite ist jeweils einfach, da die Zeitabhängigkeit nur noch
 in den Funktion $X(t)$, $Y(t)$ und $Z(t)$ steckt.
@@ -472,7 +476,7 @@ X(t)\sin(ax)\cos(y)
 &
 \Delta^2 \psi
 &=
-(a^2+1)^2\psi.
+(a^2+1)^2\psi
 \end{align*}
 für $\psi$ und
 \begin{align*}
@@ -663,10 +667,10 @@ mit den Konstanten
 \end{align*}
 Es stellt sich heraus, dass gewisse Lösungen dieser Differentialgleichung
 chaotisches Verhalten zeigen.
-Damit sind der Verhersagbarkeit von Wetterphänomenen bereits prinzipielle
+Damit sind der Vorhersagbarkeit von Wetterphänomenen bereits prinzipielle
 Grenzen gesetzt.
 Dies besagt aber nicht, dass sich das Klima nicht vorhersagen lässt,
-sondern nur, dass das Lorenzmodell nicht dazu geeignet ist, den
+sondern nur, dass das Lorenz-Modell nicht dazu geeignet ist, den
 Wärmetransport durch Konvektion in der Atmosphäre über längere Zeit
 zu modellieren.
 Die in Kapitel~\ref{chapter:zonenmodelle} dargestellten Modelle sind

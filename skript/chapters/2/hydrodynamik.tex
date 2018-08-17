@@ -68,14 +68,15 @@ $v_x\Delta x\,\Delta y\,\Delta z$ und damit die Masse
 \label{skript:massenausdruck}
 \end{equation}
 Die Dichte $\varrho$ und die Geschwindigkeit $v_x$ sind dabei an der
-Koordinate $x$ zu nehmen.
+$x$-Koordinate $x$ zu nehmen.
 Durch die Wand des Quaders bei $x+\Delta x$ fliesst eine Masse, die
 ebenfalls durch den Ausdruck \eqref{skript:massenausdruck}
 beschrieben werden kann, jedoch für die $x$-Koordinaten $x+\Delta x$.
 Um die Massenänderung im Quader zu bestimmen, sind diese beiden Ausdrücke
 als mit entgegengesetzten Vorzeichen zu berücksichtigen.
 
-Die Massenänderung ist daher
+Die Massenänderung verursacht durch die Strömung durch alle Seitenflächen
+des Quaders ist daher
 \begin{align}
 \Delta m
 &=
@@ -118,7 +119,7 @@ Wir teilen ausserdem durch $\Delta t$, um die zeitliche Massenänderungsrate}
 \notag
 \end{align}
 zu erhalten.
-Da $\Delta m=\varrho\Delta x\,\Delta y\,\Delta z$ können wir
+Da $\Delta m=\varrho\Delta x\,\Delta y\,\Delta z$ ist, können wir
 auf beiden Seiten durch $\Delta x\,\Delta y\,\Delta z$ dividieren.
 Um die zeitliche Änderung zu bestimmen, müssen wir ausserdem durch
 $\Delta t$ dividieren.
@@ -182,15 +183,15 @@ des Geschwindigkeitsfeldes.
 \subsubsection{Verallgemeinerung}
 Die Herleitung der Kontinuitätsgleichung für die Massedichte funktioniert
 auch für jede andere Erhaltungsgrösse, die im Fluid mit einer Dichte
-$a(x,y,z,t)$ vorhanden ist und mit der Strömung mittransportiert wird.
-Die {\em verallgemeinerte Kontinuitätsgleichung} für die Erhaltungsgrösse $a$
+$q(x,y,z,t)$ vorhanden ist und mit der Strömung mittransportiert wird.
+Die {\em verallgemeinerte Kontinuitätsgleichung} für die Erhaltungsgrösse $q$
 \index{Kontinuitätsgleichung!verallgemeinerte}
 ist daher
 \begin{equation}
-\frac{\partial a}{\partial t}
+\frac{\partial q}{\partial t}
 =
 -
-\nabla(a\vec{v}).
+\nabla(q\vec{v}).
 \label{skript:verallgemeinerte kontinuitaetsgleichung}
 \end{equation}
 
@@ -255,6 +256,7 @@ und analog für die Wände senkrecht auf der $y$- bzw.~$z$-Achse.
 Die diagonalen Komponente $\tau_{ii}$ beschreiben die Druckkraft
 \index{Druck}
 auf die jeweilige Seitenfläche, während die ausserdiagonalen Elemente
+$\tau_{ij}$, $i\ne j$,
 Scherkräfte beschreiben.
 
 Die Matrix $\bm{\tau}$ mit Komponenten $\tau_{ij}$ heisst auch der
@@ -348,7 +350,7 @@ mit $f_x$ wie in \eqref{skript:spannungskraftdichte}.
 Die Schreibweise
 \eqref{skript:navier-stokes komponente}
 für die Bewegungsgleichungen ist sehr schwerfällig und passt nicht
-zu der deutlich elegantere vektoriellen Schreibweise zum Beispiel
+zu der deutlich eleganteren vektoriellen Schreibweise zum Beispiel
 der Kontinuitätsgleichung \eqref{skript:hydro:kontvekt}.
 Die linke Seite von
 \eqref{skript:navier-stokes komponente}
@@ -689,7 +691,7 @@ Wir berechnen die Divergenz der einzelnen Terme:
 \end{align}
 
 \subsubsection{Inkompressible Strömung}
-In einem inkompressiblen Fluid ist $\nabla\cdot\vec{v}=0$, dann fällt
+Da in einem inkompressiblen Fluid $\nabla\cdot\vec{v}=0$ ist, fällt
 der zweite Term in \eqref{skript:sigmadiv} weg.
 Die Strömungsgleichung eines inkompressiblen Fluids erhält damit die
 einfache Form
@@ -703,6 +705,7 @@ einfache Form
 \label{skript:inkompressibel newtonsch}
 \end{equation}
 die klassische Navier-Stokes Gleichung.
+\index{Navier-Stokes Gleichung}%
 
 \subsection{Zustandsgleichungen}
 Die Dichte eines Gases hängt vor allem von der Temperatur und dem Druck ab.
@@ -723,19 +726,19 @@ es jedoch kein derart einfaches Modell.
 Eine weitere Kopplung zwischen der Temperatur und der
 Strömung entsteht durch die Viskosität $\nu$, die sehr stark
 von der Temperatur abhängt.
-Auch dafür gibt es keine einfachen Modell.
+Auch dafür gibt es keine einfachen Modelle.
 
 In vielen Fällen schwanken die physikalischen Grössen nur geringfügig
 um einen Mittelwert.
 Zum Beispiel hängt die Dichte $\varrho$ von Meerwasser sowohl von
-der Temperatur $T$ als auch vom Salzgehalt $h$ ab, die Dichte ist
-also eine Funktion $\varrho(T,h)$.
+der Temperatur $T$ als auch vom Salzgehalt $S$ ab, die Dichte ist
+also eine Funktion $\varrho(T,S)$.
 Wir können $\varrho$ als Taylorreihe um die mittlere Temperatur $T_0$
-und den mittleren Salzgehalt $h_0$ entwickeln:
+und den mittleren Salzgehalt $S_0$ entwickeln:
 \[
-\varrho(T,h)
+\varrho(T,S)
 =
-\varrho_0 -\alpha(T-T_0) + \beta(h-h_0).
+\varrho_0 -\alpha(T-T_0) + \beta(S-S_0).
 \]
 In Klimamodellen betrachten wir typischerweise nur kleine Abweichungen
 von Mittelwerten, so dass ein solches Modell sehr erfolgreich sein kann.
@@ -748,7 +751,7 @@ Der Zustand der Atmosphäre weicht jedoch nur wenig einem mittleren
 Dichteprofil $\varrho_0$ ab, welches im wesentlich durch das Temperaturprofil
 festgelegt ist.
 Im Normalzustand nimmt die Temperatur der Atmosphäre ziemlich genau
-linear ab bis zur Höhe der Thermopause.
+linear ab bis zur Höhe der Tropopause.
 Auf die horizontale Komponente der Strömung hat eine Abweichung des
 Temperaturprofils kaum einen Einfluss, denn andere Terme der
 Navier-Stokes-Gleichung
@@ -764,7 +767,7 @@ g\frac{\varrho}{\varrho_0}
 \end{equation}
 ersetzen.
 Diese Approximation ist bekannt als die Boussinesq-Approximation.
-Für unsere Zwecke hier brauchen wir nicht mehr als \eqref{skript:boussinesq}.
+Für unsere Zwecke brauchen wir nicht mehr als \eqref{skript:boussinesq}.
 Dies wird bei der Herleitung der Lorenz-Gleichung in Abschnitt
 \ref{section:lorenz-modell} benötigt.
 Für die vollständigen Boussinesq-Gleichungen siehe \cite{skript:kaperengler}.

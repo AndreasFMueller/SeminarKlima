@@ -9,7 +9,7 @@ In diesem Kapitel haben wir Strömungen mit Hilfe partieller
 Differentialgleichungen beschrieben.
 Natürlich ist die Theorie der partiellen Differentialgleichungen viel
 zu umfangreich, als dass in diesem Abschnitt eine Darstellung gegeben
-werden könnte, die diesem Thema auch nur annährend gerecht werden könnte.
+werden könnte, die diesem Thema auch nur annährend gerecht wird.
 Wir können bestenfalls hoffen, ein paar für unsere Zwecke wesentliche
 Ideen zu vermitteln.
 Für eine vollständigere Darstellung sei auf \cite{skript:pde}
@@ -57,7 +57,7 @@ Wir suchen eine Lösung der Differentialgleichung
 $\Delta u = 0$ auf dem Einheitsquadrat $\Omega=\{(x,y)\,|\, 0<x,y < 1\}$
 mit den Randbedinungen $u(x,y)=g(x,y)$ für Punkte $(x,y)$ auf dem
 Rand $\partial\Omega$.
-\index{Poisson-Problem}
+\index{Poisson-Problem}%
 Dies ist das Poisson-Problem.
 Die allgemeine Theorie \cite{skript:pde} klassifiziert dieses Problem
 als eine elliptische partielle Differentialgleichungen und erklärt,
@@ -286,10 +286,10 @@ u_{ij}
 \frac{\kappa h_t}{h_x^2} (u_{i+1,j}-2u_{ij}+u_{i-1,j}).
 \]
 Diese Gleichungen bestimmen explizit die Werte $u_{i,j+1}$ aus früheren Werten
-$u_{ij}$, man dies ein explizites Verfahren.
+$u_{ij}$, man nennt dies ein explizites Verfahren.
 
-Die Randbedingungen geben uns Anfangswerte für $j=0$, und Randwerte
-für $i=\pm n$ nämlich
+Die Randbedingungen geben uns Anfangswerte für $j=0$ und Randwerte
+für $i=\pm n$, nämlich
 \begin{equation}
 \begin{aligned}
 u_{i0} &= f(ih_x)&&\text{für $-n<i<n$}\\
@@ -302,7 +302,9 @@ u_{n,j} & g_{1}(jh_t)&&\text{für $j>0$.}
 Allerdings sind diese Approximationen nicht ganz konsistent.
 Die Approximation für die erste Ableitung nach $t$ an der Stelle
 $(x_i,t_j)$ ist eigentlich eher repräsentativ für den Punkt
-$(x_i,t_j+\frac12h_t)$.
+$(x_i,t_j+\frac12h_t)$, wie dies in Abbildung~\ref{skript:waerme:grid}
+{\color{red}rot}
+angedeutet ist.
 Eine besser Diskretisation der Wärmeleitungsgleichung bekommen wir daher,
 wenn wir die Approximationen für die zweiten Ableitungen nach $x$ an
 den Stellen $(x_i,t_j)$  und $(x_i,t_{j+1})$ mitteln. 
@@ -340,9 +342,9 @@ die Anfangsbedingungen zu erfüllen.
 Dasselbe gilt auch für partielle Differentialgleichungen, mit dem Unterschied
 allerdings, dass es meinstens unendlich viele linear unabhängige Lösungen
 gibt.
-Ist $L$ ein linearer Differentialoperator und $u_k$, $k\in\mathbb N$ eine
-Familie von Lösungen der Gleichung $Lu=0$.
-Im besten Fall lässt sich dann jede andere Lösung $u$ in einem noch
+Ist $L$ ein linearer Differentialoperator und $u_k$, $k\in\mathbb N$, eine
+Familie von Lösungen der Gleichung $Lu=0$,
+dann lässt sich im besten Fall jede andere Lösung $u$ in einem noch
 zu definierenden Sinn beliebig genau durch Linearkombinationen
 \[
 u=\sum_{k\in\mathbb N} a_ku_k
@@ -360,7 +362,7 @@ kann.
 \subsubsection{Die Potenzreihenmethode}
 Diese Idee liegt zum Beispiel der Potenzreihenmethode zu Grunde.
 Dabei nimmt man an, dass die Lösung einer Differentialgleichung als
-Linearkombination der Potenzfunktionen $u_k(x)=x^k, k=0\dots,N$
+Linearkombination der Potenzfunktionen $u_k(x)=x^k, k=0\dots,N$,
 approximiert werden kann.
 Als Beispiel betrachten wir die Differentialgleichung
 \[
@@ -455,7 +457,7 @@ $H_i(x)$ für glatte Funktionen.
 \label{skript:finiteelemente}}
 \end{figure}
 Bei der Diskretisation in Abschnitt~\ref{section:diskretisation} wurde die
-Funktion durch Werte an den Gitterpunkten ersetze.
+Funktion durch Werte an den Gitterpunkten ersetzt.
 Für die Berechnung der Ableitung wurde die Funktion linear interpoliert.
 Lineare Funktionen zwischen benachbarten Gitterpunkten können daher als
 Basisfunktionen verwendet werden.
@@ -719,11 +721,13 @@ Die Lösungen sind daher von der Form
 \[
 \begin{aligned}
 X(x) &= \sin \frac{xk\pi}{a}
-\qquad \text{und} \qquad
-Y(y) &= \sin\frac{yl\pi}{b}
+&
+&\text{und}
+&
+Y(y) &= \sin\frac{yl\pi}{b}.
 \end{aligned}
 \]
-Und damit für die Familie der Lösungsfunktionen
+Wir bekommen so die Familie der Lösungsfunktionen
 \[
 u_{kl}(x,y) = \sin \frac{xk\pi}{a} \sin\frac{yl\pi}{b}.
 \]
@@ -751,7 +755,7 @@ Differentialgleichung überhaupt lösbar.
 Damit haben wir eine Familie $u_{kl}$, $k,l\in\mathbb Z$ von Funktionen
 gefunden, die Lösungen der Differentialgleichung
 $\Delta u_{kl}=\lambda_{kl} u_{kl}$ sind.
-Das Anfangs gestellt Ziel ist erreicht.
+Das Anfangs gesteckte Ziel ist erreicht.
 
 \subsubsection{Verallgemeinerungen}
 Das Beispiel deutet auch an, wie die Methode verallgemeinert werden kann.
