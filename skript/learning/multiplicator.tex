@@ -1,5 +1,5 @@
 \subsection{Der neuronale Multiplikator}
-Mit der Einführung der Burgersgleichung wird nun ersichtlich, dass das neuronale Netzwerk unter anderem eine Multiplikation 'erlernen' muss. Die Multiplikation zweier Zahlen ($a \cdot b$) ist für uns einfach, jedoch ist dies für ein neuronales Netzwerk nicht so einfach. Ein KNN ist nicht in der Lage eine Multiplikation exakt zu erlernen, im Gegensatz zur 2. Ableitung. 
+Mit der Einführung der Burgersgleichung wird nun ersichtlich, dass das neuronale Netzwerk unter anderem eine Multiplikation 'erlernen' muss. Die Multiplikation zweier Zahlen ($a \cdot b$) ist für uns einfach, jedoch ist dies für ein neuronales Netzwerk nicht so einfach. Ein KNN ist nicht in der Lage eine Multiplikation exakt zu erlernen, im Gegensatz zur 2. Ableitung. Der einfachste Multiplikator könnte die folgende Form haben.
 \begin{center}
 	\begin{tikzpicture}
 	\node[inputNode, thick] (i1) at (-1, 0.5) {};
@@ -18,9 +18,7 @@ Mit der Einführung der Burgersgleichung wird nun ersichtlich, dass das neuronal
 	\draw[stateTransition] (o1) -- node[above] {$O_1$} (2, 0);
 	\end{tikzpicture}
 \end{center}
-
 Der von uns einfach modelierte Multiplikator kann somit die Multiplikation mit der Form der Gleichung \eqref{eq:mst_trivial_sum} annäheren. 
-
 \begin{equation}
 I_{1} \cdot I_{2} \; \hat{=} \; \sigma \left( \omega_{1} I_1 + \omega_{2} I_2 + b \right) 
 \label{eq:mst_traivial_sum}
