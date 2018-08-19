@@ -204,3 +204,6 @@ cleansubdir:
 	do \
 		cd $${d}; make clean; cd ..; \
 	done
+
+farbseiten.csv:	farbseiten.txt
+	awk '{ printf("%d,", $$1) } END {printf("\n")}' farbseiten.txt > farbseiten.csv

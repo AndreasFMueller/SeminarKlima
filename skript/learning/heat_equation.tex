@@ -226,9 +226,9 @@ Ein KNN muss zuerst entworfen werden und es müssen einige Entscheidungen bezüg
 
 Zusätzlich können einigen Restriktionen eingebaut werden:
 \begin{itemize}
-	\item {\textbf{$\sigma$:} Als Aktivierungsfunktion wird eine lineare Funktion gewählt. In Abschnit \ref{section:heat-ml} wurde gezeigt, dass die 2. Ableitung mittels linear Kombination erlernt werden kann.}
-	\item {\textbf{$b$:} Die Bias-Variable wird auf 0 gesetzt und während des Trainings nicht verändert, es ist zu erwarten, dass $b=0$ sein muss!}
-	\item {\textbf{$w_{0,1,2}$:} Die Parameter für das Gewicht werden trainiert, es könnte hier noch noch $w_0 = w_2$ in Erwägung gezogen werden, um die Symmetrie auszunutzen.}
+	\item {\boldmath$\sigma$}: Als Aktivierungsfunktion wird eine lineare Funktion gewählt. In Abschnit \ref{section:heat-ml} wurde gezeigt, dass die 2. Ableitung mittels linear Kombination erlernt werden kann.
+	\item {\boldmath$b$}: Die Bias-Variable wird auf 0 gesetzt und während des Trainings nicht verändert, es ist zu erwarten, dass $b=0$ sein muss!
+	\item {\boldmath$w_0,w_1,w_2$}: Die Parameter für das Gewicht werden trainiert, es könnte hier noch $w_0 = w_2$ in Erwägung gezogen werden, um die Symmetrie auszunutzen.
 \end{itemize}
 Das Netz hat somit drei Parameter $w_0, w_1, w_2$ welche erlernt werden müssen. Aus der mathematischen Herleitung ist zu erwarten, dass der Gewichtsvektor  $w_0, w_1, w_2$ die Lösungsform $w = \xi \cdot (1, -2, 1)$ annimmt.
 
@@ -240,7 +240,7 @@ Erlernen der Wärmeleitungsgleichung wird logischerweise die selbe
 Funktion verwendet, um den Input $I_{\text{train}}$ und Output
 $O_{\text{train}}$ zu generieren. Da das Netzwerk dazu neigt,
 `Trivialitäten' zu lernen, muss bei der Datengenerierung darauf geachtet
-werden, dass kein Muster in den Daten vorhanden ist, welche nicht
+werden, dass kein Muster in den Daten vorhanden ist, welches nicht
 mit der Wärmeleitungsgleichung zusammenhängt. Beispielsweise kann
 davon ausgegangen werden, dass wenn nur monoton steigende Funktionen
 im Training verwendet werden, das Netzwerk vermutlich Mühe haben wird,
