@@ -9,7 +9,7 @@ Netzwerke eine Wettervorhersage zu tätigen.
 
 Neuronale Netzwerke sind ein Teil der Forschung im Bereich des
 maschinellen Lernens (Machine Learning). Machine Learning (ML) als
-Domäne geht zurück bis in die frühen sechziger Jahre und hatte den
+Domäne geht zurück bis in die frühen sechziger Jahre und hat den
 Ursprung in Mustererkennungsforschung und computergestützter
 Lerntheorie. Die exponentielle Geschwindigkeitssteigerung der
 Hardware-Branche bescherte dieser rechenintensiven Domäne einen
@@ -77,7 +77,8 @@ folgenden Ausdruck für den Zeitschritt herzuleiten:
 \begin{equation}
 T(x,t) \rightarrow T(x,t+1) : T(x,t+1) = T(x,t) + \frac{\kappa}{h^{2}} \Big( T(x-h,t) - 2 \cdot T(x,t) + T(x+h,t)  \Big)
 \end{equation}
-Somit lassen sich drei Punkte des Stabes $S(x_0, \dots, x_{N+1})$ auch als Skalarprodukt schreiben:
+Dies lässt sich mit drei Punkten des Stabes $S(x_0, \dots, x_{N+1})$
+auch als Skalarprodukt schreiben:
 \begin{equation}
 T(x,t) \rightarrow T(x,t+1) : \begin{pmatrix} x_{k-1} & x_{k} & x_{k+1} \end{pmatrix} \cdot \underbrace{\frac{\kappa}{h^2} \begin{pmatrix} 1 \\ -2 \\ 1 \end{pmatrix}}_{\displaystyle\vec{w}} =  \frac{\kappa}{h^2} \cdot \left( 1 \cdot x_{k-1} - 2 \cdot x_{k} + 1 \cdot x_{k+1} \right)
 \label{eq:sumvec}
@@ -115,7 +116,7 @@ verdeutlicht. Ein einzelnes Neuron besteht aus einer gewichteten
 Summe mit Bias Parameter $b$, zur Brechung der Linearität des
 Systems werden sogenante Aktivierungsfunktionen $\sigma$ verwendet.
 Diese Funktionen werden benötigt, damit das Netzwerk nicht eine
-linear Kombination von vielen Neuronen ist und somit zu einer
+Linearkombination von vielen Neuronen ist und somit zu einer
 einfachen Funktion vereinfacht werden kann. Die Neuronen werden in
 Gruppen angeordnet, welche oft als \textit{Input Layer}, \textit{Hidden
 Layer} und \textit{Output Layer} bezeichnet werden.
@@ -298,7 +299,7 @@ Zur Generierung der Daten wurde ein Vektor $v=(H_0, \dots ,H_9)$ gewählt. Jedes
 	\label{fig:mst_hermiteexample} }
 \end{figure}
 
-Aus den generierten Kurven werden mithilfe eines ODE-Solvers die Input und Output Daten erzeugt. Die Kurven werden diskretisiert und aus Form-Gründen in die Vektoren $I_{\text{train}}$ und $O_{\text{train}}$ aufgeteilt. Die Diskretisierung erfolt auf dem Interval [-2.05, 2) mit einem Abstand von 0.05, dies resultiert in 80 Punkten, welche zu Input Vektoren konvertiert werden. Es werden pro Kurve mehrere Vektorpaare gebildet um die Daten so gut wie möglich auszunutzen. Mihilfe dieser Daten wird nun das Neuronale Netzwerk trainiert.
+Aus den generierten Kurven werden mithilfe eines ODE-Solvers die Input und Output Daten erzeugt. Die Kurven werden diskretisiert und aus Form-Gründen in die Vektoren $I_{\text{train}}$ und $O_{\text{train}}$ aufgeteilt. Die Diskretisierung erfolt auf dem Interval [-2.05, 2) mit einem Abstand von 0.05, dies resultiert in 80 Punkten, welche zu Input Vektoren konvertiert werden. Es werden pro Kurve mehrere Vektorpaare gebildet um die Daten so gut wie möglich auszunutzen. Mihilfe dieser Daten wird nun das neuronale Netzwerk trainiert.
 
 \subsection{Resultate}
 Nach zahlreichen Trainingsanläufen mit unzähligen Iterationen kann
@@ -307,8 +308,8 @@ Erlernten des Neuronalen Netzwerks entspricht (vgl. Tabelle
 \ref{tbl:result_heat}). Die Tabelle enthält nur ein Beispiel, welches
 aus dem Training hergeleitet werden konnte. Die Resultate sind nicht
 deterministisch, da die Generierung der Daten randomisiert stattgefunden
-hat. Wichtig ist aber, dass die Lösungsform ($w = \xi \cdot (1, -2,
-1)$) stets erfüllt wurde.
+hat. Wichtig ist aber, dass die Lösungsform $w = \xi \cdot (1, -2,
+1)$ stets erfüllt wurde.
 
 \begin{table}
 	\centering
