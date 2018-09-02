@@ -30,7 +30,8 @@ $T(x,0,t)=T_0$ und $T(x,\pi,t)=0$.
 Im Inneren Gebiet wird die Schwerkraft $g$ auf die Luft.
 \label{skript:lorenzmodell definitionsgebiet}}
 \end{figure}
-Es soll ein dünner Schnitt durch die Atmosphäre modelliert werden.
+Es soll das Einsetzen von Konvektion in einem dünnen vertikalen Schnitt
+durch die Atmosphäre modelliert werden.
 Da die Atmosphäre im Vergleich zur Krümmung der Erdoberfläche sehr dünn ist,
 können wir sie als eben annehmen.
 Wir verwenden die Koordinate $x$ parallel zur Erdoberfläche und $y$ als Höhe
@@ -163,28 +164,28 @@ Wir erhalten
 \begin{aligned}
 \frac{\partial\vartheta}{\partial t}
 &=
-\frac{\partial T}{\partial t}
+\frac{\partial T}{\partial t},
 &
 \Delta T
 &=
 \Delta \vartheta
-\\
+&&\text{und}&
 -\vec{v}\cdot\nabla T
 &=
 -\vec{v}\cdot\nabla\vartheta
 +v_y\frac{T_0}{\pi}
-\\
-\Rightarrow
-\qquad
+\end{aligned}
+\]
+und schliessen
+\[
 \frac{\partial\vartheta}{\partial t}
-&=
+=
 -\vec{v}\cdot\nabla \vartheta
 +v_y\frac{T_0}{\pi}
 +
 \kappa\Delta \vartheta.
-\end{aligned}
 \]
-Die Geschwindigkeit kann mit Hilfe von $\vec{v}=-\nabla \psi$ wieder
+Die Geschwindigkeit kann mit Hilfe von $\vec{v}=J\nabla \psi$ wieder
 durch die Stromfunktion ausgedrückt werden.
 \begin{equation}
 \frac{\partial\vartheta}{\partial t}
@@ -354,10 +355,12 @@ Rahmen der Vorhersage für ein beliebiges nichtlineares dynamisches
 System zu studieren.
 Zwar ist \eqref{skript:allgemeinesmodell} immer noch ein partielles
 Differentialgleichungssystem und die Operatororen $D$, $A$ und $N$
-sind partielle Differentialoperatoren.
-Wir können die in Abschnitt~\ref{section:pdeloesungen} zusammengestellten
+sind partielle Differentialoperatoren,
+aber
+wir können die in Abschnitt~\ref{section:pdeloesungen} zusammengestellten
 Methoden anwenden um die Funktionen durch
-Vektoren in einem endlichdimensionalen Vektorraum zu ersetzen, dann
+Vektoren in einem endlichdimensionalen Vektorraum zu ersetzen.
+Dann
 werden $D$ und $A$ zu linearen Abbildungen, die durch Matrizen beschrieben
 werden können, und $N$ wird zu einer nichtlinearen Funktion auf einem
 endlichdimensionalen Vektorraum.
@@ -397,7 +400,7 @@ Die Wärmeleitungsgleichung auf einem Rechteckgebiet
 einer solchen Zelle könnte man mit einem Separationsansatz zu lösen
 versuchen, dies würde auf Lösungen der Form
 $\sin(ax)\sin(y)$
-führen.
+führen, $\pi/a$ ist die Breite der Zelle.
 Wir versuchen daher eine Lösung für $\psi(x,y,t)$ in der etwas
 allgemeineren Form
 \begin{equation}
@@ -503,7 +506,7 @@ Y(t) \cos(ax) \cos(y) - 2 Z(t)\cos(2y)
 für $\vartheta$.
 In den Differentialgleichungen brauchen wir aber noch die
 Funktionaldeterminanten für die nichtlinearen Terme:
-\begin{align*}
+\begin{align}
 \frac{\partial(\psi,\Delta\psi)}{\partial(x,y)}
 &=
 \frac{\partial\psi}{\partial x} \frac{\partial\Delta\psi}{\partial y}
@@ -516,37 +519,44 @@ Funktionaldeterminanten für die nichtlinearen Terme:
 \frac{\partial\psi}{\partial y} \frac{\partial\psi}{\partial x}
 \biggr)
 =0
+\notag
 \\
 \frac{\partial(\psi,\vartheta)}{\partial(x,y)}
 &=
 \frac{\partial\psi}{\partial x} \frac{\partial\vartheta}{\partial y}
 -
 \frac{\partial\psi}{\partial y} \frac{\partial\vartheta}{\partial x}
+\notag
 \\
 &=
 X(t)\biggl(
 a \cos(ax)\sin(y)
 \bigl(Y(t) \cos(ax) \cos(y) - 2Z(t)\cos(2y)\bigr)
+\notag
 \\
 &\qquad
 -
 \sin(ax)\cos(y)
 \bigl(-aY(t) \sin(ax) \sin(y) \bigr)
 \biggr)
+\notag
 \\
 &=
 X(t)(a(\underbrace{\cos^2(ax)+\sin^2(ax)}_{\displaystyle=1})
 Y(t)\underbrace{\sin(y)\cos(y)}_{\displaystyle{\textstyle\frac12}\sin(2y)}-2a\cos(ax)\sin(y)Z(t)\cos(2y))
+\notag
 \\
 &=
 \frac12aX(t)Y(t) \sin(2y)
 -
 2a X(t)Z(t) \cos(ax)\sin(y)\cos(2y)
+\notag
 \\
 &=
 \frac12aX(t)Y(t) \sin(2y)
 -
 2a X(t)Z(t) \cos(ax)\frac12(\sin(-y)+\sin(3y))
+\label{skript:fluid:trigumf1}
 \\
 &=
 \frac12aX(t)Y(t) \sin(2y)
@@ -554,14 +564,21 @@ Y(t)\underbrace{\sin(y)\cos(y)}_{\displaystyle{\textstyle\frac12}\sin(2y)}-2a\co
 2aX(t)Z(t) \cos(ax)\sin(y)
 -
 2aX(t)Z(t) \cos(ax)\sin(3y).
-\end{align*}
+\notag
+\end{align}
+In \eqref{skript:fluid:trigumf1} haben wir die trigonometrische Identität
+$\sin\alpha\cos\beta = \frac12 (\sin(\alpha-\beta)+\sin(\alpha+\beta))$
+verwendet.
+
 \subsubsection{Approximation}
 Der letzte Term kann nicht durch Funktionen aus der Liste
 \eqref{skript:funktionsauswahl}
 ausgedrückt werden, und muss daher vernachlässigt werden.
 Setzen wir jetzt diese Ableitungen in die Differentialgleichungen
 ein, erhalten wir
-\begin{align*}
+\begin{equation}
+\left.
+\begin{aligned}
 -(a^2+1)
 \dot X(t) \sin(ax)\sin(y)
 &=
@@ -576,10 +593,15 @@ ein, erhalten wir
 \\
 &\qquad
 -\frac{a}2X(t)Y(t)\sin(2y) - 2aX(t)Z(t)\cos(ax)\sin(y).
-\end{align*}
+\end{aligned}
+\quad
+\right\}
+\label{skript:lorenz:approxeq}
+\end{equation}
 \subsubsection{Gewöhnliche Differentialgleichungen}
-Wir vergleichen die Koeffizienten der Funktionen aus der Liste
-\eqref{skript:funktionsauswahl}
+Vergleichen wir in \eqref{skript:lorenz:approxeq}
+die Koeffizienten der Funktionen aus der Liste
+\eqref{skript:funktionsauswahl},
 dann erhalten wir das Differentialgleichungssystem 
 
 %(%i26)                               dglX
@@ -652,7 +674,8 @@ Damit werden die Differentialgleichungen zu
 \dot z &= -\beta z + x y
 \end{align*}
 mit den Konstanten
-\begin{align*}
+\[
+\begin{aligned}
 \sigma
 &=
 \frac{\nu}{\kappa},
@@ -664,7 +687,8 @@ mit den Konstanten
 \beta
 &=
 \frac{4}{a^2 +1}.
-\end{align*}
+\end{aligned}
+\]
 Es stellt sich heraus, dass gewisse Lösungen dieser Differentialgleichung
 chaotisches Verhalten zeigen.
 Damit sind der Vorhersagbarkeit von Wetterphänomenen bereits prinzipielle

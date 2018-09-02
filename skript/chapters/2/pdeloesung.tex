@@ -10,7 +10,7 @@ In diesem Kapitel haben wir Strömungen mit Hilfe partieller
 Differentialgleichungen beschrieben.
 Natürlich ist die Theorie der partiellen Differentialgleichungen viel
 zu umfangreich, als dass in diesem Abschnitt eine Darstellung gegeben
-werden könnte, die diesem Thema auch nur annährend gerecht wird.
+werden könnte, die diesem Thema auch nur annähernd gerecht wird.
 Wir können bestenfalls hoffen, ein paar für unsere Zwecke wesentliche
 Ideen zu vermitteln.
 Für eine vollständigere Darstellung sei auf \cite{skript:pde}
@@ -56,7 +56,7 @@ Wir illustrieren das Vorgehen an einigen Beispielen.
 \end{figure}
 Wir suchen eine Lösung der Differentialgleichung
 $\Delta u = 0$ auf dem Einheitsquadrat $\Omega=\{(x,y)\,|\, 0<x,y < 1\}$
-mit den Randbedinungen $u(x,y)=g(x,y)$ für Punkte $(x,y)$ auf dem
+mit den Randbedingungen $u(x,y)=g(x,y)$ für Punkte $(x,y)$ auf dem
 Rand $\partial\Omega$.
 \index{Poisson-Problem}%
 Dies ist das Poisson-Problem.
@@ -81,7 +81,8 @@ h = \frac1n
 Die Punkte mit $i,j=0,n$ beschreibend den Rand.
 Wir kürzen die Werte $u_{ij}=u(x_i,y_j)$ ab.
 Die Randwerte sind bekannt, es gilt
-\begin{align*}
+\[
+\begin{aligned}
 u_{0j} &= g(0,jh)
 &&\text{und}&
 u_{nj} &= g(1,jh)
@@ -91,7 +92,8 @@ u_{i0} &= g(ih,0)
 &&\text{und}&
 u_{in} &= g(ih,1)
 &&\text{mit $1\le i < n$.}
-\end{align*}
+\end{aligned}
+\]
 Die Ableitungen können durch Differenzenquotienten approximiert werden,
 zum Beispiel
 \begin{align*}
@@ -330,9 +332,9 @@ in jeder Gleichungen drei verschiedene Variablen $u_{i,j+1}$,
 die durch diese Gleichungen implizit gegeben sind.
 Man nennt dies ein implizites Verfahren.
 \index{implizites Verfahren}
-Leider führt dieses sogenannte Leapfrog-Verfahren zu einem numerischen
-Stabilitätsproblem, dem Computational Mode, welches in
-Kapitel~\ref{chapter:learning} etwas ausführlicher dargestellt wird.
+%Leider führt dieses sogenannte Leapfrog-Verfahren zu einem numerischen
+%Stabilitätsproblem, dem Computational Mode, welches in
+%Kapitel~\ref{chapter:learning} etwas ausführlicher dargestellt wird.
 
 \subsection{Basisfunktionen}
 Lineare Differentialgleichungen haben die Eigenschaft, dass 
@@ -519,7 +521,7 @@ Wir lesen die Gleichungen
 für die Koeffizienten ab.
 Wir haben also ein System von gewöhnlichen linearen Differentialgleichungen
 erster Ordnung gefunden, und damit das partielle Differentialgleichungssystem
-auf ein einfachers System reduziert.
+auf ein einfacheres System reduziert.
 Allerdings ist von der rechten Seite der Differentialgleichung
 \eqref{burgers:gewoedgl}
 nicht einmal garantiert, dass diese Summen konvergieren.
@@ -555,8 +557,8 @@ Welle, die sich mit einer Geschwindigkeit in $x$-Richtung bewegt, die
 proportional zu $u$ ist.
 Der Kamm einer Welle bewegt sich also schneller als der Sockel.
 Bis zu $t=0.4$, dargestellt im obersten Bild von
-Abbildung~\ref{skript:burgfourier} kann man genau dies auch in der
-numerischen Lösung beobachten.
+Abbildung~\ref{skript:burgfourier},
+kann man genau dies auch in der numerischen Lösung beobachten.
 
 Die allgemeine Theorie sagt aber auch, dass nach genügend langer
 Zeit der Kamm der Welle den Sockel überholt und sich eine Sprungstelle
@@ -571,14 +573,14 @@ Dies kann man auch aus der numerischen Lösung in
 Abbildung~\ref{skript:burgfourier}
 in der Mitte beobachten.
 Natürlich kann eine Sprungstelle mit endlich vielen Fourier-Termen
-nicht getreu wiedergegeben werden, das Gibbs-Phänomen sagt voraus,
+nicht getreu wiedergegeben werden, denn das Gibbs-Phänomen sagt voraus,
 dass sich in der Nähe der Sprungstelle grösser werdende Oszillationen
 entwickeln.
 Diese Oszillationen breiten sich in der numerischen Lösung rasch
 über den gesamten Definitionsbereich aus.
 
-Für grosse Zeiten verspricht die allgemeine Theorie, dass die Lösung
-eine Sägezahn-ähnliche Funktion wird die gegen $0$ konvergiert.
+Für grosse Zeiten $t$ verspricht die allgemeine Theorie, dass die Lösung
+eine Sägezahn-ähnliche Funktion wird, die gegen $0$ konvergiert.
 Die numerische Lösung deutet dies an in Abbildung~\ref{skript:burgfourier}
 unten, obwohl sie von den ständig anwachsend Oszillationen überdeckt werden.
 
@@ -618,7 +620,7 @@ Gegeben sei die Differentialgleichung
 \\
 \text{mit}
 \qquad
-u=&0&&\text{auf dem Rand $\partial\Omega$.}
+u&=0&&\text{auf dem Rand $\partial\Omega$.}
 \end{aligned}
 \]
 Das Gebiet ist ein Rechteck mit Seitenlängen $a$ und $b$.
@@ -681,7 +683,7 @@ Y''(y) = (\lambda+\mu)Y(y)
 erfüllen.
 Mögliche Werte für $\mu$ werden sich daraus ergeben, ob die
 Differentialgleichungen überhaupt lösbar sind, oder ob
-sich die gegebenen Randbedinungen erfüllen lassen.
+sich die gegebenen Randbedingungen erfüllen lassen.
 
 Wir lösen die Differntialgleichungen~\eqref{skript:separation:gleichungen}
 so, dass auch die Randbedingungen $u=0$ auf $\partial\Omega$ erfüllt sind.
@@ -759,17 +761,18 @@ $\Delta u_{kl}=\lambda_{kl} u_{kl}$ sind.
 Das Anfangs gesteckte Ziel ist erreicht.
 
 \subsubsection{Verallgemeinerungen}
-Das Beispiel deutet auch an, wie die Methode verallgemeinert werden kann.
+Das Beispiel deutet auch an, wie die skizzierte Methode verallgemeinert
+werden kann.
 \begin{enumerate}
 \item
-Wenn möglich, wähle ein Koordinatensystem, mit welchem das Definitionsgebiet
+Wenn möglich, wähle ein Koordinatensystem, in welchem das Definitionsgebiet
 einfach beschrieben werden kann.
 Formuliere die Differentialgleichung in diesen Koordinaten.
 Darstellungen des Laplace-Operator für fast alle wichtigen Koordinatensysteme
 können zum Beispiel in guten Formelsammlungen gefunden werden.
 \item
-Separationsansatz: setze die Lösung als Produkt von Funktionen an,
-jeweils von nur einer Koordinate abhängen, also
+Separationsansatz: Setze die Lösung als Produkt von Funktionen an,
+die jeweils von nur einer Koordinate abhängen, also
 $u(x,y)=X(x)\cdot Y(y)$ in einem $x$-$y$-Koordinatensystem.
 \item
 Setze den Ansatz in die Differentialgleichung ein und versuche die
@@ -784,7 +787,6 @@ Differentialgleichung immer auftreten wird, können oft mit Hilfe
 eines Teils der Randbedingungen eliminiert werden.
 \item
 Durch Iteration von Schritt~3 können Teillösungen $u_n$ gefunden werden,
-die von den Konstanten abhängen, die bei der Separation eingefügt werden
-müssen.
+die von den Konstanten abhängen, die bei der Separation auftreten.
 \end{enumerate}
 

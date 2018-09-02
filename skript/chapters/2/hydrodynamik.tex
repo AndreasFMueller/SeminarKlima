@@ -3,8 +3,8 @@
 %
 % (c) 2018 Prof Dr Andreas Müller, Hochschule Rapperswil
 %
-\section{Fluiddynamik}
-\rhead{Fluiddynamik}
+\section{Grundgleichungen}
+\rhead{Grundgleichungen}
 %Die Atmosphäre und die Ozeane unterschieden sich in ihren
 %für das Studium von Wetter und Klima wesentlichen Eigenschaften
 %ganz beträchtlich.
@@ -38,7 +38,8 @@ Masse, Beschleunigung und Kraft her, wir können daher davon ausgehen,
 dass die Bewegungsgleichungen eines Fluides nur die Dichte $\varrho$ und 
 den Geschwindigkeitsvektor $\vec{v}$ involvieren.
 Den Zusammenhang zwischen Druck, Temperatur, Dichte und möglicherweise
-weiteren Eigenschaften wird durch Zustandsgleichungen vermittelt.
+weiteren Eigenschaften wird durch Zustandsgleichungen vermittelt, die
+typischerweise nicht Differentialgleichungen sind.
 
 \subsection{Kontinuitätsgleichung}
 Die Kontinuitätsgleichung drückt aus, dass
@@ -71,9 +72,10 @@ Die Dichte $\varrho$ und die Geschwindigkeit $v_x$ sind dabei an der
 $x$-Koordinate $x$ zu nehmen.
 Durch die Wand des Quaders bei $x+\Delta x$ fliesst eine Masse, die
 ebenfalls durch den Ausdruck \eqref{skript:massenausdruck}
-beschrieben werden kann, jedoch für die $x$-Koordinaten $x+\Delta x$.
+beschrieben werden kann, jedoch mit Werten von $v_x$ und $\varrho$
+an den $x$-Koordinaten $x+\Delta x$.
 Um die Massenänderung im Quader zu bestimmen, sind diese beiden Ausdrücke
-als mit entgegengesetzten Vorzeichen zu berücksichtigen.
+mit entgegengesetzten Vorzeichen zu berücksichtigen.
 
 Die Massenänderung verursacht durch die Strömung durch alle Seitenflächen
 des Quaders ist daher
@@ -105,15 +107,15 @@ Wir teilen ausserdem durch $\Delta t$, um die zeitliche Massenänderungsrate}
 &=
 -
 \bigg(
-\frac{\varrho(x+\Delta x,y,z,t)v_x(x+\Delta x,y,z,t)-\varrho(x,y,z,t)v_x(x,y,z,t)}{\Delta x}
+\frac{\varrho(x+\Delta x,y,z,t)\,v_x(x+\Delta x,y,z,t)-\varrho(x,y,z,t)\,v_x(x,y,z,t)}{\Delta x}
 \notag
 \\
 &\qquad
-+\frac{\varrho(x,y+\Delta y,z,t)v_y(x,y+\Delta y,z,t)-\varrho(x,y,z,t)v_y(x,y,z,t)}{\Delta y}
++\frac{\varrho(x,y+\Delta y,z,t)\,v_y(x,y+\Delta y,z,t)-\varrho(x,y,z,t)\,v_y(x,y,z,t)}{\Delta y}
 \notag
 \\
 &\qquad
-+\frac{\varrho(x,y,z+\Delta z,t)v_y(x,y,z+\Delta z,t)-\varrho(x,y,z,t)v_y(x,y,z,t)}{\Delta z}
++\frac{\varrho(x,y,z+\Delta z,t)\,v_y(x,y,z+\Delta z,t)-\varrho(x,y,z,t)\,v_y(x,y,z,t)}{\Delta z}
 \bigg)
 \Delta x\,\Delta y\,\Delta z\,\Delta t.
 \notag
@@ -124,7 +126,7 @@ auf beiden Seiten durch $\Delta x\,\Delta y\,\Delta z$ dividieren.
 Um die zeitliche Änderung zu bestimmen, müssen wir ausserdem durch
 $\Delta t$ dividieren.
 Lassen wir die Inkremente $\Delta x$, $\Delta y$, $\Delta z$ und
-$\Delta t$ gegen $0$ gehen, werden aus den Differenzenquotienten
+$\Delta t$ gegen $0$ streben, werden aus den Differenzenquotienten
 Ableitungen.
 Wir erhalten daher die {\em Kontinuitätsgleichung}
 \index{Kontinuitätsgleichung}
@@ -175,7 +177,9 @@ Die Kontinuitätsgleichung wird damit zu
 =
 -\varrho\nabla\vec{v}
 =
-0.
+0
+\qquad\Rightarrow\qquad
+\nabla\vec{v}=0.
 \]
 In einer inkompressiblen Strömung verschwindet daher die Divergenz
 des Geschwindigkeitsfeldes.
@@ -207,7 +211,9 @@ F=
 \]
 Ein Volumen des Fluides kann wegen veränderlicher Dichte seine
 Masse verändern.
-Kräfte auf das Fluid ändern daher die Impulsdichte des Fluids.
+Kräfte auf das Fluid ändern daher die Impulsdichte
+$\varrho\vec{v}$
+des Fluids.
 
 \subsubsection{Impulsdichte}
 Die Impulsdichte des Fluids wird an jeder Stelle durch die Grösse
@@ -234,8 +240,8 @@ der Impulsdichte.
 \subsubsection{Innere Kräfte}
 Damit sind aber innere Kräfte im Fluid noch nicht berücksichtigt.
 Das Fluid widersetzt sich zum Beispiel der Kompression, dies äussert
-sich im Druck, der jeweils senkrecht auf den Wänden des Volumens wirkt.
-In einem zähen Medium sind aber auch Kräfte parallel zu den Wänden
+sich im Druck, der jeweils senkrecht auf den Wänden eines Volumens wirkt.
+In einem zähen Medium sind ausserdem Kräfte parallel zu den Wänden
 \index{Zähigkeit}
 möglich, sogenannte {\em Scherkräfte}.
 \index{Scherkraft}
@@ -269,7 +275,7 @@ Dass $\tau_{ij}$ ein Tensor ist, ist für die weiteren Erörterungen nicht
 von Bedeutung, wir werden daher diesen Begriff verwenden, ohne ihn wirklich
 zu definieren.
 
-Die resultierende Kraft $\vec{F}$ auf einen Quader mit den Kantenlängen
+Die resultierenden Scherkräfte $\vec{F}$ auf einen Quader mit den Kantenlängen
 $\Delta x$, $\Delta y$ und $\Delta z$  hat daher die $x$-Komponente
 \begin{align*}
 F_x
@@ -623,7 +629,7 @@ von $\bm{\sigma}$ verschwindet.
 
 Die Divergenz $\nabla\cdot\bm{\sigma}$ von $\bm{\sigma}$ kann damit explizit
 durch die Geschwindigkeit ausgedrückt werden.
-Wir berechnen die Divergenz der einzelnen Terme:
+Wir berechnen die Divergenz der einzelnen Terme
 \begin{align}
 (\nabla\cdot\bm{\varepsilon})_x
 &=
@@ -643,14 +649,14 @@ Wir berechnen die Divergenz der einzelnen Terme:
 \frac12\frac{\partial}{\partial x}
 (\nabla\cdot\vec{v})
 +
-\frac12\Delta v_x
+\frac12\Delta v_x,
 \notag
 \\
 \nabla\cdot\bm{\varepsilon}
 &=
 \frac12\nabla(\nabla\cdot\vec{v})
 +
-\frac12\Delta\vec{v}
+\frac12\Delta\vec{v},
 \notag
 \\
 (\nabla\cdot(\nabla\cdot\vec{v})E)_x
@@ -659,7 +665,7 @@ Wir berechnen die Divergenz der einzelnen Terme:
 =
 \sum_i \frac{\partial}{\partial i} (\nabla\cdot\vec{v}\delta_{xi})
 =
-\frac{\partial}{\partial x}(\nabla\cdot\vec{v})
+\frac{\partial}{\partial x}(\nabla\cdot\vec{v}),
 \notag
 \\
 \nabla\cdot(\nabla\cdot\vec{v})E)

@@ -88,15 +88,16 @@ Gebiet $D$.
 \end{figure}
 
 Das Integral auf der rechten Seite wird mit Hilfe einer Parametrisierung
-$\gamma\colon [a,b]\to\mathbb R^2$ der Randkurve $C$ definiert.
+$\gamma\colon [a,b]\to\mathbb R^2$ der Randkurve $C$ definiert:
 \begin{align*}
 \oint_C f(x,y)\,dx
 &=
-\int_a^b f(\gamma_x(t),\gamma_y(t))\dot{\gamma}_x(t)\,dt,
-\\
+\int_a^b f(\gamma_x(t),\gamma_y(t))\,\dot{\gamma}_x(t)\,dt
+%\\
+&&\text{und}&
 \oint_C g(x,y)\,dy
 &=
-\int_a^b g(\gamma_x(t),\gamma_y(t))\dot{\gamma}_y(t)\,dt.
+\int_a^b g(\gamma_x(t),\gamma_y(t))\,\dot{\gamma}_y(t)\,dt.
 \end{align*}
 Es kann auch vektoriell mit dem Skalarprodukt als
 \[
@@ -178,7 +179,7 @@ g(x_2(\eta),\eta) - g(x_1(\eta),\eta)
 &=
 \oint_\gamma g(x,y)\,dy.
 \end{align*}
-Zusammen sind ergeben diese
+Zusammen ergeben diese
 \[
 \int_D
 \frac{\partial g(x,y)}{\partial x}
@@ -374,8 +375,9 @@ Wir erhalten
 &=
 -\frac{\partial}{\partial x} \int_{x_0}^x v_y(\xi,y)\,d\xi
 =
--v_y(x,y),
-\\
+-v_y(x,y)
+%\\
+&&\text{und}&
 \frac{\partial\psi(x,y)}{\partial y}
 &=
 \frac{\partial}{\partial y} \int_{y_0}^y v_x(x,\eta)\,d\eta
@@ -449,6 +451,7 @@ Die Strömungsgeschwindigkeit ist proportional zum Radius, es handelt
 sich also um eine starre Drehung um den Nullpunkt.
 \label{skript:rotation}}
 \end{figure}
+\begin{beispiel}
 Die Funktion $\psi(x,y)=a(x^2+y^2)$ führt auf das Vektorfeld
 \[
 \vec{v}
@@ -464,6 +467,7 @@ J\nabla\psi
 Die Strömungsgeschwindigkeit ist $2a\sqrt{x^2+y^2}=2ar$, es handelt sich
 also um eine starre Drehung um den Nullpunkt des Koordinatensystems mit
 Winkelgeschwindigkeit $\omega=2a$.
+\end{beispiel}
 
 \subsection{Vorticity}
 Wir suchen eine Grösse, mit der wir das Ausmass messen können, wie schnell
@@ -552,6 +556,7 @@ Statt die Strömungsgleichungen für $\psi$ zu lösen, können wir
 also auch versuchen, eine Gleichung für die Vorticity $\zeta$
 aufzustellen und dann mit Hilfe des elliptischen partiellen
 Randwertproblems \eqref{skript:zetapsielliptisch} die Strömungsfunktion
+$\psi$
 und schliesslich $\vec{v}$ bestimmen.
 
 Um die Differentialgleichung für $\zeta$ zu finden, wenden wir den
@@ -740,10 +745,10 @@ Wir müssen jetzt also
 \biggr)
 \]
 berechnen.
-Der erste Term fällt weg, weil es auf die Reihenfolge der zweiten
+Der erste Term fällt weg, weil es auf die Reihenfolge der
 Ableitungen nicht ankommt.
-Im zweiten Term haben wir angenommen, dass $\nu$ nicht vom Ort
-abhängig.
+Im letzten Term haben wir angenommen, dass $\nu$ nicht vom Ort
+abhängt.
 Dies ist genau genommen nicht richtig, da $\nu$ zum Beispiel
 stark von der Temperatur abhängt, die ebenfalls nicht konstant sein
 muss.

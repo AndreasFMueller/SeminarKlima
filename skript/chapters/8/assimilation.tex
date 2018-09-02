@@ -6,7 +6,7 @@
 \section{Das Assimilationsproblem\label{section:assimilationsproblem}}
 Der Kalman-Filter ist ein Beispiel dafür, wie laufend anfallende neue
 Messdaten und
-ein Modell des untersuchten System ermöglichen, selbst dann einigermassen
+ein Modell des untersuchten Systems ermöglichen, selbst dann einigermassen
 vollständige Informationen über den Zustand des Systems zu erhalten, wenn
 nicht alle Zustandsgrössen direkt gemessen werden.
 Dass dies sogar für ein chaotisches System bis zu einem gewissen Grad
@@ -15,7 +15,7 @@ möglich ist, zeigen die Experimente in Kapitel~\ref{chapter:kalman}.
 \rhead{Das Assimilationsproblem}
 Allerdings wurden bei der Konstruktion des Kalman-Filters einige
 einschränkende Annahmen gemacht.
-Das System und der Messprozess musste linear beschreibbar sein, 
+Das System und der Messprozess mussten linear beschreibbar sein, 
 und Fehler mussten normalverteilt, unabhängig und mit Mittelwert $0$ sein.
 Ausserdem wurden immer nur Messungen des aktuellen Zeitpunktes verwendet,
 um die aktuellste Zustandsschätzung zu verbessern.
@@ -66,7 +66,7 @@ gestellt werden, mit denen sich die Wahrscheinlichkeitsdichte von $X(k)$
 ``genauer'' bestimmen lässt.
 Um den Formalismus herauszuarbeiten seien $X$ und $Y$ Zufallsvariablen,
 es soll die Frage beantwortet werden, wie sich die Verteilung von $X$
-ändert, wenn $Y$ den Wert von $y$  annimmt.
+ändert, wenn $Y$ den Wert $y$  annimmt.
 Die Wahrscheinlichkeitsdichte von $(X,Y)$ sei $f_{X,Y}(x,y)$, sie kann
 auf zwei verschiedene Arten als Produkt
 \begin{equation}
@@ -262,7 +262,7 @@ f_{X(2)|y(1)}(x(2))
 &=
 \int f_{X(2)|x(1)}(x(2))  f_{X(1)}(x(1))\, dx(1).
 \end{align*}
-und erhalten damit die Formel~\eqref{assim:totalstep2} für $i=2$.
+Wir erhalten damit die Formel~\eqref{assim:totalstep2} für $i=2$.
 Die zweite Formel~\eqref{assim:bayesstep2} ergibt sich aus dem Satz
 von Bayes~\eqref{assim:bayes}.
 
@@ -271,7 +271,7 @@ totalen Wahrscheinlichkeit~\eqref{assim:total} und erhalten
 \begin{align*}
 f_{X(i)|y(1:i-1)}(x(i))
 &=
-\int f_{X(i)|x(i-1)}(x(i)) \, f_{X(i-1)|y(1:i-1)}(x(i-1))\,dx(i-1)
+\int f_{X(i)|x(i-1)}(x(i)) \, f_{X(i-1)|y(1:i-1)}(x(i-1))\,dx(i-1).
 \end{align*}
 also die Formel~\eqref{assim:totalstep2}.
 Die zweite Formel~\eqref{assim:bayesstep2} folgt daraus mit dem Satz
@@ -294,7 +294,7 @@ Dann kann die Wahrscheinlichkeitsdichte für das Reanalyse-Problem wie folgt
 bestimmt werden
 \begin{enumerate}
 \item Falls $i=N$, dann ist die Wahrscheinlichkeitsdichte für das
-Reanalyse-Problem dieselbe dieselbe wie jene für das Filterproblem.
+Reanalyse-Problem dieselbe wie jene für das Filterproblem.
 \item Für $i=2,\dots,N-1$ und für die Wahrscheinlichkeitsdichte 
 $f_{X(i+1)|y(1:N)}$  für das Reanalyse-Problem für $X(i+1)$ 
 wird die Wahrscheinlichkeitsdichte für das Reanalyse-Problem für $X(i)$
@@ -319,7 +319,6 @@ eine Wahrscheinlichkeitsdichte entsteht.
 \begin{proof}[Beweis]
 Fall~1 ist klar, das Reanalyse-Problem für $X(N)$ ist dasselbe wie des
 Filterproblem für $X(N)$.
-
 Es bleibt daher nur noch, die Formeln
 \eqref{assim:reanabayes}
 und

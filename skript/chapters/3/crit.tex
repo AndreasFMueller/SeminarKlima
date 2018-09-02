@@ -11,16 +11,17 @@ der Form
 \frac{dx}{dt} = f(x)
 \label{skript:dgl:gleichung}
 \end{equation}
-aus
-mit einer Funktion $f\colon \mathbb R^n \to \mathbb R^n$.
+mit einer Funktion $f\colon \mathbb R^n \to \mathbb R^n$
+aus.
 Die Funktion $f$ wird im Allgemeinen von weiteren Parametern abhängen
 wie zum Beispiel dem $\text{CO}_2$-Gehalt der Atmosphäre oder der Salinität
 der Meere.
 Sofern nötig machen wir diese mit der Schreibweise $f(x,p)$ mit
 $p\in\mathbb R^m$ explizit sichtbar.
 
+\subsection{Gleichgewichtslösungen}
 \begin{definition}
-Ein Punkt $x_0\in\mathbb R^n$ heisst {\em Gleichgewichtslösung}
+Ein Punkt $x_0\in\mathbb R^n$ heisst {\em Gleichgewichtslösung},
 wenn die konstante Funktion $x(t)=x_0$ eine Lösung der
 Differentialgleichung~\ref{skript:dgl:gleichung} ist.
 \index{Gleichgewichtslösung}
@@ -85,7 +86,7 @@ ist $x(t)=\varepsilon e^{at}$, denn
 a\varepsilon e^{at}.
 \]
 Wenn $a>0$, dann wächst die Lösung exponentiell an, die Gleichgewichtslösung 
-ist als nicht stabil.
+ist also nicht stabil.
 Für $a<0$ dagegen nimmt $x(t)=\varepsilon e^{at}$ exponentiell schnell ab,
 die Gleichgewichtslösung ist stabil.
 \end{beispiel}
@@ -156,11 +157,11 @@ Wir fragen nach den Gleichgewichtslösungen in Abhängigkeit vom
 Parameter $\lambda$.
 
 \rhead{Bifurkationen}
-Die nachfolgenden prototypischen Bifurkationen können in vielen
+Die nachfolgend illustrierten prototypischen Bifurkationen können in vielen
 \index{Bifurkation}%
 weiteren Differentialgleichungen beobachtet werden. 
-Für alle Werte des Parameters ist $0$ ein kritischer Wert,
-es gilt also $f(0,\lambda)=0$.
+Für alle Werte des Parameters sei $0$ ein kritischer Wert,
+es gelte also $f(0,\lambda)=0$.
 Wir können die $f$ in eine Taylor-Reihe 
 \begin{equation}
 f(x,\lambda)
@@ -207,12 +208,12 @@ f(x,\lambda)=x-\lambda.
 \end{equation}
 $f$ hat nur einen einzigen kritischen Punkt, nämlich $x_0=-\lambda$.
 Das Phasendiagramm dafür ist in Abbildung~\ref{skript:dgl:phasen1}
-Man erkennt, dass Läsungen, die bei $x$-Werten $x>\lambda$ beginnen,
+Man erkennt, dass Lösungen, die bei $x$-Werten $x>\lambda$ beginnen,
 anwachsen und sich von der Gleichgewichtslösung entfernen.
 Umgekehrt nehmen Lösungen ab, die bei $x$-Werten $x<\lambda$ beginnen,
 und entfernen sich damit ebenfalls von der Gleichgewichtslösung.
 Die Differentialgleichung mit rechter Seite~\ref{skript:dgl:linear1}
-hat kein stabile Lösungen.
+hat kein stabilen Lösungen.
 
 Die analoge Analyse für die Differentialgleichung
 \[
@@ -234,7 +235,7 @@ von $f$ von höherer als linearer Ordnung ist.
 \includegraphics{chapters/3/saddle-node.pdf}
 \caption{Phasendiagramm der Sattel-Knoten-Bifurkation zur
 Differentialgleichung~\ref{skript:dgl:sattel-knoten-dgl}.
-Für $\lambda>0$ gibt es zwei Gleichgewichtslösungen $\pm\sqrt{\lambda}$,
+Für $\lambda>0$ gibt es zwei Gleichgewichtslösungen $\pm\!\sqrt{\lambda}$,
 eine ist stabil, die andere instabil.
 \label{skript:dgl:saddle-node}}
 \end{figure}%
@@ -246,11 +247,11 @@ tritt auf in der Differentialgleichung
 \label{skript:dgl:sattel-knoten-dgl}
 \end{equation}
 Für $\lambda >0$ hat die Gleichung~\ref{skript:dgl:sattel-knoten-dgl}
-zwei Gleichgewichtslösungen $\pm\sqrt{\lambda}$.
+zwei Gleichgewichtslösungen $\pm\!\sqrt{\lambda}$.
 In Abbildung~\ref{skript:dgl:saddle-node} ist das Phasendiagramm
 dargestellt.
-Daraus geht hervor, dass die Gleichgewichtslösung $q\sqrt{\lambda}$
-instabil ist, während $-\sqrt{\lambda}$ stabil ist.
+Daraus geht hervor, dass die Gleichgewichtslösung $q\!\sqrt{\lambda}$
+instabil ist, während $-\!\sqrt{\lambda}$ stabil ist.
 
 \subsection{Heugabel-Bifurkation}
 \index{Heugabel-Bifurkation}%
@@ -277,13 +278,13 @@ x(x^2-\lambda)
 geschrieben werden.
 Sie hat $0$ als Gleichgewichtslösung für alle $\lambda$.
 Für $\lambda>0$ hat sie zusätzlich die Gleichgewichtslösungen
-$\pm\sqrt{\lambda}$.
+$\pm\!\sqrt{\lambda}$.
 
 Das Phasendiagramm~\ref{skript:dgl:pitchfork} zeigt, dass
 die einzige Gleichgewichtslösung bei $x_0=0$ instabil ist.
 Beim Übergang zu $\lambda>0$ wird die Gleichgewichtslösung $x_0=0$
 stabil.
-Die beiden neuen Gleichgewichtslösungen $\pm\sqrt{\lambda}$ sind
+Die beiden neuen Gleichgewichtslösungen $\pm\!\sqrt{\lambda}$ sind
 beide instalbil.
 
 Die Differentialgleichung
@@ -293,7 +294,7 @@ Die Differentialgleichung
 hat die gleichen Gleichgewichtslösungen, jedoch ist $0$ für
 $\lambda<0$ eine stabile Lösung, die beim Übergang zu $\lambda>0$
 instabil wird.
-Die Gleichgewichtslösungen $\pm\sqrt{\lambda}$ für $\lambda >0$
+Die Gleichgewichtslösungen $\pm\!\sqrt{\lambda}$ für $\lambda >0$
 sind stabil.
 
 \subsection{Transkritische Bifurkation}
@@ -350,9 +351,9 @@ x^3-9x-3\lambda=0.
 \]
 Diese sind für beliebiges $\lambda$ nicht so leicht zu finden.
 Für $\lambda=0$ sind die kritischen Punkte $0$ und $\pm 3$.
-DIe Funktion $f(x)$ hat lokale Minima bei den $\pm\sqrt{3}$ mit
-Funktionswerten $\pm2\sqrt{3}$.
-Daher gibt es im Interval $(-2\sqrt{3},2\sqrt{3})$ drei 
+Die Funktion $f(x)$ hat lokale Minima bei den $\pm\!\sqrt{3}$ mit
+Funktionswerten $\pm2\!\sqrt{3}$.
+Daher gibt es im Interval $(-2\!\sqrt{3},2\!\sqrt{3})$ drei 
 Gleichgewichtslösungen, ausserhalb jedoch jeweils nur eine.
 
 Das zugehörige Phasendiagramm ist in Abbildung~\ref{skript:dgl:kubischfig}
@@ -361,11 +362,11 @@ Die Gleichgewichtslösungen oben und unten auf der S-Kurve sind instabil,
 nur der Ast zwischen den beiden lokalen Extrema von $f(x)$ besteht
 aus stabilen Gleichgewichtslösungen.
 
-Wächst der Parameter $\lambda$ über den kritischen Wert $2\sqrt{3}$
+Wächst der Parameter $\lambda$ über den kritischen Wert $2\!\sqrt{3}$
 hinaus, gibt es keinen stabilen Gleichgewichtszustand mehr, das System
 divergiert nach $-\infty$. 
-Analog strebt das System gegen $+\infty$ wenn der Parameter den Wert
-$-2\sqrt{3}$ unterschreitet.
+Analog strebt das System gegen $+\infty$, wenn der Parameter den Wert
+$-2\!\sqrt{3}$ unterschreitet.
 
 Die Differentialgleichung 
 \begin{equation}
@@ -378,10 +379,10 @@ hat die gleichen Gleichgewichtslösungen wie \eqref{skript:dgl:kubisch},
 jedoch sind die stabilen Gleichgewichtslösungen von \eqref{skript:dgl:kubisch}
 instabile Gleichgewichtslösungen von \eqref{skript:dgl:kubisch2}
 und umgekehrt.
-Beim Anstieg des Parameters $\lambda$ über den Wert $2\sqrt{3}$
+Beim Anstieg des Parameters $\lambda$ über den Wert $2\!\sqrt{3}$
 springt das System, falls es sich im unteren Gleichtszustand befand,
 in den oberen.
-Sinkt der Wert von $\lambda$ wieder unter $2\sqrt{3}$ wird, bleibt
+Sinkt der Wert von $\lambda$ wieder unter $2\!\sqrt{3}$ wird, bleibt
 es jedoch auf dem oberen Gleichgewichtspunkt.
 
 

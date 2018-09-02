@@ -21,18 +21,18 @@ der Form
 \[
 \frac{d}{dt}T(t)
 =
--cT(t),
+-cT(t)
 \]
 mit einer Konstanten $c$.
 
 \def\halb{\bgroup\textstyle\frac12\egroup}
 
 Die Diskussionen über die dem El~Niño-Phänomen zugrunde liegenden
-Mechanismen haben wir gesehen, dass die Thermoklinenanomalie im
+Mechanismen haben wir gesehen, dass die Thermoklinentiefenanomalie im
 zentralen Pazifik eine Auswirkung auf Temperatur\-anomalie $T(t)$ hat.
-Eine Thermoklinenanomalie $h_0(t)$ am Äquator wandert als
+Eine Thermoklinentiefenanomalie $h_0(t)$ am Äquator wandert als
 Kelvin-Welle in der Zeit $\frac12\tau_K$ in den Ostpazifik.
-Eine Thermoklinenanomalie $h_1(t)$ nördlich oder südlich des Äquators
+Eine Thermoklinentiefenanomalie $h_1(t)$ nördlich oder südlich des Äquators
 kann als Rossby-Welle nach Westen wandern, am Westrand des Pazifik
 reflektiert werden und als Kelvin-Welle in den Ostpazifik zurückkehren.
 Dazu ist die Zeit $\frac12\tau_R+\tau_K$ nötig.
@@ -46,13 +46,13 @@ Dies lässt sich mit der Differentialgleichung
 erreichen.
 
 Nun scheint es aber auch einen Zusammenhang zwischen der Temperaturanomalie
-im Ostpazifik und den Thermoklinenanomalien im zentralen Pazifik zu geben.
-Im einfachsten Fall kännen wir diesen Zusammenhang linear modellieren,
+im Ostpazifik und den Thermoklinentiefenanomalien im zentralen Pazifik zu geben.
+Im einfachsten Fall können wir diesen Zusammenhang linear modellieren,
 also 
 \[
 h_0(t-\halb\tau_K)
 \sim
-T(t-\halb\tau_K),
+T(t-\halb\tau_K)
 \qquad
 \text{und}
 \qquad
@@ -60,11 +60,11 @@ h_1(t-(\halb\tau_R+\tau_K))
 \sim
 T(t-(\halb\tau_R+\tau_K)).
 \]
-Eingesetzt in die Differentialgleichung~\eqref{elninodde:1} wird dabei zu
+Die Differentialgleichung~\eqref{elninodde:1} wird damit zu
 \begin{equation}
 \frac{d}{dt}T(t)
 =
--cT(t) + aT(t-\halb\tau_K) + bT(t-(\halb\tau_R+\tau_K))
+-cT(t) + aT(t-\halb\tau_K) + bT(t-(\halb\tau_R+\tau_K)).
 \label{elninodde:2}
 \end{equation}
 Die Ableitung $\dot T(t)$ hängt also nicht nur von der Temperaturanomalie

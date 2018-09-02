@@ -4,7 +4,7 @@
 % (c) 2018 Hochschule Rapperswil
 %
 \chapter{Datenassimilation für das Lorenz-System\label{chapter:kalman}}
-\lhead{Datenassimilation für das Lorenz-System}
+\lhead{Kapitel \thechapter: Datenassimilation für das Lorenz-System}
 \begin{refsection}
 \chapterauthor{Michael Müller}
 
@@ -358,7 +358,7 @@ verwendet. Ein $F>1$ bedeutet, dass die Messung genauer ist, als die simulierte 
 Um den Datenassimilations-Zyklus dimensionslos darzustellen, bildet $S$ die Schrittmenge pro Oszillation. Trotz der chaotischen Oszillation in zwei Richtungen ist diese nahezu konstant. Gilt zum Beispiel $S=2$, so werden pro Oszillation zwei Messungen durchgef"uhrt. Da diese nicht konstant ist, erfolgen die Messungen nicht immer am selben Ort.
 
 \subsection{Vollst"andig erfassbares System}
-Als vollst"andig erfassbares System gelten hier die Systeme mit den Messmatritzen
+Als vollst"andig erfassbares System gelten hier die Systeme mit den Messmatrizen
 \[
 H_{1}=\begin{pmatrix}
 1 & 0 & 0 \\ 
@@ -432,7 +432,7 @@ Wird die Messkadenz noch einmal wie in Abbildung \ref{kalman:H2S5} erh"oht, sche
 \end{figure}
 
 \subsection{Unvollst"andig erfassbares System}
-Nun zu den unvollst"andig erfassbaren Systemen mit den Messmatritzen 
+Nun zu den unvollst"andig erfassbaren Systemen mit den Messmatrizen 
 \[H_{3}=\begin{pmatrix}
 1 & 0 & 0 \\ 
 0 & 1 & 0 \\ 
@@ -497,5 +497,6 @@ Das System neigt zu extrem chaotischem Verhalten bei marginalen "Anderungen der 
 
 \end{itemize}
 
+\rhead{Literatur}
 \printbibliography[heading=subbibliography]
 \end{refsection}

@@ -5,7 +5,7 @@
 %
 \section{Vektorgeometrische Interpretation}
 \rhead{Vektorschreibweise}
-Die bisherigen rein analytischen Betrachtungen verdecken den geometrischen
+Die bisherigen rein algebraischen Betrachtungen verdecken den geometrischen
 Gehalt der bisher entwickelten Theorie.
 In diesem Abschnitt soll daher zunächst eine vektorielle Darstellung
 aufgebaut werden, die dann erlauben soll, einerseits die Formeln für die 
@@ -19,7 +19,7 @@ Zunächst fassen wir die Funktionswerte $y_j$ in einem Vektor
 \begin{equation}
 y = \begin{pmatrix}y_1\\\vdots\\y_N\end{pmatrix}
 \end{equation}
-zusamen.
+zusammen.
 Zur Berechnung der Fourier-Koeffizienten brauchen wir auch noch die
 Werte der trigonometrischen Funktionen zu den Zeiten $t_j$, die wir
 ebenfalls als Vektoren
@@ -39,7 +39,7 @@ und Werten von trigonometrischen Funktionen, die wir ebenfalls als Komponenten
 der Vektoren $c_k$ und $s_k$ ansehen können.
 Dies sieht aus wie das Skalarprodukt zweier Vektoren.
 
-Wir verenden die folgende Notation.
+Wir verwenden die folgende Notation.
 Das Skalarprodukt zweier Vektoren $x$ mit Komponenten $x_j$ und $y$ mit
 \index{Skalarprodukt}%
 Komponenten $y_j$ ist
@@ -53,7 +53,7 @@ x^ty.
 Die Norm eines Vektors ist
 \index{Norm}%
 \begin{equation}
-\| x\| = \sqrt{x\cdot x} = \sqrt{\sum_{j=1}^N x_j^2}.
+\| x\| = \!\sqrt{x\cdot x} = \!\sqrt{\sum_{j=1}^N x_j^2}.
 \end{equation}
 Die Entfernung zwischen zwei Vektoren ist dann $\| x-y\|$.
 Die Fourier-Analyse löst das Problem, Koeffzienten $a_k$ und $b_k$
@@ -295,7 +295,8 @@ N&\qquad k=l=0\\
 \end{cases}
 \end{align*}
 und analog für die anderen Skalarprodukte.
-Die Aussage des Satzes ist daher nichts anders als eine geometrische
+Die Aussage des Satzes~\ref{skript:fourier:orthogonalitaet}
+ist daher nichts anders als eine geometrische
 Umformulierung der Aussagen des
 Satzes~\ref{skript:fourier:orthogonalitaet1}.
 \end{proof}
@@ -370,17 +371,17 @@ Damit haben wir den folgenden Satz bewiesen:
 \index{Parseval-Gleichung}%
 Die Parseval-Gleichung hat zur Konsequenz, dass eine Funktion mit nur
 kleinen Werten auch nur kleine Fourier-Koeffizienten haben kann.
-Sind zwei Funktionen $f$ und $g$ nahe beeinandern, dann unterscheiden
+Sind zwei Funktionen $f$ und $g$ nahe beieinander, dann unterscheiden
 sich die Fourier-Koefizienten nur wenig.
 
-Umgekehrt können wir auch schliessen, dass Terme mit kleine
+Umgekehrt können wir auch schliessen, dass Terme mit kleinen
 Fourier-Koeffizienten nur zu geringen Unterschieden der Funktionen
 führen.
 Indem wir Terme mit kleinen Fourier-Koeffizienten weglassen, 
 können wir die Approximation einer Funktion durch ein trigonometrisches
 Polynom vereinfachen, ohne dass ein grosser Fehler entsteht.
 
-\subsection{$2\pi$-Periodische Funktionen auf $\mathbb R$\label{subsection:fourier:stetig}}
+\subsection{$2\pi$-periodische Funktionen auf $\mathbb R$\label{subsection:fourier:stetig}}
 Die eben vektoriell dargestellte Analyse diskreter periodischer Funktionen 
 kann verallgemeinert werden auf die Analyse von Funktionen auf
 anderen Definitionsgebieten.
@@ -430,7 +431,7 @@ Dieselbe Situation lässt sich auch für $2\pi$-periodische Funktionen
 auf $\mathbb R$ herbeiführen.
 Als Basisfunktionen kann man die Funktionen 
 \begin{equation}
-\frac{1}{\sqrt{2}},\; \cos kx,\; \sin lx\quad k>0
+\frac{1}{\!\sqrt{2}},\; \cos kx,\; \sin lx\quad k>0
 \label{fourier:basis}
 \end{equation}
 verwenden.
@@ -443,24 +444,24 @@ Eine naheliegende Wahl dafür ist
 \]
 Wir überprüfen, ob die Funktionen orthogonal sind:
 \begin{align*}
-\left\langle \frac1{\sqrt{2}},\frac1{\sqrt{2}}\right\rangle
+\left\langle \frac1{\!\sqrt{2}},\frac1{\!\sqrt{2}}\right\rangle
 &=
 \frac1{\pi}
 \int_{-\pi}^{\pi} \frac12\,dx
 =
 1
 \\
-\left\langle \frac1{\sqrt{2}},\cos kx\right\rangle
+\left\langle \frac1{\!\sqrt{2}},\cos kx\right\rangle
 &=
 \frac1{\pi}\int_{-\pi}^{\pi}
-\frac1{\sqrt{2}}\cos kx
+\frac1{\!\sqrt{2}}\cos kx
 \,dx
 =0
 \\
-\left\langle \frac1{\sqrt{2}},\sin kx\right\rangle
+\left\langle \frac1{\!\sqrt{2}},\sin kx\right\rangle
 &=
 \frac1{\pi}\int_{-\pi}^{\pi}
-\frac1{\sqrt{2}}\sin kx
+\frac1{\!\sqrt{2}}\sin kx
 \,dx
 =0
 \\
@@ -515,7 +516,7 @@ Zu einer $2\pi$-periodischen Funktion $f(x)$ kann man daher immer
 die Koeffizienten
 \begin{equation}
 \begin{aligned}
-\bar{a}_0&=\frac1{\pi\sqrt{2}}\int_{-\pi}f(x)\,dx
+\bar{a}_0&=\frac1{\pi\!\sqrt{2}}\int_{-\pi}f(x)\,dx
 \\
 a_k&=\frac1{\pi}\int_{-\pi}^\pi f(x)\cos kx\,dx
 \\
@@ -528,7 +529,7 @@ Die Linearkombination
 \begin{equation}
 \tilde f(x)
 =
-\bar{a}_0\cdot\frac1{\sqrt{2}}
+\bar{a}_0\cdot\frac1{\!\sqrt{2}}
 + 
 \sum_{k=1}^\infty (a_k\cos kx+b_k\sin kx)
 \label{fourier:reihe}
@@ -549,15 +550,15 @@ $f(x)$.
 
 In der Literatur wird $a_0$ meistens anders definiert, nämlich als
 \[
-a_0 = \frac1{\pi}\int_{-\pi}^{\pi} f(x)\,dx = \sqrt{2}\bar{a}_0
+a_0 = \frac1{\pi}\int_{-\pi}^{\pi} f(x)\,dx = \!\sqrt{2}\bar{a}_0
 \qquad\Rightarrow\qquad
-\bar{a}_0 = \frac{a_0}{\sqrt{2}}
+\bar{a}_0 = \frac{a_0}{\!\sqrt{2}}
 \]
 Der erste Term der Reihe~\eqref{fourier:basis} wird dann
 \[
-\bar{a}_0\cdot\frac1{\sqrt{2}}
+\bar{a}_0\cdot\frac1{\!\sqrt{2}}
 =
-\frac{a_0}{\sqrt{2}}\cdot\frac{1}{\sqrt{2}}
+\frac{a_0}{\!\sqrt{2}}\cdot\frac{1}{\!\sqrt{2}}
 =
 \frac{a_0}2
 \]
@@ -636,7 +637,7 @@ p_{2n}(t) = \frac{8}{\pi^2} \sum_{i=1}^n \frac{(-1)^i}{(2i-1)^2}\sin(2i-1)t
 \label{skript:fourier:dreieckreihe}
 \end{equation}
 ist in Abbildung~\ref{skript:fourier:stetigdreieck} dargestellt.
-Die Anzahl der berücksichtigten nicht verschwindenden Terme ist $n$.
+Die Anzahl der berücksichtigten, nicht verschwindenden Terme ist $n$.
 
 \subsection{Diskrete Fourier-Transformation}
 Die Fourier-Koeffizienten $a_k$ und $b_k$ hängen linear von den
@@ -742,18 +743,18 @@ N     &0        &0        &\dots    &0        &0        &0        \\
 \end{pmatrix}.
 \end{align*}
 Bis auf die Faktoren $N$ und $\frac{N}2$ auf der Diagonalen ist
-${\cal F}{\cal F}^t$ 
-eine Diagonalmatrix.
+$AA^t$ 
+eine Einheitsmatrix.
 Wir können die Matrix zu einer Einheitsmatrix machen, indem wir 
-sie mit der Diagonalmatrix
+$A$ mit der Diagonalmatrix
 \begin{equation}
 D
 =
 \begin{pmatrix}
-\sqrt{\frac1N}&0&\dots&0\\
-0&\sqrt{\frac{2}{N}}&\dots&0\\
+\!\sqrt{\frac1N}&0&\dots&0\\
+0&\!\sqrt{\frac{2}{N}}&\dots&0\\
 \vdots&\vdots&\ddots&\vdots\\
-0&0&\dots&\sqrt{\frac{2}{N}}
+0&0&\dots&\!\sqrt{\frac{2}{N}}
 \end{pmatrix}
 \end{equation}
 multiplizieren.

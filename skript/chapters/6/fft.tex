@@ -14,7 +14,7 @@ $y_j e^{lt_j}$ für alle $j$ und $l$.
 Ausserdem ist $t_j=2\pi j/N=lt_1$, die Exponentialfaktoren sind daher
 $e^{lt_j}=(e^{t_1})^{lj}$.
 Die Details dieses Algorithmus sollen hier nicht entwickelt werden,
-es soll nur der reduzierte Rechenaufwand abgeschätzt werden.
+es soll nur der Rechenaufwand abgeschätzt werden.
 Die Anzahl der Multiplikationen dominiert die Laufzeit der Berechnung,
 daher soll $g(N)$ die Anzahl der Multiplikationen für eine
 Fourier-Transformation mit $N$ Termen bezeichnen.
@@ -60,7 +60,7 @@ Summand enthält die Fouriertransformation von $y''$, es ist also
 c_l = c'_l + e^{-ilt_1} c''_l.
 \]
 Der zusätzliche Aufwand für die Berechnung von $c_l$ aus $c'_l$ und $c''_l$
-ist also nur gerade eine Multiplikation mit einer Einheitswurzel.
+ist also nur gerade eine Multiplikation mit einem Exponentialfaktor.
 
 Der Aufwand für die Berechnung der Koeffizienten $c_l$ setzt sich also
 zusammen aus dem Aufwand für zwei Fourier-Transformationen mit Länge $N/2$
@@ -86,7 +86,7 @@ prüfen kann:
 =
 N(\log_2 N - 1) + N
 =
-N\log_2 n
+N\log_2 N
 =
 g(N).
 \]

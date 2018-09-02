@@ -42,8 +42,8 @@ Das Skalarprodukt dieser beiden Richtungen ist
 Für die folgende Diskussion nehmen wir an, dass $\gamma \ge 0$,
 dass also der Nordpol permanent bestrahlt ist und der Südpol keine
 Strahlung erhält.
-Wir wollen die Energie berechnen, die in eine Zone
-eingestrahlt wird.
+Wir wollen die Energie berechnen, die in eine schmale Zone
+entlang eines Breitenkreises eingestrahlt wird.
 
 \subsubsection{Sonnenauf- und -untergang}
 Die Einstrahlung erfolgt natürlich nur zwischen Sonnenauf- und
@@ -181,27 +181,27 @@ Für die Einstrahlung finden wir dann
 \arccos\biggl(-\frac{\tan\gamma}{\tan\vartheta}\biggr).
 \notag
 \\
-\intertext{Im ersten Term können wir $\sin\arccos x  = \sqrt{1-x^2}$
+\intertext{Im ersten Term können wir $\sin\arccos x  = \!\sqrt{1-x^2}$
 verwenden.
 Den zweiten Term könnten wir so stehen lassen, aber für die graphische
 Darstellung brauchen wir eine Darstellung das Arkuskosinus durch den
 Arkustangens, da TikZ nur den Arkustangens anbietet.
-Wir verwenden die Formel $\arccos x = 2\arctan\sqrt{(1-x)/(1+x)}$ und
+Wir verwenden die Formel $\arccos x = 2\arctan\!\sqrt{(1-x)/(1+x)}$ und
 erhalten}
 &=
 2\sin\vartheta\cos\gamma
-\sqrt{1-\frac{\tan^2\gamma}{\tan^2\vartheta}}
+\!\sqrt{1-\frac{\tan^2\gamma}{\tan^2\vartheta}}
 +
 4\cos\vartheta\sin\gamma
-\arctan\sqrt{\frac{1+\frac{\tan\gamma}{\tan\vartheta}}{1-\frac{\tan\gamma}{\tan\vartheta}}}
+\arctan\!\sqrt{\frac{1+\frac{\tan\gamma}{\tan\vartheta}}{1-\frac{\tan\gamma}{\tan\vartheta}}}
 \notag
 \\
 &=
 \pm2\cos\vartheta\cos\gamma
-\sqrt{\tan^2\vartheta-\tan^2\gamma}
+\!\sqrt{\tan^2\vartheta-\tan^2\gamma}
 +
 4\cos\vartheta\sin\gamma
-\arctan\sqrt{\frac{\tan\vartheta+\tan\gamma}{\tan\vartheta-\tan\gamma}}
+\arctan\!\sqrt{\frac{\tan\vartheta+\tan\gamma}{\tan\vartheta-\tan\gamma}}
 \notag
 \\
 &=
@@ -209,11 +209,11 @@ erhalten}
 \cos\vartheta
 \biggl(
 \cos\gamma
-\sqrt{\frac{\tan^2\vartheta}{\tan^2\gamma}-1}
+\!\sqrt{\frac{\tan^2\vartheta}{\tan^2\gamma}-1}
 +
 2
 \sin\gamma
-\arctan\sqrt{
+\arctan\!\sqrt{
 \frac{\tan\vartheta+\tan\gamma}{\tan\vartheta-\tan\gamma}
 }
 \biggr).

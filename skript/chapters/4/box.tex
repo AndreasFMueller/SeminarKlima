@@ -30,7 +30,7 @@ Wir bezeichnen die Variablen im Gebiet $i$ mit $T_i$ und $S_i$.
 Das Wasser, welches an der Zirkulation teilnimmt, ist umgeben von einem
 viel grösseren Wasserreservoir, welches mit dem strömenden Wasser 
 im Wärme- und Salzaustausch steht.
-Wir bezeichnen die konstanten Parameter dieses Reservoirs mit
+Wir bezeichnen die konstanten Parameter dieser Reservoirs mit
 $T_i^*$ und $S_i^*$.
 In Abbildung~\ref{skript:boxmodell-bild} sind die beiden Gebiete
 grau dargestellt, das in Zirkulation befindliche Wasser hellblau.
@@ -122,8 +122,8 @@ d(S_2^*-S_2)
 \end{aligned}
 \label{skript:thc:salinitaetsgleichung}
 \end{equation}
-Man beachte, dass die Temperaturgleichungen~\ref{skript:thc:temperaturgleichung}
-und die Salinitätsgleichungen~\ref{skript:thc:salinitaetsgleichung} 
+Man beachte, dass die Temperaturgleichungen~\eqref{skript:thc:temperaturgleichung}
+und die Salinitätsgleichungen~\eqref{skript:thc:salinitaetsgleichung} 
 gekoppelt sind, da der Fluss $q$ angetrieben wird vom Dichteunterschied,
 der wiederum von Temperatur und Salinität abhängt.
 
@@ -133,7 +133,7 @@ Es gibt also einen Proportionalitätsfaktor $k$ derart, dass
 \[
 q = k\frac{\varrho_1 - \varrho_2}{\varrho_0}.
 \]
-Setzt man die Formel~\ref{skript:salinity-linear} ein, findet man
+Setzt man die Formel~\eqref{skript:salinity-linear} ein, findet man
 \[
 q
 =
@@ -144,7 +144,7 @@ k(\alpha(T_2-T_1) + \beta(S_1-S_2))
 k(\alpha(T_2-T_1) - \beta(S_2-S_1)).
 \]
 Schreiben wir $\Delta T = T_2-T_1$ und $\Delta S=S_2-S_1$,
-dann ist der Fluss nur von den Differenzen abhängig
+dann ist der Fluss nur von den Differenzen abhängig:
 \begin{equation}
 q=k(\alpha\Delta T-\beta\Delta S).
 \label{skript:thc:fluss-delta}
@@ -191,7 +191,7 @@ d(S_0^*-S_0),
 \label{skript:thc:mittelgleichung}
 \end{equation}
 wobei $T_0^* = \frac12(T_1^*+T_2^*)$ und $S_0^* = \frac12(S_1^*+S_2^*)$.
-Die Differentialgleichungen~\eqref{skript:thc:mittelgleichungen} 
+Die Differentialgleichungen~\eqref{skript:thc:mittelgleichung} 
 besagen, dass die mittlere Temperatur des zirkulierenden Wassers
 gegen die mittlere Temperatur des umliegenden Meeresbeckens strebt.
 Die Faktoren $c$ und $d$ beschreiben, wie schnell der Temperaturausgleich
@@ -301,7 +301,7 @@ Man beachte, dass die $T^*$ und $S^*$ konstant sind.
 
 In den Gleichungen~\eqref{skript:thc:anomaliegleichungen} hängt
 $q$ von den Temperatur- und Salinitätsdifferenzen ab.
-Wegen $\Delta\bar T=\Delta T$ und $\Delta\bar S$ ist nach
+Wegen $\Delta\bar T=\Delta T$ und $\Delta\bar S=\Delta S$ ist nach
 \eqref{skript:thc:fluss-delta}
 \begin{equation}
 q = k(\alpha\Delta\bar T-\beta \Delta\bar S).
@@ -310,7 +310,7 @@ q = k(\alpha\Delta\bar T-\beta \Delta\bar S).
 
 \subsection{Differenzgleichungen}
 Wir können die Anomaliegleichungen \eqref{skript:thc:anomaliegleichungen}
-noch etwas weiter umformen und die einzelnen Anomalien vollständig durch
+noch etwas weiter umformen und die einzelnen Ano\-malien vollständig durch
 die Differenzen ersetzen.
 Die Differenzen und Summen der Gleichungen sind
 \begin{equation}

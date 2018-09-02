@@ -4,7 +4,7 @@
 % (c) 2018 Prof Dr Andreas Müller, Hochschule Rapperswil
 %
 \section{Strahlungsbilanzmodelle\label{skript:section:budyko}}
-\rhead{Strahlunbsbilanzmodelle}
+\rhead{Strahlungsbilanzmodelle}
 Im Kapitel~\ref{chapter:wetter und klima} haben wir die physikalischen
 Grundlagen der Wetter und Klimaphänomene studiert.
 In diesem Abschnitt wollen wir ein einfaches Modell für die Energiebilanz
@@ -50,8 +50,8 @@ Die Grösse $1-\alpha(T)$ heisst auch die {\em Coalbedo}.
 \subsubsection{Ausstrahlung}
 Die Erde verliert Energie auch wieder durch Strahlung.
 Nach dem Stefan-Boltzmannschen Gesetz~\eqref{skript:stefon-boltzmann}
-ist die Ausstrahlung der Erde proportional zur vierten Potenz der
-Temperatur, also $T^4$.
+ist die Ausstrahlung der Erde proportional zur vierten Potenz $T^4$ der
+Temperatur.
 
 \subsubsection{Bilanzgleichung}
 Die Temperatur ändert sich umso mehr, je grösser das Ungleichgewicht
@@ -75,19 +75,19 @@ globalen Mitteltemperatur bei gleicher rechter Seite.
 Wir suchen eine Gleichgewichtslösung für dieses Modell, und nehmen zu diesem
 Zweck den typischen Wert $\alpha=0.3$ der Albedo der Erde.
 Sie muss $\dot T=0$ erfüllen, also
-\begin{align*}
-(1-\alpha) Q -\sigma T^4 &=0
-\\
+\begin{equation*}
+(1-\alpha) Q -\sigma T^4 =0
+\qquad
 \Rightarrow
 \qquad
-T&=\root 4\of{\frac{(1-\alpha)Q}{\sigma}}
-\end{align*}
+T=\root 4\of{\frac{(1-\alpha)Q}{\sigma}}
+\end{equation*}
 Setzt man die üblichen Werte für $Q$ ein, erhält man eine globale
 Mitteltemperatur von $T=254.8\,\text{K}$.
 
 \subsubsection{Treibhauseffekt}
 Die tatsächliche global Mitteltemperatur $T=287.7\,\text{K}$ ist.
-Diese Diskrepanz ist zwei Unzulänglichkeiten diesen einfachen
+Diese Diskrepanz ist auf zwei Unzulänglichkeiten dieses einfachen
 Modells zurückzuführen:
 \begin{enumerate}
 \item
@@ -118,8 +118,6 @@ welches diesen Sachverhalt abbildet, ist
 Die ist zwar etwas willkürlich, trifft die Realität aber qualitativ nicht
 schlecht.
 \end{enumerate}
-Das Modell mit der Albedo-Funktion~\eqref{skript:bilanz:albedo}
-hat nicht nur einen sondern drei Gleichgewichtspunkte.
 Die Einstrahlung und die Ausstrahlung ist in
 Abbildung~\ref{skript:bilanz:modellbild} dargestellt.
 
@@ -137,6 +135,8 @@ Es entstehen drei Gleichgewichtspunkte $T_1^*$, $T_2^2*$ und $T_3^*$,
 von denen aber $T_2^*$ nicht stabil ist.
 \label{skript:bilanz:modellbild}}
 \end{figure}
+Das Modell mit der Albedo-Funktion~\eqref{skript:bilanz:albedo}
+hat nicht nur einen sondern drei Gleichgewichtspunkte.
 Die beiden Gleichgewichtspunkte $T_1^*$ und $T_3^*$ sind stabil.
 In beiden Punkten ändert sich die absorbierte Energie kaum bei
 einer Temperaturänderung, aber die Ausstrahlung wird bei erhöhter 
@@ -184,7 +184,7 @@ Interessant ist aber auch, was bei starker Abnahme der
 Treibhausgaskonzentration passiert.
 Wenn $\varepsilon$ über $\varepsilon_2$ ansteigt, dann verschwinde
 $T_3^*$ und $T_2^*$, es bleibt nur der Gleichgewichtspunkt $T_1^*$,
-bei dem die ganze auf sehr tiefer Temperatur vereist.
+bei dem die ganze Erde auf sehr tiefer Temperatur vereist.
 Man vermutet, dass genau dieser Zustand in der Phase des {\em Snowball Earth}
 eingetreten ist, als die ersten photosynthetisierenden Organismen die
 Treibhausgase dramatisch reduziert und damit $\varepsilon$ stark

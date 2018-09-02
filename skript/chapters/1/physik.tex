@@ -232,7 +232,8 @@ latente Wärme von $2480\,\text{kJ}$ nötig.
 \index{latente Wärme}%
 Um ein Kilogramm Luft um ein Grad zu erwärmen, sind dagegen nur
 $1.005\,\text{kJ}$ notwendig.
-Anders herum bedeutet dies, dass eine mit Wasserdampf angereicherte Atmosphäre
+Der Unterschied ist so gross,
+dass eine mit Wasserdampf angereicherte Atmosphäre
 sehr viel mehr Energie in Form von latenter Wärme speichern kann, als
 allein durch die Wärmekapazität trockener Luft möglich wäre.
 \index{latente Wärme}%
@@ -364,7 +365,11 @@ E(\lambda,T)
 =
 \frac{2\pi hc^2}{\lambda^5}\frac{1}{e^{\frac{hc}{\lambda kT}}-1}
 \end{equation}
-wiedergeben.
+wiedergeben, darin ist 
+$h=6.626070\cdot 10^{-34}\,J\cdot s$ das Plancksche Wirkungsquantum,
+$k=1.380648\cdot10^{-23}\,J/K$ die Boltzmann-Konstante
+und
+$c=299792458\,\frac{\text{m}}{\text{s}}$ die Lichtgeschwindigkeit.
 $E(\lambda,T)$ ist die
 pro Flächeneinheit des Strahlers und pro Wellenlängeneinheit
 abgestrahlte Leistung.
@@ -398,8 +403,7 @@ $E(\lambda,T)$ mit dem Faktor $\lambda$ skalieren.
 \subsubsection{Einstrahlungswinkel}
 Warum ist es in den Tropen wärmer als in gemässigten Breiten oder
 an den Polen, wenn
-die Sonne doch überall mit der gleichen Intensität einstrahlt.
-
+die Sonne doch überall mit der gleichen Intensität einstrahlt?
 Der Unterschied stammt natürlich vom Einstrahlungswinkel.
 Der Ausdruck \eqref{skript:solarkonstante} für $P_{\earth}$ 
 beschreibt die Strahlungsleistung pro Flächeneinheit, doch diese
@@ -446,7 +450,7 @@ Mond           &0.11 \\
 (aus \cite{skript:albedo})
 \label{skript:albedotabelle}}
 \end{table}
-Die Erde ist noch weniger perfekter schwarzer Strahler als die Sonne.
+Die Erde ist noch weniger ein perfekter schwarzer Strahler als die Sonne.
 Die Ausstrahlung enthält zwar die Strahlung eines schwarzen Körpers mit
 der Mitteltemperatur als Temperatur $T$,
 sie ist aber überlagert von der Strahlung, die vom Erdboden oder von
@@ -524,7 +528,7 @@ der Schwarzkörperstrahlung \cite{skript:sunlight}.
 In Abbildung~\ref{skript:strahlungsspektrum} ist das tatsächlich gemessene
 Strahlungsspektrum der Sonne dargestellt.
 Es fällt auf, dass Wasserdampf und $\text{CO}_2$  für bedeutende
-Absorbtionsbänder im Infraroten verantwortlich ist,
+Absorbtionsbänder im Infraroten verantwortlich sind,
 während im sichtbaren bereich
 die Absorbtion sehr gleichmässig ist.
 
@@ -538,7 +542,7 @@ der Atmosphäre Energie aus niedrigen Breiten zu den Polen
 transportieren müssen.
 Die Temperaturunterschiede sind jedoch zu klein dafür, dass Wärmeleitung
 den Transport bewerkstelligen könnte.
-Die Energie muss daher durch Advektion (S.~\pageref{skript:advektion})
+Die Energie muss daher durch Advektion (S.~\pageref{skript:advektion1})
 unterstützt von latenter Wärme transportiert werden.
 Um den Energiehaushalt des globalen Klimasystems zu verstehen, muss
 \index{globale Zirkulation}%
@@ -552,7 +556,7 @@ In diesem Abschnitt beschränken wir uns auf eine qualitative
 Diskussion der globalen Zirkulation.
 Die globale Zirkulation unterscheidet sich von Strömungen, die 
 in technischen Anwendungen üblicherweise studiert werden dadurch,
-dass sie zwar im allgemeinen langsamer ist, dafür aber ein viel grössers
+dass sie zwar im Allgemeinen langsamer ist, dafür aber ein viel grössers
 Volumen und grössere Distanzen umfasst.
 Die Windsysteme, die für die Wetterphänomene verantwortlich sind,
 haben typische Abmessungen von hunderten oder sogar tausenden von
@@ -791,7 +795,7 @@ unbeeinflusst durch die Coriolis-Beschleunigung strömen.
 
 Mit Hilfe der $\beta$-Ebene können wir jetzt aber auch modellhaft 
 die Bewegung eines Massepunktes in Äquatornähe berechnen.
-Wenn die Coriolis-Beschleunigung der einzige Einfluss ist, dann
+Wenn die Coriolis-Beschleunigung der einzige Einfluss ist, dann gilt
 \begin{equation}
 \frac{d}{dt}
 \begin{pmatrix}u\\v\end{pmatrix}
@@ -801,7 +805,7 @@ f\begin{pmatrix}v\\-u\end{pmatrix}.
 Der Coriolis-Parameter $f=2\omega\sin\alpha$ ist proportional
 zur geographischen Breite.
 Für nicht zu grosse geographische Breiten können wir $\sin\alpha$ durch
-die $y$-Koordinate erstzen.
+die $y$-Koordinate ersetzen.
 Wir müssen also die Differentialgleichung
 \begin{equation}
 \frac{d}{dt}
@@ -809,7 +813,7 @@ Wir müssen also die Differentialgleichung
 =
 \begin{pmatrix}
 u\\v\\fyv\\-fyu
-\end{pmatrix}.
+\end{pmatrix}
 \label{skript:coriolis-dgl}
 \end{equation}
 lösen.
@@ -850,14 +854,14 @@ Für genügend grosses $f$ bleiben alle Kurven in der oberen
 Halbebene wie in Abbildung~\ref{skript:stream-graph}, unabhängig
 von der Richtung der Anfangsgeschwindigkeit.
 Für kleinere Werte von $f$ wie in Abbildung~\ref{skript:cross-graph}
-gelangen einzelne Bahnkurven in die untere Halbebene wo die Krümmung
+gelangen einzelne Bahnkurven in die untere Halbebene, wo die Krümmung
 der Kurve von rechts auf links kehrt.
 
 Man beachte, dass diese Bahnkurven nicht Stromlinien einer Strömung sind,
 da sich diese nicht kreuzen können.
 Dieses einfache Modell ist also nicht geeignet, die tatsächliche Bewegung
 der Luftmassen darzustellen, dazu müssen wir die Gleichungen
-der Fluiddynamik in Kapitel~\ref{chapter:fluiddynamik}.
+der Fluiddynamik in Kapitel~\ref{chapter:fluiddynamik} verwenden.
 
 \subsubsection{Meeresströmungen}
 Meeresströmungen leisten einen bedeutenden Beitrag zum Klima, weil sie

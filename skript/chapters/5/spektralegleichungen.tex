@@ -7,10 +7,12 @@
 Mit den Kugelfunktionen steht jetzt eine Basis für Funktionen auf der
 Kugeloberfläche oder auch für eine Kugelschicht wie die Atmosphäre zur
 Verfügung.
+Eine Lösung der Modellgleichungen kann als Linearkombination von
+Kugelfunktionen geschrieben werden.
 Um die zeitliche Entwicklung zu verstehen, wie sie zum Beispiel vom
 Modell~\eqref{skript:psidgl} beschrieben wird, müssen diese Gleichungen
-umformuliert werden als Gleichungen für die Koeffizienten einer Darstellung
-der Lösungsfunktion als Linearkombination 
+umformuliert werden als Gleichungen für die Koeffizienten der
+Linearkombination.
 
 Um das Prinzip zu veranschaulichen, wird dies für die Wärmeleitungsgleichung
 \[
@@ -29,7 +31,7 @@ T(t, \vartheta, \varphi)
 geschrieben werden.
 Die Funtionen $Y^m_l(\vartheta,\varphi)$ sind nach Konstruktion
 Eigenfunktionen des Laplace-Operators, der zugehörige Eigenwert soll
-mit $\lambda^m_l$ abgekürzt werden.
+mit $\lambda_{lm}$ abgekürzt werden.
 
 Setzt man \eqref{skript:spektral:ansatz} in die Differentialgleichung
 ein, wird sie zu
@@ -46,21 +48,21 @@ ein, wird sie zu
 \sum_{l=0}^\infty \sum_{m=-l}^{l} a_{lm}(t) \Delta Y^m_l(\vartheta,\varphi)
 =
 \kappa
-\sum_{l=0}^\infty \sum_{m=-l}^{l} a_{lm}(t) \lambda^m_l Y^m_l(\vartheta,\varphi)
+\sum_{l=0}^\infty \sum_{m=-l}^{l} a_{lm}(t) \lambda_{lm} Y^m_l(\vartheta,\varphi)
 \end{align*}
 Mittels Koeffizientenvergleich folgen die gewöhnlichen
 Differentialgleichungen
 \[
 \dot a_{lm}(t)
 =
-\kappa\lambda^m_l
+\kappa\lambda_{lm}
 a_{lm},
 \]
 deren Lösungen man sofort angeben kann, sie sind
 \[
 a_{lm}(t)
 =
-a_{lm}(0) e^{\kappa\lambda^m_l t}.
+a_{lm}(0) e^{\kappa\lambda_{lm} t}.
 \]
 Damit kann man die Lösung der Wärmeleitungsgleichung sofort hinschreiben,
 sie ist
@@ -68,7 +70,7 @@ sie ist
 T(t,\vartheta,\varphi)
 =
 \sum_{l=0}^\infty \sum_{m=-l}^{l}
-a_{lm}(0) e^{\kappa\lambda^m_l t}
+a_{lm}(0) e^{\kappa\lambda_{lm} t}
 Y^m_l(\vartheta,\varphi).
 \end{equation}
 Die Verwendung der Basis der Kugelfunktionen hat also zu einer besonders 
